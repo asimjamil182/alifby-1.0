@@ -1,0 +1,55 @@
+{% case type %}
+  {% when 'style1' %}
+    <search-bar page-type="{{ request.page_type }}" class="mt-2 md:m-0 w-full relative {{ class }}">
+      <div class="flex {{settings.input_style }} w-full bg-[transparent]">
+        <input
+          type="text"
+          class="w-full placeholder:font-light focus:outline-none font-normal text-sm {{ class }}"
+          placeholder="Enter your product name..."
+          value="{{ search.terms | escape }}"
+          id="predective_search"
+        >
+        <button id="searchBtn">
+          {%- render 'icon', iconName: 'search', class: 'search-icon', size: '1em' -%}
+
+          {%- render 'icon',
+            iconName: 'spinner',
+            class: 'spinner-icon hidden inline text-center animate-spin text-subtextColor',
+            size: '1em'
+          -%}
+        </button>
+      </div>
+      <div
+        class="right-0 left-0 bg-[#ffff] text-textColor shadow-lg absolute overflow-hidden hidden"
+        id="predective_search_result"
+      ></div>
+    </search-bar>
+  {% when 'style2' %}
+    <search-bar page-type="{{ request.page_type }}" class="mt-2 md:m-0 w-full relative {{ class }}">
+      <div class="flex {{ settings.input_style }} border-0 border-b rounded-none w-full p-0 bg-[transparent]">
+        <input
+          type="text"
+          class="w-full p-1 placeholder:font-light focus:outline-none font-normal text-sm text-textColor {{ class }}"
+          placeholder="Serach..."
+          value="{{ search.terms | escape }}"
+          id="predective_search"
+        >
+        <button id="searchBtn" class="p-1">
+          
+          {%- render 'icon', iconName: 'search', class: 'search-icon  p-1', size: '1.5em' -%}
+
+          {%- render 'icon',
+            iconName: 'spinner',
+            class: 'spinner-icon hidden inline text-center animate-spin text-subtextColor p-1',
+            size: '1.5em'
+          -%}
+        </button>
+      </div>
+      <div
+        class="right-0 left-0 text-textColor bg-[#ffff] shadow-lg absolute overflow-hidden hidden"
+        id="predective_search_result"
+      ></div>
+    </search-bar>
+  {% else %}
+
+{% endcase %}

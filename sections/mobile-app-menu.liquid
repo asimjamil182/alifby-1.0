@@ -1,0 +1,14 @@
+<div id="mobile-app-menu" class="hidden md:hidden">
+  <div class="flex items-center justify-between bg-[#ffff] child:p-1 py-2 px-2 shadow-sm fixed bottom-0 left-0 right-0">
+    <div>{%- render 'icon',iconName: 'list',id: 'menu-navigator',class: 'fill-textColor inline-block w-[30] h-[30]'-%}</div>
+    
+    <link-handler target-page="/">{%- render 'icon', iconName: 'house', class: 'fill-textColor inline-block w-[25] h-[25]' -%}</link-handler>
+    <link-handler target-page="/cart" class=" relative">
+      {%- render 'icon', iconName: 'cart', class: 'fill-textColor inline-block w-[25] h-[25]' -%}
+      <span class="{% unless cart.item_count != 0 %} hidden {% endunless %} cart-product-counter absolute -top-[7px] -right-1 bg-accent text-secondaryColor rounded-full text-[10px] w-4 h-4 text-center p-[0.5px] shadow-md flex items-center justify-center">
+        <span>{{ cart.item_count }}</span>
+      </span>
+    </link-handler>
+    <link-handler target-page="/account">{%- render 'icon', iconName: 'user', class: 'fill-textColor inline-block w-[25] h-[25]' -%}</link-handler>
+  </div>
+</div>

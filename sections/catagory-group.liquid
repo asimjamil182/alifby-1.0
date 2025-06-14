@@ -1,0 +1,146 @@
+<section>
+  <div class="layout {% unless settings.layout_width=='100%' %}p-0{% endunless %} {% if section.settings.isFullWidth %}lg:w-full{% endif %}">
+    <div class="flex justify-between md:justify-between sm:gap-x-0 md:gap-x-5 sm:gap-y-4 md:gap-y-0 w-full overflow-auto md:overflow-hidden scroll-none">
+      {% for block in section.blocks %}
+        <div class="w-[150px] md:w-1/5 lg:w-1/6 p-2 md:bg-[#ffff] md:shadow-sm" style="{% if section.settings.isDefaultOverride %}background-color:{{ section.settings.bg_color }} !important;{% endif %}">
+          <div class="flex gap-2 items-center flex-col md:flex-row">
+            <div class="w-[50px]">
+              {%- if block.settings.cat_img -%}
+                <a href="{{ block.settings.cat_link }}"><img class="w-100 md:hidden shadow-sm md:shadow-none {% if section.settings.isRoundedImage %} rounded-full {% endif %}" src="{{ block.settings.cat_img | image_url }}" width="" height="" alt="image"></a>
+                <img class="w-100 hidden md:block {% if section.settings.isRoundedImage %} rounded-full {% endif %}" src="{{ block.settings.cat_img | image_url }}" width="" height="" alt="Catagory Image">
+              {%- else -%}
+                <img src="https://placehold.co/50" class="shadow-sm md:shadow-none {% if section.settings.isRoundedImage %} rounded-full {% endif %}" width="" height="" alt="Img placeholder">
+              {%- endif -%}
+            </div>
+            <div class="flex-1">
+              <div class=" md:font-semibold text-primaryColor capitalize text-xs text-center md:text-left md:text-base" style="{% if section.settings.isDefaultOverride %}color:{{ section.settings.label_color }} !important;{% endif %}">{{ block.settings.cat_label }}</div>
+              <a href="{{ block.settings.cat_link }}" class="text-xs text-subtextColor sm:hidden md:block" style="{% if section.settings.isDefaultOverride %}color:{{ section.settings.linktext_color }} !important;{% endif %}">{{ block.settings.cat_link_text }}</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Catagory Group",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings & Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "isFullWidth",
+      "label": "Full Width",
+      "default": false,
+      "info": "This option work on large screen only"
+    },
+    {
+      "type": "checkbox",
+      "id": "isRoundedImage",
+      "label": "Rounded Image",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Override Theme Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "isDefaultOverride",
+      "label": "Enable",
+      "default": true,
+      "info": "Enable this option to override the theme colors."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label Color",
+      "default": "#333"
+    },
+    {
+      "type": "color",
+      "id": "linktext_color",
+      "label": "Link Text Color",
+      "default": "#333"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Catagory",
+      "type": "catagory",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "cat_img",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "cat_label",
+          "label": "Label",
+          "default": "Catagory Label"
+        },
+        {
+          "type": "text",
+          "id": "cat_link_text",
+          "label": "Link Text",
+          "default": "Show all"
+        },
+        {
+          "type": "url",
+          "id": "cat_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Catagory Group",
+      "blocks": [
+        {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Cloths"
+          }
+        },
+        {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Shoes"
+          }
+        },
+        {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Watches"
+          }
+        },
+        {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Jewelry"
+          }
+        },
+        {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Bags"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

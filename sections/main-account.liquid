@@ -1,0 +1,83 @@
+<section>
+  <div class="layout">
+    <div class="">
+      <h1 class="section-heading text-left">Account</h1>
+      <div class="flex gap-2 sm:flex-wrap md:flex-nowrap">
+        <div class="flex-1 bg-[#ffff] p-2 overflow-x-auto">
+          <div class="font-semibold text-sm mb-2 text-accentColor">Order List</div>
+          {%- if customer.orders.size == 0 -%}
+            <div class="flex items-center justify-center h-[60%]">
+              <div>
+                <div class="text-center text-xl text-subtextColor py-5">Cart Empty!</div>
+                <a href="/collections/all" class="{{settings.btn_style }} inline-block">Continue Shopping</a>
+              </div>
+            </div>
+            {%- else -%}
+          <table class="text-sm w-full text-center child:p-2">
+            <tr class=" bg-backgroundColor text-secondaryColor border border-bgColor child:p-2">
+              <th>OrderId</th>
+              <th>Date</th>
+              <th>ِAmount</th>
+              <th>Payment Status</th>
+              <th>Fulfillment Status</th>
+              <th>Action</th>
+            </tr>
+            {%- for order in customer.orders -%}
+              <tr class="border border-neutralLightColor child:p-2">
+                <td>{{order.id}}</td>
+                <td>{{ order.created_at }}</td>
+                <td>{{ order.total_price | money_with_currency }}</td>
+                <td>{{ order.financial_status }}</td>
+                <td>{{ order.fulfillment_status }}</td>
+                <td><a class="p-0.5 {{ settings.btn_style }} bg-backgroundColor text-secondaryColor text-sm font-thin px-2" href="{{ order.customer_order_url }}">View</a></td>
+              </tr>
+            {%- endfor -%}
+          </table>
+        {%- endif -%}
+        </div>
+        <div class="w-full md:w-1/5 bg-[#ffff] p-2 text-sm">
+          <div class=" font-semibold text-accentColor mb-2 border-b  border-neutralLightColor">Account Detail</div>
+          <div>Name : {{ customer.name }}</div>
+          <div>Email: {{ customer.email }}</div>
+          <div>Phone: {{ customer.phone }}</div>
+          <div>Total Order: {{ customer.orders_count }}</div>
+          <div>Total Spent: {{ customer.total_spent | money_with_currency }}</div>
+        </div>
+      </div>
+    </div>
+
+    {% comment %}
+      {% if customer.orders.size > 0 %}
+        <h2>Orders</h2>
+        <ul>
+          {% for order in customer.orders %}
+            {{ order.name | link_to: order.customer_url }}
+            <li>{{ order.name }} - {{ order.total_price | money }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No orders found.</p>
+      {% endif %}
+
+      {% if customer.default_address %}
+        <h2>Default Address</h2>
+        <p>{{ customer.default_address.address1 }}</p>
+        <p>{{ customer.default_address.city }}, {{ customer.default_address.province }}</p>
+        <p>
+          {{ customer.default_address.country }}
+          {{ customer.default_address.zip }}
+        </p>
+      {% else %}
+        <p>No default address found.</p>
+      {% endif %}
+    {% endcomment %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer Account",
+  "settings": [],
+  "default": {}
+}
+{% endschema %}

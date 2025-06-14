@@ -1,0 +1,141 @@
+{% if current_tags %}
+  {% assign is_current_tags = true %}
+{%- else -%}
+  {%- assign is_current_tags = false -%}
+{% endif %}
+<section>
+  <div class="layout sm:px-2 md:px-4 lg:px-0 mt-4">
+    <div class="flex sm:gap-2 md:gap-0 p-2 items-center" style="background:{{ section.settings.title-bg }};">
+      <div class="sm:flex-1 md:w-4/5">
+        {%- if is_current_tags -%}
+          <div class=" capitalize font-semibold text-lg text-textColor">
+            {{ current_tags }}
+          </div>
+        {%- else -%}
+          <div class=" capitalize font-semibold text-lg text-textColor sm:hidden md:block">
+            {{ collection.title }}
+            {% if section.settings.isProductCounter %}
+              <span class=" text-sm text-subtextColor font-normal"
+              >({{ collection.all_products_count }} choice available)</span
+            >
+            {% endif %}
+          </div>
+        {%- endif -%}
+        {%- unless is_current_tags or section.settings.isFilter==false -%}
+          <div
+            id="filter-navigator"
+            class="md:hidden {{settings.input_style }} flex flex-1 bg-[#ffff] justify-between items-center text-sm p-2"
+          >
+            <div class=" ">Filters</div>
+            {%- render 'icon', iconName: 'filter', class: 'fill-textColor h-[17] w-[17]' -%}
+          </div>
+        {%- endunless -%}
+      </div>
+      {%- unless section.settings.isSorting==false -%}
+        <div class="sm:flex-1 md:flex-none md:w-1/5">
+          {% render 'custom-selectbox', id: 'collection_sort_by', options: collection.sort_options %}
+        </div>
+      {%- endunless -%}
+    </div>
+    <div class="flex sm:flex-wrap">
+      {%- unless is_current_tags or section.settings.isFilter==false or collection.filters.size==0 -%}
+        <div class="md:w-1/6 sm:w-full">
+          <div
+            id="filter-overlay"
+            class="md:hidden sm:hidden fixed top-0 bottom-0 left-0 right-0 bg-backgroundColor opacity-10 z-20 md:z-0"
+          ></div>
+          <div
+            id="filter-container"
+            class="bg-[#ffff] md:shadow-none shadow-md z-20 md:z-0 sm:fixed md:relative right-0 top-0 bottom-0 sm:p-2 md:p-0 md:w-full sm:w-1/2 transform  md:translate-x-0 sm:translate-x-full  transition-transform duration-300 ease-in-out"
+          >
+            <div class="flex flex-col h-full bg-[#ffff] p-2">
+              <div>
+                {%- render 'icon',
+                  iconName: 'x',
+                  id: 'filter_close_icon',
+                  class: ' w-[30] h-[30] cursor-pointer fill-textColor md:hidden'
+                -%}
+              </div>
+              <div class="mt-2 font-semibold">Filters</div>
+              <div id="filter-list" class="h-full overflow-y-auto overflow-x-clip pb-5">
+                {%- render 'collection-filters' -%}
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endunless -%}
+
+      <div class="sm:w-full {% unless is_current_tags or section.settings.isFilter==false or collection.filters.size==0 %}md:w-5/6{% endunless %}">
+        {%- if is_current_tags -%}
+          {%- assign paginate_lenght = 42 -%}
+        {%- else -%}
+          {%- assign paginate_lenght = 40 -%}
+        {%- endif -%}
+        {%- paginate collection.products by paginate_lenght -%}
+          <collection-grid-auto-loader
+            section-id="{{ section.id }}"
+            total-pages="{{ paginate.pages }}"
+            current-page="{{ paginate.current_page }}"
+          >
+            <div id="product-grid" class="flex flex-wrap gap-y-2 mt-2 sm:p-1">
+              {%- for product in collection.products -%}
+                {%- render 'product-card',
+                  product: product,
+                  class: 'product-card sm:w-[48%] md:w-[20%] lg:md:w-[19%]'
+                -%}
+              {%- endfor -%}
+            </div>
+            <div class="flex items-center justify-center w-full">
+              {%- render 'icon',
+                iconName: 'spinner',
+                class: 'loading-spinner block hidden text-center text-subtextColor fill-secondaryColor animate-spin',
+                size: '30px'
+              -%}
+            </div>
+          </collection-grid-auto-loader>
+        {%- endpaginate -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "isProductCounter",
+      "label": "Product Counter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "isFilter",
+      "label": "Enable Filter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "isSorting",
+      "label": "Enable Sorting",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Tags Control"
+    },
+    {
+      "type": "text",
+      "id": "tag_skiper",
+      "label": "Skip Tags",
+      "info": "Use this formate 'men,women,top' "
+    },
+    {
+      "type": "color",
+      "id": "title-bg",
+      "label": "Title Background Color"
+    }
+  ]
+}
+{% endschema %}

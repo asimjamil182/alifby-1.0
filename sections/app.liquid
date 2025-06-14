@@ -1,0 +1,24 @@
+<section class="lg:w-[70%] lg:m-auto md:p-6 lg:p-0">
+  {%- for block in section.blocks -%}
+    {% render block %}
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.apps.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "App section"
+    }
+  ]
+}
+{% endschema %}

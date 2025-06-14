@@ -1,0 +1,22 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "list_collections_mLXp8a": {
+      "type": "list-collections",
+      "settings": {
+        "grid-bg-color": "linear-gradient(216deg, rgba(236, 152, 152, 0.4) 14%, rgba(235, 180, 146, 0.4) 83%)"
+      }
+    }
+  },
+  "order": [
+    "list_collections_mLXp8a"
+  ]
+}

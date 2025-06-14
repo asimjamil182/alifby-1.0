@@ -1,0 +1,54 @@
+{%- if range == empty -%}
+  {%- assign range = 60 -%}
+{%- endif -%}
+{% paginate collection.products by range %}
+  <div id="product-grid" class="flex flex-wrap sm:justify-between md:justify-start gap-y-2 mt-2 sm:p-1">
+    {%- assign products = collection.products -%}
+    {%- for product in products -%}
+      {%- render 'product-card', product: product, class: 'sm:w-[45%] md:w-1/5' -%}
+    {%- endfor -%}
+  </div>
+  {%- unless paginate.pages == 1 -%}
+    <div class="{{ settings.input_style }} overflow-hidden flex my-2 sm:w-full gap-1  {% if paginate.pages<5 %} md:w-1/4 {% elsif paginate.page_size>5 and paginate.page_size<10 %} md:w-2/4 {% else %} md:w-1/2 {% endif %} mx-auto items-center bg-[#ffff]">
+      {% if paginate.previous.is_link %}
+        <a class="w-1/6 {{ settings.btn_style }} w-[60px] text-center" href="{{ paginate.previous.url }}">
+          {%- render 'icon', iconName: 'left-arrow', class: 'fill-secondaryColor' -%}
+        </a>
+      {%- else -%}
+        <button
+          class="w-1/6 {{ settings.btn_style }} w-[60px] text-center disabled:opacity-50 cursor-not-allowed"
+          disabled
+        >
+          {%- render 'icon', iconName: 'left-arrow', class: 'fill-secondaryColor' -%}
+        </button>
+      {% endif %}
+      <div class="scroll scroll-h6 flex w-full md:flex-1 sm:overflow-x-auto md:overflow-[inherit] gap-1">
+
+        {% for page in (1..paginate.pages) %}
+          <a
+            href="{% if page==paginate.current_page %} # {% else %} {{ collection.url }}{% if collection.url contains '?' %}&{% else %}?{% endif %}page={{ page }} {% endif %}"
+            class="p-1 flex-1 text-center text-lg font-semibold  text-textColor {% if page==paginate.current_page %} !text-accentColor{% endif %}"
+          >
+            {{ page }}
+          </a>
+        {% endfor %}
+      </div>
+
+      {% if paginate.next.is_link %}
+        <a
+          class="w-1/6 {{ settings.btn_style }} w-[60px] text-center flex items-center justify-center"
+          href="{{ paginate.next.url }}"
+        >
+          {%- render 'icon', iconName: 'right-arrow', class: 'fill-secondaryColor' -%}
+        </a>
+      {%- else -%}
+        <button
+          class="w-1/6 {{ settings.btn_style }} w-[60px] text-center disabled:opacity-50 cursor-not-allowed"
+          disabled
+        >
+          {%- render 'icon', iconName: 'right-arrow', class: 'fill-secondaryColor' -%}
+        </button>
+      {% endif %}
+    </div>
+  {%- endunless -%}
+{% endpaginate %}

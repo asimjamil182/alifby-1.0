@@ -1,0 +1,53 @@
+<section>
+  <div class="layout sm:px-2 md:px-4 lg:px-0">
+    {%- for collection in collections  -%}
+        {%- unless collection.products == empty -%}
+          <div class="py-4">
+            <div class="flex p-2 flex-wrap md:flex-nowrap items-center gap-2" style="background:{{ section.settings.grid-bg-color }};">
+              <div class="sm:w-full md:w-1/5 relative bg-disabled">
+                <div class="absolute bottom-5 left-10">
+                  <div class="text-xl text-textColor text-center w-full">{{ collection.title }}</div>
+                  <a href="{{ collection.url }}" class="{{ settings.btn_style }} text-xs flex items-center p-1 px-3"><span>View Collection</span> {%- render 'icon', iconName: 'right-arrow', size: '2em', class: 'fill-secondaryColor' -%}</a>
+                </div>
+                {%- if collection.image -%}
+                  <img  src="{{collection.image | image_url }}" width="" height="" alt="collection-image" class="w-full shadow">
+                  {%- else -%}
+                  <img  src="{{'collection-placeholder.svg' |  asset_url}}" width="" height="" alt="collection-image-placeholder" class="w-full shadow">
+                {%- endif -%}
+              </div>
+              <div class="sm:w-full md:w-4/5">
+                <div class="flex flex-nowrap w-full overflow-x-auto sm:gap-2">
+                  {%- for product in collection.products limit:5 -%}
+                    {%- render 'product-card', product: product , class: "sm:w-1/2 md:w-1/5 sm:min-w-[48%] md:min-w-[inherit]" -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endunless -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection List",
+  "settings": [
+    {
+      "type": "color_background",
+      "id": "grid-bg-color",
+      "label": "Grid Background Color",
+      "default": "#ececec"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection List",
+      "settings": {}
+    }
+  ],
+  "enabled_on": {
+    "templates": ["list-collections"]
+  }
+}
+{% endschema %}

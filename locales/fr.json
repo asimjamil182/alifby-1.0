@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": {
+    "header": {
+      "home": "Accueil",
+      "shop": "Boutique",
+      "about_us": "À propos de nous",
+      "contact": "Contact"
+    },
+    "footer": {
+      "copyright": "Droits d'auteur © 2023 Votre Magasin. Tous droits réservés.",
+      "terms_and_conditions": "Termes et conditions",
+      "privacy_policy": "Politique de confidentialité"
+    }
+  },
+  "products": {
+    "featured_products": "Produits en vedette",
+    "new_arrivals": "Nouveautés",
+    "add_to_cart": "Ajouter au panier",
+    "view_details": "Voir les détails"
+  },
+  "cart": {
+    "cart_title": "Panier",
+    "item_count": {
+      "one": "1 article",
+      "other": "{{ count }} articles"
+    },
+    "subtotal": "Sous-total",
+    "checkout": "Paiement"
+  },
+  "checkout": {
+    "billing_information": "Informations de facturation",
+    "shipping_information": "Informations de livraison",
+    "payment_method": "Méthode de paiement",
+    "complete_purchase": "Finaliser l'achat"
+  }
+}

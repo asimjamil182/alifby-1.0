@@ -1,0 +1,333 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "alifby",
+    "theme_version": "1.0.0",
+    "theme_author": "Asim Jamil",
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
+  },
+  {
+    "name": "Theme featured",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "is_sticky_header",
+        "label": "Sticky header",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_wishlist",
+        "label": "Show Wishlist",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_language_selector",
+        "label": "Show Language Selector",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_country_selector",
+        "label": "Show Country Selector",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "select",
+        "id": "logo_type",
+        "label": "Type",
+        "options": [
+          {
+            "value": "image",
+            "label": "Image"
+          },
+          {
+            "value": "text",
+            "label": "Text"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Setting for Type Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_img",
+        "label": "Image"
+      },
+      {
+        "type": "range",
+        "id": "logo_size",
+        "min": 50,
+        "max": 100,
+        "step": 10,
+        "unit": "px",
+        "label": "Logo Size",
+        "default": 50
+      },
+      {
+        "type": "header",
+        "content": "Setting for Type Text"
+      },
+      {
+        "type": "richtext",
+        "id": "logo_txt",
+        "label": "Text",
+        "default": "<p>Logo Text<\/p>"
+      },
+      {
+        "type": "color",
+        "id": "logo_txt_color",
+        "label": "Text color",
+        "default": "#333"
+      },
+      {
+        "type": "range",
+        "id": "text_size",
+        "min": 15,
+        "max": 40,
+        "step": 1,
+        "unit": "px",
+        "label": "Text Size",
+        "default": 25
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "select",
+        "id": "layout_width",
+        "label": "Content Area Width",
+        "options": [
+          {
+            "value": "100%",
+            "label": "Full width"
+          },
+          {
+            "value": "75%",
+            "label": "Space Around"
+          }
+        ],
+        "default": "75%",
+        "info": "This setting apply on max devcies"
+      },
+      {
+        "type": "range",
+        "id": "section_space",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "label": "Sections Space",
+        "default": 0
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "primaryColor",
+        "default": "#1E90FF",
+        "label": "Primary Color"
+      },
+      {
+        "type": "color",
+        "id": "secondaryColor",
+        "default": "#2ECC71",
+        "label": "Secondary Color"
+      },
+      {
+        "type": "color",
+        "id": "backgroundColor",
+        "default": "#F5F5F5",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "textColor",
+        "default": "#333333",
+        "label": "Text Color"
+      },
+      {
+        "type": "color",
+        "id": "subtextColor",
+        "default": "#B5B5B5",
+        "label": "Sub Text Color"
+      },
+      {
+        "type": "color",
+        "id": "accentColor",
+        "default": "#FFCC00",
+        "label": "Accent Color"
+      },
+      {
+        "type": "color",
+        "id": "neutralLightColor",
+        "default": "#E1E1E1",
+        "label": "Neutral Light Color"
+      },
+      {
+        "type": "color",
+        "id": "neutralDarkColor",
+        "default": "#B5B5B5",
+        "label": "Neutral Light Color"
+      },
+      {
+        "type": "range",
+        "id": "black",
+        "min": 0.5,
+        "max": 1,
+        "step": 0.1,
+        "label": "Balck Color",
+        "default": 1
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": "Heading font",
+        "default": "helvetica_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_menu_font",
+        "label": "Menu font",
+        "default": "helvetica_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body font",
+        "default": "helvetica_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_btn_font",
+        "label": "Button font",
+        "default": "helvetica_n4"
+      }
+    ]
+  },
+  {
+    "name": "Buttons & Inputs",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Button style"
+      },
+      {
+        "type": "select",
+        "id": "btn_style",
+        "label": "Button Style",
+        "options": [
+          {
+            "value": "btn-outline-color",
+            "label": "Outline"
+          },
+          {
+            "value": "btn-fill-color",
+            "label": "Fill"
+          }
+        ],
+        "default": "btn-fill-color"
+      },
+      {
+        "type": "range",
+        "id": "button_raduis",
+        "min": 0,
+        "max": 36,
+        "step": 1,
+        "unit": "px",
+        "label": "Button Raduis",
+        "default": 0
+      },
+      {
+        "type": "header",
+        "content": "Input style"
+      },
+      {
+        "type": "select",
+        "id": "input_style",
+        "label": "Input Style",
+        "options": [
+          {
+            "value": "input-outline",
+            "label": "Outline"
+          },
+          {
+            "value": "input-outline-color",
+            "label": "Outline Color"
+          }
+        ],
+        "default": "input-outline"
+      },
+      {
+        "type": "range",
+        "id": "input_raduis",
+        "min": 0,
+        "max": 36,
+        "step": 1,
+        "unit": "px",
+        "label": "Input Raduis",
+        "default": 0
+      },
+      {
+        "type": "checkbox",
+        "id": "input_isborder",
+        "label": "Show Input Border",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Product Card",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_rating_icon",
+        "label": "Rating Star",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "product_card_img_bg",
+        "label": "Image Background Color",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Quick View",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Quick view setting"
+      }
+    ]
+  },
+  {
+    "name": "Social Icon",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social icon url"
+      }
+    ]
+  }
+]

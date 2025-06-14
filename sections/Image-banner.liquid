@@ -1,0 +1,49 @@
+<section>
+  <div class="layout p-0">
+    <a href="{{ section.settings.bannar_url }}">
+      {%- if section.settings.banner_img -%}
+        <img src="{{ section.settings.banner_img | image_url }}" class="w-full hidden md:block" width="" height="" alt="Image Bannar">
+      {%- else -%}
+        <img src="https://placehold.co/500x100" class="w-full hidden md:block" width="" height="" alt="Image Bannar">
+      {%- endif -%}
+      {% if section.settings.sm_banner_img %}
+        <img src="{{ section.settings.sm_banner_img | image_url }}" class="w-full md:hidden" width="" height="" alt="Image Bannar">
+      {%- else -%}
+        {%- if section.settings.banner_img -%}
+          <img src="{{ section.settings.banner_img | image_url }}" class="w-full md:hidden" width="" height="" alt="Image Bannar">
+        {%- else -%}
+        <img src="https://placehold.co/500x200" class="w-full md:hidden" width="" height="" alt="Image Bannar">
+        {%- endif -%}
+      {% endif %}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_img",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "sm_banner_img",
+      "label": "Mobile Image",
+      "info": "Use Seperate image for small devices if empty theme use main image for samll devcies"
+    },
+    {
+      "type": "url",
+      "id": "bannar_url",
+      "label": "Link"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Image Banner"
+    }
+  ]
+}
+{% endschema %}

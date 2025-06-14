@@ -1,0 +1,17 @@
+<section>
+  <div class="layout my-2">
+    {{ blog.title -}}
+    <br>
+    {% for article in blog.articles %}
+    <a href="{{ article.url }}">{{ article.title }}</a>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": [],
+  "default": {}
+}
+{% endschema %}

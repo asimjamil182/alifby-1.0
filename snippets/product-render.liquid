@@ -1,0 +1,174 @@
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'product_title' -%}
+      <div class="text-2xl md:text-3xl text-textColor mt-2 text-ellipsis-2">
+        {{- product.title -}}
+      </div>
+    {%- when 'product_price' -%}
+      <div class="uppercase mt-3 font-semibold flex items-center flex-wrap">
+        <span class="pr-1">Price : </span>
+        {%- if product.price < product.compare_at_price -%}
+          <del class=" text-subtextColor px-2">
+            <span class="product-compare-price">
+              {{ product.compare_at_price | money_without_currency | remove: ',' -}}
+            </span>
+            <span>{{ cart.currency.iso_code }}</span></del
+          >
+        {%- endif -%}
+        <span class="product-price  text-accentColor font-bold text-xl">
+          {{ product.price | money_without_currency | remove: ',' }}
+        </span>
+        <span class="text-accentColor font-bold text-xl px-1"> {{ cart.currency.iso_code }}</span>
+        {%- if product.price < product.compare_at_price -%}
+          <div class="ml-1 bg-accent text-secondaryColor rounded-sm text-xs text-center py-0.5 px-2 uppercase inline-block">
+            {%- assign product_compare_price = product.compare_at_price | money_without_currency -%}
+            {%- assign product_price = product.price | money_without_currency -%}
+            save {{ product_compare_price | minus: product_price }}
+            {{ cart.currency.iso_code }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- when 'product_rating' -%}
+      <div class="mt-3">
+        <div>
+          <star-rating
+            rating="{{product.metafields.rating.product_rating.value }}"
+            size="17"
+            color="fill-acentColor"
+          ></star-rating>
+          {%- if product.metafields.rating['rating_count-'] %}
+            <span class="pr-1 text-sm font-semibold">
+              ({{ product.metafields.rating.rating_count.value }}) Reviews</span
+            >
+          {%- else -%}
+            <span class="pr-1 text-sm font-semibold"> (0) Reviews</span>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- when 'product_quantity' -%}
+      <div class="mt-3">
+        <div class="uppercase text-sm font-semibold">Quantitiy</div>
+        <quantity-selector max="" class=" select-none flex w-[140px] items-center {{settings.input_style }} p-0">
+          <div class="minus w-[40px]  text-center p-2 cursor-pointer text-xl">
+            {%- render 'icon', iconName: 'minus', class: '', size: '1em' -%}
+          </div>
+          <div class="w-[60px]">
+            <input
+              type="number"
+              name="quantity"
+              min="1"
+              max="10"
+              class="appearance-none text-center w-full p-2 focus:outline-none"
+              id=""
+              value="1"
+            >
+          </div>
+          <div class="plus w-[40px] text-center p-2 cursor-pointer text-xl">
+            {%- render 'icon', iconName: 'plus', class: '', size: '1em' -%}
+          </div>
+        </quantity-selector>
+      </div>
+    {%- when 'product_variant' -%}
+      <variant-selector
+        variants=""
+        productHandle="{{product.handle}}"
+        optionSize="{{ product.options.size }}"
+        type="{{block.settings.variant_type }}"
+      >
+        {%- for option in product.options_with_values -%}
+          <div class="mt-3">
+            {%- if block.settings.variant_type == 'dropdown' -%}
+              <div class="uppercase text-sm font-semibold">{{ option.name }}</div>
+              <custom-select id="checkbox" value="" name="option{{forloop.index}}">
+                <div
+                  id="dropdown_overlay"
+                  class="absolute top-0 bottom-0 left-0 right-0 bg-backgroundColor opacity-0 z-10 hidden"
+                ></div>
+                <div id="dropdown_selector" class="{{settings.input_style }} w-full md:w-[250px] relative inline-block p-0">
+                  <div class="flex p-2 items-center">
+                    <label class="flex-1 capitalize">Sort By</label>
+                    <span>
+                      {% render 'icon', iconName: 'chevron-down', size: '15px', class: '' %}
+                    </span>
+                  </div>
+                  <div
+                    id="dropdown"
+                    class="absolute border-t border-neutralLightColor w-full bg-secondaryColor shadow-md hidden z-20"
+                  >
+                    {% for value in option.values %}
+                      <option
+                        id="checkbox_option"
+                        class="p-2"
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}
+                          selected="selected"
+                        {% endif %}
+                        label="{{ value | escape }}"
+                      >
+                        {{- value -}}
+                      </option>
+                    {% endfor %}
+                  </div>
+                </div>
+              </custom-select>
+              {% comment %}
+                <select
+                  class="p-2 w-full bg-[#ffff] focus:outline-none {{settings.input_style }}"
+                  name="option{{forloop.index}}"
+                >
+                  {%- for value in option.values -%}
+                    <option
+                      value="{{ value | escape }}"
+                      {% if option.selected_value == value %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{- value -}}
+                    </option>
+                  {%- endfor -%}
+                </select>
+              {% endcomment %}
+            {%- else -%}
+              <div class="uppercase text-sm font-semibold">{{ option.name }}</div>
+              {%- assign index = forloop.index -%}
+              <ul class="flex flex-wrap items-center gap-2" id="option{{index}}">
+                {%- for value in option.values -%}
+                  <li class="text-sm">
+                    <input
+                      class="hidden"
+                      type="radio"
+                      id="id-{{value}}"
+                      name="option{{index}}"
+                      value="{{ value | escape }}"
+                      {% if option.selected_value == value %}
+                        checked
+                      {% endif %}
+                    >
+                    <label
+                      class="{{settings.input_style }} p-2 min-w-[40px] flex items-center justify-center bg-[#ffff] md:hover:bg-backgroundColor md:hover:text-secondaryColor"
+                      for="id-{{value}}"
+                      ><span>{{ value }}</span></label
+                    >
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </variant-selector>
+    {%- when 'product_txtnote' -%}
+      <div class="mt-3">
+        {{ block.settings.note_txt }}
+      </div>
+    {%- when 'product_vender' -%}
+      <div class="mt-3">
+        {%- if product.vendor -%}
+          <div class="border border-accent p-2 inline-block font-bold uppercase rounded-md text-sm text-accentColor">
+            Vendor : {{ product.vendor }}
+          </div>
+        {%- endif -%}
+      </div>
+    {%- when '@app' -%}
+      {% render block %}
+  {%- endcase -%}
+{%- endfor -%}

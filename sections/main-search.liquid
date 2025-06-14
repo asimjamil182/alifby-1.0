@@ -1,0 +1,22 @@
+<section>
+  <div class="layout">
+    <div id="main-search-grid" class="flex flex-wrap justify-around gap-y-2 mt-4 sm:p-1">
+      {%- if search.performed -%}
+        {%- for item in search.results -%}
+            {%- if item.object_type == "product" -%}
+              {%- assign product = all_products[item.handle] -%}
+              {%- render 'product-card', product: product, class: 'product-card sm:w-[48%] md:w-[20%] lg:md:w-[19%]' -%}
+            {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Main Search",
+    "settings": [
+      
+    ]
+  }
+{% endschema %}

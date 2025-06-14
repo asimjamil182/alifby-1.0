@@ -1,0 +1,21 @@
+
+  <div class="cart-items p-4">
+    {%- if cart == empty -%}
+      <p>Cart Empty!</p>
+    {%- else -%}
+      <div class="text-textColor uppercase border-b">Cart Items</div>
+      <ul>
+        {%- for item in cart.items -%}
+          <li class="py-2 cursor-pointer">
+            <div class=" line-clamp-3">{{ item.title }}</div>
+            <p class="text-textColor">{{ item.price | money }} X {{ item.quantity }} = {{ item.final_line_price | money }}</p>
+          </li>
+        {%- endfor -%}
+      </ul>
+      <div class=" border-t text-textColor"></div>
+      <div>{{ cart.total_discount | money }}</div>
+      <div>{{ cart.total_price | money }}</div>
+    {%- endif -%}
+  </div>
+  
+  

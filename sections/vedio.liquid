@@ -1,0 +1,74 @@
+<section>
+    <div class="layout p-0">
+        <div class="video-section flex items-center justify-center">
+            {% if section.settings.video_type == 'youtube' %}
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ section.settings.video_url | split: 'v=' | last }}?autoplay={{ section.settings.autoplay | json }}&mute={{ section.settings.muted | json }}" frameborder="0" allowfullscreen></iframe>
+            {% elsif section.settings.video_type == 'vimeo' %}
+                <iframe src="https://player.vimeo.com/video/{{ section.settings.video_url | split: '/' | last }}?autoplay={{ section.settings.autoplay | json }}&muted={{ section.settings.muted | json }}" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+            {% else %}
+                <video style="width: 2000px;" {% if section.settings.autoplay %}autoplay{% endif %} {% if section.settings.muted %}muted{% endif %} {% if section.settings.controls %}controls{% endif %} loop>
+                    <source src="{{ section.settings.video_url }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+    "name": "Video Section",
+    "settings": [
+        {
+            "type": "url",
+            "id": "video_url",
+            "label": "Video URL"
+        }, 
+        {
+            "type": "select",
+            "id": "video_type",
+            "label": "Video Type",
+            "options": [
+                {
+                    "value": "url",
+                    "label": "URL"
+                },
+                {
+                    "value": "youtube",
+                    "label": "YouTube"
+                },
+                {
+                    "value": "vimeo",
+                    "label": "Vimeo"
+                }
+            ],
+            "default": "url"
+        },
+        {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Autoplay",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "muted",
+            "label": "Muted",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "controls",
+            "label": "Enable Controls",
+            "default": false,
+            "info": "This option is only available for video type URL"
+        }
+    ],
+    "presets": [
+    {
+      "name": "Vedio Section",
+      "settings": {},
+    }
+  ]
+}
+{% endschema %}
+

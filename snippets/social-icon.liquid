@@ -1,0 +1,41 @@
+<div class="flex justify-start items-center">
+{%- unless shop.phone == null -%}
+    {% comment %} <div class="pr-5 ">
+      <a href="tel:{{shop.phone}}" target="_blank" class="flex items-center">
+        <i>{%- render 'icon', iconName: 'telephone', size: _size, class: fillColor -%}</i>
+        {% comment %} <span class="pl-2">{{ shop.phone }}</span> {% endcomment %}
+      </a>
+    </div> {% endcomment %}
+  {%- endunless -%}
+  {%- unless shop.email == null -%}
+    <div class="pr-5">
+      <a href="mailto:{{shop.email}}" target="_blank" class="flex items-center">
+        <i>{%- render 'icon', iconName: 'envelope', size: _size, class: fillColor -%}</i>
+        {% comment %} <span class="pl-2">{{ shop.email }}</span> {% endcomment %}
+      </a>
+    </div>
+  {%- endunless -%}
+  {%- unless shop.brand.metafields.social_links.facebook.value == null -%}
+    <div class="pr-5">
+      <a target="blank" href="{{ shop.brand.metafields.social_links.facebook.value }}">
+        {%- render 'icon', iconName: 'facebook', size: _size, class: fillColor -%}
+      </a>
+    </div>
+  {%- endunless -%}
+  {%- unless shop.brand.metafields.social_links.instagram.value == null -%}
+    <div class="pr-5">
+      <a target="blank" href="{{ shop.brand.metafields.social_links.instagram.value }}">
+        {%- render 'icon', iconName: 'instagram', size: _size, class: fillColor -%}
+      </a>
+    </div>
+  {%- endunless -%}
+  {%- unless shop.brand.metafields.social_links.tiktok.value == null -%}
+    <div class="pr-5">
+      <a target="blank" href="{{ shop.brand.metafields.social_links.tiktok.value }}">
+        {%- render 'icon', iconName: 'tiktok', size: _size, class: fillColor -%}
+      </a>
+    </div>
+  {%- endunless -%}
+  
+
+</div>

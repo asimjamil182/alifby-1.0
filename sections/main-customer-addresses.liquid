@@ -1,0 +1,31 @@
+<section>
+  <div class="layout">
+    {% form 'customer_address', customer.new_address %}
+      <!-- form content -->
+    {% endform %}
+    {% for address in customer.addresses %}
+      <!-- address details -->
+
+      {% form 'customer_address', address %}
+        <!-- form content -->
+        <form
+            class="address-delete-form"
+            method="post"
+            action="/account/addresses/{{ address.id }}"
+          >
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit">Delete Address</button>
+          </form>
+      {% endform %}
+    {% endfor %}
+    
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Address",
+  "settings": [],
+  "default": {}
+}
+{% endschema %}

@@ -1,0 +1,23 @@
+<section>
+  <div class="layout sm:p-4 lg:px-0">
+    <div class="cart-data2">
+      {%- render 'cart-render-data' -%}
+    </div>
+    
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop Cart",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Shop Cart"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["cart"]
+  }
+}
+{% endschema %}

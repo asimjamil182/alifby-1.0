@@ -1,0 +1,44 @@
+<section>
+    <div class="layout">
+      <div class="">
+        <h1 class="section-heading text-left">{{ order.id }}</h1>
+        <div class="flex gap-2 sm:flex-wrap md:flex-nowrap">
+          <div class="flex-1 bg-[#ffff] p-2 overflow-x-auto">
+            <div class="font-semibold text-sm mb-2 text-accentColor">Order List</div>
+            <table class="text-sm w-full text-center child:p-2">
+              <tr class=" bg-backgroundColor text-secondaryColor border border-bgColor child:p-2">
+                <th>OrderId</th>
+                <th>Date</th>
+                <th>ِAmount</th>
+                <th>Payment Status</th>
+                <th>Fulfillment Status</th>
+                <th>Action</th>
+              </tr>
+              {%- for order in customer.orders -%}
+                <tr class="border border-neutralLightColor child:p-2">
+                  <td>{{order.id}}</td>
+                  <td>{{ order.created_at }}</td>
+                  <td>{{ order.total_price | money_with_currency }}</td>
+                  <td>{{ order.financial_status }}</td>
+                  <td>{{ order.fulfillment_status }}</td>
+                  <td><a class="p-0.5 {{ settings.btn_style }} bg-backgroundColor text-secondaryColor text-sm font-thin px-2" href="{{ order.customer_order_url }}">View</a></td>
+                </tr>
+              {%- endfor -%}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Main Order",
+    "settings": [
+      
+    ],
+    "default": {
+    }
+  }
+{% endschema %}

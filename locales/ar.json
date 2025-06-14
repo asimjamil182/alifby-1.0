@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": {
+    "header": {
+      "home": "الرئيسية",
+      "shop": "المتجر",
+      "about_us": "من نحن",
+      "contact": "اتصل بنا"
+    },
+    "footer": {
+      "copyright": "حقوق النشر © 2024 متجرك. كل الحقوق محفوظة.",
+      "terms_and_conditions": "الشروط والأحكام",
+      "privacy_policy": "سياسة الخصوصية"
+    }
+  },
+  "products": {
+    "featured_products": "المنتجات المميزة",
+    "new_arrivals": "المنتجات الجديدة",
+    "add_to_cart": "أضف إلى السلة",
+    "view_details": "عرض التفاصيل"
+  },
+  "cart": {
+    "cart_title": "عربة التسوق",
+    "item_count": {
+      "one": "1 منتج",
+      "other": "{{ count }} منتجات"
+    },
+    "subtotal": "المجموع الفرعي",
+    "checkout": "الدفع"
+  },
+  "checkout": {
+    "billing_information": "معلومات الفوترة",
+    "shipping_information": "معلومات الشحن",
+    "payment_method": "طريقة الدفع",
+    "complete_purchase": "إتمام الشراء"
+  }
+}

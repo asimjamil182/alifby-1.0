@@ -1,0 +1,198 @@
+
+<section class="{{ section.id }}">
+  <div
+    class="layout py-2 {% if section.settings.isFullWidth %}lg:w-full{% endif %}" style="background-color:{{ section.settings.bg_color }} !important;">
+    <div class="flex flex-wrap text-sm">
+      <div class="sm:w-full md:w-4/5">
+        <ul class="product-grid-filter flex gap-3 overflow-hidden overflow-x-auto py-1 scroll-none">
+          {%- for block in section.blocks -%}
+            <label>
+              <input
+                type="radio"
+                {% unless forloop.index != 1 %}
+                  checked
+                {% endunless %}
+                class="hidden"
+                name="filter-producttype"
+                value="{{ collections[block.settings.collection].title | handleize  }}"
+              >
+              <span class="{{ settings.btn_style }} inline-block cursor-pointer p-1 px-1.5 bg-[#ffff] text-textColor shadow border-none whitespace-nowrap capitalize {% if section.settings.isDefaultOverride %}btn-revert{% endif %}">
+                {% if block.settings.collection == null -%}
+                  Collection title
+                {%- else %}
+                  {{- collections[block.settings.collection].title -}}
+                {% endif %}
+              </span>
+            </label>
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="sm:w-full md:w-1/5">
+        {% comment %}
+          <ul class="flex gap-3 items-end justify-end">
+              <li>Sort</li>
+              <li>Price</li>
+          </ul>
+        {% endcomment %}
+      </div>
+    </div>
+    <product-grid>
+      {%- for block in section.blocks -%}
+        <div
+          class="grid-container {% unless forloop.first %}hidden{% endunless %}"
+          id="grid-{{ collections[block.settings.collection].title | handleize }}"
+        >
+          <div class="flex flex-wrap justify-around gap-y-2 mt-2 sm:p-1 md:p-0">
+            {%- assign products = collections[block.settings.collection].products -%}
+            {% if block.settings.collection != null %}
+              {%- for product in products
+                limit: section.settings.product_limit
+                offset: block.settings.product_offset
+              -%}
+                {%- render 'product-card',
+                  product: product,
+                  class: 'product-card sm:w-[48%] md:w-[20%] lg:md:w-[15%]'
+                -%}
+              {%- endfor -%}
+            {% else %}
+              {%- for i in (1..section.settings.product_limit) -%}
+                {%- render 'product-card', product: false, class: 'product-card sm:w-[48%] md:w-[20%] lg:md:w-[15%]' -%}
+              {%- endfor -%}
+            {% endif %}
+          </div>
+          <br>
+          <a
+            href="{{ collections.all.url }}"
+            class="{{ settings.btn_style }} block sm:w-1/2 md:w-1/6 mx-auto text-center {% if section.settings.isDefaultOverride %}btn{% endif %}"
+          >
+            {{- section.settings.btn_text -}}
+          </a>
+        </div>
+      {%- endfor -%}
+    </product-grid>
+  </div>
+</section>
+
+{% if section.settings.isDefaultOverride %}
+  <style>
+    .{{ section.id }} .btn {
+      color: {{ section.settings.btn_color }};
+      background-color: {{ section.settings.btn_bg_color }};
+      border-color: {{ section.settings.btn_border_color }};
+    }
+
+    .{{ section.id }} input[type='radio']:checked + .btn-revert {
+      background-color: {{ section.settings.btn_bg_color }};
+      color: {{ section.settings.btn_color }};
+      border-color: {{ section.settings.btn_border_color }};
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Products Grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "product_limit",
+      "min": 6,
+      "max": 30,
+      "step": 6,
+      "label": "Products Show",
+      "default": 12
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "View More"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings & Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "isFullWidth",
+      "label": "Full Width",
+      "default": false,
+      "info": "This option work on large screen only"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "header",
+      "content": "Override Theme Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "isDefaultOverride",
+      "label": "Enable",
+      "default": true,
+      "info": "Enable this option to override the theme colors."
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color",
+      "default": "#333"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button border Color",
+      "default": "#333"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "collection",
+      "type": "product-group",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "range",
+          "id": "product_offset",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "label": "Products Offset",
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Grid",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "product-group"
+        },
+        {
+          "type": "product-group"
+        },
+        {
+          "type": "product-group"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+{% if localization.available_languages.size > 1 %}
+  <localization-form style="height: 25px;">
+    {% form 'localization' %}
+      <custom-select id="" value="{{ localization.language.iso_code }}">
+        <div
+          id="dropdown_overlay"
+          class="absolute top-0 bottom-0 left-0 right-0 bg-backgroundColor opacity-0 z-20 hidden"
+        ></div>
+        <div id="dropdown_selector" class="{{settings.input_style }} w-full relative inline-block p-0 text-xs z-20 {{ class }}" style="{% if section.settings.isOverrideDefualt %}color:{{ color }} !important; border-color:{{ color }} !important; {% endif %}">
+          <div class="flex gap-2 p-1 items-center">
+            <label class="flex-1 capitalize">{{ localization.language.endonym_name | capitalize }}</label>
+            <span>
+              {% render 'icon', iconName: 'chevron-down', size: '13px', fill:color  %}
+            </span>
+          </div>
+          <div id="dropdown" class="absolute border-t border-neutralLightColor w-full bg-secondaryColor text-textColor shadow-md hidden z-20 max-h-[150px] overflow-y-auto scroll scroll-w6">
+            {% for language in localization.available_languages %}
+              <option
+                class="p-2"
+                value="{{ language.iso_code }}"
+
+                label="{{ language.endonym_name | capitalize }}"
+              >
+                {{ language.endonym_name | capitalize }}
+              </option>
+            {% endfor %}
+          </div>
+        </div>
+      </custom-select>
+      <input type="hidden" name="language_code" value="{{ localization.language.iso_code }}">
+    {% endform %}
+  </localization-form>
+{% endif %}

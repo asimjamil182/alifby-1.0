@@ -1,0 +1,142 @@
+{%- assign product = product -%}
+<product-cart
+  product-id="{{product.selected_or_first_available_variant.id}}"
+  class="{{class}} product_card bg-[#ffff] rounded-md overflow-hidden shadow m-0 md:m-2 max-w-[180px] lg:max-w-[220px]"
+>
+  <div
+    class="max-h-[180px] max-w-[180px] lg:max-h-[220px] lg:max-w-[220px] relative group overflow-hidden"
+  >
+    <div
+      class="bg-backgroundColor-dark min-w-min  min-h-[165px] lg:min-h-[220px] bg-contain bg-center overflow-hidden transition-transform duration-300 hover:scale-110 relative bg-[url('https://placehold.co/220')]"
+    >
+      {% if product.featured_image %}
+        <img
+          loading="lazy"
+          src="{{product.featured_image | image_url: width: 800, height: 800, crop: 'top'}}"
+          width=""
+          height=""
+          class="w-full h-full object-cover absolute transition-opacity duration-500  {% if product.images[1].src != nil %}hover:opacity-0 {% endif %} "
+          style="background-color: {{ settings.product_card_img_bg }};"
+          alt="product image"
+          onclick="window.open('{{ product.url }}','_SELF')"
+        >
+        {%- if product.images[1].src != nil -%}
+          <img
+            loading="lazy"
+            src="{{product.images[1].src | image_url: width: 800, height: 800, crop: 'top'}}"
+            width=""
+            height=""
+            class=" w-full object-cover"
+            style="background-color: {{ settings.product_card_img_bg }};"
+            alt="product image"
+            onclick="window.open('{{ product.url }}','_SELF')"
+          >
+        {%- endif -%}
+      {% endif %}
+    </div>
+    {%- if settings.show_wishlist -%}
+      {%- render 'icon',
+        iconName: 'heart',
+        size: '1em',
+        class: 'md:hidden md:group-hover:block absolute top-4 right-4 cursor-pointer fill-acentColor'
+      -%}
+    {%- endif -%}
+    <div class="absolute top-2 left-2">
+      {% for tag in product.tags %}
+        {%- if tag == 'new' -%}
+          <div class=" border border-accent text-accentColor rounded-sm  text-[8px] leading-[9px] text-center  p-[2px] px-[3px] uppercase mb-2">
+            New
+          </div>
+        {%- endif -%}
+      {% endfor %}
+      {% comment %}
+        {%- if product.price < product.compare_at_price -%}
+          <div class=" bg-accent text-secondaryColor rounded-sm text-[8px] leading-[9px] text-center p-[2px] px-[3px] uppercase mb-2">
+              Sale
+            </div>
+        {%- endif -%}
+      {% endcomment %}
+    </div>
+  </div>
+  <div class="p-2 child:mt-1 max-w-[220px]">
+    <div class="flex !mt-0 items-center">
+      {% unless product.type=="unknown type" %}
+        <div class=" text-xs flex-1 text-accentColor uppercase">{{ product.type }}</div>
+      {% endunless %}
+      {%- if product.available -%}
+        <div class=" text-[10px] w-[40%] text-right text-[green]">
+          <span class="w-[8px] h-[8px] bg-[green] inline-block rounded-full"></span> InStock
+        </div>
+      {%- endif -%}
+    </div>
+    {% if product.title %}
+      <a
+        href="{{product.url}}"
+        class=" cursor-pointer text-ellipsis text-sm line-clamp-1"
+        title="{{product.title}}"
+      >
+        {{- product.title -}}
+      </a>
+    {% else %}
+      <a href="#" class=" cursor-pointer text-ellipsis text-sm {% if product.type %}line-clamp-1{% else %} line-clamp-2{% endif %}"> Product title </a>
+    {% endif %}
+    {%- unless settings.show_rating_icon == false -%}
+      <div>
+        <star-rating
+          rating="{{product.metafields.rating.product_rating.value }}"
+          color="fill-acentColor"
+        ></star-rating>
+      </div>
+    {%- endunless -%}
+
+    
+    <div class="text-textColor text-base font-semibold">
+      {% if product %}
+        {{ product.price | money_without_currency }}
+        {{ cart.currency.iso_code }}
+        {%- if product.price < product.compare_at_price -%}
+          <del class=" text-subtextColor text-xs inline-block">
+            {{- product.compare_at_price | money_without_currency }}
+            {{ cart.currency.iso_code -}}
+          </del>
+        {%- endif -%}
+      {% else %}
+        00 {{ cart.currency.iso_code }}
+      {% endif %}
+    </div>
+
+    <div class="flex gap-0.5 {{ settings.btn_style }} bg-[transparent] p-0 border-none {% if settings.btn_style=='btn-outline-color' %} hover:bg-[transparent] {%else%}overflow-hidden{% endif %}">
+      <div class="flex-1">
+        <button {% unless product.available %} disabled {% endunless %} id="product-cart-btn" class="{{settings.btn_style }} rounded-r-none w-full text-sm sm:text-xs sm:px-0 font-semibold btn">
+          <span id="txt">{% unless product.available %} Out of Stock {% else %} {{ 'products.add_to_cart' | t }}{% endunless %} </span>
+          {%- render 'icon',
+            id: 'spinner',
+            iconName: 'spinner',
+            class: 'hidden inline text-center text-subtextColor fill-secondaryColor animate-spin',
+            size: '16px'
+          -%}
+        </button>
+      </div>
+      
+      <quick-view-listiner
+        {% if product %}
+          productId="{{product.handle}}"
+        {% endif %}
+        class="w-1/5 {{settings.btn_style }} rounded-l-none p-0 text-center flex items-center justify-center btn"
+      >
+        {%- render 'icon',
+          id: 'eye_icon',
+          iconName: 'eye',
+          class: 'cursor-pointer p-1',
+          size: '25px'
+        -%}
+        {%- render 'icon',
+          id: 'spinner_icon',
+          iconName: 'spinner',
+          class: 'hidden cursor-pointer p-1 animate-spin',
+          size: '25px'
+        -%}
+      </quick-view-listiner>
+    </div>
+  </div>
+</product-cart>

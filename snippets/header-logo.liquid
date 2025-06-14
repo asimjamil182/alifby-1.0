@@ -1,0 +1,26 @@
+<div class="font-semibold">
+  <a href="{{ routes.root_url }}">
+    {%- if logoType == 'text' -%}
+      <div class="text-textColor" style="color:{{logoTextColor }};font-size:{{ logoTextSize }}px">
+        {{- logoText -}}</div>
+    {%- elsif logoType == 'image' -%}
+      {%- if logoImage -%}
+        <img
+          src="{{ logoImage | image_url: width: 1000, height: 1000 }}"
+          width="{{ size }}"
+          height="{{ size }}"
+          class="inline-block"
+          alt="logo image"
+        >
+      {%- else -%}
+        <img
+          src="https://placehold.co/100x100"
+          width="{{ size }}"
+          height="{{ size }}"
+          class="inline-block"
+          alt="logo image"
+        >
+      {%- endif -%}
+    {%- endif -%}
+  </a>
+</div>

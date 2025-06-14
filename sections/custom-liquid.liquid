@@ -1,0 +1,29 @@
+<section class="lg:w-[70%] lg:m-auto md:p-6 lg:p-0">
+  {% if section.settings.custom_liquid != blank %}
+    {{ section.settings.custom_liquid }}
+  {% endif %}
+</section>
+{% schema %}
+{
+  "name": "Custom Liquid Code",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Code <>",
+      "default":"{{shop.name}}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Liquid Code"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

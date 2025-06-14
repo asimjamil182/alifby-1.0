@@ -1,0 +1,306 @@
+
+{%- assign collection = collections[section.settings.collection] -%}
+
+<section class="{{ section.id }}">
+  <div class="layout p-0 {% if section.settings.isFullWidth %}lg:w-full{% endif %}" style="background-color:{{ section.settings.bg_color }} !important;">
+    {%- if section.settings.switch_direction -%}
+      {%- assign direction = 'flex-wrap-reverse flex-row-reverse' -%}
+    {%- else -%}
+      {%- assign direction = '' -%}
+    {%- endif -%}
+    <div
+      class="{{direction }} flex flex-wrap justify-around"
+    >
+      <div class="sm:w-full md:w-1/3">
+        {%- if collection.image != empty and collection.image != nil -%}
+          <img
+            loading="lazy"
+            src="{{collection.image | image_url: width: 480, height: 480}}"
+            width=""
+            height=""
+            class="w-full"
+            alt="image"
+          >
+        {%- else -%}
+          <img
+            src="https://placehold.co/500x500"
+            width=""
+            height=""
+            class="w-full"
+            alt="placehold Image"
+          >
+        {%- endif -%}
+      </div>
+      <div class="sm:w-full md:w-2/3 p-2">
+        <div class="flex flex-col h-full">
+          {%- if collection.title != blank -%}
+            <div class="text-textColor text-xl p-2 capitalize font-semibold section-title">{{ collection.title }}</div>
+          {%- else -%}
+            <div class="text-textColor text-xl p-2 capitalize font-semibold section-title">Collection Title</div>
+          {%- endif -%}
+
+          <collection-showup class="mb-auto">
+            <swiper-container
+              class="product-list-slider h-auto w-full"
+                pagination="false"
+              navigation="false"
+              {%- if section.settings.slide_autoplay -%}
+                autoplay-delay="{{section.settings.slide_autoplaytime}}"
+                autoplay-disable-on-interaction="false"
+              {%- endif -%}
+              space-between="2"
+              auto-height="true"
+              loop="{{section.settings.slide_loop}}"
+              slides-per-view="4"
+            >
+              {% if collection.products != empty %}
+                {%- for product in collection.products limit: 15 -%}
+                  <swiper-slide class="h-auto p-2">
+                    <a href="{{ product.url }}" class="inline-block">
+                      <img
+                        src="{{ product.featured_image | image_url: width: 1000, height: 1000, crop:'bottom' }}"
+                        width=""
+                        height=""
+                        alt="product image"
+                        srcset=""
+                      >
+                    </a>
+                    <a href="{{ product.url }}" title="{{ product.title }}" class="text-ellipsis text-sm line-clamp-2 mt-2 product-title">{{ product.title }}</a>
+                    <div class=" text-sm font-semibold text-accentColor product-price">
+                      {{- product.price | money_without_currency }}
+                      {{ cart.currency.iso_code -}}
+                    </div>
+                  </swiper-slide>
+                {%- endfor -%}
+              {% else %}
+                {%- for product in (1..15) -%}
+                  <swiper-slide class="h-auto p-2">
+                    <a href="#" class="inline-block">
+                      <img
+                        src="https://placehold.co/500x500"
+                        width="100%"
+                        height=""
+                        alt="product image"
+                        srcset=""
+                      >
+                    </a>
+                    <a href="{{ product.url }}" class="text-sm mt-2 px-1 product-title">Product Title</a>
+                    <div class=" text-sm font-semibold text-textColor px-1 product-price">
+                      00.00
+                      {{ cart.currency.iso_code -}}
+                    </div>
+                  </swiper-slide>
+                {%- endfor -%}
+              {% endif %}
+            </swiper-container>
+            {% if section.settings.slide_arrow %}
+              <div class="flex gap-2 justify-between">
+                {%- render 'icon',
+                  iconName: 'chevron-left',
+                  class: 'slider-left-btn px-2 w-[35] h-[35] cursor-pointer'
+                -%}
+                {%- render 'icon',
+                  iconName: 'chevron-right',
+                  class: 'slider-right-btn px-2 w-[35] h-[35] cursor-pointer'
+                -%}
+              </div>
+            {% endif %}
+          </collection-showup>
+          <div class="flex items-center sm:justify-end md:justify-start w-full flex-wrap md:flex-nowrap">
+            <div class="flex gap-3 w-full md:flex-1 overflow-auto py-2">
+              {% if collection.tags != empty %}
+                {%- for tag in collection.tags limit: 5 -%}
+                  {%- unless section.settings.tag_skipper contains tag -%}
+                    <a
+                      href="{{ collection.url }}/{{ tag | handle }}"
+                      class=" text-xs text-subtextColor hover:text-textColor p-1 px-3 rounded-full border whitespace-nowrap tags"
+                    >
+                      {{- tag -}}
+                    </a>
+                  {%- endunless -%}
+                {%- endfor -%}
+              {% else %}
+                {%- for tag in (1..5) -%}
+                  <a
+                    href="#"
+                    class=" text-xs text-subtextColor hover:text-textColor p-1 px-3 rounded-full border whitespace-nowrap tags"
+                  >
+                    tag {{ tag }}
+                  </a>
+                {%- endfor -%}
+              {% endif %}
+            </div>
+            <a href="{{ collection.url }}" class="{{ settings.btn_style }} flex items-center btn"
+              ><span> {{ section.settings.btn_text }} </span>
+              <span>
+                {%- render 'icon', iconName: 'right-arrow', class: 'inline-block', size: '20' -%}
+              </span></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if section.settings.isDefaultOverride %}
+  <style>
+    .{{ section.id }} .section-title {
+      color: {{ section.settings.collection_title_color }};
+    }
+    .{{ section.id }} .product-title {
+      color: {{ section.settings.product_title_color }};
+    }
+    .{{ section.id }} .product-price {
+      color: {{ section.settings.product_price_color }};
+    }
+    .{{ section.id }} .tags {
+      color: {{ section.settings.tags_color }};
+    }
+    .{{ section.id }} .btn {
+      color: {{ section.settings.btn_color }};
+      background-color: {{ section.settings.btn_bg_color }};
+      border-color: {{ section.settings.btn_border_color }};
+    }
+
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection ShowUp",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "Shop"
+    },
+    {
+      "type": "text",
+      "id": "tag_skipper",
+      "label": "Skip Tags",
+      "info": "Use this formate 'tag1,tag2,...'"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_arrow",
+      "label": "Show Arrows",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_loop",
+      "label": "Loop Slide",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_autoplay",
+      "label": "Auto Move Slide",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slide_autoplaytime",
+      "min": 2000,
+      "max": 9000,
+      "step": 1000,
+      "unit": "ms",
+      "label": "Auto Move Time",
+      "default": 5000
+    },
+    {
+      "type": "header",
+      "content": "Section Settings & Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "isFullWidth",
+      "label": "Full Width",
+      "default": false,
+      "info": "This option work on large screen only"
+    },
+    {
+      "type": "checkbox",
+      "id": "switch_direction",
+      "label": "Switch Direction",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "header",
+      "content": "Override Theme Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "isDefaultOverride",
+      "label": "Enable",
+      "default": true,
+      "info": "Enable this option to override the theme colors."
+    },
+    {
+      "type": "color",
+      "id": "collection_title_color",
+      "label": "Collection Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "product_price_color",
+      "label": "Product Price Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tags_color",
+      "label": "Tags Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color",
+      "default": "#333"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button border Color",
+      "default": "#333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection ShowUp",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": {
+    "header": {
+      "home": "ہوم",
+      "shop": "شاپ",
+      "about_us": "ہمارے بارے میں",
+      "contact": "رابطہ"
+    },
+    "footer": {
+      "copyright": "کاپی رائٹ © ۲۰۲۳ آپ کی دکان۔ تمام حقوق محفوظ ہیں۔",
+      "terms_and_conditions": "شرائط و ضوابط",
+      "privacy_policy": "پرائیویسی پالیسی"
+    }
+  },
+  "products": {
+    "featured_products": "نمایاں مصنوعات",
+    "new_arrivals": "نئی آمدات",
+    "add_to_cart": "کارٹ میں ڈالیں",
+    "view_details": "تفصیلات دیکھیں"
+  },
+  "cart": {
+    "cart_title": "شاپنگ کارٹ",
+    "item_count": {
+      "one": "1 آئٹم",
+      "other": "{{ count }} آئٹمز"
+    },
+    "subtotal": "ذیلی مجموعہ",
+    "checkout": "چیک آؤٹ"
+  },
+  "checkout": {
+    "billing_information": "بلنگ کی معلومات",
+    "shipping_information": "شپنگ کی معلومات",
+    "payment_method": "ادائیگی کا طریقہ",
+    "complete_purchase": "پرچیس مکمل کریں"
+  }
+}

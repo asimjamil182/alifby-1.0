@@ -1,0 +1,85 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-product-page": {
+      "type": "product",
+      "blocks": {
+        "product-title": {
+          "type": "product_title",
+          "settings": {}
+        },
+        "product_vender_TVkqyL": {
+          "type": "product_vender",
+          "settings": {}
+        },
+        "addce045-c987-4e1d-be87-9aadc571e3b3": {
+          "type": "product_price",
+          "settings": {}
+        },
+        "a28d1d9d-2ce6-4bb3-ac73-6a10d12875ba": {
+          "type": "product_variant",
+          "settings": {
+            "variant_type": "inline"
+          }
+        },
+        "d74303b1-389c-4e8a-9063-cb0380ab0909": {
+          "type": "product_quantity",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "product-title",
+        "product_vender_TVkqyL",
+        "addce045-c987-4e1d-be87-9aadc571e3b3",
+        "a28d1d9d-2ce6-4bb3-ac73-6a10d12875ba",
+        "d74303b1-389c-4e8a-9063-cb0380ab0909"
+      ],
+      "settings": {
+        "show_thumb": true,
+        "enable_buyitnow": true,
+        "enable_payment_provider": true,
+        "autoplay": true,
+        "autoplay_speed": 3000,
+        "infinite_loop": true,
+        "show_arrows": true,
+        "zoom": true,
+        "centered_slides": false,
+        "auto_height": true,
+        "enable_sharing_icon": true,
+        "facebook_icon": true,
+        "messenger_icon": true,
+        "x_icon": true,
+        "whatsapp_icon": true,
+        "instagram_icon": true,
+        "copy_icon": true,
+        "enable_delivery_note": true,
+        "show_icon1": true,
+        "delivery_note1": "<p>Free Shipping<\/p>",
+        "delivery_note2": "<p>all over the country<\/p>",
+        "enable_delivery_date": true,
+        "delivery_text": "Estimate delivery by",
+        "show_icon2": true,
+        "delivery_processing_days": 4,
+        "delivery_shipping_days": 4
+      }
+    },
+    "product_remmodation_fV4BjV": {
+      "type": "product-remmodation",
+      "settings": {
+        "heading_txt": "You may also like"
+      }
+    }
+  },
+  "order": [
+    "main-product-page",
+    "product_remmodation_fV4BjV"
+  ]
+}

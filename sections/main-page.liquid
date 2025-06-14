@@ -1,0 +1,34 @@
+<section>
+    <div class="layout">
+        <div class="">
+            {%- if section.settings.page_title -%}
+                <h1 class="section-heading text-left">{{page.title}}</h1>
+            {%- endif -%}
+            {%- if section.settings.page_description -%}
+                <div class=" bg-[#ffff] p-2">
+                    {{ page.content }}
+                </div>
+            {%- endif -%}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Page Content",
+    "settings": [
+            {
+              "type": "checkbox",
+              "id": "page_title",
+              "label": "Show Page Title",
+              "default": true
+            },
+            {
+              "type": "checkbox",
+              "id": "page_description",
+              "label": "Show Page Description",
+              "default": true
+            }
+        ]
+}
+{% endschema %}

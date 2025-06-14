@@ -1,0 +1,107 @@
+{%- if cart == empty -%}
+    <div class="flex items-center justify-center h-[60%]">
+      <div>
+        <div class="text-center text-xl text-subtextColor py-5">Cart Empty!</div>
+        <a href="/collections/all" class="{{settings.btn_style }} inline-block">Continue Shopping</a>
+      </div>
+    </div>
+  {%- else -%}
+    <h1 class="section-heading text-left">Your Cart</h1>
+    <div class="flex w-full uppercase text-accentColor text-sm font-semibold py-2 border-b border-neutralLightColor">
+      <div class="mr-auto flex-1">Products</div>
+      <div class="text-right sm:w-[30%] md:w-[10%]">Total</div>
+    </div>
+    {%- for item in cart.items -%}
+      <cart-line-item variantId="{{item.variant_id}}" cartType="maincart">
+        <div class="flex border-b border-neutralLightColor py-2 flex-wrap">
+          <div class="w-full md:w-1/2 flex">
+            <div class="w-1/4 md:w-auto p-1">
+              <img src="{{item.image | image_url: width: 100, height: 100 }}" width="" height="" alt="image">
+            </div>
+            <div class="w-3/4 md:flex-1 p-1">
+              <a class=" text-sm text-ellipsis line-clamp-2" href="{{item.url}}">{{ item.title }}</a>
+              <div class=" text-subtextColor text-xs">
+                <ul>
+                  <li>Item Price :  {{ item.original_price | money_without_currency }} {{ cart.currency.iso_code }}</li>
+                </ul>
+                {% unless item.product.has_only_default_variant %}
+                  <ul>
+                    {% for option in item.options_with_values %}
+                      <li>{{ option.name }}: {{ option.value }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endunless %}
+                {% assign propertySize = item.properties | size %}
+                {% if propertySize > 0 %}
+                  <ul>
+                    {% for property in item.properties %}
+                      <li>{{ property.first }}: {{ property.last }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 flex items-end md:items-start justify-end">
+            <div class="w-1/2 p-1">
+              <line-item-quantity-selector
+                variantId="{{item.variant_id}}"
+                cartType="maincart"
+                max=""
+                class=" select-none flex w-[120px] items-center text-sm {{settings.input_style }}"
+              >
+                <div class="minus w-[40px]  text-center p-0.5 cursor-pointer text-xl">
+                  {%- render 'icon', iconName: 'minus', class: ' fill-textColor', size: '20px' -%}
+                </div>
+                <div class="w-[80px]">
+                  <input
+                    type="number"
+                    name="quantity"
+                    min="1"
+                    max="10"
+                    class="appearance-none text-center w-full p-0.5 focus:outline-none"
+                    id=""
+                    value="{{item.quantity}}"
+                  >
+                </div>
+                <div class="plus w-[40px] text-center p-0.5 cursor-pointer text-xl">
+                  {%- render 'icon', iconName: 'plus', class: ' fill-textColor', size: '20px' -%}
+                </div>
+              </line-item-quantity-selector>
+            </div>
+            <div class="w-1/2 flex flex-col items-end h-full p-1">
+              {%- render 'icon',
+                iconName: 'trash',
+                id: 'deletebtn',
+                class: 'cursor-pointer fill-acentColor mb-auto',
+                size: '1em'
+              -%}
+              <div class="text-sm  text-right">
+                {%- unless item.total_discount == 0 -%}
+                  <span class="text-subtextColor"
+                  ><del>{{ item.total_discount | money_without_currency }} {{ cart.currency.iso_code }}</del> off</span
+                ><br>
+                {%- endunless -%}
+                <span class="font-semibold  text-textColor">
+                  {{- item.final_line_price | money_without_currency -}} {{ cart.currency.iso_code }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </cart-line-item>
+    {%- endfor -%}
+    <div class="flex items-end justify-end text-right mt-2">
+      <div class="sm:w-full md:w-1/5">
+        <div class=" text-subtextColor text-sm">Discounts: {{ cart.total_discount | money_without_currency }} {{ cart.currency.iso_code }}</div>
+        <div class="text-textColor text-lg font-semibold">{{'cart.subtotal' | t }} {{ cart.total_price | money_without_currency }} {{ cart.currency.iso_code }}</div>
+        <p class=" text-subtextColor text-xs py-1">Taxes, discounts and shipping calculated at checkout</p>
+        <a href="/cart/checkout" class="{{settings.btn_style }} w-full text-center p-2 inline-block">{{ 'cart.checkout' | t }}</a>
+        {% if additional_checkout_buttons %}
+          {{ content_for_additional_checkout_buttons }}
+        {% endif %}
+        {%- render 'payment-types' -%}
+      </div>
+    </div>
+  {%- endif -%}
+  

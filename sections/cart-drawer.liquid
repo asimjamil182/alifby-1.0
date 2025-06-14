@@ -1,0 +1,71 @@
+<div class="cart-items">
+  {%- if cart == empty -%}
+    <div class="flex items-center justify-center h-full">
+      <div>
+          <div class="text-center text-xl text-subtextColor py-5">Cart Empty!</div>
+          <a href="/collections/all" class="{{settings.btn_style }} inline-block">Continue Shopping</a>
+      </div>
+  </div>
+  {%- else -%}
+    <div class="w-full flex flex-col h-full ">
+      <div class="p-2">
+        <a href="/cart" class="text-right float-right text-sm">Go to cart</a>
+      </div>
+      <div class="p-2 mt-3">
+        <div class="border-b border-neutralLightColor text-accentColor">Cart Items</div>
+      </div>
+      <div class="mb-auto p-4 overflow-y-auto scroll">
+        {%- for item in cart.items -%}
+          <cart-line-item variantId="{{item.variant_id}}">
+            <div class="flex gap-1 border-b border-neutralLightColor py-1">
+              <div class="w-1/5">
+                <img loading="lazy" src="{{item.image | product_img_url }}" width="" height="" alt="product image">
+              </div>
+              <div class="mr-auto flex-1">
+                <a class=" text-sm text-ellipsis line-clamp-2" href="{{item.url}}">{{ item.title }}</a>
+                <line-item-quantity-selector variantId="{{item.variant_id}}" max="" class=" select-none flex w-[80px] items-center text-sm {{settings.input_style }} p-0">
+                  <div class="minus w-[40px]  text-center p-0.5 cursor-pointer text-xl">
+                    {%- render 'icon', iconName: 'minus', class: ' fill-textColor', size:'20px' -%}
+                  </div>
+                  <div class="w-[60px]">
+                    <input type="number" name="quantity" min="1" max="10" class="appearance-none text-center w-full p-0.5 focus:outline-none" id="" value="{{item.quantity}}">
+                  </div>
+                  <div class="plus w-[40px] text-center p-0.5 cursor-pointer text-xl">
+                    {%- render 'icon', iconName: 'plus', class: ' fill-textColor', size:'20px' -%}
+                  </div>
+                </line-item-quantity-selector>
+              </div>
+              <div class="w-1/5 flex flex-col items-end">
+                {%- render 'icon', iconName: 'trash', id: 'deletebtn', class: 'cursor-pointer fill-acentColor', size: '1em' -%}
+                <div class="text-xs mt-auto text-right">
+                  {%- unless item.total_discount == 0 -%}
+                    <span class="text-subtextColor"><del>{{ item.total_discount | money_without_currency }} {{ cart.currency.iso_code }}</del> off</span><br>
+                  {%- endunless -%}
+                
+                <span class="font-semibold mt-auto text-textColor">{{ item.final_line_price | money_without_currency }} {{ cart.currency.iso_code }}</span>
+                </div>
+              </div>
+            </div>
+          </cart-line-item>
+          
+        {%- endfor -%}
+      </div>
+      <div class="bg-[#ffff] p-2">
+        <div class=" float-right text-right">
+          {%- unless cart.total_discount==0 -%}
+            <div class=" text-subtextColor text-sm">Discounts: {{ cart.total_discount | money_without_currency }} {{ cart.currency.iso_code }}</div>
+          {%- endunless -%}
+          <div class="text-textColor text-lg font-semibold">Total: {{ cart.total_price | money_without_currency }} {{ cart.currency.iso_code }}</div>
+          <p class=" text-subtextColor text-xs py-1">Taxes and shipping calculated at checkout</p>
+        </div>
+        
+        <a href="/cart/checkout" class="{{settings.btn_style }} w-full text-center p-2 inline-block">Checkout</a>
+        {% comment %} <div class="md:py-1">
+          {% if additional_checkout_buttons %}
+            {{ content_for_additional_checkout_buttons }}
+          {% endif %}
+        </div> {% endcomment %}
+      </div>
+    </div>
+  {%- endif -%}
+</div>

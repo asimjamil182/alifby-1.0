@@ -1,0 +1,395 @@
+<section class="bg-[#fafafa] py-2">
+  <div class="layout">
+    <product-showcase class="bg-[#ffff] md:px-4 py-2">
+      <div class="flex product flex-wrap">
+        <div class="w-full md:w-[50%] overflow-hidden relative">
+          {%- render 'product-image-slider', product: product, showthumb: section.settings.show_thumb -%}
+        </div>
+        <div id="addToCartForm" class="w-full md:w-[50%] px-2 md:px-4 relative flex flex-col">
+          <input class="hidden" value="{{ product.selected_or_first_available_variant.id }}" type="text" name="id">
+          {%- render 'product-render', product: product -%}
+
+          <div class="mt-2 md:mt-auto">
+            {%- if section.settings.enable_delivery_note -%}
+              <div class="">
+                <div class="text-sm md:text-base rounded-sm text-subtextColor p-2 flex gap-1 items-center">
+                  
+                  {%- if section.settings.show_icon1 -%}
+                    {%- render 'icon', iconName: 'truck', size: '1.3rem', class: 'fill-acentColor inline-block' -%}
+                  {%- endif -%}
+                    <span class="font-bold text-accentColor">{{ section.settings.delivery_note1 }}</span> <span> {{ section.settings.delivery_note2 }} </span>                  
+                </div>
+              </div>
+            {%- endif -%}
+            <div class="flex flex-wrap gap-2 md:gap-3">
+              <button
+                id="addtocartbtn"
+                class=" w-full md:flex-1 border {{settings.btn_style }} text-textColor bg-[#ffff] hover:bg-[#ffff] hover:text-textColor mt-2 py-3 font-bold"
+                {%- unless product.available -%}
+                  disabled
+                {%- endunless -%}
+              >
+                <span class="" id="txt1"
+                  >Add to cart - <span id="txtPrice">{{ product.price | money_without_currency | remove: ',' }}</span>
+                  <span>{{ cart.currency.iso_code }}</span></span
+                >
+                <span class="hidden" id="txt2">Sold out</span>
+                {%- render 'icon',
+                  id: 'spinner',
+                  iconName: 'spinner',
+                  class: 'hidden inline text-center text-subtextColor fill-textColor animate-spin',
+                  size: '20'
+                -%}
+              </button>
+              {%- if section.settings.enable_buyitnow -%}
+                <button
+                  id="buyitnowbtn"
+                  class="w-full md:flex-1 {{settings.btn_style }} mt-2 py-3 font-bold"
+                  {%- unless product.available -%}
+                    disabled
+                  {%- endunless -%}
+                >
+                  <span id="txt3">Buy it Now</span>
+                  {%- render 'icon',
+                    id: 'spinner2',
+                    iconName: 'spinner',
+                    class: 'hidden inline text-center text-textColor-dark fill-secondaryColor animate-spin',
+                    size: '20'
+                  -%}
+                </button>
+              {%- endif -%}
+            </div>
+            {% if section.settings.enable_delivery_date %}
+              <div class="mt-5">
+                <div class="text-sm md:text-base rounded-sm text-subtextColor p-2 flex gap-1 items-center">
+                  <span>{{ section.settings.delivery_text }}</span>
+                  {%- if section.settings.show_icon2 -%}
+                    {%- render 'icon', iconName: 'truck', size: '1.3rem', class: 'fill-acentColor inline-block' -%}
+                  {%- endif -%}
+                  <shipping-time
+                    start-date="{{ section.settings.delivery_processing_days }}"
+                    end-date="{{ section.settings.delivery_shipping_days }}"
+                    class=" font-bold text-accentColor"
+                  ></shipping-time>
+                </div>
+              </div>
+            {% endif %}
+            {%- if section.settings.enable_payment_provider -%}
+              <div class="mt-5">
+                <div class="uppercase text-sm font-semibold">Accept Payment</div>
+                <div class="flex gap-3 w-full mt-1">
+                  {% for type in shop.enabled_payment_types -%}
+                    {{ type | payment_type_svg_tag: class: '' }}
+                  {% endfor %}
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- if section.settings.enable_sharing_icon -%}
+              {%- render 'product-sharing-icon' -%}
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </product-showcase>
+    <br>
+    {% comment %} {{ product.metafields.custom.reviews }} {% endcomment %}
+    {% if product.description != empty %}
+      <div class="p-4 bg-[#ffff]">
+        <div class=" text-textColor text-xl border-b border-neutralLightColor">Description</div>
+        <description-handler class="py-2 w-full overflow-hidden">
+          {{ product.description }}
+        </description-handler>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  function copyToClipboard(text) {
+    var dummy = document.createElement('textarea');
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
+    if (window.innerWidth > 1000) {
+      alert('Product Link Copied');
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Product ShowCase",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product Image Slider"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_thumb",
+      "label": "Enable Silder Thumb",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_buyitnow",
+      "label": "Enable Buy Button",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_payment_provider",
+      "label": "Enable Payment Provider",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable Autoplay",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "autoplay_speed",
+      "label": "Autoplay Speed (ms)",
+      "default": 3000
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_loop",
+      "label": "Enable Infinite Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show Navigation Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "zoom",
+      "label": "Enable Zoom",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "centered_slides",
+      "label": "Enable Centered Slides",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_height",
+      "label": "Enable Auto Height",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Product Sharing"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sharing_icon",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "facebook_icon",
+      "label": "Facebook",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "messenger_icon",
+      "label": "Messenger",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "x_icon",
+      "label": "X",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "whatsapp_icon",
+      "label": "Whatsapp",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "instagram_icon",
+      "label": "Instagram",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "copy_icon",
+      "label": "Copy Url",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Delivery Note"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_delivery_note",
+      "label": "Enable Delivery Note",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon1",
+      "label": "Show icon",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "delivery_note1",
+      "label": "Text",
+      "default":"<p>Free Shipping</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "delivery_note2",
+      "label": "Text",
+      "default":"<p>all over the country</p>"
+    },
+    {
+      "type": "header",
+      "content": "Delivery Dates"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_delivery_date",
+      "label": "Enable",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "delivery_text",
+      "label": "Text",
+      "default":"Estimate delivery by"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon2",
+      "label": "Show icon",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "delivery_processing_days",
+      "label": "Processing Days",
+      "default": 4
+    },
+    {
+      "type": "number",
+      "id": "delivery_shipping_days",
+      "label": "Delivery Days",
+      "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_title",
+      "name": "Product Title",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "product_price",
+      "name": "Product Price",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "product_rating",
+      "name": "Product Rating",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "product_quantity",
+      "name": "Product Quantiy Selector",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "product_vender",
+      "name": "Product Vender",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "product_txtnote",
+      "name": "Text Note",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "note_txt",
+          "label": "Text"
+        }
+      ]
+    },
+    {
+      "type": "product_variant",
+      "name": "Product Variants Selector",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "variant_type",
+          "label": "Variant type",
+          "options": [
+            {
+              "value": "dropdown",
+              "label": "Dropdown"
+            },
+            {
+              "value": "inline",
+              "label": "Inline"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "product_title"
+      },
+      {
+        "type": "product_price"
+      },
+      {
+        "type": "product_rating"
+      },
+      {
+        "type": "product_quantity"
+      },
+      {
+        "type": "product_variant"
+      }
+    ]
+  }
+}
+{% endschema %}

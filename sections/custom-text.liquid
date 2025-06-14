@@ -1,0 +1,28 @@
+<section class="lg:w-[70%] lg:m-auto md:p-6 lg:p-0">
+{% if section.settings.custom_text != blank %}
+  {{ section.settings.custom_text }}
+{% endif %}
+</section>
+{% schema %}
+{
+  "name": "Custom Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_text",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Text"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

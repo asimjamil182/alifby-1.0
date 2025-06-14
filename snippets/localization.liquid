@@ -1,0 +1,12 @@
+
+  {%- if settings.show_language_selector -%}
+    <div class="">
+    <select name="" id="language_selector" class="{{ settings.input_style }} bg-transparent text-xs p-1 px-2  {{ class }}">
+      {%- for language in localization.available_languages -%}
+        <option class="text-textColor p-1" value="{{language.root_url}}">{{ language.name }}</option>
+      {%- endfor -%}
+    </select>
+  </div>
+  {%- endif -%}
+
+

@@ -1,0 +1,74 @@
+<style>
+  swiper-container::part(button-prev),::part(button-next) {
+    padding: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+</style>
+
+<swiper-container
+  style="--swiper-navigation-color: #333; --swiper-pagination-color: #fff; --swiper-navigation-size: 10px;"
+  class="product-image-slider w-full {% if showthumb %}h-[85%]{% else %}h-full{% endif %} items-center relative"
+  thumbs-swiper=".product-image-slider2"
+  {%- if section.settings.autoplay_speed -%}
+    autoplay-delay="{{ section.settings.autoplay_speed }}"
+    autoplay-disable-on-interaction="true"
+  {%- endif -%}
+  loop="{{ section.settings.infinite_loop }}"
+  navigation="{{ section.settings.show_arrows }}"
+  space-between="5"
+  zoom="{{ section.settings.zoom }}"
+  centered-slides="{{ section.settings.centered_slides }}"
+  auto-height="{{ section.settings.auto_height }}"
+>
+  {% for media in product.media %}
+    <swiper-slide class="flex w-full relative" id="slide-{{media.id}}" data-index="{{media.position}}">
+      {% if media.media_type == 'external_video' %}
+        {% if media.host == 'youtube' %}
+          {{ media | external_video_url: color: 'white' | external_video_tag }}
+        {% elsif media.host == 'vimeo' %}
+          {{ media | external_video_url: loop: '1', muted: '1' | external_video_tag }}
+        {% endif %}
+      {%- elsif media.media_type == 'video' -%}
+        {{ media | video_tag: autoplay: true, loop: true, muted: true, controls: true }}
+      {%- elsif media.media_type == 'image' -%}
+        <div class="swiper-zoom-container">
+          <img
+            src="{{ media | product_img_url: 'original' }}"
+            width=""
+            height=""
+            class="block w-full"
+            alt="hero-image"
+          >
+        </div>
+      {% endif %}
+    </swiper-slide>
+  {% endfor %}
+</swiper-container>
+{%- if showthumb -%}
+  <swiper-container
+    class="product-image-slider2 mt-3 w-full h-auto ml-0 mr-0"
+    space-between="10"
+    slides-per-view="6"
+    free-mode="false"
+    watch-slides-progress="true"
+    auto-height="true"
+  >
+    {% for media in product.media %}
+      <swiper-slide class="flex h-auto">
+        <img
+          src="{{ media | product_img_url: 'original' }}"
+          width=""
+          height=""
+          class="w-full h-full block"
+          alt="hero-image-thumbnail"
+        >
+      </swiper-slide>
+    {% endfor %}
+  </swiper-container>
+{%- endif -%}
+
+<script></script>

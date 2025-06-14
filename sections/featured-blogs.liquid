@@ -1,0 +1,184 @@
+
+<section class="{{ section.id }}">
+  <div class="layout {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %} {% if section.settings.isFullWidth %}lg:w-full{% endif %}" style="background-color:{{ section.settings.bg_color }} !important;">
+    {% if section.settings.heading %}
+      <div class="section-heading">{{ section.settings.heading }}</div>
+    {% endif %}
+    {% if section.settings.tagline %}
+      <div class="section-tagline">{{ section.settings.tagline }}</div>
+    {% endif %}
+    <div class="flex flex-wrap md:flex-nowrap justify-between w-full gap-2 p-2 mt-4">
+      {% for article in blogs[section.settings.blog].articles %}
+        <div class="w-full md:w-1/4 bg-[#ffff]">
+          {%- if article.image -%}
+            <img
+              class="w-full"
+              src="{{ article.image.src | image_url}}"
+              alt="{{ article.image.alt }}"
+              width=""
+              height=""
+            >
+          {%- endif -%}
+          <div class="p-2 child:mb-2">
+            <div class="flex flex-wrap w-full justify-between text-sm text-textColor gap-2 blog-author-date">
+              <div>Author: {{ article.author }}</div>
+              <div>Published at: {{ article.published_at | date: '%d-%b-%Y' }}</div>
+            </div>
+            <a
+              class="py-1 text-base line-clamp-1 overflow-hidden text-ellipsis blog-title"
+              title="{{ article.title }}"
+              href="{{ article.url }}"
+            >
+              {{- article.title }}
+            </a>
+            <div class="flex justify-between items-center w-full">
+              <div class="text-sm text-subtextColor blog-comment">({{ article.comments_count }}) Comments</div>
+              <a class="{{ settings.btn_style }} btn" href="{{ article.url }}"
+                >{{ section.settings.btn_text }}
+                {%- render 'icon', iconName: 'right-arrow', class: 'inline pr-0', size: '22' -%}
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{%- if section.settings.isDefaultOverride -%}
+  <style>
+    .{{section.id }} .section-heading {
+      color: {{ section.settings.title_color }};
+    }
+    .{{section.id }} .section-tagline {
+      color: {{ section.settings.tagline_color }};
+    }
+    .{{section.id }} .blog-title {
+      color: {{ section.settings.blog_title_color }};
+    }
+    .{{section.id }} .blog-author-date {
+      color: {{ section.settings.blog_author_date_color }};
+    }
+    .{{section.id }} .blog-comment {
+      color: {{ section.settings.blog_comment_color }};
+    }
+    .{{ section.id }} .btn {
+      color: {{ section.settings.btn_color }};
+      background-color: {{ section.settings.btn_bg_color }};
+      border-color: {{ section.settings.btn_border_color }};
+    }
+  </style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured Blogs",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "placeholder": "Featured Blogs"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tag line",
+      "placeholder": "Some text here"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "Read"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings & Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "isFullWidth",
+      "label": "Full Width",
+      "default": false,
+      "info": "This option work on large screen only"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "header",
+      "content": "Override Theme Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "isDefaultOverride",
+      "label": "Enable",
+      "default": true,
+      "info": "Enable this option to override the theme colors."
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "tagline_color",
+      "label": "Tagline Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "blog_author_date_color",
+      "label": "Blog Author/Date Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "blog_title_color",
+      "label": "Blog Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "blog_comment_color",
+      "label": "Blog Comment Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color",
+      "default": "#333"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button Border Color",
+      "default": "#333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Blogs",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

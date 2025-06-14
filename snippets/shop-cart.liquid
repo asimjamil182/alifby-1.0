@@ -1,0 +1,16 @@
+<shop-cart class="z-20 relative text-textColor">
+    <div class="cart-overlay fixed top-0 left-0 right-0 bottom-0 bg-backgroundColor opacity-10 hidden"></div>
+    <div
+      id="cartDrawer"
+      class="fixed top-0 right-0 bottom-0 w-72 md:w-96 bg-[#ffff] shadow-md transform translate-x-full transition-transform duration-300 ease-in-out"
+    >
+      {%- render 'icon',
+        iconName: 'x',
+        id: 'cart_close_icon',
+        class: 'pl-3  w-[40] h-[40] cursor-pointer absolute',
+        size:'40'
+      -%}
+      <!-- Your cart content goes here -->
+      <div class="cart-data"></div>
+    </div>
+  </shop-cart>

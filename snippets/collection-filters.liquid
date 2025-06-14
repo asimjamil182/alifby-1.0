@@ -1,0 +1,92 @@
+{%- for filter in collection.filters -%}
+  {%- case filter.type -%}
+    {%- when 'boolean' -%}
+      <div class=" text-accentColor uppercase text-sm font-semibold border-b border-neutralLightColor mb-1">
+        {{ filter.label }}
+      </div>
+    {%- when 'list' -%}
+      <filter-list>
+        {%- if collection.handle == 'all' and filter.label contains 'Types' -%}
+          <div class=" text-accentColor uppercase text-sm font-semibold border-b border-neutralLightColor mb-1">
+            {{ filter.label }}
+          </div>
+          <ul>
+            {%- for filter_value in filter.values -%}
+              {%- unless section.settings.tag_skiper contains filter_value.value -%}
+
+                <li class="mb-1 {% unless forloop.index < 15 %}hideitem hidden {% endunless %}">
+                  <custom-radio-button
+                    type="checkbox"
+                    name="{{ filter.param_name | handle }}"
+                    value="{{ filter_value.value }}"
+                    text="{{ filter_value.value }}"
+                    box-class="bg-[#dadada]"
+                    text-class="text-sm capitalize"
+                    {% if filter_value.count == 0 and filter_value.active == false -%}
+                      disabled="true"
+                    {%- endif %}
+                  ></custom-radio-button>
+                </li>
+              {%- endunless -%}
+              {% if forloop.index > 15 and forloop.last %}
+                <li id="view_more_btn" class="text-sm cursor-pointer text-linkColor">View More <span>+</span></li>
+              {% endif %}
+            {%- endfor -%}
+          </ul>
+        {%- elsif collection.handle != 'all' and filter.label contains 'Tags' -%}
+          <div class=" text-accentColor uppercase text-sm font-semibold border-b border-neutralLightColor mb-1">
+            {{ filter.label }}
+          </div>
+          <ul>
+            {%- for filter_value in filter.values -%}
+              {%- unless section.settings.tag_skiper contains filter_value.value -%}
+                
+                <li class="mb-1 {% unless forloop.index < 15 %}hideitem hidden {% endunless %}">
+                  <custom-radio-button
+                    type="checkbox"
+                    name="{{ filter.param_name | handle }}"
+                    value="{{ filter_value.value }}"
+                    text="{{ filter_value.value }}"
+                    box-class="bg-[#dadada]"
+                    text-class="text-sm capitalize"
+                    {% if filter_value.count == 0 and filter_value.active == false -%}
+                      disabled="true"
+                    {%- endif %}
+                  ></custom-radio-button>
+                </li>
+              {%- endunless -%}
+              {% if forloop.index > 15 and forloop.last %}
+                <li id="view_more_btn" class="text-sm cursor-pointer text-linkColor">View More <span>+</span></li>
+              {% endif %}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </filter-list>
+
+    {%- when 'price_range' -%}
+      <div class=" text-accentColor uppercase text-sm font-semibold border-b border-neutralLightColor mb-1">
+        {{ filter.label }}
+      </div>
+      <price-range class="mx-4">
+        <div class="flex w-full text-sm mb-1">
+          <div class="flex-1 text-left"><span id="min_value">0</span> Min</div>
+          <div class="flex-1 text-right">
+            <span id="max_value">{{ filter.range_max | money_without_currency | replace: ',', '' | floor }}</span> Max
+          </div>
+        </div>
+        <div class="price_range relative m-1">
+          <div
+            class="w-[16px] h-[16px] z-10 bg-backgroundColor cursor-pointer top absolute rounded-full shadow-md border border-transparent mt-[-6px] left-0"
+            id="price_min_handle"
+          ></div>
+          <div
+            class="w-[16px] h-[16px] z-10 bg-backgroundColor cursor-pointer top absolute rounded-full shadow-md border border-transparent mt-[-6px] right-0"
+            id="price_max_handle"
+          ></div>
+          <div class="left-0 right-0  h-[4px] bg-disabled absolute" id="track-bar"></div>
+          <div class="left-0 right-0  h-[4px] bg-backgroundColor absolute" id="track-fill"></div>
+        </div>
+      </price-range>
+    {%- else -%}
+  {%- endcase -%}
+{%- endfor -%}

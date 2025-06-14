@@ -1,0 +1,91 @@
+{%- assign product = all_products[section.settings.product] -%}
+
+<section style="background:{{ section.settings.forgroundColor }}">
+  <div class="layout">
+    {%- if section.settings.switch_direction -%}
+      {%- assign direction = 'flex-wrap-reverse flex-row-reverse' -%}
+    {%- else -%}
+      {%- assign direction = '' -%}
+    {%- endif -%}
+    <div class="{{direction }} flex items-center flex-wrap justify-around" style="background:{{ section.settings.bgColor }}">
+      <div class="sm:w-full md:w-1/2">
+        {%- if product.featured_media != blank -%}
+          <img loading="lazy" src="{{product.featured_image | product_img_url : 'large'}}" width="" height="" class="w-full" alt="image">
+        {%- else -%}
+          <img  src="{{ 'product-card-placeholder.svg' | asset_url }}" width="" height="" class="w-full" alt="placehold Image">
+        {%- endif -%}
+      </div>
+      <div class="sm:w-full md:w-1/2 p-2 px-6">
+        {%- if product.type != blank-%}
+          <h1 class="text-sm font-semibold text-accentColor uppercase {{section.settings.txt_align }}">{{ product.type }}</h1>
+          {%- else -%}
+          <h1 class="text-sm font-semibold text-accentColor uppercase {{section.settings.txt_align }}">Product Type</h1>
+        {%- endif -%}
+        {%- if product.title != blank -%}
+          <div class="{{section.settings.txt_align }} text-textColor text-lg">{{ product.title }}</div>
+          {%- else -%}
+          <div class="{{section.settings.txt_align }} text-textColor text-lg">Product Title</div>
+        {%- endif -%}
+        <div class="{{section.settings.txt_align }}">
+          <a href="{{ product.url }}" class=" text-linkColor">View More <span>{%- render 'icon', iconName: 'right-arrow', class: 'inline-block fill-linkColor' -%}</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Image with Text",
+  "class": "image-with-text",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "checkbox",
+      "id": "switch_direction",
+      "label": "Switch Direction",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "txt_align",
+      "label": "Text Align",
+      "options": [
+        {
+          "value": "text-center",
+          "label": "center"
+        },
+        {
+          "value": "text-left",
+          "label": "left"
+        },
+        {
+          "value": "text-right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "forgroundColor",
+      "label": "Foreground color",
+      "default": "transparent"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with Text",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

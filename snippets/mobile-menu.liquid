@@ -1,0 +1,137 @@
+<div class="z-10 relative">
+  <div
+    id="mobile-menu-overlay"
+    class="hidden md:hidden fixed top-0 bottom-0 left-0 right-0 bg-backgroundColor opacity-10 "
+  ></div>
+  <div
+    id="mobile-menu"
+    class="md:hidden fixed left-0 h-full top-0 w-2/3 overflow-hidden bg-[#ffff] shadow-md transform  transition-transform -translate-x-full  duration-300 ease-in-out"
+  >
+    <div class="flex w-full flex-col h-full">
+      <div>
+        {%- render 'icon',
+          iconName: 'left-arrow',
+          id: 'menu_back_icon',
+          class: 'p-2 w-[42] h-[42] cursor-pointer float-left fill-textColor hidden'
+        -%}
+        {%- render 'icon',
+          iconName: 'x',
+          id: 'menu_close_icon',
+          class: 'p-2 w-[42] h-[42] cursor-pointer float-right fill-textColor'
+        -%}
+      </div>
+      <div class="mb-auto overflow-x-hidden">
+        <div
+          id="mobile-parent-menu"
+          class="text-sm transform transition-transform duration-300 ease-in-out w-full p-2 scroll"
+        >
+          {% if section.settings.catagory_menu and section.settings.iscatagory %}
+          <mobile-menu-link
+            child-menu="true"
+            child-navigator="child-all-cat"
+            class="border-b border-neutralLightColor p-2 flex items-center w-full justify-between text-lg capitalize text-textColor"
+          >
+            <span>All Catagories</span>
+            {%- render 'icon', iconName: 'right-arrow', class: 'w-[25] h-[25] cursor-pointer  ' -%}
+          </mobile-menu-link>
+        {% endif %}
+          {% for link in linklists[headerMenu].links %}
+            <mobile-menu-link
+              child-menu="{% unless link.links == blank %}true{% endunless %}"
+              child-navigator="child-{{link.handle}}"
+              class="border-b border-neutralLightColor p-2 flex items-center w-full justify-between text-lg capitalize"
+            >
+              {% if link.links != blank -%}
+                {{ link.title -}}
+                {%- render 'icon', iconName: 'right-arrow', class: 'w-[25] h-[25] cursor-pointer fill-textColor' -%}
+              {%- else -%}
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              {%- endif %}
+            </mobile-menu-link>
+          {% endfor %}
+        </div>
+        {% if section.settings.catagory_menu and section.settings.iscatagory %}
+        <div
+          id="child-all-cat"
+          class="transform  transition-transform  duration-300 hidden ease-in-out p-2  w-full overflow-y-auto"
+        >
+          {%- for link in linklists[section.settings.catagory_menu].links -%}
+            {% if link.links != blank %}
+              <div class="border-b border-neutralLightColor text-lg p-2 flex items-center font-semibold mb-1">
+                <a href="{{ link.url }}" class="block">{{ link.title }}</a>
+              </div>
+              <ul class=" child:pl-1 font-normal flex flex-wrap gap-1 justify-between">
+                {% for grandchild_link in link.links %}
+                  <li class="p-1 border border-neutralLightColor flex-1 text-center hover:bg-backgroundColor hover:text-secondaryColor hover:border-bgColor">
+                    <a class=" whitespace-nowrap" href="{{ grandchild_link.url }}">
+                      {{- grandchild_link.title -}}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      {% endif %}
+        {%- for link in linklists[headerMenu].links -%}
+          {% if link.links != blank %}
+            <div
+              id="child-{{ link.handle }}"
+              class="transform  transition-transform  duration-300 hidden ease-in-out p-2  w-full overflow-y-auto"
+            >
+              <div class="border-b border-neutralLightColor text-lg p-2 flex items-center font-semibold">
+                <a href="{{ link.url }}" class="block">{{ link.title }}</a>
+              </div>
+              <ul class="text-lg overflow-y-auto">
+                {% for child_link in link.links %}
+                  <li class="p-2 text-sm font-semibold border-b border-neutralLightColor">
+                    <a href="{{ child_link.url }}">{{ child_link.title }}</a>
+                    {% if child_link.links != blank %}
+                      <ul class=" child:pl-1 font-normal flex flex-wrap gap-1 justify-between">
+                        {% for grandchild_link in child_link.links %}
+                          <li class="p-1 border border-neutralLightColor flex-1 text-center hover:bg-backgroundColor hover:text-secondaryColor hover:border-bgColor">
+                            <a class=" whitespace-nowrap" href="{{ grandchild_link.url }}">
+                              {{- grandchild_link.title -}}
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {%- endfor -%}
+      </div>
+      <div>
+        <div class="py-2 flex items-center w-full bg-[#ffff] p-1 gap-1">
+          {%- if settings.show_wishlist -%}
+            <a href="#" class=" p-2 text-sm w-1/2 text-center bg-backgroundColor text-secondaryColor flex items-center">
+              {%- render 'icon', iconName: 'heart', size: '1em', class: 'fill-secondaryColor' -%}
+              <span class="pl-3">Wishlists</span></a
+            >
+          {%- endif -%}
+
+          {%- if customer -%}
+            <a
+              href="/account"
+              class=" p-2 text-sm flex-1 text-center bg-backgroundColor text-secondaryColor flex items-center"
+            >
+              {%- render 'icon', iconName: 'user', size: '1em', class: 'fill-secondaryColor' -%}
+              <span class="pl-3">{{ customer.name }}</span></a
+            >
+          {%- else -%}
+            <a
+              href="/account/login"
+              class=" p-2 text-sm flex-1 text-center bg-backgroundColor text-secondaryColor flex items-center"
+            >
+              {%- render 'icon', iconName: 'user', size: '1em', class: 'fill-secondaryColor' -%}
+              <span class="pl-3">Account</span></a
+            >
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

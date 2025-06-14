@@ -1,0 +1,5 @@
+<div class="flex gap-1 mt-1">
+    {% for type in shop.enabled_payment_types -%}
+      {{ type | payment_type_svg_tag: class: '' }}
+    {% endfor %}
+  </div>

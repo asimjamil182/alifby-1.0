@@ -1,0 +1,78 @@
+<div class="product-share mt-5">
+  <div class="uppercase text-sm font-semibold">Share this product</div>
+  <ul class="flex gap-5 mt-1">
+    {%- if section.settings.facebook_icon -%}
+      <li>
+        <a
+          title="Share on Facebook"
+          href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url }}{{ product.url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {%- render 'icon', iconName: 'facebook', size: '1.5rem', class: 'fill-textColor' -%}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if section.settings.messenger_icon -%}
+      <li>
+        <a
+          title="Share on Messenger"
+          href="fb-messenger://share/?link={{ shop.url }}{{ product.url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {%- render 'icon', iconName: 'messenger', size: '1.5rem', class: 'fill-textColor' -%}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if section.settings.x_icon -%}
+      <li>
+        <a
+          title="Share on X"
+          href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ product.url }}&text={{ product.title }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {%- render 'icon', iconName: 'twitter', size: '1.5rem', class: 'fill-textColor' -%}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if section.settings.whatsapp_icon -%}
+      <li>
+        <a
+          title="Share on Whatsapp"
+          href="https://api.whatsapp.com/send?text={{ product.title }} - {{ shop.url }}{{ product.url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {%- render 'icon', iconName: 'whatsapp', size: '1.5rem', class: 'fill-textColor' -%}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if section.settings.instagram_icon -%}
+      <li>
+        <a
+          title="Share on Instagram"
+          href="https://www.instagram.com/?url={{ shop.url }}{{ product.url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {%- render 'icon', iconName: 'instagram', size: '1.5rem', class: 'fill-textColor' -%}
+        </a>
+      </li>
+    {%- endif -%}
+    {%- if section.settings.copy_icon -%}
+      <li>
+        <a
+          title="Copy To Clipborad"
+          href="#"
+          onclick="copyToClipboard('{{ shop.url }}{{ product.url }}'); return false;"
+        >
+          <span class="flex items-center justify-center border border-black p-1 rounded-md">
+            {%- render 'icon', iconName: 'copy', size: '1rem', class: 'fill-textColor' -%}
+          </span>
+        </a>
+      </li>
+    {%- endif -%}
+  </ul>
+</div>

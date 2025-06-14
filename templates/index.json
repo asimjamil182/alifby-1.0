@@ -1,0 +1,350 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_slider_f6QHQe": {
+      "type": "hero-slider",
+      "blocks": {
+        "slide_JUV9fM": {
+          "type": "slide",
+          "settings": {
+            "slide_caption": "<p>CAPTION</p>",
+            "slide_heading": "Heading Text",
+            "font_size": 40,
+            "slide_pargarph": "<p>Some short text here!</p>",
+            "btn_txt": "Shop Now",
+            "btn_url": "",
+            "isTextBox": true,
+            "background": "#ffffff",
+            "background_opacity": 1,
+            "container_positionX": "justify-start",
+            "container_positionY": "items-end",
+            "container_text_align": "text-left",
+            "isDefaultOverride": false,
+            "caption_color": "#333333",
+            "heading_color": "#333333",
+            "shorttxt_color": "#333333",
+            "btn_txt_color": "#ffffff",
+            "btn_bg_color": "#333333"
+          }
+        },
+        "slide_LmjMea": {
+          "type": "slide",
+          "settings": {
+            "slide_caption": "<p>CAPTION</p>",
+            "slide_heading": "Heading Text",
+            "font_size": 40,
+            "slide_pargarph": "<p>Some short text here!</p>",
+            "btn_txt": "Shop Now",
+            "btn_url": "",
+            "isTextBox": true,
+            "background": "#ffffff",
+            "background_opacity": 1,
+            "container_positionX": "justify-start",
+            "container_positionY": "items-end",
+            "container_text_align": "text-left",
+            "isDefaultOverride": false,
+            "caption_color": "#333333",
+            "heading_color": "#333333",
+            "shorttxt_color": "#333333",
+            "btn_txt_color": "#ffffff",
+            "btn_bg_color": "#333333"
+          }
+        },
+        "slide_RhUGH4": {
+          "type": "slide",
+          "settings": {
+            "slide_caption": "<p>CAPTION</p>",
+            "slide_heading": "Heading Text",
+            "font_size": 40,
+            "slide_pargarph": "<p>Some short text here!</p>",
+            "btn_txt": "Shop Now",
+            "btn_url": "",
+            "isTextBox": true,
+            "background": "#ffffff",
+            "background_opacity": 1,
+            "container_positionX": "justify-start",
+            "container_positionY": "items-end",
+            "container_text_align": "text-left",
+            "isDefaultOverride": false,
+            "caption_color": "#333333",
+            "heading_color": "#333333",
+            "shorttxt_color": "#333333",
+            "btn_txt_color": "#ffffff",
+            "btn_bg_color": "#333333"
+          }
+        }
+      },
+      "block_order": [
+        "slide_JUV9fM",
+        "slide_LmjMea",
+        "slide_RhUGH4"
+      ],
+      "settings": {
+        "slide_dot": false,
+        "slide_dot_color": "#333333",
+        "slide_arrow": false,
+        "slide_arrow_color": "#333333",
+        "slide_arrow_size": 25,
+        "slide_loop": true,
+        "slide_autoplay": false,
+        "slide_autoplaytime": 3000,
+        "isFullWidth": false
+      }
+    },
+    "catagory_group_7kprHN": {
+      "type": "catagory-group",
+      "blocks": {
+        "catagory_kkcRDy": {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Cloths",
+            "cat_link_text": "Show all",
+            "cat_link": ""
+          }
+        },
+        "catagory_f3e7ij": {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Shoes",
+            "cat_link_text": "Show all",
+            "cat_link": ""
+          }
+        },
+        "catagory_eEngQG": {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Watches",
+            "cat_link_text": "Show all",
+            "cat_link": ""
+          }
+        },
+        "catagory_pNcjgR": {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Jewelry",
+            "cat_link_text": "Show all",
+            "cat_link": ""
+          }
+        },
+        "catagory_zLJkKX": {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Bags",
+            "cat_link_text": "Show all",
+            "cat_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "catagory_kkcRDy",
+        "catagory_f3e7ij",
+        "catagory_eEngQG",
+        "catagory_pNcjgR",
+        "catagory_zLJkKX"
+      ],
+      "settings": {
+        "isFullWidth": false,
+        "isRoundedImage": true,
+        "isDefaultOverride": true,
+        "bg_color": "#ffffff",
+        "label_color": "#333333",
+        "linktext_color": "#333333"
+      }
+    },
+    "product_grid_P4NyK6": {
+      "type": "product-grid",
+      "blocks": {
+        "product_group_qVri8P": {
+          "type": "product-group",
+          "settings": {
+            "collection": "new-arrivals",
+            "product_offset": 0
+          }
+        },
+        "product_group_LdNRkF": {
+          "type": "product-group",
+          "settings": {
+            "collection": "",
+            "product_offset": 0
+          }
+        },
+        "product_group_k7PmB4": {
+          "type": "product-group",
+          "settings": {
+            "collection": "",
+            "product_offset": 0
+          }
+        }
+      },
+      "block_order": [
+        "product_group_qVri8P",
+        "product_group_LdNRkF",
+        "product_group_k7PmB4"
+      ],
+      "settings": {
+        "product_limit": 6,
+        "btn_text": "View More",
+        "isFullWidth": false,
+        "bg_color": "rgba(0,0,0,0)",
+        "isDefaultOverride": false,
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
+      }
+    },
+    "column2_image_iNiVqV": {
+      "type": "column2-image",
+      "settings": {
+        "col1": "",
+        "tagline1": "<p>Tag line</p>",
+        "col2": "",
+        "tagline2": "<p>Tag line</p>",
+        "enable_tags": true,
+        "isFullWidth": false,
+        "bg_color": "rgba(0,0,0,0)",
+        "isDefaultOverride": true,
+        "collection_title_color": "#333333",
+        "tagline_color": "#333333",
+        "tags_color": "#333333"
+      }
+    },
+    "featured_collection_8ffpRT": {
+      "type": "featured-collection",
+      "blocks": {
+        "collection_PTyRHF": {
+          "type": "collection",
+          "settings": {
+            "coll": ""
+          }
+        },
+        "collection_dxPkdF": {
+          "type": "collection",
+          "settings": {
+            "coll": ""
+          }
+        },
+        "collection_x78E6B": {
+          "type": "collection",
+          "settings": {
+            "coll": ""
+          }
+        },
+        "collection_mJYj3y": {
+          "type": "collection",
+          "settings": {
+            "coll": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_PTyRHF",
+        "collection_dxPkdF",
+        "collection_x78E6B",
+        "collection_mJYj3y"
+      ],
+      "settings": {
+        "heading": "Featured Collection",
+        "tagline": "<p>Tag line text here</p>",
+        "link_text": "View",
+        "button_text": "View More",
+        "enable_viewmore_btn": true,
+        "isgap": true,
+        "isFullWidth": false,
+        "bg_color": "rgba(0,0,0,0)",
+        "isDefaultOverride": false,
+        "title_color": "#333333",
+        "tagline_color": "#333333",
+        "collection_title_color": "#000000",
+        "collection_link_color": "#000000",
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
+      }
+    },
+    "collection_showup_VmLt9K": {
+      "type": "collection-showup",
+      "settings": {
+        "collection": "",
+        "btn_text": "Shop",
+        "tag_skipper": "",
+        "slide_arrow": false,
+        "slide_loop": true,
+        "slide_autoplay": true,
+        "slide_autoplaytime": 5000,
+        "isFullWidth": false,
+        "switch_direction": false,
+        "bg_color": "rgba(0,0,0,0)",
+        "isDefaultOverride": false,
+        "collection_title_color": "#000000",
+        "product_title_color": "#000000",
+        "product_price_color": "#000000",
+        "tags_color": "#000000",
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
+      }
+    },
+    "featured_blogs_d6UrJU": {
+      "type": "featured-blogs",
+      "settings": {
+        "blog": "electronics-devices",
+        "heading": "",
+        "tagline": "",
+        "btn_text": "Read",
+        "isFullWidth": false,
+        "bg_color": "rgba(0,0,0,0)",
+        "isDefaultOverride": false,
+        "title_color": "#333333",
+        "tagline_color": "#333333",
+        "blog_author_date_color": "#000000",
+        "blog_title_color": "#000000",
+        "blog_comment_color": "#000000",
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
+      }
+    },
+    "featured_product_L7F4b3": {
+      "type": "featured-product",
+      "settings": {
+        "featured-product": "",
+        "heading": "Featured Products",
+        "tagline": "<p>Tag line text here</p>",
+        "slide_dot": true,
+        "slide_autoplay": false,
+        "slide_autoplaytime": "3000",
+        "isFullWidth": false,
+        "bg_color": "rgba(0,0,0,0)",
+        "isDefaultOverride": false,
+        "title_color": "#333333",
+        "tagline_color": "#333333",
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
+      }
+    },
+    "main_contact_DrWaDB": {
+      "type": "main-contact",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero_slider_f6QHQe",
+    "catagory_group_7kprHN",
+    "product_grid_P4NyK6",
+    "column2_image_iNiVqV",
+    "featured_collection_8ffpRT",
+    "collection_showup_VmLt9K",
+    "featured_blogs_d6UrJU",
+    "featured_product_L7F4b3",
+    "main_contact_DrWaDB"
+  ]
+}

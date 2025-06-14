@@ -1,0 +1,26 @@
+{%- if predictive_search.performed -%}
+  {{ predictive_search.resources.queries }}
+  {%- if predictive_search.resources.products.size > 0 -%}
+    <ul>
+      {%- for product in predictive_search.resources.products -%}
+        <li class=' border-b border-[#d8d8d8] p-2 hover:bg-backgroundColor hover:text-secondaryColor cursor-pointer'>
+          <link-handler target-page='{{product.url}}'>
+            <ul class=' flex items-center'>
+              <li class=' w-[10%]'>
+                {%- if product.featured_image == null -%}
+                  <img loading='lazy' src='https://placehold.co/50' alt='' width='' height='' class=' w-[40px]'>
+                {%- else -%}
+                  <img loading='lazy' src='{{ product.featured_image |  image_url: width: 50, height:50 }}' alt='' width='' height='' class=' w-[40px] h-[40px]'>
+                {%- endif -%}
+                
+              </li>
+              <li class=' w-[90%] whitespace-nowrap overflow-hidden text-ellipsis'>{{ product.title }}</li>
+            </ul>
+          </link-handler>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- else -%}
+    <span class='p-4'>No Match found</span>
+  {%- endif -%}
+{%- endif -%}

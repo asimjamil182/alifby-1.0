@@ -1,0 +1,125 @@
+{% if section.settings.isDefaultOverride %}
+  <style>
+    .{{ section.id }} .caption_color {
+      color: {{ section.settings.caption_color }};
+    }
+    .{{ section.id }} .paragraph_color {
+      color: {{ section.settings.paragraph_color }};
+    }
+  </style>
+{% endif %}
+<section class="{{ section.id }}">
+  <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %}" style="background-color:{{ section.settings.bg_color }} !important;">
+    <div class="flex justify-between gap-3 text-center flex-wrap py-6">
+      {%- for block in section.blocks -%}
+          <div class="w-full md:flex-1 p-2 flex items-center justify-center flex-col gap-2">
+              <img src="{{block.settings.image | img_url: 'master'}}" alt="" width="{{ section.settings.image_size }}" height="" class="">
+              <div class="font-semibold text-sm caption_color">{{block.settings.caption}}</div>
+              <div class="text-subtextColor text-sm paragraph_color">{{block.settings.paragraph}}</div>
+          </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Icon With Text",
+  "settings": [
+    {
+      "type": "range",
+      "id": "image_size",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "label": "Image Size",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Section Settings & Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "isFullWidth",
+      "label": "Full Width",
+      "default": false,
+      "info": "This option work on large screen only"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "header",
+      "content": "Override Theme Colors"
+    },
+    {
+      "type": "checkbox",
+      "id": "isDefaultOverride",
+      "label": "Enable",
+      "default": true,
+      "info": "Enable this option to override the theme colors."
+    },
+    {
+      "type": "color",
+      "id": "caption_color",
+      "label": "Caption Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "paragraph_color",
+      "label": "Paragraph Color",
+      "default": "#333333"
+    },
+  ],
+  "blocks": [
+    {
+      "name": "Icon",
+      "type": "section_icons",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default":"caption"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph",
+          "label": "Paragraph",
+          "default":"<p>some paragraph text</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon With Text",
+      "blocks": [
+        {
+          "type": "section_icons"
+        },
+        {
+          "type": "section_icons"
+        },
+        {
+          "type": "section_icons"
+        },
+        {
+          "type": "section_icons"
+        }
+      ],
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

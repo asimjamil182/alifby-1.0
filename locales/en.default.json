@@ -1,0 +1,45 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": {
+    "header": {
+      "home": "Home",
+      "shop": "Shop",
+      "about_us": "About Us",
+      "contact": "Contact"
+    },
+    "footer": {
+      "copyright": "Copyright © 2024 {{store_name}}. All rights reserved.",
+      "terms_and_conditions": "Terms and Conditions",
+      "privacy_policy": "Privacy Policy"
+    }
+  },
+  "products": {
+    "featured_products": "Featured Products",
+    "new_arrivals": "New Arrivals",
+    "add_to_cart": "Add to Cart",
+    "view_details": "View Details"
+  },
+  "cart": {
+    "cart_title": "Shopping Cart",
+    "item_count": {
+      "one": "1 item",
+      "other": "{{ count }} items"
+    },
+    "subtotal": "Subtotal",
+    "checkout": "Checkout"
+  },
+  "checkout": {
+    "billing_information": "Billing Information",
+    "shipping_information": "Shipping Information",
+    "payment_method": "Payment Method",
+    "complete_purchase": "Complete Purchase"
+  }
+}

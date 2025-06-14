@@ -1,0 +1,55 @@
+<section>
+  <div class="layout">
+    <div class="flex items-center justify-center sm:p-4 lg:p-0">
+      <div class="sm:w-full md:w-1/3 my-5 h-auto">
+        <div class="title text-xl p-2 text-accentColor uppercase text-center">Contact Us</div>
+        {% form 'contact' %}
+          <div class="{{settings.input_style}} my-3">
+            <input type="text" name="contact[first_name]" class="form_input" placeholder="First Name">
+          </div>
+
+          <div class="{{settings.input_style}} my-3">
+            <input type="text" name="contact[last_name]" class="form_input" placeholder="Last Name">
+          </div>
+
+          <div class="{{settings.input_style}} my-3">
+            <input type="tel" name="contact[phone]" class="form_input" placeholder="Phone No">
+          </div>
+
+          <div class="{{settings.input_style}} my-3">
+            <input type="email" name="contact[email]" required class="form_input" placeholder="Email">
+          </div>
+          <div class="{{settings.input_style}} my-3">
+            <textarea name="contact[body]" class="form_input" placeholder="Your message"></textarea>
+          </div>
+
+          <div class="{{ settings.btn_style }} p-2 text-center">
+            <input type="submit" value="Send">
+          </div>
+
+          {%- if form.errors -%}
+            <div class="p-2 my-2 text-sm bg-[#ffff] text-[#e04a4a]">
+              {{ form.errors | default_errors }}
+            </div>
+           {%- endif -%}
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Contact Form",
+    "settings": [
+      
+    ],
+    "presets": [
+      {
+        "name": "Contact Form",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

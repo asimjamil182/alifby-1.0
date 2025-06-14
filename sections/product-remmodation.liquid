@@ -1,0 +1,33 @@
+<section>
+  <div class="section-heading">{{ section.settings.heading_txt }}</div>
+    <div class="layout">
+      <product-recommendation product-id="{{ product.id }}"></product-recommendation>
+    </div>
+</section>
+  {% schema %}
+    {
+        "name": "Product Recommendation",
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading_txt",
+            "label": "Heading",
+            "default": "You may also like"
+          }
+        
+        ],
+        "presets": [
+          {
+            "name": "Product Recommendation",
+            "settings": {
+              
+            }
+          }
+        ],
+        "enabled_on": {
+          "templates": ["product"]
+        }
+    }
+  {% endschema %}
+  
+  

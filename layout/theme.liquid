@@ -1,0 +1,135 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+    <link rel="icon" type="image/x-icon" href="{{ 'alifby-favicon.ico' | asset_url }}">
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <script src="{{ 'swiper-element-bundle.js' | asset_url }}" defer></script>
+    {{ content_for_header }}
+
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    %}
+
+    <style>
+      {{ settings.type_body_font | font_face: font_display: 'swap' }}
+      {{ body_font_bold | font_face: font_display: 'swap' }}
+      {{ body_font_italic | font_face: font_display: 'swap' }}
+      {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+      {{ settings.type_header_font | font_face: font_display: 'swap' }}
+      {{ settings.type_menu_font | font_face: font_display: 'swap' }}
+      {{ settings.type_btn_font | font_face: font_display: 'swap' }}
+
+        :root{
+          --theme-primaryColor-color: {{settings.primaryColor}};
+          --theme-secondaryColor-color: {{settings.secondaryColor}};
+          --theme-background-color: {{settings.backgroundColor}};
+          --theme-text-color: {{settings.textColor}};
+          --theme-subtext-color: {{settings.subtextColor}};
+          --theme-accent-color: {{settings.accentColor}};
+          --theme-neutral-light-color: {{settings.neutralLightColor}};
+          --theme-neutral-dark-color: {{settings.neutralDarkColor}};
+
+
+          --theme-black-color: rgba(0, 0, 0, {{settings.black}});;
+          --theme-disable-color: #c7c7c7;
+          --theme-transparent-color: transparent;
+
+          --swiper-pagination-color: {{ settings.primaryColor }};
+
+          --layout-width: {{settings.layout_width}};
+          {%- if settings.layout_width=='100%' -%}
+            --layout-padding:16px;
+          {%- else -%}
+            --layout-padding:8px;
+          {%- endif -%}
+
+          --button-raduis: {{settings.button_raduis}}px;
+
+          --input-raduis:{{settings.input_raduis}}px;
+          {% unless settings.input_isborder %}
+          --input-isborder:0px;
+          {% endunless %}
+
+          --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+          --font-heading-style: {{ settings.type_header_font.style }};
+          --font-heading-weight: {{ settings.type_header_font.weight }};
+
+          --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+          --font-body-style: {{ settings.type_body_font.style }};
+          --font-body-weight: {{ settings.type_body_font.weight }};
+
+          --font-menu-family: {{ settings.type_menu_font.family }}, {{ settings.type_menu_font.fallback_families }};
+          --font-menu-style: {{ settings.type_menu_font.style }};
+          --font-menu-weight: {{ settings.type_menu_font.weight }};
+
+          --font-btn-family: {{ settings.type_btn_font.family }}, {{ settings.type_btn_font.fallback_families }};
+          --font-btn-style: {{ settings.type_btn_font.style }};
+          --font-btn-weight: {{ settings.type_btn_font.weight }};
+
+      }
+    </style>
+
+    <meta name="theme-color" content="{{ settings.primaryColor }}">
+    <meta name="color-scheme" content="light">
+  </head>
+  <body id="themeBody" class="ltr-direction">
+    <div class="flex flex-col h-screen {% if settings.is_sticky_header %}md:h-screen {% else %} md:h-auto{% endif %}">
+      {% section 'announcement' %}
+
+      {% comment %} <a href="{{ company_location.url_to_set_as_current }}">change location</a> {% endcomment %}
+      <header>{% section 'header' %}</header>
+      <main class=" overflow-y-auto scroll-none md:scroll md:scroll-wa ">
+        {% comment %}
+          <div id="app-spinner" class="fixed left-0 right-0 bottom-0 top-0 z-10 flex items-center justify-center">
+            {%- render 'icon',
+              iconName: 'spinner',
+              class: 'inline text-center text-subtextColor fill-secondaryColor animate-spin',
+              size: '30px'
+            -%}
+          </div>
+        {% endcomment %}
+        <div id="themeContent" class="flex flex-col" style="gap:{{ settings.section_space }}px;">
+          {{ content_for_layout }}
+        </div>
+        <footer id="footer">{% section 'footer' %}</footer>
+        {%- if request.page_type != 'cart' -%}
+          {%- render 'shop-cart' -%}
+        {%- endif -%}
+      </main>
+    </div>
+
+    <div
+      id="quick-view"
+      class=" fixed top-0 left-0 right-0 bottom-0 z-20 sm:p-4 md:p-0 flex hidden items-center justify-center"
+    >
+      <div id="quickview-overlay" class="bg-backgroundColor fixed top-0 left-0 right-0 bottom-0 opacity-10"></div>
+      <div class="bg-[#ffff] sm:w-full md:w-2/3 lg:w-1/2 shadow-md relative m-0">
+        <div class="flex items-center justify-between p-2 border-b border-neutralLightColor">
+          <div class=" text-textColor text-sm uppercase">Quick View</div>
+          {%- render 'icon', iconName: 'x', id: 'quickview_close_icon', class: ' cursor-pointer', size: '25px' -%}
+        </div>
+        <div id="quickveiw-render" class=" overflow-y-auto p-2 sm:h-[90%] md:h-[inherit]"></div>
+      </div>
+    </div>
+
+    {%- section 'newslater-popup' -%}
+    <script src="{{ 'script.js' | asset_url }}" defer></script>
+    <script src="{{ 'components.js' | asset_url }}" defer></script>
+    <script src="{{ 'theme-editer.js' | asset_url }}" defer></script>
+    {% comment %} <script src="{{ 'mobile-app-controller.js' | asset_url }}" defer></script> {% endcomment %}
+  </body>
+</html>

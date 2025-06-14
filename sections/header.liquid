@@ -1,0 +1,227 @@
+{%- if section.settings.isOverrideDefualt -%}
+  <style>
+    .{{ section.id }} .search_bar {
+      color: {{ section.settings.text_color }};
+    }
+    .{{ section.id }} .search-icon {
+      color: {{ section.settings.text_color }};
+    }
+  </style>
+{%- endif -%}
+
+{% case section.settings.header_style %}
+  {% when 'style1' %}
+    <header
+      class="{{ section.id }} shadow-sm bg-[#ffff] font-medium flex-grow-[1] z-10 md:relative"
+      style="{% if section.settings.isOverrideDefualt %}background-color:{{section.settings.header_bg}} !important;{% endif %}"
+    >
+      <div id="overlay" class="overlay fixed left-0 right-0 bottom-0 top-0 bg-backgroundColor z-[2] hidden  opacity-10"></div>
+      <div class="layout {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %}">
+        <main-menu class="text-secondaryColor flex sm:gap-y-2 md:gap-y-0 items-center flex-wrap py-3 md:flex-nowrap md:m-auto justify-between {% if section.settings.isdivider %}md:border-b border-neutralLightColor{% endif %}">
+          <div class="md:hidden w-[65px]">
+            {%- render 'icon',
+              iconName: 'list',
+              fill:section.settings.icon_color,
+              id: 'menu-navigator',
+              class: 'fill-textColor inline-block w-[35] h-[35]'
+            -%}
+          </div>
+          
+          <div class="flex-1 md:flex-none flex {% if section.settings.islogocentersmall %}justify-center{% else %}justify-left{% endif %} md:justify-start">
+            {% render 'header-logo',
+              logoType: settings.logo_type,
+              logoText: settings.logo_txt,
+              logoTextColor: settings.logo_txt_color,
+              logoTextSize: settings.text_size,
+              logoImage: settings.logo_img,
+              size: settings.logo_size
+            %}
+          </div>
+          <div class="order-1 md:order-[0] hidden md:flex  w-full md:w-[24rem] lg:w-[30rem]" id="searchBar">
+            {%- render 'searchbar', class: 'bg-[transparent] search_bar', type: section.settings.searchbar_style -%}
+          </div>
+          <div class="flex justify-end items-center">
+            {% render 'header-icon', fill:section.settings.icon_color %}
+          </div>
+        </main-menu>
+      </div>
+      <div class="main_menu layout relative hidden md:flex justify-center">
+        {% render 'main-menu',
+          headerMenu: section.settings.header_menu,
+          class: 'justify-center',
+          menuLinksColor: section.settings.text_color
+        %}
+      </div>
+    </header>
+  {% when 'style2' %}
+    <header
+      class="{{ section.id }} shadow-sm bg-[#ffff]  font-medium flex-grow-[1] z-10 md:relative"
+      style="{% if section.settings.isOverrideDefualt %}background-color:{{section.settings.header_bg}} !important;{% endif %}"
+    >
+      <div id="overlay" class="overlay fixed left-0 right-0 bottom-0 top-0 bg-backgroundColor z-[2] hidden opacity-10"></div>
+      <div class="layout {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %}">
+        {% if section.settings.islogocenter %}
+          <div class="hidden md:flex item-center justify-center p-2">
+            {% render 'header-logo',
+              logoType: settings.logo_type,
+              logoText: settings.logo_txt,
+              logoTextColor: settings.logo_txt_color,
+              logoTextSize: settings.text_size,
+              logoImage: settings.logo_img,
+              size: settings.logo_size
+            %}
+          </div>
+        {% endif %}
+        <main-menu class="flex gap-1 md:gap-3 w-full items-center py-2 justify-between md:justify-center flex-wrap md:flex-nowrap {% if section.settings.isdivider %}md:border-t border-neutralLightColor{% endif %}">
+          <div class="md:hidden w-[65px]">
+            {%- render 'icon',
+              iconName: 'list',
+              id: 'menu-navigator',
+              fill: section.settings.icon_color
+              class: 'fill-textColor inline-block w-[35] h-[35]'
+            -%}
+          </div>
+          <div class="flex-1 flex {% if section.settings.islogocentersmall %}justify-center{% else %}justify-left{% endif %} {% if section.settings.islogocenter %} md:hidden{% else %}md:flex-none{% endif %}">
+            {% render 'header-logo',
+              logoType: settings.logo_type,
+              logoText: settings.logo_txt,
+              logoTextColor: settings.logo_txt_color,
+              logoTextSize: settings.text_size,
+              logoImage: settings.logo_img,
+              size: settings.logo_size
+            %}
+          </div>
+          <div class="hidden md:block md:flex-1 overflow-x-auto">
+            {% render 'main-menu',
+              headerMenu: section.settings.header_menu,
+              class: 'w-full',
+              menuLinksColor: section.settings.text_color
+            %}
+          </div>
+          <div class="order-1 md:order-[0] hidden md:block w-full md:w-[20rem]" id="searchBar">
+            {%- render 'searchbar', class: 'bg-[transparent] search_bar', type: section.settings.searchbar_style -%}
+          </div>
+          <div class="relative flex items-center justify-end">
+            {% render 'header-icon', searchIcon: false, fill:section.settings.icon_color %}
+          </div>
+        </main-menu>
+      </div>
+    </header>
+  {% else %}
+
+{% endcase %}
+
+{%- render 'mobile-menu', headerMenu: section.settings.header_menu -%}
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "header_menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "catagory_menu",
+      "label": "Catagory List"
+    },
+    {
+      "type": "checkbox",
+      "id": "iscatagory",
+      "label": "Show Catagory List",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "header_style",
+      "label": "Header Styles",
+      "options": [
+        {
+          "value": "style1",
+          "label": "Style 1"
+        },
+        {
+          "value": "style2",
+          "label": "Style 2"
+        }
+      ],
+      "default": "style2",
+      "info": "Header different Styles"
+    },
+    {
+      "type": "select",
+      "id": "searchbar_style",
+      "label": "Search bar style",
+      "options": [
+        {
+          "value": "style1",
+          "label": "Style 1"
+        },
+        {
+          "value": "style2",
+          "label": "Style 2"
+        }
+      ],
+      "default": "style1",
+      "info": "Search bar different styles"
+    },
+    
+    {
+      "type": "header",
+      "content": "Logo Postion Center"
+    },
+    {
+      "type": "checkbox",
+      "id": "islogocenter",
+      "label": "Large Devices",
+      "info": "This setting apply on laptop and desktop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "islogocentersmall",
+      "label": "Small Devices",
+      "info": "This setting apply on mobile and tablet",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "isdivider",
+      "label": "Show Divider line",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Color",
+      "default": false,
+      "info": "When this setting on override theme colors"
+    },
+    {
+      "type": "color",
+      "id": "header_bg",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#333"
+    }
+  ]
+}
+{% endschema %}

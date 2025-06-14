@@ -1,0 +1,58 @@
+{%- unless section.settings.newsletter_enable==false -%}
+  <newsletter-popup time-interval="{{ section.settings.timeinterval }}" class="newsletter-popup hidden shadow-md">
+    <div id="newsletter-overlay" class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-10 bg-[#0000003b]">
+        <div class="bg-[#ffff] flex flex-wrap md:flex-nowrap relative m-2 md:m-0">
+          {%- render 'icon', iconName: 'x', id: 'newletter_close_icon', class: ' cursor-pointer flex-none absolute top-0 right-0', size: '25px' -%}
+            <div class="hidden w-1/2 md:block">
+            {%- if section.settings.img -%}
+              <img src="{{ section.settings.img | image_url: width: 500, height: 500 }}" width="" height="" alt="image" srcset="">
+              {%- else -%}
+              <img src="https://placehold.co/500" width="" height="" alt="image" srcset="">
+            {%- endif -%}
+            </div>
+            <div class=" w-full md:w-1/2 flex items-center justify-center">
+                <div class="w-full p-2 py-10 md:py-0">
+                    <div class="text-center p-2 text-lg text-accentColor uppercase">Subscribe to our newsletter</div>
+                    <div class="text-center text-sm pb-2 text-textColor">Promotions, new products and sales. Directly to your inbox.</div>
+                    {%- form 'customer' -%}
+                        <input type="hidden" name="contact[tags]" value="newsletter">
+                        <div class="{{settings.input_style }} border-neutralLightColor overflow-hidden w-full">
+                          <input type="email" name="contact[email]" required placeholder="Enter your Email" class="form_input" id="">
+                        </div>
+                        <button type="submit" class="{{settings.btn_style }} mt-3 mx-auto block w-1/2">Subscribe</button>
+                        
+                        {%- if form.posted_successfully? -%}
+                          <div class="text-sm text-accentColor py-2 text-center">Thanks For Subcribe. We get in touch soon.</div>
+                        {%- endif -%}
+                      {%- endform -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</newsletter-popup>
+{%- endunless -%}
+
+{% schema %}
+  {
+    "name": "Newsletter Popup",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "newsletter_enable",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "img",
+        "label": "Popup Image"
+      },
+      {
+        "type": "number",
+        "id": "timeinterval",
+        "label": "Popup show Time",
+        "default": 5000
+      }
+    ]
+  }
+{% endschema %}
