@@ -34,7 +34,7 @@
     "btn_style": "btn-outline-color",
     "button_raduis": 36,
     "input_style": "input-outline",
-    "input_raduis": 5,
+    "input_raduis": 36,
     "input_isborder": true,
     "show_rating_icon": true,
     "product_card_img_bg": "#e6e6e6",
