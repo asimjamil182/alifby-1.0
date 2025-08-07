@@ -1,12 +1,12 @@
 <nav
-  class="flex gap-x-5 text-textColor text-md items-center overflow-x-auto whitespace-nowrap scroll-none font-menu {{ class }}"
+  class="flex h-auto gap-x-5 text-textColor text-md items-center overflow-x-auto whitespace-nowrap scroll-none font-menu {{ class }}"
 >
   {% if section.settings.catagory_menu and section.settings.iscatagory %}
     <catagory-menu>
       <div id="catagory-overlay" class="overlay fixed left-0 right-0 bottom-0 top-0 bg-backgroundColor z-[2] hidden opacity-5"></div>
       <div
         id="catagory-navigator"
-        class="flex items-center justify-center gap-0.5 text-textColor font-semibold cursor-pointer"
+        class="flex items-center justify-center py-3 gap-0.5 text-textColor font-semibold cursor-pointer"
         style="{% if section.settings.isOverrideDefualt %}color:{{menuLinksColor}} !important;{% endif %}"
       >
         {%- render 'icon', iconName: 'list', class: 'p-1  ', fill: section.settings.icon_color -%}
@@ -16,7 +16,7 @@
     </catagory-menu>
   {% endif %}
   {% for link in linklists[headerMenu].links %}
-    <menu-link class="text-center py-2" megaMenu="{% if link.links != blank %}true{% else %}false{% endif %}">
+    <menu-link class="text-center py-3" megaMenu="{% if link.links != blank %}true{% else %}false{% endif %}">
       <a
         href="{{ link.url }}"
         class="text-textColor hover:text-textColor font-semibold"

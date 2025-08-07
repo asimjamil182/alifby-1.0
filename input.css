@@ -9,9 +9,7 @@
     --theme-disable-color: #a5a5a5;
     --theme-transparent-color: transparent;
 
-
     --layout-width: 75%;
-
     /* button */
     --button-raduis: 0px;
     /* input */
@@ -45,7 +43,7 @@
 
 @layer components {
     body {
-        @apply bg-[#f8f8f8] font-body;
+        @apply bg-[#f8f8f8];
         font-style: var(--font-body-style);
         font-weight: var(--font-body-weight);
     }
