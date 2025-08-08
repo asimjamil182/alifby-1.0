@@ -1607,6 +1607,8 @@ class CatagoryMenu extends HTMLElement {
         this.catagoryList = this.querySelector('#catagory-list');
         this.catagoryOverlay = this.querySelector('#catagory-overlay');
         this.catagoryNavigator.addEventListener('click', this.showCatgoryList.bind(this));
+        this.catagoryNavigator.addEventListener('mouseover', this.showCatgoryList.bind(this));
+        this.catagoryList.addEventListener('mouseleave', this.hideCatagoryList.bind(this));
         this.catagoryOverlay.addEventListener('click', this.hideCatagoryList.bind(this));
     }
 
@@ -1651,6 +1653,7 @@ class CatagoryLink extends HTMLElement {
 }
 
 customElements.define('catagory-link', CatagoryLink);
+
 class LocalizationForm extends HTMLElement {
     constructor() {
         super();

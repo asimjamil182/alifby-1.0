@@ -1,8 +1,15 @@
-<div id="catagory-list" class="absolute text-textColor z-10 max-w-[72%] transition-opacity duration-300 hidden border-t border-disabled">
+<div
+  id="catagory-list"
+  class="absolute text-textColor z-10 w-auto border transition-opacity hidden duration-300 border-t border-neutralLightColor"
+>
   <div class="flex w-full shadow-md">
     <div class="bg-[#ffff] min-w-36">
       {% for link in linklists[catagoryMenu].links %}
-        <catagory-link is-target="{{ link.child_current  }}" target-catgory="{{ link.handle }}"  class=" hover:text-secondaryColor transition-all duration-200 hover:bg-backgroundColor flex items-center justify-between gap-2 p-2 relative cursor-pointer">
+        <catagory-link
+          is-target="{{ link.child_current  }}"
+          target-catgory="{{ link.handle }}"
+          class=" hover:text-secondaryColor transition-all duration-200 hover:bg-backgroundColor flex items-center justify-between gap-2 p-2 relative cursor-pointer"
+        >
           <img src="https://placehold.co/30x30" alt="placeholder" width="30" height="30">
           <span class="flex-1">{{ link.title }}</span>
           {% if link.child_current %}
@@ -12,20 +19,36 @@
       {% endfor %}
     </div>
     {% for link in linklists[catagoryMenu].links %}
-      
-      {% if link.links.size>0 %}
-        <div id="child-cat-{{ link.handle }}" class="child-catagory p-4 bg-[#ffff] border-l border-neutralLightColor {% unless forloop.index==1 %}hidden{% endunless %}">
+      {% if link.links.size > 0 %}
+        <div
+          id="child-cat-{{ link.handle }}"
+          class="child-catagory p-4 bg-[#ffff] border-l border-neutralLightColor {% unless forloop.index==1 %}hidden{% endunless %}"
+        >
           <div class="flex flex-wrap gap-4 text-sm w-full">
-            {% for child_link in link.links %}
-              <a href="{{ child_link.url }}">
+            {% for child_link in link.links limit: 4 %}
+              {% assign collection_handle = child_link.url | split: '/' | last %}
+              {% assign collection = collections[collection_handle] %}
+              <a href="{{ child_link.url }}" class="w-[200px]">
+              {% if collection.image!=empty %}
+                  <img class=" object-cover w-full h-full" src="{{ collection.image | img_url: '300x350' }}" alt="{{ collection.title }}" width="" height="">
+              {% else %}
+                  <img class="object-cover w-full h-full" src="https://placehold.co/300x350" alt="placeholder" width="" height="">
+              {% endif %}
+              <div class="text-sm overflow-hidden text-ellipsis line-clamp-1 py-1" title="{{ child_link.title }}">{{ child_link.title }}</div>
+              </a>
+              {% comment %} <a href="{{ child_link.url }}">
                 <img src="https://placehold.co/500x500" alt="placeholder" width="150" height="150">
                 <div class="text-sm">{{ child_link.title }}</div>
-              </a>
+              </a> {% endcomment %}
             {% endfor %}
           </div>
+          {%- if link.links.size>4 -%}
+            <div class="flex justify-end mt-4">
+            <a href="{{ link.url }}" class=" text-primaryColor">View all</a>
+          </div>
+          {%- endif -%}
         </div>
       {% endif %}
-
     {% endfor %}
   </div>
 </div>

@@ -1638,6 +1638,10 @@ variant-selector input[type="radio"]:checked+label {
   width: 17;
 }
 
+.w-\[200px\] {
+  width: 200px;
+}
+
 .w-\[22\] {
   width: 22;
 }
@@ -1726,6 +1730,10 @@ variant-selector input[type="radio"]:checked+label {
   width: weird-and-invalid;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1761,10 +1769,6 @@ variant-selector input[type="radio"]:checked+label {
 
 .max-w-\[220px\] {
   max-width: 220px;
-}
-
-.max-w-\[72\%\] {
-  max-width: 72%;
 }
 
 .flex-1 {
