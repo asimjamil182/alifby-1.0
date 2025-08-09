@@ -88,7 +88,7 @@
         "slide_RhUGH4"
       ],
       "settings": {
-        "slide_dot": false,
+        "slide_dot": true,
         "slide_dot_color": "#333333",
         "slide_arrow": false,
         "slide_arrow_color": "#333333",
