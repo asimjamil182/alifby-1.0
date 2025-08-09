@@ -1605,23 +1605,18 @@ class CatagoryMenu extends HTMLElement {
         super();
         this.catagoryNavigator = this.querySelector('#catagory-navigator');
         this.catagoryList = this.querySelector('#catagory-list');
-        this.catagoryOverlay = this.querySelector('#catagory-overlay');
-        this.catagoryNavigator.addEventListener('click', this.showCatgoryList.bind(this));
-        this.catagoryNavigator.addEventListener('mouseover', this.showCatgoryList.bind(this));
+        this.catagoryNavigator.addEventListener('mouseenter', this.showCatgoryList.bind(this));
+        this.catagoryNavigator.addEventListener('mouseleave', this.hideCatagoryList.bind(this));
+        this.catagoryList.addEventListener('mouseenter', this.showCatgoryList.bind(this));
         this.catagoryList.addEventListener('mouseleave', this.hideCatagoryList.bind(this));
-        this.catagoryOverlay.addEventListener('click', this.hideCatagoryList.bind(this));
     }
 
     showCatgoryList() {
-        this.catagoryNavigator.classList.add('z-10');
         this.catagoryList.classList.remove('hidden');
-        this.catagoryOverlay.classList.remove('hidden');
     }
 
     hideCatagoryList() {
-        this.catagoryNavigator.classList.remove('z-10');
         this.catagoryList.classList.add('hidden');
-        this.catagoryOverlay.classList.add('hidden');
     }
 }
 

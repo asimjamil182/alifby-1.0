@@ -5,7 +5,7 @@
   ></div>
   <div
     id="mobile-menu"
-    class="md:hidden fixed left-0 h-full top-0 w-2/3 overflow-hidden bg-[#ffff] shadow-md transform  transition-transform -translate-x-full  duration-300 ease-in-out"
+    class="md:hidden fixed left-0 h-full top-0 w-2/3 overflow-hidden bg-[#ffff] shadow-md transform font-menu  transition-transform -translate-x-full  duration-300 ease-in-out"
   >
     <div class="flex w-full flex-col h-full">
       <div>
@@ -32,7 +32,7 @@
             class="border-b border-neutralLightColor p-2 flex items-center w-full justify-between text-lg capitalize text-textColor"
           >
             <span>All Catagories</span>
-            {%- render 'icon', iconName: 'right-arrow', class: 'w-[25] h-[25] cursor-pointer  ' -%}
+            {%- render 'icon', iconName: 'chevron-right', class: 'cursor-pointer fill-textColor',size:15 -%}
           </mobile-menu-link>
         {% endif %}
           {% for link in linklists[headerMenu].links %}
@@ -43,7 +43,7 @@
             >
               {% if link.links != blank -%}
                 {{ link.title -}}
-                {%- render 'icon', iconName: 'right-arrow', class: 'w-[25] h-[25] cursor-pointer fill-textColor' -%}
+                {%- render 'icon', iconName: 'chevron-right', class: 'cursor-pointer',size:15 -%}
               {%- else -%}
                 <a href="{{ link.url }}">{{ link.title }}</a>
               {%- endif %}
@@ -57,14 +57,14 @@
         >
           {%- for link in linklists[section.settings.catagory_menu].links -%}
             {% if link.links != blank %}
-              <div class="border-b border-neutralLightColor text-lg p-2 flex items-center font-semibold mb-1">
+              <div class="border-b border-neutralLightColor text-md p-2 flex items-center font-semibold  mb-1">
                 <a href="{{ link.url }}" class="block">{{ link.title }}</a>
               </div>
               <ul class=" child:pl-1 font-normal flex flex-wrap gap-1 justify-between">
                 {% for grandchild_link in link.links %}
-                  <li class="p-1 border border-neutralLightColor flex-1 text-center hover:bg-backgroundColor hover:text-secondaryColor hover:border-bgColor">
-                    <a class=" whitespace-nowrap" href="{{ grandchild_link.url }}">
-                      {{- grandchild_link.title -}}
+                  <li class="p-1 text-ellipsis whitespace-nowrap border border-neutralLightColor flex-1 text-center hover:bg-backgroundColor hover:text-secondaryColor hover:border-bgColor">
+                    <a class="" href="{{ grandchild_link.url }}">
+                      {{- grandchild_link.title | truncate: 20 -}}
                     </a>
                   </li>
                 {% endfor %}

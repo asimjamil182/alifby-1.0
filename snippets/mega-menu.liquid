@@ -1,9 +1,9 @@
 {%- assign link = object -%}
 <div
   id="megamenu"
-  class="hidden absolute mt-2 {% if link.levels !=1 %}left-0 right-0 py-4{% else %} p-2 {% endif %} bg-[#ffff] shadow-md z-10"
+  class="hidden absolute bg-[#ffff] shadow-md z-10 border-t border-neutralLightColor"
 >
-  <div class="layout lg:px-0">
+  {% comment %} <div class="layout lg:px-0">
     {%- if link.levels != 1 -%}
       <div class="flex text-left gap-x-4 w-[80%] mx-auto">
         {%- assign collection_image = collections[link.handle].image -%}
@@ -41,9 +41,14 @@
     {%- else -%}
       <ul class="text-left text-sm min-w-[150px]">
         {%- for child_link in link.links -%}
-          <li><a href="{{ child_link.url }}" class="hover:translate-x-1 hover:font-semibold py-1 inline-block" >{{ child_link.title }}</a></li>
+          <li><a href="{{ child_link.url }}" class="hover:translate-x-1 hover:font-semibold transition-all duration-300 py-1 inline-block" >{{ child_link.title }}</a></li>
         {%- endfor -%}
       </ul>
     {%- endif -%}
-  </div>
+  </div> {% endcomment %}
+  <ul class="text-left text-md min-w-[150px]">
+        {%- for child_link in link.links -%}
+          <li><a href="{{ child_link.url }}" class="hover:text-secondaryColor hover:bg-primaryColor w-full p-2 transition-all duration-300 inline-block" >{{ child_link.title }}</a></li>
+        {%- endfor -%}
+      </ul>
 </div>

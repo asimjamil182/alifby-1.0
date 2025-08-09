@@ -1,9 +1,9 @@
 <div
   id="catagory-list"
-  class="absolute text-textColor z-10 w-auto border transition-opacity hidden duration-300 border-t border-neutralLightColor"
+  class="absolute hidden text-textColor z-10 w-auto border transition-opacity duration-300 border-t border-neutralLightColor"
 >
   <div class="flex w-full shadow-md">
-    <div class="bg-[#ffff] min-w-36">
+    <div class="bg-[#ffff] min-w-[200px] max-w-[300px]">
       {% for link in linklists[catagoryMenu].links %}
         <catagory-link
           is-target="{{ link.child_current  }}"
@@ -25,22 +25,41 @@
           id="child-cat-{{ link.handle }}"
           class="child-catagory p-4 bg-[#ffff] border-l border-neutralLightColor {% unless forloop.index==1 %}hidden{% endunless %}"
         >
-          <div class="flex flex-wrap gap-4 text-sm w-full">
+          <div class="flex flex-wrap gap-4 text-sm w-full justify-between">
             {% for child_link in link.links limit: 4 %}
-              {% assign collection_handle = child_link.url | split: '/' | last %}
-              {% assign collection = collections[collection_handle] %}
-              <a href="{{ child_link.url }}" class="w-[200px]">
-              {% if collection.image!=empty %}
-                  <img class=" object-cover w-full h-full" src="{{ collection.image | img_url: '300x350' }}" alt="{{ collection.title }}" width="" height="">
+              <div class="w-[200px] relative">
+                <a href="{{ child_link.url }}">
+                  {% if child_link.type == 'collection_link' %}
+                    {% assign collection_handle = child_link.url | split: '/' | last %}
+                    {% assign collection = collections[collection_handle] %}
+                    {% if collection.image %}
+                      <img class="object-cover" src="{{ collection.image | img_url: '500x500' }}" alt="{{ collection.title }}" width="" height="">
+                    {% else %}
+                      <img class="object-cover" src="https://placehold.co/500x500" alt="placeholder" width="" height="">
+                    {% endif %}
+                  {% elsif child_link.type == 'product_link' %}
+                    {% assign product_handle = child_link.url | split: '/' | last %}
+                    {% assign product = all_products[product_handle] %}
+                    {% if product.featured_image %}
+                      <img class="object-cover" src="{{ product.featured_image | img_url: '500x500' }}" alt="{{ product.title }}" width="" height="">
+                    {% else %}
+                      <img class="object-cover" src="https://placehold.co/500x500" alt="placeholder" width="" height="">
+                    {% endif %}
+                    
+                  {% else %}
+                    <img class="object-cover" src="https://placehold.co/500x500" alt="placeholder" width="" height="">
+                  {% endif %}
+
+              {% comment %} {% if collection.image!=empty %}
+                  <img class="object-cover" src="{{ collection.image | img_url: '500x500' }}" alt="{{ collection.title }}" width="" height="">
               {% else %}
-                  <img class="object-cover w-full h-full" src="https://placehold.co/300x350" alt="placeholder" width="" height="">
-              {% endif %}
+                  <img class="object-cover" src="https://placehold.co/500x500" alt="placeholder" width="" height="">
+              {% endif %} {% endcomment %}
               <div class="text-sm overflow-hidden text-ellipsis line-clamp-1 py-1" title="{{ child_link.title }}">{{ child_link.title }}</div>
               </a>
-              {% comment %} <a href="{{ child_link.url }}">
-                <img src="https://placehold.co/500x500" alt="placeholder" width="150" height="150">
-                <div class="text-sm">{{ child_link.title }}</div>
-              </a> {% endcomment %}
+              </div>
+
+
             {% endfor %}
           </div>
           {%- if link.links.size>4 -%}

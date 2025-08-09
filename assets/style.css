@@ -1771,6 +1771,18 @@ variant-selector input[type="radio"]:checked+label {
   max-width: 220px;
 }
 
+.max-w-0 {
+  max-width: 0px;
+}
+
+.max-w-20 {
+  max-width: 5rem;
+}
+
+.max-w-32 {
+  max-width: 8rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -3581,6 +3593,10 @@ variant-selector input[type="radio"]:checked+label {
   opacity: 0.2;
 }
 
+.opacity-40 {
+  opacity: 0.4;
+}
+
 .bg-blend-normal {
   background-blend-mode: normal;
 }
@@ -4204,6 +4220,10 @@ variant-selector input[type="radio"]:checked+label {
 
 .hover\:bg-backgroundColor:hover {
   background-color: var(--theme-background-color);
+}
+
+.hover\:bg-primaryColor:hover {
+  background-color: var(--theme-primaryColor-color);
 }
 
 .hover\:font-bold:hover {
