@@ -72,13 +72,13 @@
     {% if product.title %}
       <a
         href="{{product.url}}"
-        class=" cursor-pointer text-ellipsis text-sm line-clamp-1"
+        class=" cursor-pointer text-ellipsis text-sm line-clamp-1 font-menu "
         title="{{product.title}}"
       >
         {{- product.title -}}
       </a>
     {% else %}
-      <a href="#" class=" cursor-pointer text-ellipsis text-sm {% if product.type %}line-clamp-1{% else %} line-clamp-2{% endif %}"> Product title </a>
+      <a href="#" class=" cursor-pointer text-ellipsis text-sm font-menu  {% if product.type %}line-clamp-1{% else %} line-clamp-2{% endif %}"> Product title </a>
     {% endif %}
     {%- unless settings.show_rating_icon == false -%}
       <div>
