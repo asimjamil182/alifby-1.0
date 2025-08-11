@@ -1,10 +1,11 @@
-
 <section class="{{ section.id }}">
   <div
-    class="layout py-2 {% if section.settings.isFullWidth %}lg:w-full{% endif %}" style="background-color:{{ section.settings.bg_color }} !important;">
+    class="layout py-2 {% if section.settings.isFullWidth %}lg:w-full{% endif %}"
+    style="background-color:{{ section.settings.bg_color }} !important;"
+  >
     <div class="flex flex-wrap text-sm">
-      <div class="sm:w-full md:w-4/5">
-        <ul class="product-grid-filter flex gap-3 overflow-hidden overflow-x-auto py-1 scroll-none">
+      <div class="w-full">
+        <ul class="product-grid-filter flex {{ section.settings.tag_alignment }} gap-3 overflow-hidden overflow-x-auto py-1 scroll-none">
           {%- for block in section.blocks -%}
             <label>
               <input
@@ -16,25 +17,28 @@
                 name="filter-producttype"
                 value="{{ collections[block.settings.collection].title | handleize  }}"
               >
-              <span class="{{ settings.btn_style }} inline-block cursor-pointer p-1 px-1.5 bg-[#ffff] text-textColor shadow border-none whitespace-nowrap capitalize {% if section.settings.isDefaultOverride %}btn-revert{% endif %}">
-                {% if block.settings.collection == null -%}
-                  Collection title
-                {%- else %}
-                  {{- collections[block.settings.collection].title -}}
-                {% endif %}
-              </span>
+              {%- if section.settings.tag_style == 'underline' -%}
+                <span class="underline_style  inline-block cursor-pointer py-1 mx-1.5  text-textColor font-semibold whitespace-nowrap capitalize {% if section.settings.isDefaultOverride %}underline_revert{% endif %}">
+                  {% if block.settings.collection == null -%}
+                    Collection title
+                  {%- else %}
+                    {{- collections[block.settings.collection].title -}}
+                  {% endif %}
+                </span>
+              {%- else -%}
+                <span class="btn_style {{ settings.btn_style }} inline-block cursor-pointer p-1 px-1.5 bg-[#d6d5d5] text-textColor border-none whitespace-nowrap capitalize {% if section.settings.isDefaultOverride %}btn-revert{% endif %}">
+                  {% if block.settings.collection == null -%}
+                    Collection title
+                  {%- else %}
+                    {{- collections[block.settings.collection].title -}}
+                  {% endif %}
+                </span>
+              {%- endif -%}
             </label>
           {%- endfor -%}
         </ul>
       </div>
-      <div class="sm:w-full md:w-1/5">
-        {% comment %}
-          <ul class="flex gap-3 items-end justify-end">
-              <li>Sort</li>
-              <li>Price</li>
-          </ul>
-        {% endcomment %}
-      </div>
+      
     </div>
     <product-grid>
       {%- for block in section.blocks -%}
@@ -60,13 +64,15 @@
               {%- endfor -%}
             {% endif %}
           </div>
-          <br>
+    
+            <br>
           <a
             href="{{ collections.all.url }}"
             class="{{ settings.btn_style }} block sm:w-1/2 md:w-1/6 mx-auto text-center {% if section.settings.isDefaultOverride %}btn{% endif %}"
           >
             {{- section.settings.btn_text -}}
           </a>
+         
         </div>
       {%- endfor -%}
     </product-grid>
@@ -80,11 +86,23 @@
       background-color: {{ section.settings.btn_bg_color }};
       border-color: {{ section.settings.btn_border_color }};
     }
+      .{{ section.id }} .btn-revert:hover {
+        background-color: {{ section.settings.btn_bg_color }} !important;
+        color: {{ section.settings.btn_color }} !important;
+        border-color: {{ section.settings.btn_border_color }} !important;
+    }
 
     .{{ section.id }} input[type='radio']:checked + .btn-revert {
       background-color: {{ section.settings.btn_bg_color }};
       color: {{ section.settings.btn_color }};
       border-color: {{ section.settings.btn_border_color }};
+    }
+    .{{ section.id }} .underline_style {
+      color: {{ section.settings.underline_color }};
+    }
+    .{{ section.id }} input[type='radio']:checked + .underline_revert {
+      color: {{ section.settings.underline_color }};
+      border-color: {{ section.settings.underline_color }};
     }
   </style>
 {% endif %}
@@ -101,6 +119,45 @@
       "step": 6,
       "label": "Products Show",
       "default": 12
+    },
+    {
+      "type": "select",
+      "id": "tag_style",
+      "label": "Tag Style",
+      "options": [
+        {
+          "value": "btn",
+          "label": "Button"
+        },
+        {
+          "value": "underline",
+          "label": "Underline"
+        }
+      ],
+      "default": "btn",
+      "info": "Select the style of the tags used for filtering products."
+    },
+    {
+      "type": "select",
+      "id": "tag_alignment",
+      "label": "Tag Alignment",
+      "options": [
+        {
+          "value": "justify-start",
+          "label": "Left"
+        },
+        {
+          "value": "justify-center",
+          "label": "Center"
+        },
+        {
+          "value": "justify-start flex-row-reverse",
+          "label": "Right"
+        }
+        
+      ],
+      "default": "justify-start",
+      "info": "Select the alignment of the tags used for filtering products."
     },
     {
       "type": "text",
@@ -133,13 +190,29 @@
       "type": "checkbox",
       "id": "isDefaultOverride",
       "label": "Enable",
-      "default": true,
+      "default": false,
       "info": "Enable this option to override the theme colors."
+    },
+    {
+      "type": "header",
+      "content": "Tag Underline Style",
+      "info": "This style is applied when the tag style is set to 'Underline'."
+    },
+    {
+      "type": "color",
+      "id": "underline_color",
+      "label": "Underline Color",
+      "default": "#333"
+    },
+    {
+      "type": "header",
+      "content": "Button Style",
+      "info": "This style is applied when the tag style is set to 'Button'."
     },
     {
       "type": "color",
       "id": "btn_color",
-      "label": "Button Text Color",
+      "label": "Text Color",
       "default": "#fff"
     },
     {

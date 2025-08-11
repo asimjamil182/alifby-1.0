@@ -288,8 +288,11 @@
         @apply block;
     }
 
-    .product-grid-filter input[type="radio"]:checked+span {
+    .product-grid-filter input[type="radio"]:checked+.btn_style {
         @apply bg-backgroundColor text-secondaryColor;
+    }
+    .product-grid-filter input[type="radio"]:checked+.underline_style {
+        @apply border-b text-primaryColor;
     }
 
     .form_input {
