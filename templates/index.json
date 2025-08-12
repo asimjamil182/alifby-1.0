@@ -165,22 +165,19 @@
         "product_group_qVri8P": {
           "type": "product-group",
           "settings": {
-            "collection": "gaming-accessories",
-            "product_offset": 0
+            "collection": "gaming-accessories"
           }
         },
         "product_group_LdNRkF": {
           "type": "product-group",
           "settings": {
-            "collection": "",
-            "product_offset": 0
+            "collection": ""
           }
         },
         "product_group_k7PmB4": {
           "type": "product-group",
           "settings": {
-            "collection": "",
-            "product_offset": 0
+            "collection": ""
           }
         }
       },
@@ -190,11 +187,14 @@
         "product_group_k7PmB4"
       ],
       "settings": {
-        "product_limit": 18,
+        "product_limit": 12,
+        "tag_style": "btn",
+        "tag_alignment": "justify-start",
         "btn_text": "View More",
         "isFullWidth": false,
         "bg_color": "rgba(0,0,0,0)",
         "isDefaultOverride": false,
+        "underline_color": "#333333",
         "btn_color": "#ffffff",
         "btn_bg_color": "#333333",
         "btn_border_color": "#333333"
@@ -272,7 +272,7 @@
     "collection_showup_VmLt9K": {
       "type": "collection-showup",
       "settings": {
-        "collection": "",
+        "collection": "gaming-accessories",
         "btn_text": "Shop",
         "tag_skipper": "",
         "slide_arrow": false,
