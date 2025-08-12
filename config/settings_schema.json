@@ -299,6 +299,50 @@
     "name": "Product Card",
     "settings": [
       {
+        "type": "header",
+        "content": "Product card setting"
+      },
+      {
+        "type": "select",
+        "id": "product_card_style",
+        "label": "Product Card Style",
+        "options": [
+          {
+            "value": "card-style-1",
+            "label": "Style 1"
+          },
+          {
+            "value": "card-style-2",
+            "label": "Style 2"
+          }
+        ],
+        "default": "card-style-2"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_compare_price",
+        "label": "Show Product Compare Price",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_badge",
+        "label": "Show Product Badge (Sale, New, etc.)",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_add_to_cart_btn",
+        "label": "Show Add to Cart Button",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quick_view_btn",
+        "label": "Show Quick View Button",
+        "default": false
+      },
+      {
         "type": "checkbox",
         "id": "show_rating_icon",
         "label": "Rating Star",

@@ -77,11 +77,11 @@
             total-pages="{{ paginate.pages }}"
             current-page="{{ paginate.current_page }}"
           >
-            <div id="product-grid" class="flex flex-wrap gap-y-2 mt-2 sm:p-1">
+            <div id="product-grid" class="flex flex-wrap mt-2 sm:p-1 gap-2">
               {%- for product in collection.products -%}
                 {%- render 'product-card',
                   product: product,
-                  class: 'product-card sm:w-[48%] md:w-[20%] lg:md:w-[19%]'
+                  class: 'product-card sm:w-[48%] md:w-[16%]'
                 -%}
               {%- endfor -%}
             </div>

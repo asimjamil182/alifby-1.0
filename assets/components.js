@@ -256,10 +256,12 @@ class ProductCart extends HTMLElement {
     constructor() {
         super();
         this.productId = this.getAttribute('product-id') || null;
-        this.productCartBtn = this.querySelector('#product-cart-btn');
+        this.productCartBtn = this.querySelector('#product-cart-btn') || null;
         this.txt = this.querySelector('#txt');
         this.spinner = this.querySelector('#spinner');
-        this.productCartBtn.addEventListener('click', this.addtocard.bind(this));
+        if (this.productCartBtn != null) {
+            this.productCartBtn.addEventListener('click', this.addtocard.bind(this));
+        }
     }
 
     addtocard() {
@@ -1032,8 +1034,8 @@ class QuickViewListiner extends HTMLElement {
     constructor() {
         super();
         this.productId = this.getAttribute('productId') || null;
-        this.eye_icon = this.querySelector('#eye_icon');
-        this.spinner_icon = this.querySelector('#spinner_icon');
+        this.eye_icon = this.querySelector('#eye_icon') || null;
+        this.spinner_icon = this.querySelector('#spinner_icon') || null;
         this.addEventListener('click', this.triggerQuickView.bind(this))
     }
 
@@ -1042,11 +1044,15 @@ class QuickViewListiner extends HTMLElement {
             return;
         }
         try {
-            this.eye_icon.classList.add('hidden');
-            this.spinner_icon.classList.remove('hidden');
+            if (this.eye_icon!= null && this.spinner_icon != null) {
+                this.eye_icon.classList.add('hidden');
+                this.spinner_icon.classList.remove('hidden');
+            }
             QuickView.laodQuickView(this.productId).then(() => {
-                this.spinner_icon.classList.add('hidden');
-                this.eye_icon.classList.remove('hidden');
+                if (this.eye_icon!= null && this.spinner_icon != null) {
+                    this.eye_icon.classList.remove('hidden');
+                    this.spinner_icon.classList.add('hidden');
+                }
             });
         } catch (error) {
             console.error(error);

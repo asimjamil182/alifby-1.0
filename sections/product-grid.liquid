@@ -38,7 +38,6 @@
           {%- endfor -%}
         </ul>
       </div>
-      
     </div>
     <product-grid>
       {%- for block in section.blocks -%}
@@ -46,33 +45,56 @@
           class="grid-container {% unless forloop.first %}hidden{% endunless %}"
           id="grid-{{ collections[block.settings.collection].title | handleize }}"
         >
-          <div class="flex flex-wrap justify-around gap-y-2 mt-2 sm:p-1 md:p-0">
-            {%- assign products = collections[block.settings.collection].products -%}
-            {% if block.settings.collection != null %}
-              {%- for product in products
-                limit: section.settings.product_limit
-                offset: block.settings.product_offset
-              -%}
-                {%- render 'product-card',
-                  product: product,
-                  class: 'product-card sm:w-[48%] md:w-[20%] lg:md:w-[15%]'
-                -%}
-              {%- endfor -%}
-            {% else %}
-              {%- for i in (1..section.settings.product_limit) -%}
-                {%- render 'product-card', product: false, class: 'product-card sm:w-[48%] md:w-[20%] lg:md:w-[15%]' -%}
-              {%- endfor -%}
-            {% endif %}
-          </div>
-    
-            <br>
+          
+            <div class="flex flex-wrap md:flex-nowrap justify-around gap-2 mt-2 sm:p-1 md:p-0">
+              {%- assign products = collections[block.settings.collection].products -%}
+              {% if block.settings.collection != null %}
+                {%- for product in products limit: 6 offset: 0 -%}
+                  {%- render 'product-card', product: product, class: 'product-card w-[48%] lg:w-1/6' -%}
+                {%- endfor -%}
+              {% else %}
+                {%- for i in (1..6) -%}
+                  {%- render 'product-card', product: false, class: 'product-card w-[48%] lg:w-1/6' -%}
+                {%- endfor -%}
+              {% endif %}
+            </div>
+          
+          {%- if section.settings.product_limit > 6 -%}
+            <div class="flex flex-wrap md:flex-nowrap justify-around gap-2 mt-2 sm:p-1 md:p-0">
+              {%- assign products = collections[block.settings.collection].products -%}
+              {% if block.settings.collection != null %}
+                {%- for product in products limit: 6 offset: 6 -%}
+                  {%- render 'product-card', product: product, class: 'product-card w-[48%] lg:w-1/6' -%}
+                {%- endfor -%}
+              {% else %}
+                {%- for i in (1..6) -%}
+                  {%- render 'product-card', product: false, class: 'product-card w-[48%] lg:w-1/6' -%}
+                {%- endfor -%}
+              {% endif %}
+            </div>
+          {%- endif -%}
+          {%- if section.settings.product_limit > 12 -%}
+            <div class="flex flex-wrap md:flex-nowrap justify-around gap-2 mt-2 sm:p-1 md:p-0">
+              {%- assign products = collections[block.settings.collection].products -%}
+              {% if block.settings.collection != null %}
+                {%- for product in products limit: 6 offset: 12 -%}
+                  {%- render 'product-card', product: product, class: 'product-card w-[48%] lg:w-1/6' -%}
+                {%- endfor -%}
+              {% else %}
+                {%- for i in (1..6) -%}
+                  {%- render 'product-card', product: false, class: 'product-card w-[48%] lg:w-1/6' -%}
+                {%- endfor -%}
+              {% endif %}
+            </div>
+          {%- endif -%}
+
+          <br>
           <a
             href="{{ collections.all.url }}"
             class="{{ settings.btn_style }} block sm:w-1/2 md:w-1/6 mx-auto text-center {% if section.settings.isDefaultOverride %}btn{% endif %}"
           >
             {{- section.settings.btn_text -}}
           </a>
-         
         </div>
       {%- endfor -%}
     </product-grid>
@@ -107,7 +129,6 @@
   </style>
 {% endif %}
 
-
 {% schema %}
 {
   "name": "Products Grid",
@@ -116,7 +137,7 @@
       "type": "range",
       "id": "product_limit",
       "min": 6,
-      "max": 30,
+      "max": 18,
       "step": 6,
       "label": "Products Show",
       "default": 12
@@ -155,7 +176,6 @@
           "value": "justify-start flex-row-reverse",
           "label": "Right"
         }
-        
       ],
       "default": "justify-start",
       "info": "Select the alignment of the tags used for filtering products."
@@ -238,15 +258,6 @@
           "type": "collection",
           "id": "collection",
           "label": "Collection"
-        },
-        {
-          "type": "range",
-          "id": "product_offset",
-          "min": 0,
-          "max": 20,
-          "step": 1,
-          "label": "Products Offset",
-          "default": 0
         }
       ]
     }

@@ -190,11 +190,11 @@
         "product_group_k7PmB4"
       ],
       "settings": {
-        "product_limit": 6,
+        "product_limit": 18,
         "btn_text": "View More",
         "isFullWidth": false,
         "bg_color": "rgba(0,0,0,0)",
-        "isDefaultOverride": true,
+        "isDefaultOverride": false,
         "btn_color": "#ffffff",
         "btn_bg_color": "#333333",
         "btn_border_color": "#333333"
