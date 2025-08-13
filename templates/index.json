@@ -20,7 +20,7 @@
             "font_size": 40,
             "slide_pargarph": "<p>Some short text here!</p>",
             "btn_txt": "Shop Now",
-            "btn_url": "",
+            "btn_url": "/",
             "isTextBox": true,
             "background": "#ffffff",
             "background_opacity": 1,
