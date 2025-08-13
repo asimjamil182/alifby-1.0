@@ -169,7 +169,8 @@
         "product_group_Tyteth": {
           "type": "product-group",
           "settings": {
-            "collection": ""
+            "collection": "gaming-accessories",
+            "product_offset": 0
           }
         },
         "product_group_R7nb8p": {
@@ -192,17 +193,30 @@
       ],
       "name": "Products Grid",
       "settings": {
-        "product_limit": 6,
-        "tag_style": "btn",
-        "tag_alignment": "justify-start",
+        "product_limit": 18,
         "btn_text": "View More",
         "isFullWidth": false,
         "bg_color": "transparent",
         "isDefaultOverride": false,
-        "underline_color": "#333",
-        "btn_color": "#fff",
-        "btn_bg_color": "#333",
-        "btn_border_color": "#333"
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
+      }
+    },
+    "column2_image_iNiVqV": {
+      "type": "column2-image",
+      "settings": {
+        "col1": "",
+        "tagline1": "<p>Tag line</p>",
+        "col2": "",
+        "tagline2": "<p>Tag line</p>",
+        "enable_tags": true,
+        "isFullWidth": false,
+        "bg_color": "rgba(0,0,0,0)",
+        "isDefaultOverride": true,
+        "collection_title_color": "#333333",
+        "tagline_color": "#333333",
+        "tags_color": "#333333"
       }
     },
     "featured_collection_gm37CJ": {
@@ -284,7 +298,7 @@
       "type": "collection-showup",
       "name": "Collection ShowUp",
       "settings": {
-        "collection": "",
+        "collection": "gaming-accessories",
         "btn_text": "Shop",
         "tag_skipper": "",
         "slide_arrow": false,
