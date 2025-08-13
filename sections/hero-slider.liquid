@@ -127,7 +127,12 @@
             <swiper-slide class="flex h-auto {% if section.settings.slide_dot %}pb-10 {% else %} pb-2{% endif %}">
               <div class="relative w-full md:min-h-[auto] ">
                 <div class="video-section flex items-center justify-center">
-                  <video
+                  {%- if block.settings.video_url==blank -%}
+                    <div class="w-full h-[717px] flex items-center justify-center bg-[#ddd]">
+                     <div class="text-textColor text-2xl">No video URL provided</div>
+                    </div>
+                    {%- else -%}
+                      <video
                     style="width: 2000px;"
                     {% if block.settings.muted %}
                       muted
@@ -137,6 +142,8 @@
                     <source src="{{ block.settings.video_url }}" type="video/mp4">
                     Your browser does not support the video tag.
                   </video>
+                  {%- endif -%}
+                  
                 </div>
                 {%- if block.settings.isTextBox -%}
                   <div class="md:absolute top-0 left-0 right-0 bottom-0">
@@ -306,7 +313,7 @@
           "type": "range",
           "id": "font_size",
           "min": 20,
-          "max": 100,
+          "max": 60,
           "step": 1,
           "unit": "px",
           "label": "Font Size",
@@ -497,7 +504,7 @@
           "type": "range",
           "id": "font_size",
           "min": 20,
-          "max": 100,
+          "max": 60,
           "step": 1,
           "unit": "px",
           "label": "Font Size",
@@ -661,7 +668,7 @@
           "type": "slide"
         },
         {
-          "type": "slide"
+          "type": "video_slide"
         }
       ]
     }

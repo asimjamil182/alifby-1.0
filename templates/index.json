@@ -9,10 +9,10 @@
  */
 {
   "sections": {
-    "hero_slider_f6QHQe": {
+    "hero_slider_YBJJ8T": {
       "type": "hero-slider",
       "blocks": {
-        "slide_JUV9fM": {
+        "slide_H4W7fm": {
           "type": "slide",
           "settings": {
             "slide_caption": "<p>CAPTION</p>",
@@ -28,14 +28,14 @@
             "container_positionY": "items-end",
             "container_text_align": "text-left",
             "isDefaultOverride": false,
-            "caption_color": "#333333",
-            "heading_color": "#333333",
-            "shorttxt_color": "#333333",
+            "caption_color": "#333",
+            "heading_color": "#333",
+            "shorttxt_color": "#333",
             "btn_txt_color": "#ffffff",
-            "btn_bg_color": "#333333"
+            "btn_bg_color": "#333"
           }
         },
-        "slide_LmjMea": {
+        "slide_7krKTz": {
           "type": "slide",
           "settings": {
             "slide_caption": "<p>CAPTION</p>",
@@ -51,16 +51,18 @@
             "container_positionY": "items-end",
             "container_text_align": "text-left",
             "isDefaultOverride": false,
-            "caption_color": "#333333",
-            "heading_color": "#333333",
-            "shorttxt_color": "#333333",
+            "caption_color": "#333",
+            "heading_color": "#333",
+            "shorttxt_color": "#333",
             "btn_txt_color": "#ffffff",
-            "btn_bg_color": "#333333"
+            "btn_bg_color": "#333"
           }
         },
-        "slide_RhUGH4": {
-          "type": "slide",
+        "video_slide_tAdLkr": {
+          "type": "video_slide",
           "settings": {
+            "video_url": "",
+            "muted": false,
             "slide_caption": "<p>CAPTION</p>",
             "slide_heading": "Heading Text",
             "font_size": 40,
@@ -74,24 +76,25 @@
             "container_positionY": "items-end",
             "container_text_align": "text-left",
             "isDefaultOverride": false,
-            "caption_color": "#333333",
-            "heading_color": "#333333",
-            "shorttxt_color": "#333333",
+            "caption_color": "#333",
+            "heading_color": "#333",
+            "shorttxt_color": "#333",
             "btn_txt_color": "#ffffff",
-            "btn_bg_color": "#333333"
+            "btn_bg_color": "#333"
           }
         }
       },
       "block_order": [
-        "slide_JUV9fM",
-        "slide_LmjMea",
-        "slide_RhUGH4"
+        "slide_H4W7fm",
+        "slide_7krKTz",
+        "video_slide_tAdLkr"
       ],
+      "name": "Hero Slider",
       "settings": {
-        "slide_dot": true,
-        "slide_dot_color": "#333333",
+        "slide_dot": false,
+        "slide_dot_color": "#333",
         "slide_arrow": false,
-        "slide_arrow_color": "#333333",
+        "slide_arrow_color": "#333",
         "slide_arrow_size": 25,
         "slide_loop": true,
         "slide_autoplay": false,
@@ -99,10 +102,10 @@
         "isFullWidth": false
       }
     },
-    "catagory_group_7kprHN": {
+    "catagory_group_fjmLTG": {
       "type": "catagory-group",
       "blocks": {
-        "catagory_kkcRDy": {
+        "catagory_yxYcC9": {
           "type": "catagory",
           "settings": {
             "cat_label": "Cloths",
@@ -110,7 +113,7 @@
             "cat_link": ""
           }
         },
-        "catagory_f3e7ij": {
+        "catagory_cPmrzf": {
           "type": "catagory",
           "settings": {
             "cat_label": "Shoes",
@@ -118,7 +121,7 @@
             "cat_link": ""
           }
         },
-        "catagory_eEngQG": {
+        "catagory_PydEAA": {
           "type": "catagory",
           "settings": {
             "cat_label": "Watches",
@@ -126,7 +129,7 @@
             "cat_link": ""
           }
         },
-        "catagory_pNcjgR": {
+        "catagory_GyKxbL": {
           "type": "catagory",
           "settings": {
             "cat_label": "Jewelry",
@@ -134,7 +137,7 @@
             "cat_link": ""
           }
         },
-        "catagory_zLJkKX": {
+        "catagory_ytW7ni": {
           "type": "catagory",
           "settings": {
             "cat_label": "Bags",
@@ -144,100 +147,86 @@
         }
       },
       "block_order": [
-        "catagory_kkcRDy",
-        "catagory_f3e7ij",
-        "catagory_eEngQG",
-        "catagory_pNcjgR",
-        "catagory_zLJkKX"
+        "catagory_yxYcC9",
+        "catagory_cPmrzf",
+        "catagory_PydEAA",
+        "catagory_GyKxbL",
+        "catagory_ytW7ni"
       ],
+      "name": "Catagory Group",
       "settings": {
         "isFullWidth": false,
         "isRoundedImage": true,
-        "isDefaultOverride": true,
-        "bg_color": "#ffffff",
-        "label_color": "#333333",
-        "linktext_color": "#333333"
+        "isDefaultOverride": false,
+        "bg_color": "#fff",
+        "label_color": "#333",
+        "linktext_color": "#333"
       }
     },
-    "product_grid_P4NyK6": {
+    "product_grid_Vcnb7z": {
       "type": "product-grid",
       "blocks": {
-        "product_group_qVri8P": {
+        "product_group_Tyteth": {
           "type": "product-group",
           "settings": {
-            "collection": "gaming-accessories",
-            "product_offset": 0
+            "collection": ""
           }
         },
-        "product_group_LdNRkF": {
+        "product_group_R7nb8p": {
           "type": "product-group",
           "settings": {
-            "collection": "",
-            "product_offset": 0
+            "collection": ""
           }
         },
-        "product_group_k7PmB4": {
+        "product_group_CCLpQm": {
           "type": "product-group",
           "settings": {
-            "collection": "",
-            "product_offset": 0
+            "collection": ""
           }
         }
       },
       "block_order": [
-        "product_group_qVri8P",
-        "product_group_LdNRkF",
-        "product_group_k7PmB4"
+        "product_group_Tyteth",
+        "product_group_R7nb8p",
+        "product_group_CCLpQm"
       ],
+      "name": "Products Grid",
       "settings": {
-        "product_limit": 18,
+        "product_limit": 6,
+        "tag_style": "btn",
+        "tag_alignment": "justify-start",
         "btn_text": "View More",
         "isFullWidth": false,
-        "bg_color": "rgba(0,0,0,0)",
+        "bg_color": "transparent",
         "isDefaultOverride": false,
-        "btn_color": "#ffffff",
-        "btn_bg_color": "#333333",
-        "btn_border_color": "#333333"
+        "underline_color": "#333",
+        "btn_color": "#fff",
+        "btn_bg_color": "#333",
+        "btn_border_color": "#333"
       }
     },
-    "column2_image_iNiVqV": {
-      "type": "column2-image",
-      "settings": {
-        "col1": "",
-        "tagline1": "<p>Tag line</p>",
-        "col2": "",
-        "tagline2": "<p>Tag line</p>",
-        "enable_tags": true,
-        "isFullWidth": false,
-        "bg_color": "rgba(0,0,0,0)",
-        "isDefaultOverride": true,
-        "collection_title_color": "#333333",
-        "tagline_color": "#333333",
-        "tags_color": "#333333"
-      }
-    },
-    "featured_collection_8ffpRT": {
+    "featured_collection_gm37CJ": {
       "type": "featured-collection",
       "blocks": {
-        "collection_PTyRHF": {
+        "collection_LHFGyg": {
           "type": "collection",
           "settings": {
             "coll": ""
           }
         },
-        "collection_dxPkdF": {
+        "collection_UrKEXL": {
           "type": "collection",
           "settings": {
             "coll": ""
           }
         },
-        "collection_x78E6B": {
+        "collection_rLMUwi": {
           "type": "collection",
           "settings": {
             "coll": ""
           }
         },
-        "collection_mJYj3y": {
+        "collection_B3ib76": {
           "type": "collection",
           "settings": {
             "coll": ""
@@ -245,11 +234,12 @@
         }
       },
       "block_order": [
-        "collection_PTyRHF",
-        "collection_dxPkdF",
-        "collection_x78E6B",
-        "collection_mJYj3y"
+        "collection_LHFGyg",
+        "collection_UrKEXL",
+        "collection_rLMUwi",
+        "collection_B3ib76"
       ],
+      "name": "Featured Colleciton",
       "settings": {
         "heading": "Featured Collection",
         "tagline": "<p>Tag line text here</p>",
@@ -258,19 +248,41 @@
         "enable_viewmore_btn": true,
         "isgap": true,
         "isFullWidth": false,
-        "bg_color": "rgba(0,0,0,0)",
+        "bg_color": "transparent",
         "isDefaultOverride": false,
         "title_color": "#333333",
         "tagline_color": "#333333",
         "collection_title_color": "#000000",
         "collection_link_color": "#000000",
-        "btn_color": "#ffffff",
-        "btn_bg_color": "#333333",
-        "btn_border_color": "#333333"
+        "btn_color": "#fff",
+        "btn_bg_color": "#333",
+        "btn_border_color": "#333"
       }
     },
-    "collection_showup_VmLt9K": {
+    "main_contact_DrWaDB": {
+      "type": "main-contact",
+      "settings": {}
+    },
+    "column2_image_AcgJAw": {
+      "type": "column2-image",
+      "name": "Two column with image",
+      "settings": {
+        "col1": "",
+        "tagline1": "<p>Tag line</p>",
+        "col2": "",
+        "tagline2": "<p>Tag line</p>",
+        "enable_tags": true,
+        "isFullWidth": false,
+        "bg_color": "transparent",
+        "isDefaultOverride": false,
+        "collection_title_color": "#333",
+        "tagline_color": "#333",
+        "tags_color": "#333"
+      }
+    },
+    "collection_showup_nXLPwQ": {
       "type": "collection-showup",
+      "name": "Collection ShowUp",
       "settings": {
         "collection": "",
         "btn_text": "Shop",
@@ -281,39 +293,20 @@
         "slide_autoplaytime": 5000,
         "isFullWidth": false,
         "switch_direction": false,
-        "bg_color": "rgba(0,0,0,0)",
+        "bg_color": "transparent",
         "isDefaultOverride": false,
         "collection_title_color": "#000000",
         "product_title_color": "#000000",
         "product_price_color": "#000000",
         "tags_color": "#000000",
-        "btn_color": "#ffffff",
-        "btn_bg_color": "#333333",
-        "btn_border_color": "#333333"
+        "btn_color": "#fff",
+        "btn_bg_color": "#333",
+        "btn_border_color": "#333"
       }
     },
-    "featured_blogs_d6UrJU": {
-      "type": "featured-blogs",
-      "settings": {
-        "blog": "electronics-devices",
-        "heading": "",
-        "tagline": "",
-        "btn_text": "Read",
-        "isFullWidth": false,
-        "bg_color": "rgba(0,0,0,0)",
-        "isDefaultOverride": false,
-        "title_color": "#333333",
-        "tagline_color": "#333333",
-        "blog_author_date_color": "#000000",
-        "blog_title_color": "#000000",
-        "blog_comment_color": "#000000",
-        "btn_color": "#ffffff",
-        "btn_bg_color": "#333333",
-        "btn_border_color": "#333333"
-      }
-    },
-    "featured_product_L7F4b3": {
+    "featured_product_RQRRwa": {
       "type": "featured-product",
+      "name": "Featured Products",
       "settings": {
         "featured-product": "",
         "heading": "Featured Products",
@@ -322,29 +315,81 @@
         "slide_autoplay": false,
         "slide_autoplaytime": "3000",
         "isFullWidth": false,
-        "bg_color": "rgba(0,0,0,0)",
+        "bg_color": "transparent",
         "isDefaultOverride": false,
         "title_color": "#333333",
         "tagline_color": "#333333",
-        "btn_color": "#ffffff",
-        "btn_bg_color": "#333333",
-        "btn_border_color": "#333333"
+        "btn_color": "#fff",
+        "btn_bg_color": "#333",
+        "btn_border_color": "#333"
       }
     },
-    "main_contact_DrWaDB": {
-      "type": "main-contact",
-      "settings": {}
+    "image_banner_zNBrhz": {
+      "type": "Image-banner",
+      "name": "Image Banner",
+      "settings": {
+        "bannar_url": ""
+      }
+    },
+    "icon_with_text_dxjrAq": {
+      "type": "icon-with-text",
+      "blocks": {
+        "section_icons_YtWhKd": {
+          "type": "section_icons",
+          "settings": {
+            "caption": "caption",
+            "paragraph": "<p>some paragraph text</p>"
+          }
+        },
+        "section_icons_zedYcm": {
+          "type": "section_icons",
+          "settings": {
+            "caption": "caption",
+            "paragraph": "<p>some paragraph text</p>"
+          }
+        },
+        "section_icons_V834XT": {
+          "type": "section_icons",
+          "settings": {
+            "caption": "caption",
+            "paragraph": "<p>some paragraph text</p>"
+          }
+        },
+        "section_icons_wFrg3w": {
+          "type": "section_icons",
+          "settings": {
+            "caption": "caption",
+            "paragraph": "<p>some paragraph text</p>"
+          }
+        }
+      },
+      "block_order": [
+        "section_icons_YtWhKd",
+        "section_icons_zedYcm",
+        "section_icons_V834XT",
+        "section_icons_wFrg3w"
+      ],
+      "name": "Icon With Text",
+      "settings": {
+        "image_size": 50,
+        "isFullWidth": false,
+        "bg_color": "transparent",
+        "isDefaultOverride": false,
+        "caption_color": "#333333",
+        "paragraph_color": "#333333"
+      }
     }
   },
   "order": [
-    "hero_slider_f6QHQe",
-    "catagory_group_7kprHN",
-    "product_grid_P4NyK6",
-    "column2_image_iNiVqV",
-    "featured_collection_8ffpRT",
-    "collection_showup_VmLt9K",
-    "featured_blogs_d6UrJU",
-    "featured_product_L7F4b3",
+    "hero_slider_YBJJ8T",
+    "catagory_group_fjmLTG",
+    "product_grid_Vcnb7z",
+    "featured_collection_gm37CJ",
+    "column2_image_AcgJAw",
+    "collection_showup_nXLPwQ",
+    "featured_product_RQRRwa",
+    "image_banner_zNBrhz",
+    "icon_with_text_dxjrAq",
     "main_contact_DrWaDB"
   ]
 }

@@ -1,4 +1,4 @@
-<section class="bg-[#fafafa] py-2">
+<section class="bg-[#fafafa] py-2 font-menu">
   <div class="layout">
     <product-showcase class="bg-[#ffff] md:px-4 py-2">
       <div class="flex product flex-wrap">
@@ -24,7 +24,7 @@
             <div class="flex flex-wrap gap-2 md:gap-3">
               <button
                 id="addtocartbtn"
-                class=" w-full md:flex-1 border {{settings.btn_style }} text-textColor bg-[#ffff] hover:bg-[#ffff] hover:text-textColor mt-2 py-3 font-bold"
+                class=" w-full md:flex-1 border {{settings.btn_style }} !bg-[transparent] text-primaryColor hover:text-primaryColor mt-2 py-3 font-semibold"
                 {%- unless product.available -%}
                   disabled
                 {%- endunless -%}
@@ -37,14 +37,14 @@
                 {%- render 'icon',
                   id: 'spinner',
                   iconName: 'spinner',
-                  class: 'hidden inline text-center text-subtextColor fill-textColor animate-spin',
+                  class: 'hidden inline text-center text-secondary fill-textColor animate-spin',
                   size: '20'
                 -%}
               </button>
               {%- if section.settings.enable_buyitnow -%}
                 <button
                   id="buyitnowbtn"
-                  class="w-full md:flex-1 {{settings.btn_style }} mt-2 py-3 font-bold"
+                  class="w-full md:flex-1 {{settings.btn_style }} mt-2 py-3 font-semibold"
                   {%- unless product.available -%}
                     disabled
                   {%- endunless -%}
@@ -53,7 +53,7 @@
                   {%- render 'icon',
                     id: 'spinner2',
                     iconName: 'spinner',
-                    class: 'hidden inline text-center text-textColor-dark fill-secondaryColor animate-spin',
+                    class: 'hidden inline text-center text-secondary fill-textColor animate-spin',
                     size: '20'
                   -%}
                 </button>
@@ -96,14 +96,30 @@
     {% comment %} {{ product.metafields.custom.reviews }} {% endcomment %}
     {% if product.description != empty %}
       <div class="p-4 bg-[#ffff]">
-        <div class=" text-textColor text-xl border-b border-neutralLightColor">Description</div>
-        <description-handler class="py-2 w-full overflow-hidden">
+        <div class="text-textColor text-xl border-b border-neutralLightColor">Description</div>
+        <div class="py-2 w-full overflow-auto product_description">
           {{ product.description }}
-        </description-handler>
+        </div>
       </div>
     {% endif %}
   </div>
 </section>
+
+<style>
+  .product_description table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+    }
+
+    .product_description img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+  
+</style>
 
 <script>
   function copyToClipboard(text) {
