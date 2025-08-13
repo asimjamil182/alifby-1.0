@@ -1,0 +1,160 @@
+
+{
+  "current": {
+    "is_sticky_header": true,
+    "show_wishlist": true,
+    "show_language_selector": true,
+    "show_country_selector": true,
+    "logo_type": "image",
+    "logo_img": "shopify://shop_images/logoType2.png",
+    "logo_size": 50,
+    "logo_txt": "<h3><em>Logo Text</em></h3><h2></h2>",
+    "logo_txt_color": "#333333",
+    "text_size": 20,
+    "layout_width": "75%",
+    "section_space": 8,
+    "primaryColor": "#f5a9b6",
+    "secondaryColor": "#ffffff",
+    "backgroundColor": "#f5a9b6",
+    "textColor": "#333333",
+    "accentColor": "#000000",
+    "black": 0.7,
+    "type_header_font": "lobster_two_n4",
+    "type_menu_font": "barlow_n4",
+    "type_body_font": "glegoo_n4",
+    "type_btn_font": "figtree_n4",
+    "btn_style": "btn-fill-color",
+    "button_raduis": 3,
+    "input_style": "input-outline",
+    "input_raduis": 3,
+    "input_isborder": true,
+    "product_card_style": "card-style-1",
+    "show_add_to_cart_btn": true,
+    "show_quick_view_btn": true,
+    "show_rating_icon": true,
+    "product_card_img_bg": "#e6e6e6",
+    "accent": "#088787",
+    "bgcolor": "#4682ba",
+    "btnbg": "#4682ba",
+    "btnborder": "#4682ba",
+    "paragraph": "#949191",
+    "link": "#ebb492",
+    "checkout_logo_image": "shopify://shop_images/logo_a90b8670-1af7-4ef8-97c6-00bf497eeb9d.png",
+    "checkout_logo_size": "small",
+    "checkout_accent_color": "#4682ba",
+    "checkout_button_color": "#4682ba",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "header_menu": "main-menu",
+          "catagory_menu": "category-list",
+          "iscatagory": true,
+          "header_style": "style1",
+          "searchbar_style": "style1",
+          "islogocenter": false,
+          "islogocentersmall": true,
+          "isdivider": true,
+          "isOverrideDefualt": false,
+          "header_bg": "#4682ba",
+          "text_color": "#ffffff",
+          "icon_color": "#ffffff"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "menu_8U7XPM": {
+            "type": "menu",
+            "settings": {
+              "footer_menu": "main-menu"
+            }
+          },
+          "menu_6yazhx": {
+            "type": "menu",
+            "settings": {
+              "footer_menu": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "menu_8U7XPM",
+          "menu_6yazhx"
+        ],
+        "settings": {
+          "logo": "shopify://shop_images/logoType2.png",
+          "short_note": "Your one-stop shop for endless style and unbeatable deals. Discover the perfect blend of convenience, quality, and affordability at our platform. Happy shopping!",
+          "copy_right_text": "Copyright © 2021, {{ shop.name }}. All rights reserved.",
+          "bg_color": "#ffffff",
+          "enable_payment_types": true,
+          "isDefaultOverride": false,
+          "short_note_color": "#b5b5b5",
+          "menu_heading_color": "#8f6b4f",
+          "meun_links_color": "#d0b9a7",
+          "btn_color": "#8f6b4f",
+          "btn_bg_color": "#d0b9a7",
+          "btn_border_color": "#8f6b4f",
+          "copy_right_bg_color": "#d0b9a7",
+          "copy_right_text_color": "#8f6b4f"
+        }
+      },
+      "mobile-app-menu": {
+        "type": "mobile-app-menu",
+        "settings": {}
+      },
+      "newslater-popup": {
+        "type": "newslater-popup",
+        "settings": {
+          "newsletter_enable": false,
+          "timeinterval": 10000
+        }
+      },
+      "announcement": {
+        "type": "announcement",
+        "blocks": {
+          "text_E4VPiT": {
+            "type": "text",
+            "settings": {
+              "txt": "<p>10% off all products</p>",
+              "url": ""
+            }
+          },
+          "text_eNqQqq": {
+            "type": "text",
+            "settings": {
+              "txt": "<p>Free delivery on order over 50$</p>",
+              "url": ""
+            }
+          }
+        },
+        "block_order": [
+          "text_E4VPiT",
+          "text_eNqQqq"
+        ],
+        "settings": {
+          "isAnnouncementBar": true,
+          "isAnnouncementList": true,
+          "isContactDetail": true,
+          "isText": false,
+          "phoneno": "0500000505",
+          "gmail": "support@asimdev.com",
+          "isSocailLinks": true,
+          "facebook": "#facebook",
+          "instagram": "#instagram",
+          "tiktok": "#tiktok",
+          "x": "",
+          "isOverrideDefualt": false,
+          "txtColor": "#ffffff",
+          "bgColor": "#333333"
+        }
+      }
+    },
+    "content_for_index": []
+  },
+  "presets": {
+    "Default": {
+      "btn_style": "btn-fill-color",
+      "input_style": "input-rounded"
+    }
+  }
+}
