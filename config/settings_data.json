@@ -1,4 +1,12 @@
-
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "is_sticky_header": true,
@@ -13,9 +21,9 @@
     "text_size": 20,
     "layout_width": "75%",
     "section_space": 8,
-    "primaryColor": "#f5a9b6",
+    "primaryColor": "#1c8686",
     "secondaryColor": "#ffffff",
-    "backgroundColor": "#f5a9b6",
+    "backgroundColor": "#1c8686",
     "textColor": "#333333",
     "accentColor": "#000000",
     "black": 0.7,
