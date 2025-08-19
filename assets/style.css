@@ -866,7 +866,9 @@ input[type="checkbox"]:checked+.radio_back>.radio_dot {
 }
 
 input[type=number] {
-  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
 }
 
 @keyframes fadeInOut {
@@ -1076,6 +1078,10 @@ variant-selector input[type="radio"]:checked+label {
   right: 1rem;
 }
 
+.start-1 {
+  inset-inline-start: 0.25rem;
+}
+
 .top-0 {
   top: 0px;
 }
@@ -1110,90 +1116,6 @@ variant-selector input[type="radio"]:checked+label {
 
 .order-1 {
   order: 1;
-}
-
-.col-span-1 {
-  grid-column: span 1 / span 1;
-}
-
-.col-span-2 {
-  grid-column: span 2 / span 2;
-}
-
-.col-span-3 {
-  grid-column: span 3 / span 3;
-}
-
-.col-span-4 {
-  grid-column: span 4 / span 4;
-}
-
-.col-span-5 {
-  grid-column: span 5 / span 5;
-}
-
-.col-span-6 {
-  grid-column: span 6 / span 6;
-}
-
-.col-start-2 {
-  grid-column-start: 2;
-}
-
-.col-start-3 {
-  grid-column-start: 3;
-}
-
-.col-start-4 {
-  grid-column-start: 4;
-}
-
-.col-start-5 {
-  grid-column-start: 5;
-}
-
-.col-start-6 {
-  grid-column-start: 6;
-}
-
-.row-span-2 {
-  grid-row: span 2 / span 2;
-}
-
-.row-span-3 {
-  grid-row: span 3 / span 3;
-}
-
-.row-span-4 {
-  grid-row: span 4 / span 4;
-}
-
-.row-span-5 {
-  grid-row: span 5 / span 5;
-}
-
-.row-span-6 {
-  grid-row: span 6 / span 6;
-}
-
-.row-start-2 {
-  grid-row-start: 2;
-}
-
-.row-start-3 {
-  grid-row-start: 3;
-}
-
-.row-start-4 {
-  grid-row-start: 4;
-}
-
-.row-start-5 {
-  grid-row-start: 5;
-}
-
-.row-start-6 {
-  grid-row-start: 6;
 }
 
 .float-start {
@@ -1481,6 +1403,10 @@ variant-selector input[type="radio"]:checked+label {
 
 .hidden {
   display: none;
+}
+
+.h-1 {
+  height: 0.25rem;
 }
 
 .h-2 {
@@ -1773,6 +1699,10 @@ variant-selector input[type="radio"]:checked+label {
   min-width: min-content;
 }
 
+.max-w-\[100\%\] {
+  max-width: 100%;
+}
+
 .max-w-\[220px\] {
   max-width: 220px;
 }
@@ -1783,6 +1713,10 @@ variant-selector input[type="radio"]:checked+label {
 
 .flex-1 {
   flex: 1 1 0%;
+}
+
+.flex-\[100\%\] {
+  flex: 100%;
 }
 
 .flex-none {
@@ -2155,44 +2089,12 @@ variant-selector input[type="radio"]:checked+label {
   grid-auto-flow: column dense;
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.grid-cols-5 {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
 .grid-cols-6 {
   grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .grid-rows-2 {
   grid-template-rows: repeat(2, minmax(0, 1fr));
-}
-
-.grid-rows-3 {
-  grid-template-rows: repeat(3, minmax(0, 1fr));
-}
-
-.grid-rows-4 {
-  grid-template-rows: repeat(4, minmax(0, 1fr));
-}
-
-.grid-rows-5 {
-  grid-template-rows: repeat(5, minmax(0, 1fr));
-}
-
-.grid-rows-6 {
-  grid-template-rows: repeat(6, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -3096,51 +2998,6 @@ variant-selector input[type="radio"]:checked+label {
      object-fit: scale-down;
 }
 
-.object-bottom {
-  -o-object-position: bottom;
-     object-position: bottom;
-}
-
-.object-center {
-  -o-object-position: center;
-     object-position: center;
-}
-
-.object-left {
-  -o-object-position: left;
-     object-position: left;
-}
-
-.object-left-bottom {
-  -o-object-position: left bottom;
-     object-position: left bottom;
-}
-
-.object-left-top {
-  -o-object-position: left top;
-     object-position: left top;
-}
-
-.object-right {
-  -o-object-position: right;
-     object-position: right;
-}
-
-.object-right-bottom {
-  -o-object-position: right bottom;
-     object-position: right bottom;
-}
-
-.object-right-top {
-  -o-object-position: right top;
-     object-position: right top;
-}
-
-.object-top {
-  -o-object-position: top;
-     object-position: top;
-}
-
 .p-0 {
   padding: 0px;
 }
@@ -3973,12 +3830,20 @@ variant-selector input[type="radio"]:checked+label {
   forced-color-adjust: none;
 }
 
+[dir="rtl"] .start-1 {
+  right: 0.25rem;
+}
+
 [dir="rtl"] .end-1 {
   left: 0.25rem;
 }
 
 [dir="ltr"] .end-1 {
   right: 0.25rem;
+}
+
+[dir="ltr"] .start-1 {
+  left: 0.25rem;
 }
 
 [dir="ltr"] .rounded-e {
@@ -4618,8 +4483,16 @@ variant-selector input[type="radio"]:checked+label {
     min-width: inherit;
   }
 
+  .md\:max-w-\[calc\(100\%\/var\(--column-size\)\)\] {
+    max-width: calc(100% / var(--column-size));
+  }
+
   .md\:flex-1 {
     flex: 1 1 0%;
+  }
+
+  .md\:flex-\[calc\(100\%\/var\(--column-size\)\)\] {
+    flex: calc(100% / var(--column-size));
   }
 
   .md\:flex-none {

@@ -20,7 +20,7 @@
     >
       {% for block in section.blocks %}
         {% case block.type %}
-          {% when 'slide' %}
+          {% when 'image_slide' %}
             <swiper-slide class="flex h-auto {% if section.settings.slide_dot and section.blocks.size>1 %}pb-10 {% else %} pb-2{% endif %}">
               <div class="relative w-full md:min-h-[auto] ">
                 {% if block.settings.slide_image %}
@@ -198,7 +198,7 @@
 
 {% schema %}
 {
-  "name": "Hero Slider",
+  "name": "Slideshow",
   "settings": [
     {
       "type": "header",
@@ -275,7 +275,7 @@
   "blocks": [
     {
       "name": "Image Slide",
-      "type": "slide",
+      "type": "image_slide",
       "settings": [
         {
           "type": "header",
@@ -659,13 +659,13 @@
   ],
   "presets": [
     {
-      "name": "Hero Slider",
+      "name": "Slideshow",
       "blocks": [
         {
-          "type": "slide"
+          "type": "image_slide"
         },
         {
-          "type": "slide"
+          "type": "image_slide"
         },
         {
           "type": "video_slide"

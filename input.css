@@ -1,5 +1,23 @@
 
 
+:root {
+    /*theme color*/
+    --theme-primary-color: #234e77;
+    --theme-secondary-color: #ffffff;
+    --theme-accent-color: #f3ad45;
+    --theme-secondaryColor-color: #fff;
+    --theme-black-color: black;
+    --theme-disable-color: #a5a5a5;
+    --theme-transparent-color: transparent;
+
+    --layout-width: 75%;
+    /* button */
+    --button-raduis: 0px;
+    /* input */
+    --input-raduis: 0px;
+    --input-isborder: 1px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
