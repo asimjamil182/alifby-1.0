@@ -163,7 +163,7 @@
           "background": "#00c7f9",
           "backgroundGradient": "linear-gradient(135deg, rgba(236, 240, 241, 1), rgba(255, 255, 255, 1) 100%)",
           "text": "#f99187",
-          "subtext": "#B5B5B5",
+          "subtext": "#b5b5b5",
           "neutralLightColor": "#dfe6e9",
           "neutralDarkColor": "#b2bec3"
         }
@@ -176,7 +176,7 @@
           "background": "#fdf2e9",
           "backgroundGradient": "linear-gradient(135deg, #fdf2e9 0%, #fef9e7 100%)",
           "text": "#2c3e50",
-          "subtext": "#B5B5B5",
+          "subtext": "#b5b5b5",
           "neutralLightColor": "#f9e79f",
           "neutralDarkColor": "#f0b27a"
         }
@@ -187,9 +187,9 @@
           "secondary": "#2ecc71",
           "accent": "#e67e22",
           "background": "#f7f9f7",
-          "backgroundGradient": "linear-gradient(135deg, #f7f9f7 0%, #eafaf1 100%)",
+          "backgroundGradient": "linear-gradient(135deg, rgba(247, 249, 247, 1), rgba(234, 250, 241, 1) 100%)",
           "text": "#1e272e",
-          "subtext": "#B5B5B5",
+          "subtext": "#b5b5b5",
           "neutralLightColor": "#d5dbdb",
           "neutralDarkColor": "#a6acaf"
         }
@@ -202,7 +202,7 @@
           "background": "#f9f7fd",
           "backgroundGradient": "linear-gradient(135deg, #f9f7fd 0%, #f2effb 100%)",
           "text": "#2d3436",
-          "subtext": "#B5B5B5",
+          "subtext": "#b5b5b5",
           "neutralLightColor": "#dfe6e9",
           "neutralDarkColor": "#b2bec3"
         }
@@ -215,7 +215,7 @@
           "background": "#1e272e",
           "backgroundGradient": "linear-gradient(135deg, #1e272e 0%, #2d3436 100%)",
           "text": "#dfe6e9",
-          "subtext": "#B5B5B5",
+          "subtext": "#b5b5b5",
           "neutralLightColor": "#636e72",
           "neutralDarkColor": "#2d3436"
         }
