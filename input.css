@@ -144,20 +144,12 @@
         @apply text-sm text-subtextColor text-center;
     }
 
-    .btn-outline {
-        @apply border rounded-[var(--button-raduis)] font-btn px-4 py-2 cursor-pointer font-semibold text-sm;
-    }
-
     .btn-outline-color {
-        @apply border rounded-[var(--button-raduis)] font-btn border-primaryColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300 text-primaryColor hover:bg-primaryColor hover:text-secondaryColor;
-    }
-
-    .btn-fill {
-        @apply border rounded-[var(--button-raduis)] font-btn border-neutralLightColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300 text-secondaryColor bg-neutralLightColor;
-    }
+        @apply border rounded-[var(--button-raduis)] font-btn border-primaryColor text-primaryColor hover:bg-primaryColor hover:text-secondaryColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300;
+    } 
 
     .btn-fill-color {
-        @apply border rounded-[var(--button-raduis)] font-btn border-primaryColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300 text-secondaryColor bg-backgroundColor;
+        @apply border rounded-[var(--button-raduis)] font-btn border-primaryColor bg-primaryColor text-secondaryColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300;
     }
 
     .input-outline {
@@ -288,8 +280,8 @@
         @apply block;
     }
 
-    .product-grid-filter input[type="radio"]:checked+.btn_style {
-        @apply bg-backgroundColor text-secondaryColor;
+    .product-grid-filter input[type="radio"]:checked+.filter_active{
+        @apply !bg-primaryColor text-secondaryColor;
     }
     .product-grid-filter input[type="radio"]:checked+.underline_style {
         @apply border-b text-primaryColor;

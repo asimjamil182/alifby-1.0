@@ -8,6 +8,85 @@
     "theme_support_url": "https:\/\/support.shopify.com\/"
   },
   {
+    "name": "Color Schemes",
+    "settings": [
+      {
+        "type": "color_scheme_group",
+        "id": "color_schemes",
+        "definition": [
+          {
+            "type": "color",
+            "id": "primary",
+            "default": "#1E90FF",
+            "label": "Primary Color"
+          },
+          {
+            "type": "color",
+            "id": "secondary",
+            "default": "#2ECC71",
+            "label": "Secondary Color"
+          },
+          {
+            "type": "color",
+            "id": "accent",
+            "default": "#FFCC00",
+            "label": "Accent Color"
+          },
+          {
+            "type": "color",
+            "id": "background",
+            "default": "#F5F5F5",
+            "label": "Background Color"
+          },
+          {
+            "type": "color_background",
+            "id": "backgroundGradient",
+            "label": "Background Gradient",
+          },
+          {
+            "type": "color",
+            "id": "text",
+            "default": "#333333",
+            "label": "Text Color"
+          },
+          {
+            "type": "color",
+            "id": "subtext",
+            "default": "#B5B5B5",
+            "label": "Sub Text Color"
+          },
+          {
+            "type": "color",
+            "id": "neutralLightColor",
+            "default": "#E1E1E1",
+            "label": "Neutral Light Color"
+          },
+          {
+            "type": "color",
+            "id": "neutralDarkColor",
+            "default": "#B5B5B5",
+            "label": "Neutral Light Color"
+          }
+        ],
+        "role": {
+          "text": "text",
+          "background": {
+            "solid": "background",
+            "gradient": "backgroundGradient"
+          },
+          "links": "accent",
+          "icons": "text",
+          "primary_button": "primary",
+          "on_primary_button": "secondary",
+          "primary_button_border": "primary",
+          "secondary_button": "background",
+          "on_secondary_button": "primary",
+          "secondary_button_border": "primary"
+        }
+      }
+    ]
+  },
+  {
     "name": "Theme featured",
     "settings": [
       {
@@ -130,68 +209,6 @@
         "unit": "px",
         "label": "Sections Space",
         "default": 0
-      }
-    ]
-  },
-  {
-    "name": "Colors",
-    "settings": [
-      {
-        "type": "color",
-        "id": "primaryColor",
-        "default": "#1E90FF",
-        "label": "Primary Color"
-      },
-      {
-        "type": "color",
-        "id": "secondaryColor",
-        "default": "#2ECC71",
-        "label": "Secondary Color"
-      },
-      {
-        "type": "color",
-        "id": "backgroundColor",
-        "default": "#F5F5F5",
-        "label": "Background Color"
-      },
-      {
-        "type": "color",
-        "id": "textColor",
-        "default": "#333333",
-        "label": "Text Color"
-      },
-      {
-        "type": "color",
-        "id": "subtextColor",
-        "default": "#B5B5B5",
-        "label": "Sub Text Color"
-      },
-      {
-        "type": "color",
-        "id": "accentColor",
-        "default": "#FFCC00",
-        "label": "Accent Color"
-      },
-      {
-        "type": "color",
-        "id": "neutralLightColor",
-        "default": "#E1E1E1",
-        "label": "Neutral Light Color"
-      },
-      {
-        "type": "color",
-        "id": "neutralDarkColor",
-        "default": "#B5B5B5",
-        "label": "Neutral Light Color"
-      },
-      {
-        "type": "range",
-        "id": "black",
-        "min": 0.5,
-        "max": 1,
-        "step": 0.1,
-        "label": "Balck Color",
-        "default": 1
       }
     ]
   },
@@ -353,6 +370,12 @@
         "id": "product_card_img_bg",
         "label": "Image Background Color",
         "default": "#ffffff"
+      },
+      {
+        "type": "color_scheme",
+        "id": "card_color_scheme",
+        "label": "Card Color Scheme",
+        "default": "scheme-2"
       }
     ]
   },

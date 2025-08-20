@@ -28,11 +28,11 @@
             "container_positionY": "items-end",
             "container_text_align": "text-left",
             "isDefaultOverride": false,
-            "caption_color": "#333",
-            "heading_color": "#333",
-            "shorttxt_color": "#333",
+            "caption_color": "#333333",
+            "heading_color": "#333333",
+            "shorttxt_color": "#333333",
             "btn_txt_color": "#ffffff",
-            "btn_bg_color": "#333"
+            "btn_bg_color": "#333333"
           }
         },
         "image_slide_JKDdED": {
@@ -51,11 +51,11 @@
             "container_positionY": "items-end",
             "container_text_align": "text-left",
             "isDefaultOverride": false,
-            "caption_color": "#333",
-            "heading_color": "#333",
-            "shorttxt_color": "#333",
+            "caption_color": "#333333",
+            "heading_color": "#333333",
+            "shorttxt_color": "#333333",
             "btn_txt_color": "#ffffff",
-            "btn_bg_color": "#333"
+            "btn_bg_color": "#333333"
           }
         },
         "video_slide_AGQepz": {
@@ -76,11 +76,11 @@
             "container_positionY": "items-end",
             "container_text_align": "text-left",
             "isDefaultOverride": false,
-            "caption_color": "#333",
-            "heading_color": "#333",
-            "shorttxt_color": "#333",
+            "caption_color": "#333333",
+            "heading_color": "#333333",
+            "shorttxt_color": "#333333",
             "btn_txt_color": "#ffffff",
-            "btn_bg_color": "#333"
+            "btn_bg_color": "#333333"
           }
         }
       },
@@ -92,9 +92,9 @@
       "name": "Slideshow",
       "settings": {
         "slide_dot": true,
-        "slide_dot_color": "#333",
+        "slide_dot_color": "#333333",
         "slide_arrow": true,
-        "slide_arrow_color": "#333",
+        "slide_arrow_color": "#333333",
         "slide_arrow_size": 25,
         "slide_loop": true,
         "slide_autoplay": false,
@@ -158,9 +158,9 @@
         "isFullWidth": false,
         "isRoundedImage": true,
         "isDefaultOverride": false,
-        "bg_color": "#fff",
-        "label_color": "#333",
-        "linktext_color": "#333"
+        "bg_color": "#ffffff",
+        "label_color": "#333333",
+        "linktext_color": "#333333"
       }
     },
     "product_grid_kP4TUk": {
@@ -197,12 +197,13 @@
         "tag_alignment": "justify-start",
         "btn_text": "View More",
         "isFullWidth": false,
-        "bg_color": "transparent",
+        "bg_color": "rgba(0,0,0,0)",
+        "color_scheme": "ocean-breeze",
         "isDefaultOverride": false,
-        "underline_color": "#333",
-        "btn_color": "#fff",
-        "btn_bg_color": "#333",
-        "btn_border_color": "#333"
+        "underline_color": "#333333",
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
       }
     },
     "featured_collection_hHMVKc": {
@@ -248,15 +249,16 @@
         "enable_viewmore_btn": true,
         "isgap": true,
         "isFullWidth": false,
-        "bg_color": "transparent",
+        "bg_color": "rgba(0,0,0,0)",
+        "color_scheme": "",
         "isDefaultOverride": false,
         "title_color": "#333333",
         "tagline_color": "#333333",
         "collection_title_color": "#000000",
         "collection_link_color": "#000000",
-        "btn_color": "#fff",
-        "btn_bg_color": "#333",
-        "btn_border_color": "#333"
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
       }
     },
     "blogs_post_cr8m4L": {
@@ -268,16 +270,16 @@
         "tagline": "Latest articles and updates",
         "btn_text": "Read",
         "isFullWidth": false,
-        "bg_color": "transparent",
+        "bg_color": "rgba(0,0,0,0)",
         "isDefaultOverride": false,
         "heading_color": "#333333",
         "tagline_color": "#333333",
         "blog_author_date_color": "#000000",
         "blog_heading_color": "#000000",
         "blog_comment_color": "#000000",
-        "btn_color": "#fff",
-        "btn_bg_color": "#333",
-        "btn_border_color": "#333"
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
       }
     },
     "featured_product_WxaTRa": {
@@ -291,13 +293,13 @@
         "slide_autoplay": false,
         "slide_autoplaytime": "3000",
         "isFullWidth": false,
-        "bg_color": "transparent",
+        "bg_color": "rgba(0,0,0,0)",
         "isDefaultOverride": false,
         "title_color": "#333333",
         "tagline_color": "#333333",
-        "btn_color": "#fff",
-        "btn_bg_color": "#333",
-        "btn_border_color": "#333"
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
       }
     },
     "collection_showup_T3edN8": {
@@ -313,15 +315,15 @@
         "slide_autoplaytime": 5000,
         "isFullWidth": false,
         "switch_direction": false,
-        "bg_color": "transparent",
+        "bg_color": "rgba(0,0,0,0)",
         "isDefaultOverride": false,
         "collection_title_color": "#000000",
         "product_title_color": "#000000",
         "product_price_color": "#000000",
         "tags_color": "#000000",
-        "btn_color": "#fff",
-        "btn_bg_color": "#333",
-        "btn_border_color": "#333"
+        "btn_color": "#ffffff",
+        "btn_bg_color": "#333333",
+        "btn_border_color": "#333333"
       }
     },
     "column2_image_HRkQmN": {
@@ -334,11 +336,11 @@
         "tagline2": "<p>Tag line</p>",
         "enable_tags": true,
         "isFullWidth": false,
-        "bg_color": "transparent",
+        "bg_color": "rgba(0,0,0,0)",
         "isDefaultOverride": false,
-        "collection_title_color": "#333",
-        "tagline_color": "#333",
-        "tags_color": "#333"
+        "collection_title_color": "#333333",
+        "tagline_color": "#333333",
+        "tags_color": "#333333"
       }
     },
     "vedio_wyNKBW": {
@@ -394,7 +396,7 @@
       "settings": {
         "image_size": 50,
         "isFullWidth": false,
-        "bg_color": "transparent",
+        "bg_color": "rgba(0,0,0,0)",
         "isDefaultOverride": false,
         "caption_color": "#333333",
         "paragraph_color": "#333333"

@@ -5,7 +5,7 @@
   {%- when 'card-style-1' -%}
     <product-cart
       product-id="{{product.selected_or_first_available_variant.id}}"
-      class="{{class}} product_card bg-[#ffff] rounded-md overflow-hidden shadow"
+      class="{{class}} product_card bg-backgroundColor rounded-md overflow-hidden shadow"
     >
       <div
         class=" relative group overflow-hidden"
@@ -76,7 +76,7 @@
         {% if product.title %}
           <a
             href="{{product.url}}"
-            class=" cursor-pointer text-ellipsis text-sm line-clamp-1 font-menu "
+            class=" cursor-pointer text-ellipsis text-sm text-textColor line-clamp-1 font-menu "
             title="{{product.title}}"
           >
             {{- product.title -}}
@@ -84,7 +84,7 @@
         {% else %}
           <a
             href="#"
-            class=" cursor-pointer text-ellipsis text-sm font-menu  {% if product.type %}line-clamp-1{% else %} line-clamp-2{% endif %}"
+            class=" cursor-pointer text-ellipsis text-sm font-menu text-textColor  {% if product.type %}line-clamp-1{% else %} line-clamp-2{% endif %}"
           >
             Product title
           </a>

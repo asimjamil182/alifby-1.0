@@ -21,12 +21,6 @@
     "text_size": 20,
     "layout_width": "75%",
     "section_space": 8,
-    "primaryColor": "#1c8686",
-    "secondaryColor": "#ffffff",
-    "backgroundColor": "#1c8686",
-    "textColor": "#333333",
-    "accentColor": "#000000",
-    "black": 0.5,
     "type_header_font": "barlow_n4",
     "type_menu_font": "barlow_n4",
     "type_body_font": "barlow_n4",
@@ -41,6 +35,8 @@
     "show_quick_view_btn": true,
     "show_rating_icon": true,
     "product_card_img_bg": "#e6e6e6",
+    "card_color_scheme": "scheme-2fe8d69a-4307-4627-971d-b1980b04362d",
+    "black": 0.5,
     "accent": "#088787",
     "bgcolor": "#4682ba",
     "btnbg": "#4682ba",
@@ -157,12 +153,144 @@
         }
       }
     },
-    "content_for_index": []
+    "content_for_index": [],
+    "color_schemes": {
+      "ocean-breeze": {
+        "settings": {
+          "primary": "#0b85ff",
+          "secondary": "#27ae60",
+          "accent": "#e74c3c",
+          "background": "#00c7f9",
+          "backgroundGradient": "linear-gradient(135deg, rgba(236, 240, 241, 1), rgba(255, 255, 255, 1) 100%)",
+          "text": "#f99187",
+          "subtext": "#B5B5B5",
+          "neutralLightColor": "#dfe6e9",
+          "neutralDarkColor": "#b2bec3"
+        }
+      },
+      "sunset-vibes": {
+        "settings": {
+          "primary": "#d35400",
+          "secondary": "#e67e22",
+          "accent": "#27ae60",
+          "background": "#fdf2e9",
+          "backgroundGradient": "linear-gradient(135deg, #fdf2e9 0%, #fef9e7 100%)",
+          "text": "#2c3e50",
+          "subtext": "#B5B5B5",
+          "neutralLightColor": "#f9e79f",
+          "neutralDarkColor": "#f0b27a"
+        }
+      },
+      "forest-retreat": {
+        "settings": {
+          "primary": "#1e5631",
+          "secondary": "#2ecc71",
+          "accent": "#e67e22",
+          "background": "#f7f9f7",
+          "backgroundGradient": "linear-gradient(135deg, #f7f9f7 0%, #eafaf1 100%)",
+          "text": "#1e272e",
+          "subtext": "#B5B5B5",
+          "neutralLightColor": "#d5dbdb",
+          "neutralDarkColor": "#a6acaf"
+        }
+      },
+      "lavender-dream": {
+        "settings": {
+          "primary": "#6c5ce7",
+          "secondary": "#a29bfe",
+          "accent": "#fd79a8",
+          "background": "#f9f7fd",
+          "backgroundGradient": "linear-gradient(135deg, #f9f7fd 0%, #f2effb 100%)",
+          "text": "#2d3436",
+          "subtext": "#B5B5B5",
+          "neutralLightColor": "#dfe6e9",
+          "neutralDarkColor": "#b2bec3"
+        }
+      },
+      "midnight-market": {
+        "settings": {
+          "primary": "#2d3436",
+          "secondary": "#636e72",
+          "accent": "#fdcb6e",
+          "background": "#1e272e",
+          "backgroundGradient": "linear-gradient(135deg, #1e272e 0%, #2d3436 100%)",
+          "text": "#dfe6e9",
+          "subtext": "#B5B5B5",
+          "neutralLightColor": "#636e72",
+          "neutralDarkColor": "#2d3436"
+        }
+      }
+    }
   },
   "presets": {
-    "Default": {
+    "alifby": {
       "btn_style": "btn-fill-color",
-      "input_style": "input-rounded"
+      "input_style": "input-rounded",
+      "ocean-breeze": {
+        "settings": {
+          "primary": "#2c3e50",
+          "secondary": "#3498db",
+          "background": "#ecf0f1",
+          "backgroundGradient": "linear-gradient(135deg, #ecf0f1 0%, #ffffff 100%)",
+          "text": "#2c3e50",
+          "subtext": "#7f8c8d",
+          "accent": "#e74c3c",
+          "neutralLightColor": "#dfe6e9",
+          "neutralDarkColor": "#b2bec3"
+        }
+      },
+      "sunset-vibes": {
+        "settings": {
+          "primary": "#d35400",
+          "secondary": "#e67e22",
+          "background": "#fdf2e9",
+          "backgroundGradient": "linear-gradient(135deg, #fdf2e9 0%, #fef9e7 100%)",
+          "text": "#2c3e50",
+          "subtext": "#7f8c8d",
+          "accent": "#27ae60",
+          "neutralLightColor": "#f9e79f",
+          "neutralDarkColor": "#f0b27a"
+        }
+      },
+      "forest-retreat": {
+        "settings": {
+          "primary": "#1e5631",
+          "secondary": "#2ecc71",
+          "background": "#f7f9f7",
+          "backgroundGradient": "linear-gradient(135deg, #f7f9f7 0%, #eafaf1 100%)",
+          "text": "#1e272e",
+          "subtext": "#566573",
+          "accent": "#e67e22",
+          "neutralLightColor": "#d5dbdb",
+          "neutralDarkColor": "#a6acaf"
+        }
+      },
+      "lavender-dream": {
+        "settings": {
+          "primary": "#6c5ce7",
+          "secondary": "#a29bfe",
+          "background": "#f9f7fd",
+          "backgroundGradient": "linear-gradient(135deg, #f9f7fd 0%, #f2effb 100%)",
+          "text": "#2d3436",
+          "subtext": "#636e72",
+          "accent": "#fd79a8",
+          "neutralLightColor": "#dfe6e9",
+          "neutralDarkColor": "#b2bec3"
+        }
+      },
+      "midnight-market": {
+        "settings": {
+          "primary": "#2d3436",
+          "secondary": "#636e72",
+          "background": "#1e272e",
+          "backgroundGradient": "linear-gradient(135deg, #1e272e 0%, #2d3436 100%)",
+          "text": "#dfe6e9",
+          "subtext": "#b2bec3",
+          "accent": "#fdcb6e",
+          "neutralLightColor": "#636e72",
+          "neutralDarkColor": "#2d3436"
+        }
+      }
     }
   }
 }

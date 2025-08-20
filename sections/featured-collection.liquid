@@ -1,6 +1,6 @@
 
 
-<section class="{{ section.id }}">
+<section class="{{ section.id }} {{ section.settings.color_scheme }}">
   <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %}" style="background-color:{{ section.settings.bg_color }} !important;">
     {% if section.settings.heading %}
       <div class="section-heading">{{ section.settings.heading }}</div>
@@ -123,6 +123,11 @@
     {
       "type": "header",
       "content": "Override Theme Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme"
     },
     {
       "type": "checkbox",

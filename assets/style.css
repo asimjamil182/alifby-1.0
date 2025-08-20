@@ -715,11 +715,11 @@ mark {
 
 .swiper-slide-thumb-active {
   border-width: 2px;
-  border-color: var(--theme-primaryColor-color);
+  border-color: var(--theme-primary-color);
 }
 
 .swiper-button-prev {
-  color: var(--theme-primaryColor-color) !important;
+  color: var(--theme-primary-color) !important;
 }
 
 .swiper-button-prev:hover {
@@ -749,7 +749,7 @@ mark {
   cursor: pointer;
   border-radius: var(--button-raduis);
   border-width: 1px;
-  border-color: var(--theme-primaryColor-color);
+  border-color: var(--theme-primary-color);
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
@@ -758,7 +758,7 @@ mark {
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 600;
-  color: var(--theme-primaryColor-color);
+  color: var(--theme-primary-color);
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
@@ -767,7 +767,7 @@ mark {
 }
 
 .btn-outline-color:hover {
-  background-color: var(--theme-primaryColor-color);
+  background-color: var(--theme-primary-color);
   color: var(--theme-secondary-color);
 }
 
@@ -775,8 +775,8 @@ mark {
   cursor: pointer;
   border-radius: var(--button-raduis);
   border-width: 1px;
-  border-color: var(--theme-primaryColor-color);
-  background-color: var(--theme-background-color);
+  border-color: var(--theme-primary-color);
+  background-color: var(--theme-primary-color);
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
@@ -815,12 +815,12 @@ mark {
   border-width: var(--input-isborder);
   cursor: pointer;
   border-radius: var(--input-raduis);
-  border-color: var(--theme-primaryColor-color);
+  border-color: var(--theme-primary-color);
   background-color: var(--theme-secondary-color);
   padding: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  color: var(--theme-primaryColor-color);
+  color: var(--theme-primary-color);
 }
 
 .input-outline-color option:hover {
@@ -914,7 +914,7 @@ swiper-container {
 }
 
 variant-selector input[type="radio"]:checked+label {
-  border-color: var(--theme-primaryColor-color);
+  border-color: var(--theme-primary-color);
   background-color: var(--theme-background-color);
   color: var(--theme-secondary-color);
 }
@@ -924,7 +924,7 @@ variant-selector input[type="radio"]:checked+label {
 }
 
 #filter-list input[type="checkbox"]:checked+span {
-  border-color: var(--theme-primaryColor-color);
+  border-color: var(--theme-primary-color);
   background-color: var(--theme-background-color);
   color: var(--theme-secondary-color);
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -932,14 +932,14 @@ variant-selector input[type="radio"]:checked+label {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.product-grid-filter input[type="radio"]:checked+.btn_style {
-  background-color: var(--theme-background-color);
+.product-grid-filter input[type="radio"]:checked+.filter_active {
+  background-color: var(--theme-primary-color) !important;
   color: var(--theme-secondary-color);
 }
 
 .product-grid-filter input[type="radio"]:checked+.underline_style {
   border-bottom-width: 1px;
-  color: var(--theme-primaryColor-color);
+  color: var(--theme-primary-color);
 }
 
 .form_input {
@@ -2803,7 +2803,7 @@ variant-selector input[type="radio"]:checked+label {
 }
 
 .border-primaryColor {
-  border-color: var(--theme-primaryColor-color);
+  border-color: var(--theme-primary-color);
 }
 
 .\!bg-\[transparent\] {
@@ -2857,11 +2857,21 @@ variant-selector input[type="radio"]:checked+label {
 }
 
 .bg-primaryColor {
-  background-color: var(--theme-primaryColor-color);
+  background-color: var(--theme-primary-color);
 }
 
 .bg-secondaryColor {
   background-color: var(--theme-secondary-color);
+}
+
+.bg-\[\#e9e7e7\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(233 231 231 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#f0efef\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 239 239 / var(--tw-bg-opacity, 1));
 }
 
 .bg-\[url\(\'https\:\/\/placehold\.co\/220\'\)\] {
@@ -2962,7 +2972,7 @@ variant-selector input[type="radio"]:checked+label {
 }
 
 .fill-primaryColor {
-  fill: var(--theme-primaryColor-color);
+  fill: var(--theme-primary-color);
 }
 
 .fill-secondaryColor {
@@ -3381,7 +3391,7 @@ variant-selector input[type="radio"]:checked+label {
 }
 
 .text-primaryColor {
-  color: var(--theme-primaryColor-color);
+  color: var(--theme-primary-color);
 }
 
 .text-secondaryColor {
@@ -4110,7 +4120,7 @@ variant-selector input[type="radio"]:checked+label {
 }
 
 .hover\:text-primaryColor:hover {
-  color: var(--theme-primaryColor-color);
+  color: var(--theme-primary-color);
 }
 
 .hover\:text-secondaryColor:hover {
