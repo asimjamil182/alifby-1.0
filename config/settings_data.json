@@ -182,7 +182,7 @@
           "secondary": "#2ecc71",
           "accent": "#e67e22",
           "background": "#f7f9f7",
-          "backgroundGradient": "linear-gradient(135deg, #f7f9f7 0%, #eafaf1 100%)",
+          "backgroundGradient": "linear-gradient(135deg, rgba(247, 249, 247, 1), rgba(234, 250, 241, 1) 100%)",
           "text": "#1e272e",
           "subtext": "#b5b5b5",
           "neutralLightColor": "#d5dbdb",
