@@ -571,7 +571,7 @@ class SearchBarHandler extends HTMLElement {
         });
 
         products.forEach(product => {
-            productList += `<li class='p-2 hover:bg-backgroundColor hover:text-white cursor-pointer'>
+            productList += `<li class='p-2 hover:bg-primaryColor hover:text-white cursor-pointer'>
             <a href='${product.url}'>
               <ul class=' flex items-center'>
               <li class=' w-[10%]'>
@@ -1506,7 +1506,7 @@ class customRadioButton extends HTMLElement {
         this.innerHTML = `<label class="flex items-center gap-1 ${this.disabled == 'true' ? 'opacity-60 cursor-not-allowed' : ' cursor-pointer'}">
         <input class="hidden" ${this.checked == 'true' ? 'checked' : ''} type="${this.type}" name="${this.name != null ? this.name : ''}" value="${this.value}" ${this.disabled == 'true' ? 'disabled' : ''}>
         <div class="radio_back w-4 h-4 flex items-center justify-center relative ${this.boxClass} ${this.cornor == 'rounded' ? 'rounded-full' : ''}">
-            <div class="radio_dot w-2 h-2 ${this.cornor == 'rounded' ? 'rounded-full' : ''} opacity-0 transition-opacity duration-200 md:hover:opacity-50 bg-backgroundColor"></div>
+            <div class="radio_dot w-2 h-2 ${this.cornor == 'rounded' ? 'rounded-full' : ''} opacity-0 transition-opacity duration-200 md:hover:opacity-50 bg-primaryColor"></div>
         </div>
         ${this.text != null ? '<span class="inline-block ' + this.textClass + '">' + this.text + '</span>' : ""}
     </label>`;

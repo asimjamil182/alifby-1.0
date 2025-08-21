@@ -12,19 +12,19 @@
   <div class="relative z-10 hidden user-dropdown-menu">
     <ul class="top-0 right-0 bg-[#ffff] shadow-md" style="position:absolute;">
       <li
-        class=" p-1 px-3 text-sm text-textColor hover:bg-backgroundColor hover:text-secondaryColor cursor-pointer"
+        class=" p-1 px-3 text-sm text-textColor hover:bg-primaryColor hover:text-secondaryColor cursor-pointer"
       >
         <a href="account/orders">Orders</a>
       </li>
       {%- if customer -%}
         <li
-          class=" p-1 px-3 text-sm text-textColor hover:bg-backgroundColor hover:text-secondaryColor cursor-pointer"
+          class=" p-1 px-3 text-sm text-textColor hover:bg-primaryColor hover:text-secondaryColor cursor-pointer"
         >
           <a href="/account/logout/">logout</a>
         </li>
       {%- else -%}
         <li
-          class=" p-1 px-3 text-sm text-textColor hover:bg-backgroundColor hover:text-secondaryColor cursor-pointer"
+          class=" p-1 px-3 text-sm text-textColor hover:bg-primaryColor hover:text-secondaryColor cursor-pointer"
         >
           <a href="/account/login/">login</a>
         </li>

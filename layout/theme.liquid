@@ -81,6 +81,7 @@
           --font-btn-weight: {{ settings.type_btn_font.weight }};
 
         }
+        
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
         {% if forloop.index == 1 -%}
@@ -89,7 +90,7 @@
         .{{ scheme.id }} {
           --theme-primary-color: {{scheme.settings.primary}};
           --theme-secondary-color: {{scheme.settings.secondary}};
-          --theme-background-color: {{scheme.settings.background}};
+          --theme-background-color: {%- if scheme.settings.backgroundGradient=="" -%}{{scheme.settings.background}}{%- else -%}{{scheme.settings.backgroundGradient}}{%- endif -%};
           --theme-text-color: {{scheme.settings.text}};
           --theme-subtext-color: {{scheme.settings.subtext}};
           --theme-accent-color: {{scheme.settings.accent}};
@@ -168,7 +169,7 @@
       id="quick-view"
       class=" fixed top-0 left-0 right-0 bottom-0 z-20 sm:p-4 md:p-0 flex hidden items-center justify-center"
     >
-      <div id="quickview-overlay" class="bg-backgroundColor fixed top-0 left-0 right-0 bottom-0 opacity-10"></div>
+      <div id="quickview-overlay" class="bg-primaryColor fixed top-0 left-0 right-0 bottom-0 opacity-10"></div>
       <div class="bg-[#ffff] sm:w-full md:w-2/3 lg:w-1/2 shadow-md relative m-0">
         <div class="flex items-center justify-between p-2 border-b border-neutralLightColor">
           <div class=" text-textColor text-sm uppercase">Quick View</div>

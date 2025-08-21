@@ -1,7 +1,7 @@
 <div class="z-10 relative">
   <div
     id="mobile-menu-overlay"
-    class="hidden md:hidden fixed top-0 bottom-0 left-0 right-0 bg-backgroundColor opacity-10 "
+    class="hidden md:hidden fixed top-0 bottom-0 left-0 right-0 bg-primaryColor opacity-10 "
   ></div>
   <div
     id="mobile-menu"
@@ -62,7 +62,7 @@
               </div>
               <ul class=" child:pl-1 font-normal flex flex-wrap gap-1 justify-between">
                 {% for grandchild_link in link.links %}
-                  <li class="p-1 text-ellipsis whitespace-nowrap border border-neutralLightColor flex-1 text-center hover:bg-backgroundColor hover:text-secondaryColor hover:border-bgColor">
+                  <li class="p-1 text-ellipsis whitespace-nowrap border border-neutralLightColor flex-1 text-center hover:bg-primaryColor hover:text-secondaryColor hover:border-bgColor">
                     <a class="" href="{{ grandchild_link.url }}">
                       {{- grandchild_link.title | truncate: 20 -}}
                     </a>
@@ -89,7 +89,7 @@
                     {% if child_link.links != blank %}
                       <ul class=" child:pl-1 font-normal flex flex-wrap gap-1 justify-between">
                         {% for grandchild_link in child_link.links %}
-                          <li class="p-1 border border-neutralLightColor flex-1 text-center hover:bg-backgroundColor hover:text-secondaryColor hover:border-bgColor">
+                          <li class="p-1 border border-neutralLightColor flex-1 text-center hover:bg-primaryColor hover:text-secondaryColor hover:border-bgColor">
                             <a class=" whitespace-nowrap" href="{{ grandchild_link.url }}">
                               {{- grandchild_link.title -}}
                             </a>
@@ -107,7 +107,7 @@
       <div>
         <div class="py-2 flex items-center w-full bg-[#ffff] p-1 gap-1">
           {%- if settings.show_wishlist -%}
-            <a href="#" class=" p-2 text-sm w-1/2 text-center bg-backgroundColor text-secondaryColor flex items-center">
+            <a href="#" class=" p-2 text-sm w-1/2 text-center bg-primaryColor text-secondaryColor flex items-center">
               {%- render 'icon', iconName: 'heart', size: '1em', class: 'fill-secondaryColor' -%}
               <span class="pl-3">Wishlists</span></a
             >
@@ -116,7 +116,7 @@
           {%- if customer -%}
             <a
               href="/account"
-              class=" p-2 text-sm flex-1 text-center bg-backgroundColor text-secondaryColor flex items-center"
+              class=" p-2 text-sm flex-1 text-center bg-primaryColor text-secondaryColor flex items-center"
             >
               {%- render 'icon', iconName: 'user', size: '1em', class: 'fill-secondaryColor' -%}
               <span class="pl-3">{{ customer.name }}</span></a
@@ -124,7 +124,7 @@
           {%- else -%}
             <a
               href="/account/login"
-              class=" p-2 text-sm flex-1 text-center bg-backgroundColor text-secondaryColor flex items-center"
+              class=" p-2 text-sm flex-1 text-center bg-primaryColor text-secondaryColor flex items-center"
             >
               {%- render 'icon', iconName: 'user', size: '1em', class: 'fill-secondaryColor' -%}
               <span class="pl-3">Account</span></a

@@ -22,17 +22,12 @@
             "btn_txt": "Shop Now",
             "btn_url": "",
             "isTextBox": true,
+            "theme_color": "",
             "background": "#ffffff",
             "background_opacity": 1,
             "container_positionX": "justify-start",
             "container_positionY": "items-end",
-            "container_text_align": "text-left",
-            "isDefaultOverride": false,
-            "caption_color": "#333333",
-            "heading_color": "#333333",
-            "shorttxt_color": "#333333",
-            "btn_txt_color": "#ffffff",
-            "btn_bg_color": "#333333"
+            "container_text_align": "text-left"
           }
         },
         "image_slide_JKDdED": {
@@ -45,17 +40,12 @@
             "btn_txt": "Shop Now",
             "btn_url": "",
             "isTextBox": true,
+            "theme_color": "",
             "background": "#ffffff",
             "background_opacity": 1,
             "container_positionX": "justify-start",
             "container_positionY": "items-end",
-            "container_text_align": "text-left",
-            "isDefaultOverride": false,
-            "caption_color": "#333333",
-            "heading_color": "#333333",
-            "shorttxt_color": "#333333",
-            "btn_txt_color": "#ffffff",
-            "btn_bg_color": "#333333"
+            "container_text_align": "text-left"
           }
         },
         "video_slide_AGQepz": {
@@ -70,17 +60,12 @@
             "btn_txt": "Shop Now",
             "btn_url": "",
             "isTextBox": true,
+            "theme_color": "",
             "background": "#ffffff",
             "background_opacity": 1,
             "container_positionX": "justify-start",
             "container_positionY": "items-end",
-            "container_text_align": "text-left",
-            "isDefaultOverride": false,
-            "caption_color": "#333333",
-            "heading_color": "#333333",
-            "shorttxt_color": "#333333",
-            "btn_txt_color": "#ffffff",
-            "btn_bg_color": "#333333"
+            "container_text_align": "text-left"
           }
         }
       },
@@ -109,7 +94,6 @@
           "type": "catagory",
           "settings": {
             "cat_label": "Cloths",
-            "cat_link_text": "Show all",
             "cat_link": ""
           }
         },
@@ -117,7 +101,6 @@
           "type": "catagory",
           "settings": {
             "cat_label": "Shoes",
-            "cat_link_text": "Show all",
             "cat_link": ""
           }
         },
@@ -125,7 +108,6 @@
           "type": "catagory",
           "settings": {
             "cat_label": "Watches",
-            "cat_link_text": "Show all",
             "cat_link": ""
           }
         },
@@ -133,7 +115,6 @@
           "type": "catagory",
           "settings": {
             "cat_label": "Jewelry",
-            "cat_link_text": "Show all",
             "cat_link": ""
           }
         },
@@ -141,7 +122,34 @@
           "type": "catagory",
           "settings": {
             "cat_label": "Bags",
-            "cat_link_text": "Show all",
+            "cat_link": ""
+          }
+        },
+        "catagory_GtH6Cz": {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Label",
+            "cat_link": ""
+          }
+        },
+        "catagory_Q8Ukt3": {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Label",
+            "cat_link": ""
+          }
+        },
+        "catagory_pGrtFi": {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Label",
+            "cat_link": ""
+          }
+        },
+        "catagory_eKFPP6": {
+          "type": "catagory",
+          "settings": {
+            "cat_label": "Label",
             "cat_link": ""
           }
         }
@@ -151,16 +159,21 @@
         "catagory_FLAPak",
         "catagory_gJ9m3B",
         "catagory_EQ3md4",
-        "catagory_RiFzWz"
+        "catagory_RiFzWz",
+        "catagory_GtH6Cz",
+        "catagory_Q8Ukt3",
+        "catagory_pGrtFi",
+        "catagory_eKFPP6"
       ],
       "name": "Catagory Group",
       "settings": {
         "isFullWidth": false,
+        "is_show_label": true,
         "isRoundedImage": true,
-        "isDefaultOverride": false,
+        "image_size": "w-[50px] h-[50px] md:w-[75px] md:h-[75px]",
+        "theme_color": "sunset-vibes",
         "bg_color": "#ffffff",
-        "label_color": "#333333",
-        "linktext_color": "#333333"
+        "bg_opacity": 1
       }
     },
     "product_grid_kP4TUk": {

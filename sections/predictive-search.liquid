@@ -3,7 +3,7 @@
   {%- if predictive_search.resources.products.size > 0 -%}
     <ul>
       {%- for product in predictive_search.resources.products -%}
-        <li class=' border-b border-[#d8d8d8] p-2 hover:bg-backgroundColor hover:text-secondaryColor cursor-pointer'>
+        <li class=' border-b border-[#d8d8d8] p-2 hover:bg-primaryColor hover:text-secondaryColor cursor-pointer'>
           <link-handler target-page='{{product.url}}'>
             <ul class=' flex items-center'>
               <li class=' w-[10%]'>

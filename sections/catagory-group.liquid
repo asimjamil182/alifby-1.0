@@ -1,21 +1,23 @@
 <section>
   <div class="layout {% unless settings.layout_width=='100%' %}p-0{% endunless %} {% if section.settings.isFullWidth %}lg:w-full{% endif %}">
-    <div class="flex justify-between md:justify-between sm:gap-x-0 md:gap-x-5 sm:gap-y-4 md:gap-y-0 w-full overflow-auto md:overflow-hidden scroll-none">
+    <div class="flex justify-between md:justify-between sm:gap-x-0 md:gap-x-5 sm:gap-y-4 md:gap-y-0 w-full overflow-auto scroll-none {{ section.settings.theme_color }}">
       {% for block in section.blocks %}
-        <div class="w-[150px] md:w-1/5 lg:w-1/6 p-2 md:bg-[#ffff] md:shadow-sm" style="{% if section.settings.isDefaultOverride %}background-color:{{ section.settings.bg_color }} !important;{% endif %}">
-          <div class="flex gap-2 items-center flex-col md:flex-row">
-            <div class="w-[50px]">
+        <div class="w-[150px] md:w-1/5 lg:w-1/6 p-2 md:shadow-sm" style="background-color:{{ section.settings.bg_color | color_modify: 'alpha', section.settings.bg_opacity }};">
+          <div class="flex gap-2 items-center flex-col md:flex-row justify-center">
+            <div class="{{ section.settings.image_size }}">
               {%- if block.settings.cat_img -%}
-                <a href="{{ block.settings.cat_link }}"><img class="w-100 md:hidden shadow-sm md:shadow-none {% if section.settings.isRoundedImage %} rounded-full {% endif %}" src="{{ block.settings.cat_img | image_url }}" width="" height="" alt="image"></a>
-                <img class="w-100 hidden md:block {% if section.settings.isRoundedImage %} rounded-full {% endif %}" src="{{ block.settings.cat_img | image_url }}" width="" height="" alt="Catagory Image">
+                {% comment %} <a href="{{ block.settings.cat_link }}"><img class="w-full md:hidden shadow-sm md:shadow-none {% if section.settings.isRoundedImage %} rounded-full {% endif %}" src="{{ block.settings.cat_img | image_url }}" width="" height="" alt="image"></a> {% endcomment %}
+                <img src="{{ block.settings.cat_img | image_url }}" class="{{ section.settings.image_size }} {% if section.settings.isRoundedImage %} rounded-full {% endif %}" width="" height="" alt="Catagory Image">
               {%- else -%}
-                <img src="https://placehold.co/50" class="shadow-sm md:shadow-none {% if section.settings.isRoundedImage %} rounded-full {% endif %}" width="" height="" alt="Img placeholder">
+                <img src="https://placehold.co/100" class="{{ section.settings.image_size }} shadow-sm md:shadow-none {% if section.settings.isRoundedImage %} rounded-full {% endif %}" width="" height="" alt="Img placeholder">
               {%- endif -%}
             </div>
-            <div class="flex-1">
-              <div class=" md:font-semibold text-primaryColor capitalize text-xs text-center md:text-left md:text-base" style="{% if section.settings.isDefaultOverride %}color:{{ section.settings.label_color }} !important;{% endif %}">{{ block.settings.cat_label }}</div>
-              <a href="{{ block.settings.cat_link }}" class="text-xs text-subtextColor sm:hidden md:block" style="{% if section.settings.isDefaultOverride %}color:{{ section.settings.linktext_color }} !important;{% endif %}">{{ block.settings.cat_link_text }}</a>
+            {%- if section.settings.is_show_label -%}
+              <div class="flex-1">
+              <a href="{{ block.settings.cat_link }}" class=" md:font-semibold text-primaryColor capitalize text-xs text-center md:text-left md:text-base" style="{% if section.settings.isDefaultOverride %}color:{{ section.settings.label_color }} !important;{% endif %}">{{ block.settings.cat_label }}</a>
+              {% comment %} <a href="{{ block.settings.cat_link }}" class="text-xs text-subtextColor sm:hidden md:block" style="{% if section.settings.isDefaultOverride %}color:{{ section.settings.linktext_color }} !important;{% endif %}">{{ block.settings.cat_link_text }}</a> {% endcomment %}
             </div>
+            {%- endif -%}
           </div>
         </div>
       {% endfor %}
@@ -40,40 +42,70 @@
       "info": "This option work on large screen only"
     },
     {
+      "type": "header",
+      "content": "Label Settings"
+    },
+    {
       "type": "checkbox",
-      "id": "isRoundedImage",
-      "label": "Rounded Image",
+      "id": "is_show_label",
+      "label": "Show",
       "default": true
     },
     {
       "type": "header",
-      "content": "Override Theme Colors"
+      "content": "Image Settings"
     },
     {
       "type": "checkbox",
-      "id": "isDefaultOverride",
-      "label": "Enable",
-      "default": false,
-      "info": "Enable this option to override the theme colors."
+      "id": "isRoundedImage",
+      "label": "Rounded",
+      "default": true
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
-      "default": "#fff"
+      "type": "select",
+      "id": "image_size",
+      "label": "Size",
+      "options": [
+        {
+          "value": "w-[50px] h-[50px] md:w-[75px] md:h-[75px]",
+          "label": "Small"
+        },
+        {
+          "value": "w-[75px] h-[75px] md:w-[100px] md:h-[100px]",
+          "label": "Medium"
+        },
+        {
+          "value": "w-[100px] h-[100px] md:w-[125px] md:h-[125px]",
+          "label": "Large"
+        }
+        
+      ],
+      "default": "w-[50px] h-[50px] md:w-[75px] md:h-[75px]"
     },
     {
-      "type": "color",
-      "id": "label_color",
-      "label": "Label Color",
-      "default": "#333"
+      "type": "header",
+      "content": "Colors Settings"
     },
     {
-      "type": "color",
-      "id": "linktext_color",
-      "label": "Link Text Color",
-      "default": "#333"
-    }
+    "type": "color_scheme",
+      "id": "theme_color",
+      "label": "Theme Color"
+    },
+    {
+    "type": "color",
+    "id": "bg_color",
+    "label": "Background Color",
+    "default": "#ffffff",
+    },
+    {
+      "type": "range",
+      "id": "bg_opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "Background Opacity",
+      "default": 1
+    },
   ],
   "blocks": [
     {
@@ -89,13 +121,7 @@
           "type": "text",
           "id": "cat_label",
           "label": "Label",
-          "default": "Catagory Label"
-        },
-        {
-          "type": "text",
-          "id": "cat_link_text",
-          "label": "Link Text",
-          "default": "Show all"
+          "default": "Label"
         },
         {
           "type": "url",

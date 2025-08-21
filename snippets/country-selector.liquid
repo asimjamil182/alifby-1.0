@@ -4,9 +4,9 @@
       <custom-select id="" value="{{ localization.country.iso_code }}">
         <div
           id="dropdown_overlay"
-          class="absolute top-0 bottom-0 left-0 right-0 bg-backgroundColor opacity-0 z-20 hidden"
+          class="absolute top-0 bottom-0 left-0 right-0 bg-primaryColor opacity-5 z-20 hidden"
         ></div>
-        <div id="dropdown_selector" class="{{settings.input_style }} w-full relative inline-block p-0 text-xs z-20 {{ class }}" style="{% if section.settings.isOverrideDefualt %}color:{{ color }} !important; border-color:{{ color }} !important; {% endif %}">
+        <div id="dropdown_selector" class="{{settings.input_style }} w-full relative inline-block p-0 text-xs z-20 {{ class }}">
           <div class="flex gap-2 p-1 items-center">
             <label class="flex-1 capitalize">
               ({{ localization.country.currency.iso_code }}

@@ -5,13 +5,13 @@
   {%- when 'card-style-1' -%}
     <product-cart
       product-id="{{product.selected_or_first_available_variant.id}}"
-      class="{{class}} product_card bg-backgroundColor rounded-md overflow-hidden shadow"
+      class="{{class}} product_card rounded-md overflow-hidden shadow"
     >
       <div
         class=" relative group overflow-hidden"
       >
         <div
-          class="bg-backgroundColor-dark min-w-min min-h-[165px] lg:min-h-[220px] bg-contain bg-center overflow-hidden transition-transform duration-300 hover:scale-110 relative bg-[url('https://placehold.co/220')]"
+          class=" min-w-min min-h-[165px] lg:min-h-[220px] bg-contain bg-center overflow-hidden transition-transform duration-300 hover:scale-110 relative bg-[url('https://placehold.co/220')]"
         >
           {% if product.featured_image %}
             <img

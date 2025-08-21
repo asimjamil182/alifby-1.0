@@ -1,21 +1,12 @@
-{%- if section.settings.isOverrideDefualt -%}
-  <style>
-    .{{ section.id }} .search_bar {
-      color: {{ section.settings.text_color }};
-    }
-    .{{ section.id }} .search-icon {
-      color: {{ section.settings.text_color }};
-    }
-  </style>
-{%- endif -%}
+
 
 {% case section.settings.header_style %}
   {% when 'style1' %}
     <header
-      class="{{ section.id }} shadow-sm bg-[#ffff] font-medium flex-grow-[1] z-10 md:relative"
-      style="{% if section.settings.isOverrideDefualt %}background-color:{{section.settings.header_bg}} !important;{% endif %}"
+      class="{{ section.id }} shadow-sm font-medium flex-grow-[1] z-10 md:relative {{ section.settings.theme_color }}"
+      style="background:var(--theme-background-color);"
     >
-      <div id="overlay" class="overlay fixed left-0 right-0 bottom-0 top-0 bg-backgroundColor z-[2] hidden  opacity-10"></div>
+      <div id="overlay" class="overlay fixed left-0 right-0 bottom-0 top-0 bg-primaryColor z-[2] hidden  opacity-10"></div>
       <div class="layout {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %}">
         <main-menu class="text-secondaryColor flex sm:gap-y-2 md:gap-y-0 items-center flex-wrap py-3 md:flex-nowrap md:m-auto justify-between {% if section.settings.isdivider %}md:border-b border-neutralLightColor{% endif %}">
           <div class="md:hidden w-[65px]">
@@ -55,10 +46,9 @@
     </header>
   {% when 'style2' %}
     <header
-      class="{{ section.id }} shadow-sm bg-[#ffff]  font-medium flex-grow-[1] z-10 md:relative"
-      style="{% if section.settings.isOverrideDefualt %}background-color:{{section.settings.header_bg}} !important;{% endif %}"
+      class="{{ section.id }} shadow-sm bg-backgroundColor font-medium flex-grow-[1] z-10 md:relative {{ section.settings.theme_color }}"
     >
-      <div id="overlay" class="overlay fixed left-0 right-0 bottom-0 top-0 bg-backgroundColor z-[2] hidden opacity-10"></div>
+      <div id="overlay" class="overlay fixed left-0 right-0 bottom-0 top-0 bg-primaryColor z-[2] hidden opacity-10"></div>
       <div class="layout {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %}">
         {% if section.settings.islogocenter %}
           <div class="hidden md:flex item-center justify-center p-2">
@@ -195,33 +185,14 @@
     },
     {
       "type": "header",
-      "content": "Colors Settings"
+      "content": "Color Settings"
     },
     {
-      "type": "checkbox",
-      "id": "isOverrideDefualt",
-      "label": "Override Default Color",
-      "default": false,
-      "info": "When this setting on override theme colors"
-    },
-    {
-      "type": "color",
-      "id": "header_bg",
-      "label": "Background Color",
-      "default": "transparent"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text Color",
-      "default": "#333"
-    },
-    {
-      "type": "color",
-      "id": "icon_color",
-      "label": "Icon Color",
-      "default": "#333"
+    "type": "color_scheme",
+    "id": "theme_color",
+    "label": "Theme Color"
     }
+    
   ]
 }
 {% endschema %}

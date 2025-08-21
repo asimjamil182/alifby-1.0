@@ -1,7 +1,7 @@
 
 
 <section class="{{ section.id }} {{ section.settings.color_scheme }}">
-  <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %}" style="background-color:{{ section.settings.bg_color }} !important;">
+  <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor" >
     {% if section.settings.heading %}
       <div class="section-heading">{{ section.settings.heading }}</div>
     {% endif %}

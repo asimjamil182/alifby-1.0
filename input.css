@@ -73,7 +73,7 @@
     }
 
     mark {
-        @apply bg-backgroundColor text-subtextColor;
+        @apply bg-primaryColor text-subtextColor;
     }
 
     .rtl-direction {
@@ -167,7 +167,7 @@
     }
 
     .input-outline-color option:hover {
-        @apply bg-backgroundColor text-textColor;
+        @apply bg-primaryColor text-textColor;
     }
 
 
@@ -265,7 +265,7 @@
     }
 
     variant-selector input[type="radio"]:checked+label {
-        @apply bg-backgroundColor text-secondaryColor border-primaryColor;
+        @apply bg-primaryColor text-secondaryColor border-primaryColor;
     }
 
     #filter-list input[type="checkbox"] {
@@ -273,7 +273,7 @@
     }
 
     #filter-list input[type="checkbox"]:checked+span {
-        @apply bg-backgroundColor text-secondaryColor border-primaryColor shadow-md;
+        @apply bg-primaryColor text-secondaryColor border-primaryColor shadow-md;
     }
 
     #filter-list input[type="checkbox"]:checked+span .filter_remove_icon {

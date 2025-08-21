@@ -14,7 +14,7 @@
             </div>
             {%- else -%}
           <table class="text-sm w-full text-center child:p-2">
-            <tr class=" bg-backgroundColor text-secondaryColor border border-bgColor child:p-2">
+            <tr class=" bg-primaryColor text-secondaryColor border border-bgColor child:p-2">
               <th>OrderId</th>
               <th>Date</th>
               <th>ِAmount</th>
@@ -29,7 +29,7 @@
                 <td>{{ order.total_price | money_with_currency }}</td>
                 <td>{{ order.financial_status }}</td>
                 <td>{{ order.fulfillment_status }}</td>
-                <td><a class="p-0.5 {{ settings.btn_style }} bg-backgroundColor text-secondaryColor text-sm font-thin px-2" href="{{ order.customer_order_url }}">View</a></td>
+                <td><a class="p-0.5 {{ settings.btn_style }} bg-primaryColor text-secondaryColor text-sm font-thin px-2" href="{{ order.customer_order_url }}">View</a></td>
               </tr>
             {%- endfor -%}
           </table>

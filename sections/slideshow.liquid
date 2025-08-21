@@ -1,5 +1,15 @@
 <section>
   <div class="layout p-0 {% if section.settings.isFullWidth %}lg:w-full{% endif %}">
+    {%- if section.settings.isFullWidth -%}
+      <div class="w-full">
+    {%- else -%}
+      <div class="mx-auto">
+    {%- endif -%}
+
+    {%- if section.settings.slide_arrow -%}
+      <div class="swiper-button-prev swiper-button-white"></div>
+      <div class="swiper-button-next swiper-button-white"></div>
+    {%- endif -%} 
     <swiper-container
       style="--swiper-navigation-color: {{section.settings.slide_arrow_color}}; --swiper-pagination-color: {{ section.settings.slide_dot_color }}; --swiper-navigation-size: {{section.settings.slide_arrow_size}}px;"
       class="image-swiper h-auto w-full"
@@ -79,16 +89,16 @@
                 {%- endif -%}
 
                 {%- if block.settings.isTextBox -%}
-                  <div class="md:absolute top-0 left-0 right-0 bottom-0">
+                  <div class="md:absolute top-0 left-0 right-0 bottom-0 {{ block.settings.theme_color }}">
                     <div class="w-full md:h-full p-0 md:p-24 md:flex {{ block.settings.container_positionX }} {{ block.settings.container_positionY }}">
                       <div
                         class="p-5 {{ block.settings.container_text_align }}"
                         style="background:{{ block.settings.background | hex_to_rgba: block.settings.background_opacity }};"
+
                       >
                         {% if block.settings.slide_caption %}
                           <div
-                            class="text-textColor text-sm"
-                            style="{% if block.settings.isDefaultOverride %}color:{{ block.settings.caption_color }} !important;{% endif %}"
+                            class="text-accentColor text-sm"
                           >
                             {{ block.settings.slide_caption }}
                           </div>
@@ -96,7 +106,7 @@
                         {% if block.settings.slide_heading %}
                           <div
                             class=" text-textColor font-heading"
-                            style="font-size:{{ block.settings.font_size }}px; {% if block.settings.isDefaultOverride %}color:{{ block.settings.heading_color }} !important;{% endif %}"
+                            style="font-size:{{ block.settings.font_size }}px;"
                           >
                             {{ block.settings.slide_heading }}
                           </div>
@@ -104,7 +114,6 @@
                         {% if block.settings.slide_pargarph %}
                           <div
                             class=" text-subtextColor text-sm"
-                            style="{% if block.settings.isDefaultOverride %}color:{{ block.settings.shorttxt_color }} !important;{% endif %}"
                           >
                             {{ block.settings.slide_pargarph }}
                           </div>
@@ -124,7 +133,7 @@
               </div>
             </swiper-slide>
           {% when 'video_slide' %}
-            <swiper-slide class="flex h-auto {% if section.settings.slide_dot %}pb-10 {% else %} pb-2{% endif %}">
+            <swiper-slide class="flex h-auto {% if section.settings.slide_dot %}pb-10 {% else %} pb-2{% endif %} {{ block.settings.theme_color }}">
               <div class="relative w-full md:min-h-[auto] ">
                 <div class="video-section flex items-center justify-center">
                   {%- if block.settings.video_url==blank -%}
@@ -347,10 +356,15 @@
           "default": true
         },
         {
+          "type": "color_scheme",
+          "id": "theme_color",
+          "label": "Theme Color"
+        },
+        {
           "type": "color",
           "id": "background",
-          "label": "Background",
-          "default": "#ffffff"
+          "label": "Background Color",
+          "default": "#000000",
         },
         {
           "type": "range",
@@ -421,47 +435,6 @@
             }
           ],
           "default": "text-left"
-        },
-        {
-          "type": "header",
-          "content": "Override Theme Colors"
-        },
-        {
-          "type": "checkbox",
-          "id": "isDefaultOverride",
-          "label": "Enable",
-          "default": false,
-          "info": "Enable this option to override the theme colors."
-        },
-        {
-          "type": "color",
-          "id": "caption_color",
-          "label": "Caption Color",
-          "default": "#333"
-        },
-        {
-          "type": "color",
-          "id": "heading_color",
-          "label": "Heading Color",
-          "default": "#333"
-        },
-        {
-          "type": "color",
-          "id": "shorttxt_color",
-          "label": "Short text color",
-          "default": "#333"
-        },
-        {
-          "type": "color",
-          "id": "btn_txt_color",
-          "label": "Button text color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color",
-          "id": "btn_bg_color",
-          "label": "Button background color",
-          "default": "#333"
         }
       ]
     },
@@ -538,10 +511,15 @@
           "default": true
         },
         {
+          "type": "color_scheme",
+          "id": "theme_color",
+          "label": "Theme Color"
+        },
+        {
           "type": "color",
           "id": "background",
-          "label": "Background",
-          "default": "#ffffff"
+          "label": "Background Color",
+          "default": "#000000",
         },
         {
           "type": "range",
@@ -612,47 +590,6 @@
             }
           ],
           "default": "text-left"
-        },
-        {
-          "type": "header",
-          "content": "Override Theme Colors"
-        },
-        {
-          "type": "checkbox",
-          "id": "isDefaultOverride",
-          "label": "Enable",
-          "default": false,
-          "info": "Enable this option to override the theme colors."
-        },
-        {
-          "type": "color",
-          "id": "caption_color",
-          "label": "Caption Color",
-          "default": "#333"
-        },
-        {
-          "type": "color",
-          "id": "heading_color",
-          "label": "Heading Color",
-          "default": "#333"
-        },
-        {
-          "type": "color",
-          "id": "shorttxt_color",
-          "label": "Short text color",
-          "default": "#333"
-        },
-        {
-          "type": "color",
-          "id": "btn_txt_color",
-          "label": "Button text color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color",
-          "id": "btn_bg_color",
-          "label": "Button background color",
-          "default": "#333"
         }
       ]
     }

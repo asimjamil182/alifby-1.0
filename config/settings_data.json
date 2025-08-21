@@ -21,16 +21,16 @@
     "text_size": 20,
     "layout_width": "75%",
     "section_space": 8,
-    "type_header_font": "barlow_n4",
-    "type_menu_font": "barlow_n4",
-    "type_body_font": "barlow_n4",
-    "type_btn_font": "barlow_n4",
+    "type_header_font": "abel_n4",
+    "type_menu_font": "abel_n4",
+    "type_body_font": "abel_n4",
+    "type_btn_font": "abel_n4",
     "btn_style": "btn-fill-color",
     "button_raduis": 3,
-    "input_style": "input-outline",
+    "input_style": "input-outline-color",
     "input_raduis": 3,
     "input_isborder": true,
-    "product_card_style": "card-style-1",
+    "product_card_style": "card-style-2",
     "show_add_to_cart_btn": true,
     "show_quick_view_btn": true,
     "show_rating_icon": true,
@@ -59,10 +59,7 @@
           "islogocenter": false,
           "islogocentersmall": true,
           "isdivider": true,
-          "isOverrideDefualt": false,
-          "header_bg": "#4682ba",
-          "text_color": "#ffffff",
-          "icon_color": "#ffffff"
+          "theme_color": "ocean-breeze"
         }
       },
       "footer": {
@@ -91,7 +88,7 @@
           "copy_right_text": "Copyright © 2021, {{ shop.name }}. All rights reserved.",
           "bg_color": "#ffffff",
           "enable_payment_types": true,
-          "isDefaultOverride": false,
+          "isDefaultOverride": true,
           "short_note_color": "#b5b5b5",
           "menu_heading_color": "#8f6b4f",
           "meun_links_color": "#d0b9a7",
@@ -147,9 +144,7 @@
           "instagram": "#instagram",
           "tiktok": "#tiktok",
           "x": "",
-          "isOverrideDefualt": false,
-          "txtColor": "#ffffff",
-          "bgColor": "#333333"
+          "theme_color": "ocean-breeze"
         }
       }
     },
@@ -157,13 +152,13 @@
     "color_schemes": {
       "ocean-breeze": {
         "settings": {
-          "primary": "#0b85ff",
-          "secondary": "#27ae60",
-          "accent": "#e74c3c",
-          "background": "#00c7f9",
-          "backgroundGradient": "linear-gradient(135deg, rgba(236, 240, 241, 1), rgba(255, 255, 255, 1) 100%)",
-          "text": "#f99187",
-          "subtext": "#B5B5B5",
+          "primary": "#d0b9a7",
+          "secondary": "#8f6b4f",
+          "accent": "#30a1b3",
+          "background": "#fafafa",
+          "backgroundGradient": "",
+          "text": "#343739",
+          "subtext": "#b5b5b5",
           "neutralLightColor": "#dfe6e9",
           "neutralDarkColor": "#b2bec3"
         }
@@ -176,7 +171,7 @@
           "background": "#fdf2e9",
           "backgroundGradient": "linear-gradient(135deg, #fdf2e9 0%, #fef9e7 100%)",
           "text": "#2c3e50",
-          "subtext": "#B5B5B5",
+          "subtext": "#b5b5b5",
           "neutralLightColor": "#f9e79f",
           "neutralDarkColor": "#f0b27a"
         }
@@ -189,7 +184,7 @@
           "background": "#f7f9f7",
           "backgroundGradient": "linear-gradient(135deg, #f7f9f7 0%, #eafaf1 100%)",
           "text": "#1e272e",
-          "subtext": "#B5B5B5",
+          "subtext": "#b5b5b5",
           "neutralLightColor": "#d5dbdb",
           "neutralDarkColor": "#a6acaf"
         }
@@ -202,7 +197,7 @@
           "background": "#f9f7fd",
           "backgroundGradient": "linear-gradient(135deg, #f9f7fd 0%, #f2effb 100%)",
           "text": "#2d3436",
-          "subtext": "#B5B5B5",
+          "subtext": "#b5b5b5",
           "neutralLightColor": "#dfe6e9",
           "neutralDarkColor": "#b2bec3"
         }
@@ -215,7 +210,7 @@
           "background": "#1e272e",
           "backgroundGradient": "linear-gradient(135deg, #1e272e 0%, #2d3436 100%)",
           "text": "#dfe6e9",
-          "subtext": "#B5B5B5",
+          "subtext": "#b5b5b5",
           "neutralLightColor": "#636e72",
           "neutralDarkColor": "#2d3436"
         }
