@@ -571,7 +571,7 @@ class SearchBarHandler extends HTMLElement {
         });
 
         products.forEach(product => {
-            productList += `<li class='p-2 hover:bg-primaryColor hover:text-white cursor-pointer'>
+            productList += `<li class='p-2 hover:bg-secondaryColor hover:text-primaryColor cursor-pointer'>
             <a href='${product.url}'>
               <ul class=' flex items-center'>
               <li class=' w-[10%]'>
@@ -584,11 +584,11 @@ class SearchBarHandler extends HTMLElement {
         });
 
         let str = `
-        ${products.length > 0 ? `<div class='p-2 text-xs font-semibold border-b border-disabled'>Products</div>
+        ${products.length > 0 ? `<div class='p-2 text-xs font-semibold border-b border-separatorlineColor'>Products</div>
             <ul>
               ${productList}
           </ul>`: ``}
-        ${queries.length > 0 ? `<div class='p-2 text-xs font-semibold border-b border-disabled'>Suggestions</div>
+        ${queries.length > 0 ? `<div class='p-2 text-xs font-semibold border-b border-separatorlineColor'>Suggestions</div>
         <ul class='p-2'>
         ${queriesList}
         </ul>`: ``}`;

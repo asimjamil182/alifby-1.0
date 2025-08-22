@@ -15,12 +15,12 @@
             <span>{{ cart.currency.iso_code }}</span></del
           >
         {%- endif -%}
-        <span class="product-price text-accentColor">
+        <span class="product-price text-primaryColor">
           {{ product.price | money_without_currency | remove: ',' }}
         </span>
-        <span class="text-accentColor font-bold px-1"> {{ cart.currency.iso_code }}</span>
+        <span class="text-primaryColor font-bold px-1"> {{ cart.currency.iso_code }}</span>
         {%- if product.price < product.compare_at_price -%}
-          <div class="ml-1 bg-accent text-secondaryColor rounded-sm text-xs text-center py-0.5 px-2 uppercase inline-block">
+          <div class="ml-1 bg-accentColor text-priamryColor rounded-sm text-xs text-center py-0.5 px-2 uppercase inline-block">
             {%- assign product_compare_price = product.compare_at_price | money_without_currency -%}
             {%- assign product_price = product.price | money_without_currency -%}
             save {{ product_compare_price | minus: product_price }}
@@ -145,7 +145,7 @@
                       {% endif %}
                     >
                     <label
-                      class="{{settings.input_style }} p-2 min-w-[40px] flex items-center justify-center bg-[#ffff] md:hover:bg-primaryColor md:hover:text-secondaryColor"
+                      class="{{settings.input_style }} p-2 min-w-[40px] flex items-center justify-center"
                       for="id-{{value}}"
                       ><span>{{ value }}</span></label
                     >

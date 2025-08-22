@@ -138,32 +138,35 @@
     .section-heading {
         font-style: var(--font-heading-style);
         font-weight: var(--font-heading-weight);
-        @apply text-2xl text-center text-textColor pt-5 font-heading font-semibold;
+        @apply text-2xl text-center text-headingColor pt-5 font-heading font-semibold;
     }
     .section-tagline{
         @apply text-sm text-subtextColor text-center;
     }
+    input,textarea{
+        @apply bg-[transparent];
+    }
 
     .btn-outline-color {
-        @apply border rounded-[var(--button-raduis)] font-btn border-primaryColor text-primaryColor hover:bg-primaryColor hover:text-secondaryColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300;
+        @apply border rounded-[var(--button-raduis)] font-btn border-primaryColor text-primaryColor hover:bg-secondaryColor hover:text-primaryColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300;
     } 
 
     .btn-fill-color {
-        @apply border rounded-[var(--button-raduis)] font-btn border-primaryColor bg-primaryColor text-secondaryColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300;
+        @apply border rounded-[var(--button-raduis)] font-btn border-secondaryColor bg-secondaryColor text-primaryColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300;
     }
 
     .input-outline {
         border-width: var(--input-isborder);
-        @apply rounded-[var(--input-raduis)] border-neutralLightColor cursor-pointer text-textColor fill-textColor bg-secondaryColor text-sm p-2;
+        @apply rounded-[var(--input-raduis)] border-[black] cursor-pointer text-textColor fill-textColor text-sm p-2;
     }
 
     .input-outline option:hover {
-        @apply bg-neutralLightColor text-textColor;
+        @apply text-textColor;
     }
 
     .input-outline-color {
         border-width: var(--input-isborder);
-        @apply rounded-[var(--input-raduis)] border-primaryColor cursor-pointer text-primaryColor bg-secondaryColor text-sm p-2;
+        @apply rounded-[var(--input-raduis)] border-secondaryColor bg-secondaryColor cursor-pointer text-primaryColor fill-primaryColor child:placeholder-primaryColor text-sm p-2;
     }
 
     .input-outline-color option:hover {
@@ -265,7 +268,7 @@
     }
 
     variant-selector input[type="radio"]:checked+label {
-        @apply bg-primaryColor text-secondaryColor border-primaryColor;
+        @apply bg-secondaryColor text-primaryColor border-primaryColor;
     }
 
     #filter-list input[type="checkbox"] {
@@ -273,7 +276,7 @@
     }
 
     #filter-list input[type="checkbox"]:checked+span {
-        @apply bg-primaryColor text-secondaryColor border-primaryColor shadow-md;
+        @apply bg-secondaryColor text-primaryColor border-primaryColor shadow-md;
     }
 
     #filter-list input[type="checkbox"]:checked+span .filter_remove_icon {
@@ -281,7 +284,7 @@
     }
 
     .product-grid-filter input[type="radio"]:checked+.filter_active{
-        @apply !bg-primaryColor text-secondaryColor;
+        @apply !bg-secondaryColor text-primaryColor;
     }
     .product-grid-filter input[type="radio"]:checked+.underline_style {
         @apply border-b text-primaryColor;

@@ -1,7 +1,7 @@
 {% case type %}
   {% when 'style1' %}
     <search-bar page-type="{{ request.page_type }}" class="mt-2 md:m-0 w-full relative {{ class }}">
-      <div class="flex {{settings.input_style }} w-full bg-[transparent]">
+      <div class="flex {{settings.input_style }} w-full">
         <input
           type="text"
           class="w-full placeholder:font-light focus:outline-none font-normal text-sm {{ class }}"

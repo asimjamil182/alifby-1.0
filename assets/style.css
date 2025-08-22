@@ -735,7 +735,7 @@ mark {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 600;
-  color: var(--theme-text-color);
+  color: var(--theme-heading-color);
 }
 
 .section-tagline {
@@ -743,6 +743,10 @@ mark {
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--theme-subtext-color);
+}
+
+input,textarea {
+  background-color: transparent;
 }
 
 .btn-outline-color {
@@ -767,16 +771,16 @@ mark {
 }
 
 .btn-outline-color:hover {
-  background-color: var(--theme-primary-color);
-  color: var(--theme-secondary-color);
+  background-color: var(--theme-secondary-color);
+  color: var(--theme-primary-color);
 }
 
 .btn-fill-color {
   cursor: pointer;
   border-radius: var(--button-raduis);
   border-width: 1px;
-  border-color: var(--theme-primary-color);
-  background-color: var(--theme-primary-color);
+  border-color: var(--theme-secondary-color);
+  background-color: var(--theme-secondary-color);
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
@@ -785,7 +789,7 @@ mark {
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 600;
-  color: var(--theme-secondary-color);
+  color: var(--theme-primary-color);
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
@@ -797,8 +801,8 @@ mark {
   border-width: var(--input-isborder);
   cursor: pointer;
   border-radius: var(--input-raduis);
-  border-color: var(--theme-neutral-light-color);
-  background-color: var(--theme-secondary-color);
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
   fill: var(--theme-text-color);
   padding: 0.5rem;
   font-size: 0.875rem;
@@ -807,7 +811,6 @@ mark {
 }
 
 .input-outline option:hover {
-  background-color: var(--theme-neutral-light-color);
   color: var(--theme-text-color);
 }
 
@@ -815,11 +818,20 @@ mark {
   border-width: var(--input-isborder);
   cursor: pointer;
   border-radius: var(--input-raduis);
-  border-color: var(--theme-primary-color);
+  border-color: var(--theme-secondary-color);
   background-color: var(--theme-secondary-color);
+  fill: var(--theme-primary-color);
   padding: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
+  color: var(--theme-primary-color);
+}
+
+.input-outline-color > *::-moz-placeholder {
+  color: var(--theme-primary-color);
+}
+
+.input-outline-color > *::placeholder {
   color: var(--theme-primary-color);
 }
 
@@ -915,8 +927,8 @@ swiper-container {
 
 variant-selector input[type="radio"]:checked+label {
   border-color: var(--theme-primary-color);
-  background-color: var(--theme-primary-color);
-  color: var(--theme-secondary-color);
+  background-color: var(--theme-secondary-color);
+  color: var(--theme-primary-color);
 }
 
 #filter-list input[type="checkbox"] {
@@ -925,16 +937,16 @@ variant-selector input[type="radio"]:checked+label {
 
 #filter-list input[type="checkbox"]:checked+span {
   border-color: var(--theme-primary-color);
-  background-color: var(--theme-primary-color);
-  color: var(--theme-secondary-color);
+  background-color: var(--theme-secondary-color);
+  color: var(--theme-primary-color);
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .product-grid-filter input[type="radio"]:checked+.filter_active {
-  background-color: var(--theme-primary-color) !important;
-  color: var(--theme-secondary-color);
+  background-color: var(--theme-secondary-color) !important;
+  color: var(--theme-primary-color);
 }
 
 .product-grid-filter input[type="radio"]:checked+.underline_style {
@@ -2814,16 +2826,16 @@ variant-selector input[type="radio"]:checked+label {
   border-color: rgb(216 216 216 / var(--tw-border-opacity, 1));
 }
 
-.border-neutralLightColor {
-  border-color: var(--theme-neutral-light-color);
-}
-
 .border-primaryColor {
   border-color: var(--theme-primary-color);
 }
 
-.border-secondaryColor {
-  border-color: var(--theme-secondary-color);
+.border-separatorlineColor {
+  border-color: var(--theme-separatorline-color);
+}
+
+.border-transparent {
+  border-color: transparent;
 }
 
 .\!bg-\[transparent\] {
@@ -2872,6 +2884,10 @@ variant-selector input[type="radio"]:checked+label {
   background-color: transparent;
 }
 
+.bg-accentColor {
+  background-color: var(--theme-accent-color);
+}
+
 .bg-backgroundColor {
   background-color: var(--theme-background-color);
 }
@@ -2882,6 +2898,10 @@ variant-selector input[type="radio"]:checked+label {
 
 .bg-secondaryColor {
   background-color: var(--theme-secondary-color);
+}
+
+.bg-transparent {
+  background-color: transparent;
 }
 
 .bg-\[url\(\'https\:\/\/placehold\.co\/220\'\)\] {
@@ -4125,6 +4145,10 @@ variant-selector input[type="radio"]:checked+label {
   background-color: var(--theme-primary-color);
 }
 
+.hover\:bg-secondaryColor:hover {
+  background-color: var(--theme-secondary-color);
+}
+
 .hover\:font-bold:hover {
   font-weight: 700;
 }
@@ -4671,14 +4695,6 @@ variant-selector input[type="radio"]:checked+label {
     --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  }
-
-  .md\:hover\:bg-primaryColor:hover {
-    background-color: var(--theme-primary-color);
-  }
-
-  .md\:hover\:text-secondaryColor:hover {
-    color: var(--theme-secondary-color);
   }
 
   .md\:hover\:opacity-50:hover {

@@ -18,25 +18,25 @@
             "type": "color",
             "id": "primary",
             "default": "#1E90FF",
-            "label": "Primary Color"
+            "label": "Primary"
           },
           {
             "type": "color",
             "id": "secondary",
             "default": "#2ECC71",
-            "label": "Secondary Color"
+            "label": "Secondary"
           },
           {
             "type": "color",
             "id": "accent",
             "default": "#FFCC00",
-            "label": "Accent Color"
+            "label": "Accent"
           },
           {
             "type": "color",
             "id": "background",
             "default": "#F5F5F5",
-            "label": "Background Color"
+            "label": "Background"
           },
           {
             "type": "color_background",
@@ -45,27 +45,27 @@
           },
           {
             "type": "color",
+            "id": "heading",
+            "default": "#333333",
+            "label": "Heading"
+          },
+          {
+            "type": "color",
             "id": "text",
             "default": "#333333",
-            "label": "Text Color"
+            "label": "Text"
           },
           {
             "type": "color",
             "id": "subtext",
             "default": "#B5B5B5",
-            "label": "Sub Text Color"
+            "label": "Sub Text"
           },
           {
             "type": "color",
-            "id": "neutralLightColor",
+            "id": "separator_line",
             "default": "#E1E1E1",
-            "label": "Neutral Light Color"
-          },
-          {
-            "type": "color",
-            "id": "neutralDarkColor",
-            "default": "#B5B5B5",
-            "label": "Neutral Light Color"
+            "label": "Separator Line"
           }
         ],
         "role": {

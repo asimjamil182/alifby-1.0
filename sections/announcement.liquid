@@ -1,6 +1,6 @@
 {% if section.settings.isAnnouncementBar %}
   <section
-    class="bg-primaryColor text-secondaryColor fill-secondaryColor {{ section.settings.theme_color }}"
+    class=" bg-secondaryColor text-primaryColor fill-primaryColor {{ section.settings.theme_color }}"
   >
     <div class="layout lg:p-0">
       <div class="flex items-center justify-between">
@@ -11,9 +11,9 @@
                 {%- unless section.settings.phoneno == empty -%}
                   <div>
                     <a href="tel:{{section.settings.phoneno}}" target="_blank" class="flex items-center">
-                      <i>{%- render 'icon', iconName: 'telephone', size: '1rem', class: 'fill-secondaryColor' -%}</i>
+                      <i>{%- render 'icon', iconName: 'telephone', size: '1rem', class: 'fill-primaryColor' -%}</i>
                       {%- if section.settings.isText -%}
-                        <span class="pl-2 text-secondaryColor">{{ section.settings.phoneno }}</span>
+                        <span class="pl-2 text-primaryColor">{{ section.settings.phoneno }}</span>
                       {%- endif -%}
                     </a>
                   </div>
@@ -21,9 +21,9 @@
                 {%- unless section.settings.gmail == empty -%}
                   <div>
                     <a href="mailto:{{section.settings.gmail}}" target="_blank" class="flex items-center">
-                      <i>{%- render 'icon', iconName: 'envelope', size: '1rem', class: 'fill-secondaryColor' -%}</i>
+                      <i>{%- render 'icon', iconName: 'envelope', size: '1rem', class: 'fill-primaryColor' -%}</i>
                       {%- if section.settings.isText -%}
-                        <span class="pl-2 text-secondaryColor">{{ section.settings.gmail }}</span>
+                        <span class="pl-2 text-primaryColor">{{ section.settings.gmail }}</span>
                       {%- endif -%}
                     </a>
                   </div>
@@ -34,25 +34,25 @@
           <div class="">
             {%- if section.settings.isSocailLinks -%}
               <div class="flex h-full gap-4 items-center justify-start py-2">
-                <div class="text-secondaryColor">|</div>
+                <div class="text-primaryColor">|</div>
                 {%- unless section.settings.facebook == empty -%}
                   <a href="{{ section.settings.facebook }}" target="_blank" class="flex items-center">
-                    <i>{%- render 'icon', iconName: 'facebook', size: '1rem', class: 'fill-secondaryColor' -%}</i>
+                    <i>{%- render 'icon', iconName: 'facebook', size: '1rem', class: 'fill-primaryColor' -%}</i>
                   </a>
                 {%- endunless -%}
                 {%- unless section.settings.instagram == empty -%}
                   <a href="{{ section.settings.instagram }}" target="_blank" class="flex items-center">
-                    <i>{%- render 'icon', iconName: 'instagram', size: '1rem', class: 'fill-secondaryColor' -%}</i>
+                    <i>{%- render 'icon', iconName: 'instagram', size: '1rem', class: 'fill-primaryColor' -%}</i>
                   </a>
                 {%- endunless -%}
                 {%- unless section.settings.tiktok == empty -%}
                   <a href="{{ section.settings.tiktok }}" target="_blank" class="flex items-center">
-                    <i>{%- render 'icon', iconName: 'tiktok', size: '1rem', class: 'fill-secondaryColor' -%}</i>
+                    <i>{%- render 'icon', iconName: 'tiktok', size: '1rem', class: 'fill-primaryColor' -%}</i>
                   </a>
                 {%- endunless -%}
                 {%- unless section.settings.x == empty -%}
                   <a href="{{ section.settings.x }}" target="_blank" class="flex items-center">
-                    <i>{%- render 'icon', iconName: 'x', size: '1rem', class: 'fill-secondaryColor' -%}</i>
+                    <i>{%- render 'icon', iconName: 'x', size: '1rem', class: 'fill-primaryColor' -%}</i>
                   </a>
                 {%- endunless -%}
               </div>
@@ -64,7 +64,7 @@
           {%- if section.settings.isAnnouncementList -%}
             <announcement-bar class="flex items-center justify-center p-2" time-duration="3000">
               {% for block in section.blocks %}
-                <a class="text-center text-secondaryColor inline-block {% unless forloop.index0==0 %}hidden{% endunless %}" href="{{ block.settings.url }}" style="{% if section.settings.isOverrideDefualt %}color:{{ section.settings.txtColor }} !important; {% endif %}">
+                <a class="text-center text-primaryColor inline-block {% unless forloop.index0==0 %}hidden{% endunless %}" href="{{ block.settings.url }}" style="{% if section.settings.isOverrideDefualt %}color:{{ section.settings.txtColor }} !important; {% endif %}">
                   {{ block.settings.txt }}
                 </a>
               {% endfor %}
@@ -73,10 +73,10 @@
         </div>
         <div class="w-1/4 hidden md:flex items-center justify-end gap-2">
           {%- if settings.show_country_selector -%}
-            {% render 'country-selector', class:'text-secondaryColor border-secondaryColor bg-[transparent]' %}
+            {% render 'country-selector', class:'text-primaryColor border-primaryColor bg-[transparent]' %}
           {%- endif -%}
           {%- if settings.show_language_selector -%}
-            {% render 'language-selector' class:'text-secondaryColor border-secondaryColor bg-[transparent]' %}
+            {% render 'language-selector' class:'text-primaryColor border-primaryColor bg-[transparent]' %}
           {%- endif -%}
         </div>
       </div>

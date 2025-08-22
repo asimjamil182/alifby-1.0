@@ -90,12 +90,13 @@
         .{{ scheme.id }} {
           --theme-primary-color: {{scheme.settings.primary}};
           --theme-secondary-color: {{scheme.settings.secondary}};
+          --theme-accent-color: {{scheme.settings.accent}};
           --theme-background-color: {%- if scheme.settings.backgroundGradient=="" -%}{{scheme.settings.background}}{%- else -%}{{scheme.settings.backgroundGradient}}{%- endif -%};
+          --theme-heading-color: {{scheme.settings.heading}};
           --theme-text-color: {{scheme.settings.text}};
           --theme-subtext-color: {{scheme.settings.subtext}};
-          --theme-accent-color: {{scheme.settings.accent}};
-          --theme-neutral-light-color: {{scheme.settings.neutralLightColor}};
-          --theme-neutral-dark-color: {{scheme.settings.neutralDarkColor}};
+          --theme-separatorline-color: {{scheme.settings.separator_line}};
+
           {% comment %} --color-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
         {% if scheme.settings.background_gradient != empty %}
           --gradient-background: {{ scheme.settings.background_gradient }};
@@ -141,10 +142,10 @@
   </head>
   <body id="themeBody" class="ltr-direction">
     <div class="flex flex-col h-screen {% if settings.is_sticky_header %}md:h-screen {% else %} md:h-auto{% endif %}">
-      {% section 'announcement' %}
-
       {% comment %} <a href="{{ company_location.url_to_set_as_current }}">change location</a> {% endcomment %}
-      <header>{% section 'header' %}</header>
+      <header>
+        {% sections 'header-group' %}
+      </header>
       <main class=" overflow-y-auto scroll-none md:scroll md:scroll-wa ">
         {% comment %}
           <div id="app-spinner" class="fixed left-0 right-0 bottom-0 top-0 z-10 flex items-center justify-center">

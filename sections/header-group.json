@@ -1,0 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+    "type": "header",
+    "name": "Header Group",
+    "sections":{
+        "header": {
+        "type": "header",
+        "settings": {
+          "header_menu": "main-menu",
+          "catagory_menu": "category-list",
+          "iscatagory": true,
+          "header_style": "style1",
+          "searchbar_style": "style1",
+          "islogocenter": false,
+          "islogocentersmall": true,
+          "isdivider": true,
+          "theme_color": "ocean-breeze"
+        }
+      },
+      "announcement": {
+        "type": "announcement",
+        "blocks": {
+          "text_E4VPiT": {
+            "type": "text",
+            "settings": {
+              "txt": "<p>10% off all products</p>",
+              "url": ""
+            }
+          },
+          "text_eNqQqq": {
+            "type": "text",
+            "settings": {
+              "txt": "<p>Free delivery on order over 50$</p>",
+              "url": ""
+            }
+          }
+        },
+        "block_order": [
+          "text_E4VPiT",
+          "text_eNqQqq"
+        ],
+        "settings": {
+          "isAnnouncementBar": true,
+          "isAnnouncementList": true,
+          "isContactDetail": true,
+          "isText": false,
+          "phoneno": "0500000505",
+          "gmail": "support@asimdev.com",
+          "isSocailLinks": true,
+          "facebook": "#facebook",
+          "instagram": "#instagram",
+          "tiktok": "#tiktok",
+          "x": "",
+          "theme_color": "ocean-breeze"
+        }
+      }
+    },
+    "order": [
+      "announcement",
+      "header"
+    ],
+
+}
