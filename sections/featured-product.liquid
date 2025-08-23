@@ -1,7 +1,7 @@
 
 
 <section class="{{ section.id }}">
-  <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %}" style="background-color:{{ section.settings.bg_color }} !important;">
+  <div class="layout {{ section.settings.color_scheme }} {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor">
     {% if section.settings.heading %}
       <div class="section-heading">{{ section.settings.heading }}</div>
     {% endif %}
@@ -43,28 +43,6 @@
   </div>
 </section>
 
-{% if section.settings.isDefaultOverride %}
-  <style>
-    .{{ section.id }} .section-heading {
-      color: {{ section.settings.title_color }};
-    }
-    .{{ section.id }} .section-tagline {
-      color: {{ section.settings.tagline_color }};
-    }
-    .{{ section.id }} .btn {
-      color: {{ section.settings.btn_color }};
-      background-color: {{ section.settings.btn_bg_color }};
-      border-color: {{ section.settings.btn_border_color }};
-    }
-
-  </style>
-{% endif %}
-
-<style>
-  swiper-container::part(bullet-active){
-    background-color: {{ section.settings.btn_bg_color }};
-  }
-</style>
 
 {% schema %}
 {
@@ -128,45 +106,9 @@
       "default": "transparent"
     },
     {
-      "type": "header",
-      "content": "Override Theme Colors"
-    },
-    {
-      "type": "checkbox",
-      "id": "isDefaultOverride",
-      "label": "Enable",
-      "default": false,
-      "info": "Enable this option to override the theme colors."
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Title Color",
-      "default": "#333333"
-    },
-    {
-      "type": "color",
-      "id": "tagline_color",
-      "label": "Tagline Color",
-      "default": "#333333"
-    },
-    {
-      "type": "color",
-      "id": "btn_color",
-      "label": "Button Text Color",
-      "default": "#fff"
-    },
-    {
-      "type": "color",
-      "id": "btn_bg_color",
-      "label": "Button Background Color",
-      "default": "#333"
-    },
-    {
-      "type": "color",
-      "id": "btn_border_color",
-      "label": "Button Border Color",
-      "default": "#333"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme"
     }
   ],
   "presets": [

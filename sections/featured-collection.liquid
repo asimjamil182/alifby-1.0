@@ -41,27 +41,7 @@
   </div>
 </section>
 
-{% if section.settings.isDefaultOverride %}
-  <style>
-    .{{ section.id }} .section-heading {
-      color: {{ section.settings.title_color }};
-    }
-    .{{ section.id }} .section-tagline {
-      color: {{ section.settings.tagline_color }};
-    }
-    .{{ section.id }} .section-title {
-      color: {{ section.settings.collection_title_color }};
-    }
-    .{{ section.id }} .link {
-      color: {{ section.settings.collection_link_color }};
-    }
-    .{{ section.id }} .btn {
-      color: {{ section.settings.btn_color }};
-      background-color: {{ section.settings.btn_bg_color }};
-      border-color: {{ section.settings.btn_border_color }};
-    }
-  </style>
-{% endif %}
+
 
 {% schema %}
 {
@@ -115,68 +95,9 @@
       "info": "This option work on large screen only"
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
-      "default": "transparent"
-    },
-    {
-      "type": "header",
-      "content": "Override Theme Colors"
-    },
-    {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "Color Scheme"
-    },
-    {
-      "type": "checkbox",
-      "id": "isDefaultOverride",
-      "label": "Enable",
-      "default": false,
-      "info": "Enable this option to override the theme colors."
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "Title Color",
-      "default": "#333333"
-    },
-    {
-      "type": "color",
-      "id": "tagline_color",
-      "label": "Tagline Color",
-      "default": "#333333"
-    },
-    {
-      "type": "color",
-      "id": "collection_title_color",
-      "label": "Collection Title Color",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "collection_link_color",
-      "label": "Collection Link Color",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "btn_color",
-      "label": "Button Text Color",
-      "default": "#fff"
-    },
-    {
-      "type": "color",
-      "id": "btn_bg_color",
-      "label": "Button Background Color",
-      "default": "#333"
-    },
-    {
-      "type": "color",
-      "id": "btn_border_color",
-      "label": "Button border Color",
-      "default": "#333"
     }
   ],
   "blocks": [

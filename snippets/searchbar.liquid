@@ -26,10 +26,10 @@
     </search-bar>
   {% when 'style2' %}
     <search-bar page-type="{{ request.page_type }}" class="mt-2 md:m-0 w-full relative {{ class }}">
-      <div class="flex {{ settings.input_style }} border-0 border-b rounded-none w-full p-0 bg-[transparent]">
+      <div class="flex {{ settings.input_style }} border-0 border-b rounded-none w-full p-0">
         <input
           type="text"
-          class="w-full p-1 placeholder:font-light focus:outline-none font-normal text-sm text-textColor {{ class }}"
+          class="w-full p-1 placeholder:font-light focus:outline-none font-normal text-sm {{ class }}"
           placeholder="Serach..."
           value="{{ search.terms | escape }}"
           id="predective_search"

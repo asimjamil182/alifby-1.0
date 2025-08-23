@@ -1,5 +1,5 @@
 <section>
-    <div class="layout p-0">
+    <div class="layout p-0 bg-backgroundColor {{ section.settings.color_scheme }}">
         <div class="video-section flex items-center justify-center">
             {% if section.settings.video_type == 'youtube' %}
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ section.settings.video_url | split: 'v=' | last }}?autoplay={{ section.settings.autoplay | json }}&mute={{ section.settings.muted | json }}" frameborder="0" allowfullscreen></iframe>
@@ -61,6 +61,15 @@
             "label": "Enable Controls",
             "default": false,
             "info": "This option is only available for video type URL"
+        },
+        {
+          "type": "header",
+          "content": "Section Settings & Styling"
+        },
+        {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "Color Scheme"
         }
     ],
     "presets": [

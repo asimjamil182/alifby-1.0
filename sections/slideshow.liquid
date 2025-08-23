@@ -11,7 +11,7 @@
       <div class="swiper-button-next swiper-button-white"></div>
     {%- endif -%} 
     <swiper-container
-      style="--swiper-navigation-color: {{section.settings.slide_arrow_color}}; --swiper-pagination-color: {{ section.settings.slide_dot_color }}; --swiper-navigation-size: {{section.settings.slide_arrow_size}}px;"
+      style=" --swiper-navigation-size: {{section.settings.slide_arrow_size}}px;"
       class="image-swiper h-auto w-full"
       {%- if section.settings.slide_dot -%}
         pagination="{{section.settings.slide_dot}}"
@@ -137,7 +137,7 @@
               <div class="relative w-full md:min-h-[auto] ">
                 <div class="video-section flex items-center justify-center">
                   {%- if block.settings.video_url==blank -%}
-                    <div class="w-full h-[717px] flex items-center justify-center bg-[#ddd]">
+                    <div class="w-full h-[717px] flex items-center justify-center bg-white">
                      <div class="text-textColor text-2xl">No video URL provided</div>
                     </div>
                     {%- else -%}
@@ -220,22 +220,10 @@
       "default": false
     },
     {
-      "type": "color",
-      "id": "slide_dot_color",
-      "label": "Dot Color",
-      "default": "#333"
-    },
-    {
       "type": "checkbox",
       "id": "slide_arrow",
       "label": "Show Arrows",
       "default": false
-    },
-    {
-      "type": "color",
-      "id": "slide_arrow_color",
-      "label": "Arrow Color",
-      "default": "#333"
     },
     {
       "type": "range",

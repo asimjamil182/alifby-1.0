@@ -1,7 +1,7 @@
 {%- assign link = object -%}
 <div
   id="megamenu"
-  class="hidden absolute bg-[#ffff] shadow-md z-10 border-t border-neutralLightColor"
+  class="hidden absolute bg-white shadow-md z-10 border-t border-separatorlineColor"
 >
   {% comment %} <div class="layout lg:px-0">
     {%- if link.levels != 1 -%}
@@ -52,7 +52,7 @@
             <a href="{{ child_link.url }}" class="flex-1 p-2 inline-block transition-all duration-300 hover:translate-x-1" >{{ child_link.title }}</a>
           {%- unless child_link.links == blank -%}
             <span>{%- render 'icon', iconName: 'chevron-right',size:20,class:'px-1' -%}</span>
-                <ul class="grand_child_link hidden bg-[#ffff] absolute left-full top-0 border-l border-neutralLightColor min-w-[150px]">
+                <ul class="grand_child_link hidden bg-white absolute left-full top-0 border-l border-separatorlineColor min-w-[150px]">
                   {%- for grand_child_link in child_link.links -%}
                     <li>
                       <a class="inline-block p-2 w-full transition-all duration-300 hover:translate-x-1" href="{{ grand_child_link.url }}">{{ grand_child_link.title }}</a>

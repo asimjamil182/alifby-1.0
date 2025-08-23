@@ -25,11 +25,10 @@
     "type_menu_font": "abel_n4",
     "type_body_font": "abel_n4",
     "type_btn_font": "abel_n4",
-    "btn_style": "btn-outline-color",
+    "btn_style": "btn-fill-color",
     "button_raduis": 3,
     "input_style": "input-outline-color",
     "input_raduis": 3,
-    "input_isborder": true,
     "product_card_style": "card-style-1",
     "show_add_to_cart_btn": true,
     "show_quick_view_btn": true,
@@ -45,6 +44,12 @@
     "link": "#ebb492",
     "checkout_logo_image": "shopify://shop_images/logo_a90b8670-1af7-4ef8-97c6-00bf497eeb9d.png",
     "checkout_logo_size": "small",
+    "phoneno": "0500000505",
+    "gmail": "support@asimdev.com",
+    "facebook": "#facebook",
+    "instagram": "#instagram",
+    "tiktok": "#tiktok",
+    "x": "",
     "checkout_accent_color": "#4682ba",
     "checkout_button_color": "#4682ba",
     "sections": {
@@ -78,10 +83,7 @@
             }
           }
         },
-        "block_order": [
-          "menu_8U7XPM",
-          "menu_6yazhx"
-        ],
+        "block_order": ["menu_8U7XPM", "menu_6yazhx"],
         "settings": {
           "logo": "shopify://shop_images/logoType2.png",
           "short_note": "Your one-stop shop for endless style and unbeatable deals. Discover the perfect blend of convenience, quality, and affordability at our platform. Happy shopping!",
@@ -128,10 +130,7 @@
             }
           }
         },
-        "block_order": [
-          "text_E4VPiT",
-          "text_eNqQqq"
-        ],
+        "block_order": ["text_E4VPiT", "text_eNqQqq"],
         "settings": {
           "isAnnouncementBar": true,
           "isAnnouncementList": true,
@@ -161,7 +160,7 @@
           "text": "#343739",
           "subtext": "#b5b5b5",
           "links": "#B5B5B5",
-          "separator": "#E1E1E1",
+          "separator": "#8f6b4f",
           "neutralDarkColor": "#b2bec3"
         }
       },

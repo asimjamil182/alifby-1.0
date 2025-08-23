@@ -1,0 +1,22 @@
+<div class="flex h-full gap-4 items-center justify-start py-2">
+      {%- unless settings.phoneno == empty -%}
+        <div>
+          <a href="tel:{{settings.phoneno}}" target="_blank" class="flex items-center">
+            <i>{%- render 'icon', iconName: 'telephone', size: '1rem', class: 'fill-primaryColor' -%}</i>
+            {%- if section.settings.isText -%}
+              <span class="pl-2 text-primaryColor">{{ settings.phoneno }}</span>
+            {%- endif -%}
+          </a>
+        </div>
+      {%- endunless -%}
+      {%- unless settings.gmail == empty -%}
+        <div>
+          <a href="mailto:{{settings.gmail}}" target="_blank" class="flex items-center">
+            <i>{%- render 'icon', iconName: 'envelope', size: '1rem', class: 'fill-primaryColor' -%}</i>
+            {%- if section.settings.isText -%}
+              <span class="pl-2 text-primaryColor">{{ settings.gmail }}</span>
+            {%- endif -%}
+          </a>
+        </div>
+      {%- endunless -%}
+    </div>

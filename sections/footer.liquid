@@ -1,9 +1,10 @@
-<footer class="{{ section.id }} mt-4 flex-grow-[1]" style="background-color:{{ section.settings.bg_color }} !important;">
+<footer class="{{ section.id }} {{ section.settings.color_scheme }} mt-4 flex-grow-[1] bg-backgroundColor">
   <div class="footer border-t border-separatorlineColor">
     <div class="border-b border-separatorlineColor">
       <div class="layout flex justify-center p-4 gap-4 flex-wrap md:flex-nowrap md:justify-between">
         <div class="flex gap-2">
-          {%- render 'social-icon', _size: '1.5rem', fillColor: 'fill-textColor' -%}
+          {%- render 'contact-icon' -%}
+          {%- render 'social-icon' -%}
         </div>
         <div class="flex gap-2">
           {%- if settings.show_country_selector -%}
@@ -77,35 +78,12 @@
         </div>
       </div>
     </div>
-    <div class=" bg-primaryColor copyRightBg">
-      <div class="text-center text-secondaryColor p-6 copyRightText">{{ section.settings.copy_right_text }}</div>
+    <div class="bg-secondaryColor copyRightBg">
+      <div class="text-center text-primaryColor p-6 copyRightText">{{ section.settings.copy_right_text }}</div>
     </div>
   </div>
 </footer>
-{% if section.settings.isDefaultOverride %}
-  <style>
-    .{{ section.id }} .shortnote {
-      color: {{ section.settings.short_note_color }};
-    }
-    .{{ section.id }} .menuHeading {
-      color: {{ section.settings.menu_heading_color }};
-    }
-    .{{ section.id }} .menuLinks {
-      color: {{ section.settings.meun_links_color }};
-    }
-    .{{ section.id }} .btn {
-      color: {{ section.settings.btn_color }};
-      background-color: {{ section.settings.btn_bg_color }};
-      border-color: {{ section.settings.btn_border_color }};
-    }
-    .{{ section.id }} .copyRightBg {
-      background-color: {{ section.settings.copy_right_bg_color }};
-    }
-    .{{ section.id }} .copyRightText {
-      color: {{ section.settings.copy_right_text_color }};
-    }
-  </style>
-{% endif %}
+
 
 {% schema %}
 {
@@ -134,76 +112,17 @@
       "content": "Section Settings & Styling"
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
-      "default": "transparent"
-    },
-    {
       "type": "checkbox",
       "id": "enable_payment_types",
       "label": "Enalble Payment Provider",
       "default": true
     },
     {
-      "type": "header",
-      "content": "Override Theme Colors"
-    },
-    {
-      "type": "checkbox",
-      "id": "isDefaultOverride",
-      "label": "Enable",
-      "default": false,
-      "info": "Enable this option to override the theme colors."
-    },
-    {
-      "type": "color",
-      "id": "short_note_color",
-      "label": "Short Note Color",
-      "default": "#333333"
-    },
-    {
-      "type": "color",
-      "id": "menu_heading_color",
-      "label": "Menu Heading Color",
-      "default": "#333333"
-    },
-    {
-      "type": "color",
-      "id": "meun_links_color",
-      "label": "Menu Links Color",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "btn_color",
-      "label": "Button Text Color",
-      "default": "#fff"
-    },
-    {
-      "type": "color",
-      "id": "btn_bg_color",
-      "label": "Button Background Color",
-      "default": "#333"
-    },
-    {
-      "type": "color",
-      "id": "btn_border_color",
-      "label": "Button border Color",
-      "default": "#333"
-    },
-    {
-      "type": "color",
-      "id": "copy_right_bg_color",
-      "label": "Copyright Background Color",
-      "default": "#333"
-    },
-    {
-      "type": "color",
-      "id": "copy_right_text_color",
-      "label": "CopyRight Text Color",
-      "default": "#ffffff"
-    },
+    "type": "color_scheme",
+    "id": "color_scheme",
+    "label": "Color Scheme",
+    }
+  
   ],
   "blocks": [
     {

@@ -41,7 +41,7 @@
           {
             "type": "color_background",
             "id": "backgroundGradient",
-            "label": "Background Gradient",
+            "label": "Background Gradient"
           },
           {
             "type": "color",
@@ -290,6 +290,10 @@
           {
             "value": "input-outline-color",
             "label": "Outline Color"
+          },
+          {
+            "value": "input-fill",
+            "label": "Fill"
           }
         ],
         "default": "input-outline"
@@ -303,12 +307,6 @@
         "unit": "px",
         "label": "Input Raduis",
         "default": 0
-      },
-      {
-        "type": "checkbox",
-        "id": "input_isborder",
-        "label": "Show Input Border",
-        "default": true
       }
     ]
   },
@@ -367,15 +365,15 @@
       },
       {
         "type": "color",
-        "id": "product_card_img_bg",
-        "label": "Image Background Color",
+        "id": "product_card_bg",
+        "label": "Background",
         "default": "#ffffff"
       },
       {
-        "type": "color_scheme",
-        "id": "card_color_scheme",
-        "label": "Card Color Scheme",
-        "default": "scheme-2"
+        "type": "color",
+        "id": "product_card_img_bg",
+        "label": "Image Background",
+        "default": "#ffffff"
       }
     ]
   },
@@ -392,8 +390,34 @@
     "name": "Social Icon",
     "settings": [
       {
-        "type": "header",
-        "content": "Social icon url"
+        "type": "text",
+        "id": "phoneno",
+        "label": "Phone no"
+      },
+      {
+        "type": "text",
+        "id": "gmail",
+        "label": "Gmail"
+      },
+      {
+        "type": "text",
+        "id": "facebook",
+        "label": "Facebook url"
+      },
+      {
+        "type": "text",
+        "id": "instagram",
+        "label": "Instagram url"
+      },
+      {
+        "type": "text",
+        "id": "tiktok",
+        "label": "Tiktok url"
+      },
+      {
+        "type": "text",
+        "id": "x",
+        "label": "X url"
       }
     ]
   }

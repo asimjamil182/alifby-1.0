@@ -171,7 +171,7 @@
         "is_show_label": true,
         "isRoundedImage": true,
         "image_size": "w-[50px] h-[50px] md:w-[75px] md:h-[75px]",
-        "theme_color": "sunset-vibes",
+        "theme_color": "ocean-breeze",
         "bg_color": "#ffffff",
         "bg_opacity": 1
       }

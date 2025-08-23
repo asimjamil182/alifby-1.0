@@ -4,10 +4,10 @@
 {%- assign collection2 = collections[section.settings.col2] -%}
 
 <section class="{{ section.id }}">
-  <div class="layout lg:p-0 {% if section.settings.isFullWidth %}lg:w-full{% endif %}">
+  <div class="layout {{ section.settings.color_scheme }} lg:p-0 {% if section.settings.isFullWidth %}lg:w-full{% endif %}">
     <div class="flex gap-3 flex-wrap md:flex-nowrap overflow-hidden">
       <div class="w-full md:w-1/2">
-        <div class="flex gap-2" style="background-color:{{ section.settings.bg_color }} !important;">
+        <div class="flex gap-2 bg-backgroundColor">
           <div class="w-1/2">
             {% if collection1.image != empty %}
               <a href="{{ collection1.url }}">
@@ -50,7 +50,7 @@
                     {%- for tag in collection1.tags limit: 3 -%}
                       <a
                         href="{{ collection1.url }}/{{ tag | handle }}"
-                        class=" inline-block text-xs p-1 px-3 rounded-full whitespace-nowrap border border-primaryColor text-textColor tags"
+                        class=" inline-block text-xs p-1 px-3 rounded-full whitespace-nowrap border border-black text-textColor tags"
                       >
                         {{- tag -}}
                       </a>
@@ -72,7 +72,7 @@
         </div>
       </div>
       <div class="w-full md:w-1/2">
-        <div class="flex gap-2" style="background-color:{{ section.settings.bg_color }} !important;">
+        <div class="flex gap-2 bg-backgroundColor">
           <div class="w-1/2">
             {% if collection2.image != empty %}
               <a href="{{ collection2.url }}">
@@ -115,7 +115,7 @@
                     {%- for tag in collection2.tags limit: 3 -%}
                       <a
                         href="{{ collection2.url }}/{{ tag | handle }}"
-                        class=" inline-block text-xs p-1 px-3 rounded-full whitespace-nowrap border border-primaryColor text-textColor tags"
+                        class=" inline-block text-xs p-1 px-3 rounded-full whitespace-nowrap border border-black text-textColor tags"
                       >
                         {{ tag }}
                       </a>
@@ -207,40 +207,11 @@
       "info": "This option work on large screen only"
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
-      "default": "transparent"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme"
     },
-    {
-      "type": "header",
-      "content": "Override Theme Colors"
-    },
-    {
-      "type": "checkbox",
-      "id": "isDefaultOverride",
-      "label": "Enable",
-      "default": false,
-      "info": "Enable this option to override the theme colors."
-    },
-    {
-      "type": "color",
-      "id": "collection_title_color",
-      "label": "Collection Title Color",
-      "default": "#333"
-    },
-    {
-      "type": "color",
-      "id": "tagline_color",
-      "label": "Tagline Color",
-      "default": "#333"
-    },
-    {
-      "type": "color",
-      "id": "tags_color",
-      "label": "Tags Color",
-      "default": "#333"
-    }
+    
   ],
   "presets": [
     {

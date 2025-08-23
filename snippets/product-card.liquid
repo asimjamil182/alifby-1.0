@@ -62,7 +62,7 @@
           
         </div>
       </div>
-      <div class="p-2 child:mt-1 max-w-[220px]">
+      <div class="p-2 child:mt-1" style="background-color: {{ settings.product_card_bg }};">
         <div class="flex !mt-0 items-center">
           {% unless product.type == 'unknown type' %}
             <div class=" text-xs flex-1 text-accentColor uppercase">{{ product.type }}</div>

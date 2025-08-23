@@ -15,7 +15,8 @@
     --button-raduis: 0px;
     /* input */
     --input-raduis: 0px;
-    --input-isborder: 1px;
+    --swiper-pagination-color: var(--theme-primary-color);
+    --swiper-navigation-color: var(--theme-primary-color);
 }
 
 @tailwind base;
@@ -156,22 +157,17 @@
     }
 
     .input-outline {
-        border-width: var(--input-isborder);
-        @apply rounded-[var(--input-raduis)] border-[black] cursor-pointer text-textColor fill-textColor text-sm p-2;
+        @apply rounded-[var(--input-raduis)] border border-black cursor-pointer text-black child:placeholder-black child:placeholder-opacity-50 fill-black text-sm p-2;
     }
 
-    .input-outline option:hover {
-        @apply text-textColor;
+    .input-fill {
+        @apply rounded-[var(--input-raduis)] border border-secondaryColor bg-secondaryColor cursor-pointer text-primaryColor fill-primaryColor child:placeholder-primaryColor child:placeholder-opacity-50 text-sm p-2;
     }
-
     .input-outline-color {
-        border-width: var(--input-isborder);
-        @apply rounded-[var(--input-raduis)] border-secondaryColor bg-secondaryColor cursor-pointer text-primaryColor fill-primaryColor child:placeholder-primaryColor text-sm p-2;
+        @apply rounded-[var(--input-raduis)] border border-primaryColor cursor-pointer text-primaryColor fill-primaryColor child:placeholder-primaryColor child:placeholder-opacity-50 text-sm p-2;
     }
 
-    .input-outline-color option:hover {
-        @apply bg-primaryColor text-textColor;
-    }
+    
 
 
     .input-rounded {
