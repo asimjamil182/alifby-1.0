@@ -1,4 +1,4 @@
-{% if section.settings.isAnnouncementBar %}
+
   <section
     class=" bg-secondaryColor text-primaryColor fill-primaryColor {{ section.settings.theme_color }}"
   >
@@ -33,27 +33,21 @@
         </div>
         <div class="w-1/4 hidden md:flex items-center justify-end gap-2">
           {%- if settings.show_country_selector -%}
-            {% render 'country-selector', class: 'text-primaryColor border-primaryColor bg-[transparent]' %}
+            {% render 'country-selector', class: 'text-primaryColor border-primaryColor bg-transparent' %}
           {%- endif -%}
           {%- if settings.show_language_selector -%}
-            {% render 'language-selector', class: 'text-primaryColor border-primaryColor bg-[transparent]' %}
+            {% render 'language-selector', class: 'text-primaryColor border-primaryColor bg-transparent' %}
           {%- endif -%}
         </div>
       </div>
     </div>
   </section>
-{% endif %}
+
 
 {% schema %}
 {
   "name": "Announcement Bar",
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "isAnnouncementBar",
-      "label": "Show",
-      "default": true
-    },
     {
       "type": "header",
       "content": "Announcement list"

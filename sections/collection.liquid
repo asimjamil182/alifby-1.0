@@ -1,3 +1,5 @@
+
+
 {% if current_tags %}
   {% assign is_current_tags = true %}
 {%- else -%}
@@ -5,7 +7,7 @@
 {% endif %}
 <section>
   <div class="layout sm:px-2 md:px-4 lg:px-0 mt-4">
-    <div class="flex sm:gap-2 md:gap-0 p-2 items-center" style="background:{{ section.settings.title-bg }};">
+    <div class="flex sm:gap-2 md:gap-0 p-2 items-center border" style="background:{{ section.settings.title-bg }};">
       <div class="sm:flex-1 md:w-4/5">
         {%- if is_current_tags -%}
           <div class=" capitalize font-semibold text-lg text-textColor">
@@ -37,7 +39,7 @@
         </div>
       {%- endunless -%}
     </div>
-    <div class="flex sm:flex-wrap">
+    <div class="flex sm:flex-wrap border">
       {%- unless is_current_tags or section.settings.isFilter==false or collection.filters.size==0 -%}
         <div class="md:w-1/6 sm:w-full">
           <div
@@ -77,11 +79,16 @@
             total-pages="{{ paginate.pages }}"
             current-page="{{ paginate.current_page }}"
           >
-            <div id="product-grid" class="flex flex-wrap mt-2 sm:p-1 gap-2">
+            {%- if section.settings.isFilter -%}
+              {%- assign class = 'product-card sm:w-1/2 md:w-1/5' -%}         
+            {%- else -%}
+              {%- assign class = 'product-card sm:w-1/2 md:w-1/6' -%}
+            {%- endif -%}
+            <div id="product-grid" class="flex flex-wrap sm:p-1">
               {%- for product in collection.products -%}
                 {%- render 'product-card',
                   product: product,
-                  class: 'product-card sm:w-[48%] md:w-[16%]'
+                  class: class
                 -%}
               {%- endfor -%}
             </div>

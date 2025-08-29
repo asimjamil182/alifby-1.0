@@ -1,7 +1,7 @@
 
 
 <section class="{{ section.id }}">
-  <div class="layout {{ section.settings.color_scheme }} {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor">
+  <div class="layout {{ section.settings.color_scheme }}{% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor">
     {% if section.settings.heading %}
       <div class="section-heading">{{ section.settings.heading }}</div>
     {% endif %}
@@ -10,7 +10,7 @@
     {% endif %}
     <product-slider>
       <swiper-container
-        class=" product-slider my-3 w-full ml-0 mr-0"
+        class=" product-slider py-3 w-full ml-0 mr-0"
         space-between="5"
         slides-per-view="6"
         free-mode="false"
@@ -34,7 +34,7 @@
           {% else %}
           {%- for product in (1..10) %}
             <swiper-slide class="flex h-auto pb-8">
-              {%- render 'product-card', product: false, class: 'product-card mb-6 w-full' -%}
+              {%- render 'product-card', product: false, class: 'mb-6 w-full' -%}
             </swiper-slide>
           {%- endfor -%}
         {% endif %}

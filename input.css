@@ -164,7 +164,7 @@
         @apply rounded-[var(--input-raduis)] border border-secondaryColor bg-secondaryColor cursor-pointer text-primaryColor fill-primaryColor child:placeholder-primaryColor child:placeholder-opacity-50 text-sm p-2;
     }
     .input-outline-color {
-        @apply rounded-[var(--input-raduis)] border border-primaryColor cursor-pointer text-primaryColor fill-primaryColor child:placeholder-primaryColor child:placeholder-opacity-50 text-sm p-2;
+        @apply rounded-[var(--input-raduis)] border border-secondaryColor cursor-pointer text-primaryColor fill-primaryColor child:placeholder-primaryColor child:placeholder-opacity-50 text-sm p-2;
     }
 
     

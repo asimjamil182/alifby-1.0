@@ -1,3 +1,5 @@
+
+
 class StarRating extends HTMLElement {
     constructor() {
         super();
@@ -952,6 +954,8 @@ class PriceRangeHandler extends HTMLElement {
         let percentagePosition = (boxPosition / containerWidth) * 100;
         let mappedValue = (percentagePosition / 100) * Number(this.valueMax);
         mappedValue = Math.round(mappedValue * 100) / 100;
+        mappedValue = Math.round(mappedValue);
+        console.log(mappedValue);
         return mappedValue;
     }
 
@@ -1173,18 +1177,47 @@ class CollectionGridAutoLoader extends HTMLElement {
         this.currentTypes = "type";
         this.mainContainer = document.querySelector('main');
         this.collection_sorting = document.querySelector('#collection_sort_by') || null;
-        this.collection_sorting.addEventListener('change', this.filterHandler.bind(this));
-        if (this.filterNavigator != null) {
-            this.filterNavigator.addEventListener('click', this.showFilter.bind(this));
-            this.filterOverlay.addEventListener('click', this.hideFilter.bind(this));
-            this.filterCloseIcon.addEventListener('click', this.hideFilter.bind(this));
-            this.filterList.addEventListener('change', this.filterHandler.bind(this));
+
+        this.filters=document.querySelectorAll('input[name^="filter"]');
+        console.log(this.filters);
+        //  this.collection_sorting.addEventListener('change', this.filterHandler.bind(this));
+        // if (this.filterNavigator != null) {
+        //     this.filterNavigator.addEventListener('click', this.showFilter.bind(this));
+        //     this.filterOverlay.addEventListener('click', this.hideFilter.bind(this));
+        //     this.filterCloseIcon.addEventListener('click', this.hideFilter.bind(this));
+        //     this.filterList.addEventListener('change', this.filterHandler.bind(this));
+        // }
+        // this.mainContainer.addEventListener('scroll', this.onscrollChange.bind(this));
+        if(this.filters.length>0){
+            this.filters.forEach((filter)=>{
+                filter.addEventListener('change', (e)=>{
+                    this.FilterController();
+                });
+            });
         }
 
-
-        this.mainContainer.addEventListener('scroll', this.onscrollChange.bind(this));
-
     }
+
+
+    FilterController(){
+        console.log('triggered');
+        let filter_list="";
+        if(this.filters.length>0){
+            this.filters.forEach((filter,index)=>{
+                if (filter.checked) {
+                    filter_list+="&"+filter.name+"="+ filter.value;
+                }else if(filter.type=='number'){
+                    filter_list+="&"+filter.name+"="+ filter.value;
+                }
+            });
+        }
+        
+        let url =  window.location.pathname+'?'+filter_list;
+        console.log(url);
+        this.debounce(this.fetchProduct(url));
+        // window.history.replaceState(null, null, window.location.pathname+'?'+filter_list);
+    }
+
 
     loading(state = false) {
         if (state) {
@@ -1311,8 +1344,9 @@ class CollectionGridAutoLoader extends HTMLElement {
                 .parseFromString(data, 'text/html')
                 .querySelectorAll('.product-card');
             if (productCard.length > 0) {
+                this.querySelector('#product-grid').innerHTML="";
                 productCard.forEach(element => {
-                    this.querySelector('#product-grid').append(element);
+                    this.querySelector('#product-grid').appendChild(element);
                 });
                 window.history.replaceState(null, null, "?" + newurl[1]);
             }

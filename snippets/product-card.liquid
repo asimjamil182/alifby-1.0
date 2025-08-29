@@ -3,15 +3,16 @@
 
 {%- case settings.product_card_style -%}
   {%- when 'card-style-1' -%}
-    <product-cart
+    <div class="{{class}} p-1">
+      <product-cart
       product-id="{{product.selected_or_first_available_variant.id}}"
-      class="{{class}} product_card rounded-md overflow-hidden shadow"
+      class="product_card"
     >
       <div
         class=" relative group overflow-hidden"
       >
         <div
-          class=" min-w-min min-h-[165px] lg:min-h-[220px] bg-contain bg-center overflow-hidden transition-transform duration-300 hover:scale-110 relative bg-[url('https://placehold.co/220')]"
+          class="flex items-center justify-center min-w-min min-h-[165px] lg:min-h-[220px] bg-contain bg-center overflow-hidden transition-transform duration-300 hover:scale-110 relative bg-[url('https://placehold.co/500x300')]"
         >
           {% if product.featured_image %}
             <img
@@ -19,7 +20,7 @@
               src="{{product.featured_image | image_url: width: 800, height: 800, crop: 'top'}}"
               width=""
               height=""
-              class="w-full h-full object-cover absolute transition-opacity duration-500  {% if product.images[1].src != nil %}hover:opacity-0 {% endif %} "
+              class="w-full h-full align-middle absolute transition-opacity duration-500  {% if product.images[1].src != nil %}hover:opacity-0 {% endif %} "
               style="background-color: {{ settings.product_card_img_bg }};"
               alt="product image"
               onclick="window.open('{{ product.url }}','_SELF')"
@@ -30,7 +31,7 @@
                 src="{{product.images[1].src | image_url: width: 800, height: 800, crop: 'top'}}"
                 width=""
                 height=""
-                class=" w-full object-cover"
+                class=" w-full align-middle"
                 style="background-color: {{ settings.product_card_img_bg }};"
                 alt="product image"
                 onclick="window.open('{{ product.url }}','_SELF')"
@@ -164,6 +165,7 @@
         </div>
       </div>
     </product-cart>
+    </div>
   {%- else -%}
     <product-cart
       product-id="{{product.selected_or_first_available_variant.id}}"
