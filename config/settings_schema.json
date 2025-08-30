@@ -63,9 +63,9 @@
           },
           {
             "type": "color",
-            "id": "separator_line",
+            "id": "separatorline",
             "default": "#E1E1E1",
-            "label": "Separator Line"
+            "label": "Divider Line"
           }
         ],
         "role": {

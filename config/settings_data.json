@@ -27,7 +27,7 @@
     "type_btn_font": "abel_n4",
     "btn_style": "btn-fill-color",
     "button_raduis": 3,
-    "input_style": "input-outline-color",
+    "input_style": "input-outline",
     "input_raduis": 3,
     "product_card_style": "card-style-1",
     "show_add_to_cart_btn": true,
@@ -98,7 +98,7 @@
           "btn_bg_color": "#d0b9a7",
           "btn_border_color": "#8f6b4f",
           "copy_right_bg_color": "#d0b9a7",
-          "copy_right_text_color": "#8f6b4f"
+          "copy_right_text_color": "#ebe9e8ff"
         }
       },
       "mobile-app-menu": {
@@ -159,7 +159,7 @@
           "heading": "#333333",
           "text": "#343739",
           "subtext": "#b5b5b5",
-          "separator": "#8f6b4f",
+          "separatorline": "#e2dfddff"
         }
       },
       "sunset-vibes": {
@@ -172,9 +172,7 @@
           "heading": "#333333",
           "text": "#2c3e50",
           "subtext": "#b5b5b5",
-          "links": "#B5B5B5",
-          "separator": "#E1E1E1",
-          "neutralDarkColor": "#f0b27a"
+          "separatorline": "#E1E1E1"
         }
       },
       "forest-retreat": {
@@ -187,9 +185,7 @@
           "heading": "#333333",
           "text": "#1e272e",
           "subtext": "#b5b5b5",
-          "links": "#B5B5B5",
-          "separator": "#E1E1E1",
-          "neutralDarkColor": "#a6acaf"
+          "separatorline": "#E1E1E1"
         }
       },
       "lavender-dream": {
@@ -202,9 +198,7 @@
           "heading": "#333333",
           "text": "#2d3436",
           "subtext": "#b5b5b5",
-          "links": "#B5B5B5",
-          "separator": "#E1E1E1",
-          "neutralDarkColor": "#b2bec3"
+          "separatorline": "#E1E1E1"
         }
       },
       "midnight-market": {
@@ -217,9 +211,7 @@
           "heading": "#333333",
           "text": "#dfe6e9",
           "subtext": "#b5b5b5",
-          "links": "#B5B5B5",
-          "separator": "#E1E1E1",
-          "neutralDarkColor": "#2d3436"
+          "separatorline": "#E1E1E1"
         }
       }
     }
@@ -230,67 +222,67 @@
       "input_style": "input-rounded",
       "ocean-breeze": {
         "settings": {
-          "primary": "#2c3e50",
-          "secondary": "#3498db",
-          "background": "#ecf0f1",
-          "backgroundGradient": "linear-gradient(135deg, #ecf0f1 0%, #ffffff 100%)",
-          "text": "#2c3e50",
-          "subtext": "#7f8c8d",
-          "accent": "#e74c3c",
-          "neutralLightColor": "#dfe6e9",
-          "neutralDarkColor": "#b2bec3"
+          "primary": "#8f6b4f",
+          "secondary": "#d0b9a7",
+          "accent": "#ac5c1aff",
+          "background": "#dbcabd66",
+          "backgroundGradient": "",
+          "heading": "#333333",
+          "text": "#343739",
+          "subtext": "#b5b5b5",
+          "separatorline": "#e2dfddff"
         }
       },
       "sunset-vibes": {
         "settings": {
           "primary": "#d35400",
           "secondary": "#e67e22",
+          "accent": "#27ae60",
           "background": "#fdf2e9",
           "backgroundGradient": "linear-gradient(135deg, #fdf2e9 0%, #fef9e7 100%)",
+          "heading": "#333333",
           "text": "#2c3e50",
-          "subtext": "#7f8c8d",
-          "accent": "#27ae60",
-          "neutralLightColor": "#f9e79f",
-          "neutralDarkColor": "#f0b27a"
+          "subtext": "#b5b5b5",
+          "separatorline": "#E1E1E1"
         }
       },
       "forest-retreat": {
         "settings": {
           "primary": "#1e5631",
           "secondary": "#2ecc71",
-          "background": "#f7f9f7",
-          "backgroundGradient": "linear-gradient(135deg, #f7f9f7 0%, #eafaf1 100%)",
-          "text": "#1e272e",
-          "subtext": "#566573",
           "accent": "#e67e22",
-          "neutralLightColor": "#d5dbdb",
-          "neutralDarkColor": "#a6acaf"
+          "background": "#f7f9f7",
+          "backgroundGradient": "linear-gradient(135deg, rgba(247, 249, 247, 1), rgba(234, 250, 241, 1) 100%)",
+          "heading": "#333333",
+          "text": "#1e272e",
+          "subtext": "#b5b5b5",
+          "separatorline": "#E1E1E1"
         }
       },
       "lavender-dream": {
         "settings": {
           "primary": "#6c5ce7",
           "secondary": "#a29bfe",
+          "accent": "#fd79a8",
           "background": "#f9f7fd",
           "backgroundGradient": "linear-gradient(135deg, #f9f7fd 0%, #f2effb 100%)",
+          "heading": "#333333",
           "text": "#2d3436",
-          "subtext": "#636e72",
-          "accent": "#fd79a8",
-          "neutralLightColor": "#dfe6e9",
-          "neutralDarkColor": "#b2bec3"
+          "subtext": "#b5b5b5",
+          "separatorline": "#E1E1E1"
         }
       },
       "midnight-market": {
         "settings": {
           "primary": "#2d3436",
           "secondary": "#636e72",
+          "accent": "#fdcb6e",
           "background": "#1e272e",
           "backgroundGradient": "linear-gradient(135deg, #1e272e 0%, #2d3436 100%)",
+          "heading": "#333333",
           "text": "#dfe6e9",
-          "subtext": "#b2bec3",
-          "accent": "#fdcb6e",
-          "neutralLightColor": "#636e72",
-          "neutralDarkColor": "#2d3436"
+          "subtext": "#b5b5b5",
+          "separatorline": "#E1E1E1"
         }
       }
     }

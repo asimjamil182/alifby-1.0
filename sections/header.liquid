@@ -7,8 +7,8 @@
       style="background:var(--theme-background-color);"
     >
       <div id="overlay" class="overlay fixed left-0 right-0 bottom-0 top-0 bg-primaryColor z-[2] hidden  opacity-10"></div>
-      <div class="layout {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %}">
-        <main-menu class="text-secondaryColor flex sm:gap-y-2 md:gap-y-0 items-center flex-wrap py-3 md:flex-nowrap md:m-auto justify-between {% if section.settings.isdivider %}md:border-b border-separatorlineColor{% endif %}">
+      <div class="layout {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %} {% if section.settings.isdivider %}md:border-b border-separatorlineColor{% endif %}">
+        <main-menu class="text-secondaryColor flex sm:gap-y-2 md:gap-y-0 items-center flex-wrap py-3 md:flex-nowrap md:m-auto justify-between ">
           <div class="md:hidden w-[65px]">
             {%- render 'icon',
               iconName: 'list',
@@ -62,7 +62,7 @@
             %}
           </div>
         {% endif %}
-        <main-menu class="flex gap-1 md:gap-3 w-full items-center justify-between md:justify-center flex-wrap md:flex-nowrap {% if section.settings.isdivider %}md:border-t border-separatorlineColor{% endif %}">
+        <main-menu class="flex gap-1 md:gap-3 w-full items-center justify-between md:justify-center flex-wrap md:flex-nowrap">
           <div class="md:hidden w-[65px]">
             {%- render 'icon',
               iconName: 'list',

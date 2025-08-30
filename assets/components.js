@@ -317,11 +317,11 @@ class ProductShowCase extends HTMLElement {
         this.spinner = this.querySelector('#spinner');
         this.txt2 = this.querySelector('#txt3');
         this.spinner2 = this.querySelector('#spinner2');
-        if (this.addtocartbtn!=null) {
+        if (this.addtocartbtn != null) {
             this.addtocartbtn.addEventListener('click', this.onFormSubmit.bind(this));
-            
+
         }
-        if (this.buyitnowbtn!=null) {
+        if (this.buyitnowbtn != null) {
             this.buyitnowbtn.addEventListener('click', this.onBuyItNow.bind(this));
         }
 
@@ -470,7 +470,7 @@ class VariantSelector extends HTMLElement {
         if (currentVariant != null && currentVariant.available) {
             if (this.addToCartBtn != null) {
                 this.addToCartBtn.removeAttribute("disabled");
-                
+
             }
             if (this.buyItNowBtn != null) {
                 this.buyItNowBtn.removeAttribute("disabled");
@@ -1048,12 +1048,12 @@ class QuickViewListiner extends HTMLElement {
             return;
         }
         try {
-            if (this.eye_icon!= null && this.spinner_icon != null) {
+            if (this.eye_icon != null && this.spinner_icon != null) {
                 this.eye_icon.classList.add('hidden');
                 this.spinner_icon.classList.remove('hidden');
             }
             QuickView.laodQuickView(this.productId).then(() => {
-                if (this.eye_icon!= null && this.spinner_icon != null) {
+                if (this.eye_icon != null && this.spinner_icon != null) {
                     this.eye_icon.classList.remove('hidden');
                     this.spinner_icon.classList.add('hidden');
                 }
@@ -1168,7 +1168,7 @@ class CollectionGridAutoLoader extends HTMLElement {
         this.filterOverlay = document.getElementById('filter-overlay') || null;
         this.filterCloseIcon = document.getElementById('filter_close_icon') || null;
         this.filterContainer = document.getElementById('filter-container') || null;
-        this.filterList = document.querySelector('#filter-list') || null;
+        this.filterClearBtn = document.querySelector('.filter_clear_btn') || null;
         this.filterChange = false;
         this.filterState = false;
         this.tags = null;
@@ -1178,44 +1178,81 @@ class CollectionGridAutoLoader extends HTMLElement {
         this.mainContainer = document.querySelector('main');
         this.collection_sorting = document.querySelector('#collection_sort_by') || null;
 
-        this.filters=document.querySelectorAll('input[name^="filter"]');
-        console.log(this.filters);
-        //  this.collection_sorting.addEventListener('change', this.filterHandler.bind(this));
-        // if (this.filterNavigator != null) {
-        //     this.filterNavigator.addEventListener('click', this.showFilter.bind(this));
-        //     this.filterOverlay.addEventListener('click', this.hideFilter.bind(this));
-        //     this.filterCloseIcon.addEventListener('click', this.hideFilter.bind(this));
-        //     this.filterList.addEventListener('change', this.filterHandler.bind(this));
-        // }
-        // this.mainContainer.addEventListener('scroll', this.onscrollChange.bind(this));
-        if(this.filters.length>0){
-            this.filters.forEach((filter)=>{
-                filter.addEventListener('change', (e)=>{
-                    this.FilterController();
-                });
+        this.filters = document.querySelectorAll('[name^="filter"]');
+
+        if (this.filterNavigator != null) {
+            this.filterNavigator.addEventListener('click', this.showFilter.bind(this));
+            this.filterOverlay.addEventListener('click', this.hideFilter.bind(this));
+            this.filterCloseIcon.addEventListener('click', this.hideFilter.bind(this));
+        }
+        this.mainContainer.addEventListener('scroll', this.onscrollChange.bind(this));
+        if (this.filterClearBtn != null) {
+            this.filterClearBtn.addEventListener('click', (e) => {
+                window.location.href = window.location.pathname;
+            });
+        }
+        if (this.filters.length > 0) {
+            this.filters.forEach((filter) => {
+                if (filter.type == 'checkbox' || filter.type == 'radio') {
+                    filter.addEventListener('change', (e) => {
+                        this.filterHandler(e);
+                    }
+                    );
+                } else if (filter.type == 'number') {
+                    filter.addEventListener('input', (e) => {
+                        this.filterHandler(e);
+                    });
+                } else if (filter.id == 'sort_by') {
+                    filter.addEventListener('change', (e) => {
+                        this.filterHandler(e);
+                    });
+                }
             });
         }
 
     }
 
 
-    FilterController(){
-        console.log('triggered');
-        let filter_list="";
-        if(this.filters.length>0){
-            this.filters.forEach((filter,index)=>{
+    filterHandler(event) {
+        let filter_list = "";
+
+        if (this.filters.length > 0) {
+            let activeFilters=0;
+            this.filters.forEach((filter, index) => {
                 if (filter.checked) {
-                    filter_list+="&"+filter.name+"="+ filter.value;
-                }else if(filter.type=='number'){
-                    filter_list+="&"+filter.name+"="+ filter.value;
+                    activeFilters++;
+                    filter_list += "&" + filter.name + "=" + filter.value;
+                } else if (filter.type == 'number') {
+                    filter_list += "&" + filter.name + "=" + filter.value;
+                } else if (filter.id == 'sort_by' && filter.value != undefined) {
+                    filter_list += "&" + filter.id + "=" + filter.value;
                 }
             });
+            if(activeFilters==0){
+                this.filterClearBtn.classList.add('hidden');
+            }else{
+                this.filterClearBtn.classList.remove('hidden');
+            }
         }
-        
-        let url =  window.location.pathname+'?'+filter_list;
-        console.log(url);
-        this.debounce(this.fetchProduct(url));
-        // window.history.replaceState(null, null, window.location.pathname+'?'+filter_list);
+
+        if (event.type == "scroll") {
+            this.currentPage++;
+            if (this.currentPage > this.totalPages) {
+                return;
+            } else {
+                filter_list += "&page=" + this.currentPage;
+                let url = window.location.pathname + '?' + filter_list;
+                this.debounce(this.fetchProduct(url));
+            }
+
+        } else if (event.type == "change" || event.type == "input") {
+            this.currentPage = 1;
+            filter_list += "&page=" + this.currentPage;
+            let url = window.location.pathname + '?' + filter_list;
+            this.debounce(this.fetchProduct(url,event));
+        }
+
+
     }
 
 
@@ -1235,7 +1272,6 @@ class CollectionGridAutoLoader extends HTMLElement {
         var scrollPercent = scrollTop / (scrollHeight - containerHeight);
         if (scrollPercent > 0.7 && this.loadingState == false) {
             this.filterHandler(e);
-
         }
     }
 
@@ -1250,85 +1286,7 @@ class CollectionGridAutoLoader extends HTMLElement {
         this.filterContainer.classList.add('sm:translate-x-full');
     }
 
-    filterOrginize() {
-        let tag = "";
-        let type = "";
-        let sort = "";
-        try {
-            this.tags = document.querySelectorAll('input[name=filter-p-tag]:checked');
-            if (this.tags.length > 0) {
-                this.tags.forEach(element => {
-                    tag = tag + '&filter.p.tag=' + element.value;
-                });
-            }
-        } catch (error) {
-            console.error(error)
-        }
-
-        try {
-            this.types = document.querySelectorAll('input[name=filter-p-product_type]:checked');
-            if (this.types.length > 0) {
-                this.types.forEach(element => {
-                    type = type + '&filter.p.product_type=' + element.value;
-                });
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
-        try {
-            sort = '&sort_by=' + document.querySelector('#collection_sort_by').value;
-        } catch (error) {
-            console.error(error);
-        }
-        return [tag, type, sort];
-    }
-
-    filterHandler(event) {
-        let [tag, type, sort] = this.filterOrginize();
-        if (tag == "" && type == "" && sort == "&sort_by=manual") {
-            this.filterState = false;
-        } else {
-            this.filterState = true;
-        }
-        let url = "";
-        let searchParm = "";
-        if (this.filterState) {
-            if (event.type == "scroll") {
-                this.currentPage++;
-                if (this.currentPage > this.totalPages) {
-                    return;
-                }
-                searchParm = (window.location.pathname.includes('types') ? window.location.search + '&' : "?") + 'page=' + this.currentPage + type + tag + sort;
-                url = '/' + window.location.pathname.slice(1) + searchParm;
-                this.debounce(this.fetchProduct(url));
-            } else if (event.type == "change") {
-                this.currentPage = 1;
-                searchParm = (window.location.pathname.includes('types') ? window.location.search + '&' : "?") + 'page=' + this.currentPage + type + tag + sort;
-                url = '/' + window.location.pathname.slice(1) + searchParm;
-                this.querySelector('#product-grid').innerHTML = "";
-                this.debounce(this.fetchProduct(url, event.type));
-            }
-
-        } else {
-            if (event.type == "change") {
-                this.currentPage = 1;
-                searchParm = (window.location.pathname.includes('types') ? window.location.search + '&' : "?") + 'page=' + this.currentPage;
-                url = '/' + window.location.pathname.slice(1) + searchParm;
-                this.querySelector('#product-grid').innerHTML = "";
-                this.fetchProduct(url, event.type);
-            } else {
-                this.currentPage++;
-                if (this.currentPage > this.totalPages) {
-                    return;
-                }
-                searchParm = (window.location.pathname.includes('types') ? window.location.search + '&' : "?") + 'page=' + this.currentPage;
-                url = '/' + window.location.pathname.slice(1) + searchParm;
-                this.fetchProduct(url, event.type);
-            }
-
-        }
-    }
+    
 
     async fetchProduct(url, event) {
 
@@ -1344,7 +1302,9 @@ class CollectionGridAutoLoader extends HTMLElement {
                 .parseFromString(data, 'text/html')
                 .querySelectorAll('.product-card');
             if (productCard.length > 0) {
-                this.querySelector('#product-grid').innerHTML="";
+                if (event != null && (event.type == "change" || event.type == "input")) {
+                    this.querySelector('#product-grid').innerHTML = "";
+                }
                 productCard.forEach(element => {
                     this.querySelector('#product-grid').appendChild(element);
                 });
@@ -1408,7 +1368,7 @@ class CollectionShowUp extends HTMLElement {
         if (this.sliderRightBtn) {
             this.sliderRightBtn.addEventListener('click', () => { this.slider.swiper.slidePrev() })
         }
-        
+
     }
 
     checkDevice() {
@@ -1701,7 +1661,7 @@ class LocalizationForm extends HTMLElement {
             document.getElementById('themeBody').classList.remove('ltr-direction');
             document.getElementById('themeBody').classList.add('rtl-direction');
             document.querySelectorAll('swiper-container').forEach(element => {
-                element.setAttribute('dir','rtl');
+                element.setAttribute('dir', 'rtl');
             });
         }
     }
