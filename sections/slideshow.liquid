@@ -9,7 +9,7 @@
     {%- if section.settings.slide_arrow -%}
       <div class="swiper-button-prev swiper-button-white"></div>
       <div class="swiper-button-next swiper-button-white"></div>
-    {%- endif -%} 
+    {%- endif -%}
     <swiper-container
       style=" --swiper-navigation-size: {{section.settings.slide_arrow_size}}px;"
       class="image-swiper h-auto w-full"
@@ -94,7 +94,6 @@
                       <div
                         class="p-5 {{ block.settings.container_text_align }}"
                         style="background:{{ block.settings.background | hex_to_rgba: block.settings.background_opacity }};"
-
                       >
                         {% if block.settings.slide_caption %}
                           <div
@@ -136,23 +135,25 @@
             <swiper-slide class="flex h-auto {% if section.settings.slide_dot %}pb-10 {% else %} pb-2{% endif %} {{ block.settings.theme_color }}">
               <div class="relative w-full md:min-h-[auto] ">
                 <div class="video-section flex items-center justify-center">
-                  {%- if block.settings.video_url==blank -%}
+                  {%- if block.settings.video_object -%}
+                    <video
+                      style="width: 2000px;"
+                      {% if block.settings.muted %}
+                        muted
+                      {% endif %}
+                      loop
+                      autoplay
+                    >
+                      {%- for source in block.settings.video_object.sources -%}
+                        <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                      {%- endfor -%}
+                      Your browser does not support the video tag.
+                    </video>
+                  {%- else -%}
                     <div class="w-full h-[717px] flex items-center justify-center bg-white">
-                     <div class="text-textColor text-2xl">No video URL provided</div>
+                      <div class="text-textColor text-2xl">No video URL provided</div>
                     </div>
-                    {%- else -%}
-                      <video
-                    style="width: 2000px;"
-                    {% if block.settings.muted %}
-                      muted
-                    {% endif %}
-                    loop
-                  >
-                    <source src="{{ block.settings.video_url }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
                   {%- endif -%}
-                  
                 </div>
                 {%- if block.settings.isTextBox -%}
                   <div class="md:absolute top-0 left-0 right-0 bottom-0">
@@ -352,7 +353,7 @@
           "type": "color",
           "id": "background",
           "label": "Background Color",
-          "default": "#000000",
+          "default": "#000000"
         },
         {
           "type": "range",
@@ -431,13 +432,9 @@
       "type": "video_slide",
       "settings": [
         {
-          "type": "header",
-          "content": "Content Editer"
-        },
-        {
-          "type": "url",
-          "id": "video_url",
-          "label": "Video URL"
+          "type": "video",
+          "id": "video_object",
+          "label": "Video"
         },
         {
           "type": "checkbox",
@@ -507,7 +504,7 @@
           "type": "color",
           "id": "background",
           "label": "Background Color",
-          "default": "#000000",
+          "default": "#000000"
         },
         {
           "type": "range",
@@ -598,9 +595,9 @@
       ]
     }
   ],
-   "disabled_on": {
+  "disabled_on": {
     "templates": ["password"],
-    "groups": ["footer","header"]
+    "groups": ["footer", "header"]
   }
 }
 {% endschema %}

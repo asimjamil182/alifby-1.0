@@ -37,7 +37,7 @@
       {%- elsif media.media_type == 'image' -%}
         <div class="swiper-zoom-container">
           <img
-            src="{{ media | product_img_url: 'original' }}"
+            src="{{ media | image_url: width: media.width, height: media.height }}"
             width=""
             height=""
             class="block w-full"
@@ -60,7 +60,7 @@
     {% for media in product.media %}
       <swiper-slide class="flex h-auto">
         <img
-          src="{{ media | product_img_url: 'original' }}"
+          src="{{ media | image_url: width: media.width, height: media.height }}"
           width=""
           height=""
           class="w-full h-full block"

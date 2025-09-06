@@ -1,0 +1,67 @@
+<section>
+  <div class="layout p-0 bg-backgroundColor {{ section.settings.color_scheme }}">
+    <div class="video-section flex items-center justify-center">
+      {% if section.settings.video_url.type == 'youtube' %}
+        <iframe
+          width="560"
+          height="315"
+          src="{{ section.settings.video_url | replace: 'watch?v=', 'embed/' }}?autoplay={{ section.settings.autoplay | json }}&mute={{ section.settings.muted | json }}"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      {% elsif section.settings.video_url.type == 'vimeo' %}
+        <iframe
+          src="https://player.vimeo.com/video/{{ section.settings.video_url | split: '/' | last }}?autoplay={{ section.settings.autoplay | json }}&muted={{ section.settings.muted | json }}"
+          width="640"
+          height="360"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Embeded Video",
+  "settings": [
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "Video URL",
+      "accept": ["vimeo", "youtube"],
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "muted",
+      "label": "Muted",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section Settings & Styling"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Embeded Video",
+      "settings": {}
+    }
+  ],
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["footer", "header"]
+  }
+}
+{% endschema %}

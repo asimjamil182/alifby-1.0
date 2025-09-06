@@ -118,6 +118,26 @@
         "name": "list.metaobject_reference",
         "category": "REFERENCE"
       }
+    },
+    {
+      "key": "computer-accessories-included",
+      "namespace": "shopify",
+      "name": "Computer accessories included",
+      "description": "Identifies the supplementary computer accessories provided, such as mouse or laptop bag",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "hand-side",
+      "namespace": "shopify",
+      "name": "Hand side",
+      "description": "Specifies the type of handedness that a product is designed for, e.g. left, both sides",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
     }
   ],
   "variant": [],

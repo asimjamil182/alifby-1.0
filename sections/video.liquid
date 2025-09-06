@@ -1,0 +1,87 @@
+<section>
+  <div class="layout p-0 bg-backgroundColor {{ section.settings.color_scheme }}">
+    <div class="video-section flex items-center justify-center">
+      {%- if section.settings.video_object -%}
+        <video
+          style="width: 2000px;"
+          {% if section.settings.muted %}
+            muted
+          {% endif %}
+          {% if section.settings.loop %}
+            loop
+          {% endif %}
+          {% if section.settings.autoplay %}
+            autoplay
+          {% endif %}
+          {% if section.settings.controls %}
+            controls
+          {% endif %}
+        >
+          {%- for source in section.settings.video_object.sources -%}
+            <source src="{{ source.url }}" type="{{ source.mime_type }}">
+          {%- endfor -%}
+          Your browser does not support the video tag.
+        </video>
+      {%- else -%}
+        <div class="w-full h-[717px] flex items-center justify-center bg-white">
+          <div class="text-textColor text-2xl">No video URL provided</div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Embeded Video",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video_object",
+      "label": "Video"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "muted",
+      "label": "Muted",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "controls",
+      "label": "Controls",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Section Settings & Styling"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video",
+      "settings": {}
+    }
+  ],
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["footer", "header"]
+  }
+}
+{% endschema %}

@@ -29,11 +29,12 @@
                   disabled
                 {%- endunless -%}
               >
-                <span class="" id="txt1"
+                
+                <span class="{%- unless product.available -%}hidden{%- endunless -%}" id="txt1"
                   >Add to cart - <span id="txtPrice">{{ product.price | money_without_currency | remove: ',' }}</span>
                   <span>{{ cart.currency.iso_code }}</span></span
                 >
-                <span class="hidden" id="txt2">Sold out</span>
+                <span class="{%- if product.available -%}hidden{%- endif -%}" id="txt2">Sold out</span>
                 {%- render 'icon',
                   id: 'spinner',
                   iconName: 'spinner',
@@ -137,21 +138,11 @@
 
 {% schema %}
 {
-  "name": "Product ShowCase",
+  "name": "Product",
   "settings": [
     {
       "type": "header",
-      "content": "Product Image Slider"
-    },
-    {
-      "type": "header",
       "content": "Section Settings"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_thumb",
-      "label": "Enable Silder Thumb",
-      "default": true
     },
     {
       "type": "checkbox",
@@ -171,8 +162,14 @@
     },
     {
       "type": "checkbox",
+      "id": "show_thumb",
+      "label": "Show Thumb",
+      "default": true
+    },
+    {
+      "type": "checkbox",
       "id": "autoplay",
-      "label": "Enable Autoplay",
+      "label": "Autoplay",
       "default": true
     },
     {
@@ -184,31 +181,31 @@
     {
       "type": "checkbox",
       "id": "infinite_loop",
-      "label": "Enable Infinite Loop",
+      "label": "Loop",
       "default": true
     },
     {
       "type": "checkbox",
       "id": "show_arrows",
-      "label": "Show Navigation Arrows",
+      "label": "Show Arrows",
       "default": true
     },
     {
       "type": "checkbox",
       "id": "zoom",
-      "label": "Enable Zoom",
+      "label": "Zoom",
       "default": true
     },
     {
       "type": "checkbox",
       "id": "centered_slides",
-      "label": "Enable Centered Slides",
+      "label": "Centered Slides",
       "default": true
     },
     {
       "type": "checkbox",
       "id": "auto_height",
-      "label": "Enable Auto Height",
+      "label": "Auto Height",
       "default": true
     },
     {
@@ -264,7 +261,7 @@
     {
       "type": "checkbox",
       "id": "enable_delivery_note",
-      "label": "Enable Delivery Note",
+      "label": "Show",
       "default": true
     },
     {
@@ -287,12 +284,12 @@
     },
     {
       "type": "header",
-      "content": "Delivery Dates"
+      "content": "Delivery Window"
     },
     {
       "type": "checkbox",
       "id": "enable_delivery_date",
-      "label": "Enable",
+      "label": "Show",
       "default": true
     },
     {

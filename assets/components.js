@@ -467,18 +467,25 @@ class VariantSelector extends HTMLElement {
 
     applyVariant() {
         let currentVariant = this.getActiveVairantId();
-        if (currentVariant != null && currentVariant.available) {
-            if (this.addToCartBtn != null) {
-                this.addToCartBtn.removeAttribute("disabled");
 
-            }
-            if (this.buyItNowBtn != null) {
+        if (currentVariant != null) {
+            if (currentVariant.available) {
+
+                this.addToCartBtn.removeAttribute("disabled");
+                document.querySelector('#addtocartbtn #txt1').classList.remove('hidden');
+                document.querySelector('#addtocartbtn #txt2').classList.add('hidden');
                 this.buyItNowBtn.removeAttribute("disabled");
+
+            } else {
+                this.addToCartBtn.setAttribute("disabled", "true");
+                this.buyItNowBtn.setAttribute("disabled", "true");
+                document.querySelector('#addtocartbtn #txt1').classList.add('hidden');
+                document.querySelector('#addtocartbtn #txt2').classList.remove('hidden');
             }
+
             this.idInput.value = currentVariant.id;
             this.productPrice.textContent = " " + this.variantsPrices[this.currentIndex].price;
-            document.querySelector('#addtocartbtn #txt1').classList.remove('hidden');
-            document.querySelector('#addtocartbtn #txt2').classList.add('hidden');
+
             if (this.productComparePrice != null) {
                 this.productComparePrice.textContent = this.variantsPrices[this.currentIndex].compare_at_price + "";
             }
@@ -489,8 +496,7 @@ class VariantSelector extends HTMLElement {
 
             window.history.replaceState(null, null, "?variant=" + currentVariant.id);
         } else {
-            document.querySelector('#addtocartbtn #txt1').classList.add('hidden');
-            document.querySelector('#addtocartbtn #txt2').classList.remove('hidden');
+
             this.addToCartBtn.setAttribute("disabled", "true");
             this.buyItNowBtn.setAttribute("disabled", "true");
         }
@@ -1217,7 +1223,7 @@ class CollectionGridAutoLoader extends HTMLElement {
         let filter_list = "";
 
         if (this.filters.length > 0) {
-            let activeFilters=0;
+            let activeFilters = 0;
             this.filters.forEach((filter, index) => {
                 if (filter.checked) {
                     activeFilters++;
@@ -1228,9 +1234,9 @@ class CollectionGridAutoLoader extends HTMLElement {
                     filter_list += "&" + filter.id + "=" + filter.value;
                 }
             });
-            if(activeFilters==0){
+            if (activeFilters == 0) {
                 this.filterClearBtn.classList.add('hidden');
-            }else{
+            } else {
                 this.filterClearBtn.classList.remove('hidden');
             }
         }
@@ -1249,7 +1255,7 @@ class CollectionGridAutoLoader extends HTMLElement {
             this.currentPage = 1;
             filter_list += "&page=" + this.currentPage;
             let url = window.location.pathname + '?' + filter_list;
-            this.debounce(this.fetchProduct(url,event));
+            this.debounce(this.fetchProduct(url, event));
         }
 
 
@@ -1286,7 +1292,7 @@ class CollectionGridAutoLoader extends HTMLElement {
         this.filterContainer.classList.add('sm:translate-x-full');
     }
 
-    
+
 
     async fetchProduct(url, event) {
 

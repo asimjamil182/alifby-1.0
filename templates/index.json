@@ -12,6 +12,26 @@
     "slideshow_b6B3jW": {
       "type": "slideshow",
       "blocks": {
+        "video_slide_AGQepz": {
+          "type": "video_slide",
+          "settings": {
+            "video_object": "shopify://files/videos/100250-video-720.mp4",
+            "muted": false,
+            "slide_caption": "<p>CAPTION</p>",
+            "slide_heading": "Heading Text",
+            "font_size": 40,
+            "slide_pargarph": "<p>Some short text here!</p>",
+            "btn_txt": "Shop Now",
+            "btn_url": "",
+            "isTextBox": true,
+            "theme_color": "",
+            "background": "#ffffff",
+            "background_opacity": 1,
+            "container_positionX": "justify-start",
+            "container_positionY": "items-end",
+            "container_text_align": "text-left"
+          }
+        },
         "image_slide_mkrCT9": {
           "type": "image_slide",
           "settings": {
@@ -47,39 +67,17 @@
             "container_positionY": "items-end",
             "container_text_align": "text-left"
           }
-        },
-        "video_slide_AGQepz": {
-          "type": "video_slide",
-          "settings": {
-            "video_url": "",
-            "muted": false,
-            "slide_caption": "<p>CAPTION</p>",
-            "slide_heading": "Heading Text",
-            "font_size": 40,
-            "slide_pargarph": "<p>Some short text here!</p>",
-            "btn_txt": "Shop Now",
-            "btn_url": "",
-            "isTextBox": true,
-            "theme_color": "",
-            "background": "#ffffff",
-            "background_opacity": 1,
-            "container_positionX": "justify-start",
-            "container_positionY": "items-end",
-            "container_text_align": "text-left"
-          }
         }
       },
       "block_order": [
+        "video_slide_AGQepz",
         "image_slide_mkrCT9",
-        "image_slide_JKDdED",
-        "video_slide_AGQepz"
+        "image_slide_JKDdED"
       ],
       "name": "Slideshow",
       "settings": {
         "slide_dot": true,
-        "slide_dot_color": "#333333",
         "slide_arrow": true,
-        "slide_arrow_color": "#333333",
         "slide_arrow_size": 25,
         "slide_loop": true,
         "slide_autoplay": false,
@@ -262,16 +260,7 @@
         "enable_viewmore_btn": true,
         "isgap": true,
         "isFullWidth": false,
-        "bg_color": "rgba(0,0,0,0)",
-        "color_scheme": "",
-        "isDefaultOverride": false,
-        "title_color": "#333333",
-        "tagline_color": "#333333",
-        "collection_title_color": "#000000",
-        "collection_link_color": "#000000",
-        "btn_color": "#ffffff",
-        "btn_bg_color": "#333333",
-        "btn_border_color": "#333333"
+        "color_scheme": ""
       }
     },
     "blogs_post_cr8m4L": {
@@ -283,16 +272,7 @@
         "tagline": "Latest articles and updates",
         "btn_text": "Read",
         "isFullWidth": false,
-        "bg_color": "rgba(0,0,0,0)",
-        "isDefaultOverride": false,
-        "heading_color": "#333333",
-        "tagline_color": "#333333",
-        "blog_author_date_color": "#000000",
-        "blog_heading_color": "#000000",
-        "blog_comment_color": "#000000",
-        "btn_color": "#ffffff",
-        "btn_bg_color": "#333333",
-        "btn_border_color": "#333333"
+        "color_scheme": ""
       }
     },
     "featured_product_WxaTRa": {
@@ -307,12 +287,7 @@
         "slide_autoplaytime": "3000",
         "isFullWidth": false,
         "bg_color": "rgba(0,0,0,0)",
-        "isDefaultOverride": false,
-        "title_color": "#333333",
-        "tagline_color": "#333333",
-        "btn_color": "#ffffff",
-        "btn_bg_color": "#333333",
-        "btn_border_color": "#333333"
+        "color_scheme": ""
       }
     },
     "collection_showup_T3edN8": {
@@ -328,15 +303,7 @@
         "slide_autoplaytime": 5000,
         "isFullWidth": false,
         "switch_direction": false,
-        "bg_color": "rgba(0,0,0,0)",
-        "isDefaultOverride": false,
-        "collection_title_color": "#000000",
-        "product_title_color": "#000000",
-        "product_price_color": "#000000",
-        "tags_color": "#000000",
-        "btn_color": "#ffffff",
-        "btn_bg_color": "#333333",
-        "btn_border_color": "#333333"
+        "color_scheme": ""
       }
     },
     "column2_image_HRkQmN": {
@@ -349,22 +316,7 @@
         "tagline2": "<p>Tag line</p>",
         "enable_tags": true,
         "isFullWidth": false,
-        "bg_color": "rgba(0,0,0,0)",
-        "isDefaultOverride": false,
-        "collection_title_color": "#333333",
-        "tagline_color": "#333333",
-        "tags_color": "#333333"
-      }
-    },
-    "vedio_wyNKBW": {
-      "type": "vedio",
-      "name": "Vedio Section",
-      "settings": {
-        "video_url": "",
-        "video_type": "youtube",
-        "autoplay": false,
-        "muted": false,
-        "controls": false
+        "color_scheme": ""
       }
     },
     "icon_with_text_xH8Q77": {
@@ -409,16 +361,39 @@
       "settings": {
         "image_size": 50,
         "isFullWidth": false,
-        "bg_color": "rgba(0,0,0,0)",
-        "isDefaultOverride": false,
-        "caption_color": "#333333",
-        "paragraph_color": "#333333"
+        "color_scheme": ""
       }
     },
     "main_contact_PTE9cT": {
       "type": "main-contact",
       "name": "Contact Form",
-      "settings": {}
+      "settings": {
+        "heading": "Contact Us",
+        "tagline": "<p>Feel free to reach Us</p>",
+        "color_scheme": ""
+      }
+    },
+    "embeded_vedio_YqtrcT": {
+      "type": "embeded-vedio",
+      "name": "Embeded Video",
+      "settings": {
+        "video_url": "https://vimeo.com/235215203",
+        "autoplay": false,
+        "muted": false,
+        "color_scheme": ""
+      }
+    },
+    "video_NpqhBT": {
+      "type": "video",
+      "name": "Video",
+      "settings": {
+        "video_object": "shopify://files/videos/100250-video-720.mp4",
+        "autoplay": true,
+        "muted": false,
+        "loop": true,
+        "controls": true,
+        "color_scheme": ""
+      }
     }
   },
   "order": [
@@ -429,8 +404,9 @@
     "blogs_post_cr8m4L",
     "featured_product_WxaTRa",
     "collection_showup_T3edN8",
+    "video_NpqhBT",
     "column2_image_HRkQmN",
-    "vedio_wyNKBW",
+    "embeded_vedio_YqtrcT",
     "icon_with_text_xH8Q77",
     "main_contact_PTE9cT"
   ]

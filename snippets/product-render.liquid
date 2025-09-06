@@ -69,6 +69,10 @@
         </quantity-selector>
       </div>
     {%- when 'product_variant' -%}
+      <script>
+        const productData = {{ product | json }};
+        console.log(productData);
+      </script>
       <variant-selector
         variants=""
         productHandle="{{product.handle}}"
@@ -130,6 +134,7 @@
               {% endcomment %}
             {%- else -%}
               <div class="uppercase text-sm font-semibold">{{ option.name }}</div>
+
               {%- assign index = forloop.index -%}
               <ul class="flex flex-wrap items-center gap-2" id="option{{index}}">
                 {%- for value in option.values -%}

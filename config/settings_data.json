@@ -34,6 +34,12 @@
     "show_quick_view_btn": true,
     "show_rating_icon": true,
     "product_card_img_bg": "#e6e6e6",
+    "phoneno": "0500000505",
+    "gmail": "support@asimdev.com",
+    "facebook": "#facebook",
+    "instagram": "#instagram",
+    "tiktok": "#tiktok",
+    "x": "",
     "card_color_scheme": "scheme-2fe8d69a-4307-4627-971d-b1980b04362d",
     "black": 0.5,
     "accent": "#088787",
@@ -44,12 +50,6 @@
     "link": "#ebb492",
     "checkout_logo_image": "shopify://shop_images/logo_a90b8670-1af7-4ef8-97c6-00bf497eeb9d.png",
     "checkout_logo_size": "small",
-    "phoneno": "0500000505",
-    "gmail": "support@asimdev.com",
-    "facebook": "#facebook",
-    "instagram": "#instagram",
-    "tiktok": "#tiktok",
-    "x": "",
     "checkout_accent_color": "#4682ba",
     "checkout_button_color": "#4682ba",
     "sections": {
@@ -83,22 +83,15 @@
             }
           }
         },
-        "block_order": ["menu_8U7XPM", "menu_6yazhx"],
+        "block_order": [
+          "menu_8U7XPM",
+          "menu_6yazhx"
+        ],
         "settings": {
           "logo": "shopify://shop_images/logoType2.png",
           "short_note": "Your one-stop shop for endless style and unbeatable deals. Discover the perfect blend of convenience, quality, and affordability at our platform. Happy shopping!",
           "copy_right_text": "Copyright © 2021, {{ shop.name }}. All rights reserved.",
-          "bg_color": "#ffffff",
-          "enable_payment_types": true,
-          "isDefaultOverride": true,
-          "short_note_color": "#b5b5b5",
-          "menu_heading_color": "#8f6b4f",
-          "meun_links_color": "#d0b9a7",
-          "btn_color": "#8f6b4f",
-          "btn_bg_color": "#d0b9a7",
-          "btn_border_color": "#8f6b4f",
-          "copy_right_bg_color": "#d0b9a7",
-          "copy_right_text_color": "#ebe9e8ff"
+          "enable_payment_types": true
         }
       },
       "mobile-app-menu": {
@@ -130,19 +123,15 @@
             }
           }
         },
-        "block_order": ["text_E4VPiT", "text_eNqQqq"],
+        "block_order": [
+          "text_E4VPiT",
+          "text_eNqQqq"
+        ],
         "settings": {
-          "isAnnouncementBar": true,
           "isAnnouncementList": true,
           "isContactDetail": true,
           "isText": false,
-          "phoneno": "0500000505",
-          "gmail": "support@asimdev.com",
           "isSocailLinks": true,
-          "facebook": "#facebook",
-          "instagram": "#instagram",
-          "tiktok": "#tiktok",
-          "x": "",
           "theme_color": "ocean-breeze"
         }
       }
