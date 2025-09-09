@@ -1,71 +1,33 @@
 {%- assign link = object -%}
 <div
   id="megamenu"
-  class="hidden absolute bg-white shadow-md z-10 border-t border-separatorlineColor"
+  class="main-menu-item absolute bg-secondaryColor shadow-md z-10 border-t border-separatorlineColor"
 >
-  {% comment %} <div class="layout lg:px-0">
-    {%- if link.levels != 1 -%}
-      <div class="flex text-left gap-x-4 w-[80%] mx-auto">
-        {%- assign collection_image = collections[link.handle].image -%}
-        {% if collection_image != blank %}
-          <div class="w-1/5">
-            <img
-            class="w-[70%]"
-              src="{{ collection_image | image_url }}"
-              width=""
-              height=""
-              alt="Collection Image"
-            >
-          </div>
-        {% endif %}
-
-        <div class="{% if collection_image != blank %} flex-1 {% else %} w-full {% endif %} flex gap-12 justify-start">
-          {%- for child_link in link.links -%}
-            <div class="text-left">
-              <a href="{{ child_link.url }}" class=" border-b py-1 border-neutralLightColor text-xs text-accentColor font-semibold">
-                {{- child_link.title -}}
-              </a>
-              {%- unless child_link.links == blank -%}
-                <ul class="py-1 text-sm capitalize">
-                  {%- for grand_child_link in child_link.links -%}
-                    <li>
-                      <a class="inline-block transition-transform duration-300 hover:translate-x-1" href="{{ grand_child_link.url }}">{{ grand_child_link.title }}</a>
-                    </li>
-                  {%- endfor -%}
-                </ul>
-              {%- endunless -%}
-            </div>
-          {%- endfor -%}
-        </div>
-      </div>
-    {%- else -%}
-      <ul class="text-left text-sm min-w-[150px]">
-        {%- for child_link in link.links -%}
-          <li><a href="{{ child_link.url }}" class="hover:translate-x-1 hover:font-semibold transition-all duration-300 py-1 inline-block" >{{ child_link.title }}</a></li>
-        {%- endfor -%}
-      </ul>
-    {%- endif -%}
-  </div> {% endcomment %}
   <ul class="text-left text-md min-w-[150px]">
-        {%- for child_link in link.links -%}
-          <li class="child_link relative flex justify-center items-center gap2">
-            <a href="{{ child_link.url }}" class="flex-1 p-2 inline-block transition-all duration-300 hover:translate-x-1" >{{ child_link.title }}</a>
-          {%- unless child_link.links == blank -%}
-            <span>{%- render 'icon', iconName: 'chevron-right',size:20,class:'px-1' -%}</span>
-                <ul class="grand_child_link hidden bg-white absolute left-full top-0 border-l border-separatorlineColor min-w-[150px]">
-                  {%- for grand_child_link in child_link.links -%}
-                    <li>
-                      <a class="inline-block p-2 w-full transition-all duration-300 hover:translate-x-1" href="{{ grand_child_link.url }}">{{ grand_child_link.title }}</a>
-                    </li>
-                  {%- endfor -%}
-                </ul>
-              {%- endunless -%}
-        </li>
-        {%- endfor -%}
-      </ul>
+    {%- for child_link in link.links -%}
+      <li class="child-link relative flex justify-center items-center gap2">
+        <a
+          href="{{ child_link.url }}"
+          class="flex-1 p-2 inline-block transition-all duration-300 hover:translate-x-1 hover:text-primaryColor"
+        >
+          {{- child_link.title -}}
+        </a>
+        {%- unless child_link.links == blank -%}
+          <span>{%- render 'icon', iconName: 'chevron-right', size: 20, class: 'px-1' -%}</span>
+          <ul class="child-link-item bg-secondaryColor absolute left-full top-0 border-l border-separatorlineColor min-w-[150px]">
+            {%- for grand_child_link in child_link.links -%}
+              <li>
+                <a
+                  class="inline-block p-2 w-full transition-all duration-300 hover:translate-x-1 hover:text-primaryColor"
+                  href="{{ grand_child_link.url }}"
+                >
+                  {{- grand_child_link.title -}}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endunless -%}
+      </li>
+    {%- endfor -%}
+  </ul>
 </div>
-<style>
-  .child_link:hover .grand_child_link {
-    display: block;
-  }
-</style>

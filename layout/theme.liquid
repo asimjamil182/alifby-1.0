@@ -138,7 +138,7 @@
     <meta name="theme-color" content="{{ settings.primaryColor }}">
     <meta name="color-scheme" content="light">
   </head>
-  <body id="themeBody" class="ltr-direction">
+  <body id="themeBody" class="ltr-direction {{ settings.default_color_scheme }}">
     <div class="flex flex-col h-screen {% if settings.is_sticky_header %}md:h-screen {% else %} md:h-auto{% endif %}">
       {% comment %} <a href="{{ company_location.url_to_set_as_current }}">change location</a> {% endcomment %}
       <header>

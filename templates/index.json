@@ -209,12 +209,7 @@
         "btn_text": "View More",
         "isFullWidth": false,
         "bg_color": "rgba(0,0,0,0)",
-        "color_scheme": "ocean-breeze",
-        "isDefaultOverride": false,
-        "underline_color": "#333333",
-        "btn_color": "#ffffff",
-        "btn_bg_color": "#333333",
-        "btn_border_color": "#333333"
+        "color_scheme": "ocean-breeze"
       }
     },
     "featured_collection_hHMVKc": {
@@ -306,6 +301,18 @@
         "color_scheme": ""
       }
     },
+    "video_NpqhBT": {
+      "type": "video",
+      "name": "Video",
+      "settings": {
+        "video_object": "shopify://files/videos/100250-video-720.mp4",
+        "autoplay": true,
+        "muted": false,
+        "loop": true,
+        "controls": true,
+        "color_scheme": ""
+      }
+    },
     "column2_image_HRkQmN": {
       "type": "column2-image",
       "name": "Two column with image",
@@ -316,6 +323,16 @@
         "tagline2": "<p>Tag line</p>",
         "enable_tags": true,
         "isFullWidth": false,
+        "color_scheme": ""
+      }
+    },
+    "embeded_vedio_YqtrcT": {
+      "type": "embeded-vedio",
+      "name": "Embeded Video",
+      "settings": {
+        "video_url": "https://vimeo.com/235215203",
+        "autoplay": false,
+        "muted": false,
         "color_scheme": ""
       }
     },
@@ -373,27 +390,38 @@
         "color_scheme": ""
       }
     },
-    "embeded_vedio_YqtrcT": {
-      "type": "embeded-vedio",
-      "name": "Embeded Video",
-      "settings": {
-        "video_url": "https://vimeo.com/235215203",
-        "autoplay": false,
-        "muted": false,
-        "color_scheme": ""
-      }
-    },
-    "video_NpqhBT": {
-      "type": "video",
-      "name": "Video",
-      "settings": {
-        "video_object": "shopify://files/videos/100250-video-720.mp4",
-        "autoplay": true,
-        "muted": false,
-        "loop": true,
-        "controls": true,
-        "color_scheme": ""
-      }
+    "accordian_d44qLM": {
+      "type": "accordian",
+      "blocks": {
+        "accordion_item_jVHLCF": {
+          "type": "accordion_item",
+          "settings": {
+            "item_title": "Accordion Item",
+            "item_content": "Content for accordion item."
+          }
+        },
+        "accordion_item_LTLhJW": {
+          "type": "accordion_item",
+          "settings": {
+            "item_title": "Accordion Item",
+            "item_content": "Content for accordion item."
+          }
+        },
+        "accordion_item_iGFWTj": {
+          "type": "accordion_item",
+          "settings": {
+            "item_title": "Accordion Item",
+            "item_content": "Content for accordion item."
+          }
+        }
+      },
+      "block_order": [
+        "accordion_item_jVHLCF",
+        "accordion_item_LTLhJW",
+        "accordion_item_iGFWTj"
+      ],
+      "name": "Accordion",
+      "settings": {}
     }
   },
   "order": [
@@ -408,6 +436,7 @@
     "column2_image_HRkQmN",
     "embeded_vedio_YqtrcT",
     "icon_with_text_xH8Q77",
-    "main_contact_PTE9cT"
+    "main_contact_PTE9cT",
+    "accordian_d44qLM"
   ]
 }

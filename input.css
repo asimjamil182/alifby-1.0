@@ -1,5 +1,3 @@
-
-
 :root {
     /*theme color*/
     --theme-primary-color: #234e77;
@@ -24,20 +22,24 @@
 @tailwind utilities;
 
 
-@layer base{
-    h1{
+@layer base {
+    h1 {
         @apply text-2xl;
     }
-    h2{
+
+    h2 {
         @apply text-xl;
     }
-    h3{
+
+    h3 {
         @apply text-lg;
     }
-    h4{
+
+    h4 {
         @apply text-base;
     }
-    h5{
+
+    h5 {
         @apply text-sm;
     }
 }
@@ -85,9 +87,10 @@
         direction: ltr;
     }
 
-    .scroll::-webkit-scrollbar{
+    .scroll::-webkit-scrollbar {
         width: auto;
     }
+
     .scroll::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     }
@@ -96,7 +99,7 @@
         -webkit-box-shadow: inset 0 0 6px var(--theme-primary-color);
     }
 
-    .scroll-none::-webkit-scrollbar { 
+    .scroll-none::-webkit-scrollbar {
         width: 0px;
     }
 
@@ -141,16 +144,19 @@
         font-weight: var(--font-heading-weight);
         @apply text-2xl text-center text-headingColor pt-5 font-heading font-semibold;
     }
-    .section-tagline{
+
+    .section-tagline {
         @apply text-sm text-subtextColor text-center;
     }
-    input,textarea{
+
+    input,
+    textarea {
         @apply bg-[transparent];
     }
 
     .btn-outline-color {
         @apply border rounded-[var(--button-raduis)] font-btn border-primaryColor text-primaryColor hover:bg-secondaryColor hover:text-primaryColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300;
-    } 
+    }
 
     .btn-fill-color {
         @apply border rounded-[var(--button-raduis)] font-btn border-secondaryColor bg-secondaryColor text-primaryColor px-4 py-2 cursor-pointer font-semibold text-sm transition duration-300;
@@ -163,11 +169,12 @@
     .input-fill {
         @apply rounded-[var(--input-raduis)] border outline-none border-secondaryColor bg-secondaryColor cursor-pointer text-primaryColor fill-primaryColor child:placeholder-primaryColor child:placeholder-opacity-50 text-sm p-2;
     }
+
     .input-outline-color {
         @apply rounded-[var(--input-raduis)] border outline-none border-secondaryColor cursor-pointer text-primaryColor fill-primaryColor child:placeholder-primaryColor child:placeholder-opacity-50 text-sm p-2;
     }
 
-    
+
 
 
     .input-rounded {
@@ -279,9 +286,10 @@
         @apply block;
     }
 
-    .product-grid-filter input[type="radio"]:checked+.filter_active{
+    .product-grid-filter input[type="radio"]:checked+.filter_active {
         @apply !bg-secondaryColor text-primaryColor;
     }
+
     .product-grid-filter input[type="radio"]:checked+.underline_style {
         @apply border-b text-primaryColor;
     }
@@ -294,8 +302,26 @@
         @apply w-full;
     }
 
+    .main-menu-item {
+        @apply transition-all duration-300 translate-y-2 opacity-0 hidden;
+    }
 
-    /* #filter-list::-webkit-scrollbar {
-    width: 3px;
-  } */
+    .main-menu:hover .main-menu-item {
+        @apply opacity-100 block translate-y-0;
+    }
+
+    .cat-link-item {
+        @apply hidden;
+    }
+
+    .cat-link:hover .cat-link-item {
+        @apply block;
+    }
+
+    .child-link-item {
+        @apply hidden;
+    }
+    .child-link:hover .child-link-item {
+        @apply block;
+    }
 }

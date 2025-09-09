@@ -1606,54 +1606,6 @@ class DescriptionHandler extends HTMLElement {
 
 customElements.define('description-handler', DescriptionHandler);
 
-class CatagoryMenu extends HTMLElement {
-    constructor() {
-        super();
-        this.catagoryNavigator = this.querySelector('#catagory-navigator');
-        this.catagoryList = this.querySelector('#catagory-list');
-        this.catagoryNavigator.addEventListener('mouseenter', this.showCatgoryList.bind(this));
-        this.catagoryNavigator.addEventListener('mouseleave', this.hideCatagoryList.bind(this));
-        this.catagoryList.addEventListener('mouseenter', this.showCatgoryList.bind(this));
-        this.catagoryList.addEventListener('mouseleave', this.hideCatagoryList.bind(this));
-    }
-
-    showCatgoryList() {
-        this.catagoryList.classList.remove('hidden');
-    }
-
-    hideCatagoryList() {
-        this.catagoryList.classList.add('hidden');
-    }
-}
-
-customElements.define('catagory-menu', CatagoryMenu);
-
-class CatagoryLink extends HTMLElement {
-    constructor() {
-        super();
-        this.isTarget = this.getAttribute('is-target') || null;
-        this.targetCatgory = this.getAttribute('target-catgory') || null;
-        this.allCatagory = document.querySelectorAll('.child-catagory');
-        this.addEventListener('mouseenter', this.showTargetCatagory.bind(this));
-    }
-
-    showTargetCatagory() {
-        this.hideAllCatagory();
-        if (this.isTarget == 'true' && this.targetCatgory != '') {
-            document.getElementById('child-cat-' + this.targetCatgory).classList.remove('hidden');
-        }
-    }
-
-    hideAllCatagory() {
-        if (this.allCatagory.length > 0) {
-            this.allCatagory.forEach(catagory => {
-                catagory.classList.add('hidden');
-            });
-        }
-    }
-}
-
-customElements.define('catagory-link', CatagoryLink);
 
 class LocalizationForm extends HTMLElement {
     constructor() {

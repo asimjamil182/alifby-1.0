@@ -6,7 +6,7 @@
   {%- assign is_current_tags = false -%}
 {% endif %}
 <section>
-  <div class="layout sm:px-2 md:px-2 lg:px-0 mt-4">
+  <div class="layout sm:px-2 md:px-2 lg:px-0 mt-4 bg-backgroundColor {{ section.settings.color_scheme }}">
     <div class="flex sm:gap-2 md:gap-0 p-2 items-center" style="background:{{ section.settings.title-bg }};">
       <div class="sm:flex-1 md:w-4/5">
         {%- if is_current_tags -%}
@@ -18,7 +18,7 @@
             {{ collection.title }}
             {% if section.settings.isProductCounter %}
               <span class=" text-sm text-subtextColor font-normal"
-              >({{ collection.all_products_count }} choice available)</span
+              >({{ collection.all_products_count }} Products)</span
             >
             {% endif %}
           </div>
@@ -48,9 +48,9 @@
           ></div>
           <div
             id="filter-container"
-            class="bg-white md:shadow-none shadow-md z-20 md:z-0 sm:fixed md:relative right-0 top-0 bottom-0 sm:p-2 md:p-0 md:w-full sm:w-1/2 transform  md:translate-x-0 sm:translate-x-full  transition-transform duration-300 ease-in-out"
+            class=" bg-secondaryColor md:shadow-none shadow-md z-20 md:z-0 sm:fixed md:relative right-0 top-0 bottom-0 sm:p-2 md:p-0 md:w-full sm:w-1/2 transform  md:translate-x-0 sm:translate-x-full  transition-transform duration-300 ease-in-out"
           >
-            <div class="flex flex-col h-full bg-white p-2">
+            <div class="flex flex-col h-full  p-2">
               <div>
                 {%- render 'icon',
                   iconName: 'x',
@@ -71,12 +71,8 @@
       {%- endunless -%}
 
       <div class="sm:w-full {% unless is_current_tags or section.settings.isFilter==false or collection.filters.size==0 %}md:w-5/6{% endunless %}">
-        {%- if is_current_tags -%}
-          {%- assign paginate_lenght = 30 -%}
-        {%- else -%}
-          {%- assign paginate_lenght = 30 -%}
-        {%- endif -%}
-        {%- paginate collection.products by paginate_lenght -%}
+        
+        {%- paginate collection.products by 30 -%}
           <collection-grid-auto-loader
             section-id="{{ section.id }}"
             total-pages="{{ paginate.pages }}"
@@ -122,13 +118,13 @@
     {
       "type": "checkbox",
       "id": "isFilter",
-      "label": "Enable Filter",
+      "label": "Show Filter",
       "default": true
     },
     {
       "type": "checkbox",
       "id": "isSorting",
-      "label": "Enable Sorting",
+      "label": "Show Sorting",
       "default": true
     },
     {
@@ -142,10 +138,10 @@
       "info": "Use this formate 'men,women,top' "
     },
     {
-      "type": "color",
-      "id": "title-bg",
-      "label": "Title Background Color"
-    }
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme"
+    },
   ]
 }
 {% endschema %}

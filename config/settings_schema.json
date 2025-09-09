@@ -8,6 +8,21 @@
     "theme_support_url": "https:\/\/support.shopify.com\/"
   },
   {
+    "name": "default Theme",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Customize the settings below to change the look and feel of your theme."
+      },
+      {
+        "type": "color_scheme",
+        "id": "default_color_scheme",
+        "label": "Color Scheme",
+      }
+
+    ]
+  },
+  {
     "name": "Color Schemes",
     "settings": [
       {
