@@ -4,7 +4,7 @@
 {%- assign collection2 = collections[section.settings.col2] -%}
 
 <section class="{{ section.id }}">
-  <div class="layout {{ section.settings.color_scheme }} lg:p-0 {% if section.settings.isFullWidth %}lg:w-full{% endif %}">
+  <div class="layout lg:p-0 {% if section.settings.isFullWidth %}lg:w-full{% endif %} {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
     <div class="flex flex-wrap md:flex-nowrap overflow-hidden">
       <div class="w-full md:w-1/2">
         <div class="flex gap-2 bg-backgroundColor">
@@ -205,6 +205,13 @@
       "label": "Full Width",
       "default": false,
       "info": "This option work on large screen only"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
+      "info": "This option will override the default theme scheme"
     },
     {
       "type": "color_scheme",

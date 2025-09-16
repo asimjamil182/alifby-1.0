@@ -13,7 +13,7 @@
               {% render 'icon', iconName: 'chevron-down', size: '13px', fill:color  %}
             </span>
           </div>
-          <div id="dropdown" class="absolute border-t border-separatorlineColor w-full bg-white text-textColor shadow-md hidden z-20 max-h-[150px] overflow-y-auto scroll scroll-w6">
+          <div id="dropdown" class="absolute border-t border-separatorlineColor w-full bg-white text-textColor shadow-md hidden z-20 max-h-[150px] overflow-y-auto scroll scroll-sm">
             {% for language in localization.available_languages %}
               <option
                 class="p-2 hover:bg-secondaryColor hover:text-primaryColor"

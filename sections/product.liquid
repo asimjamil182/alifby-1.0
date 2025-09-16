@@ -1,6 +1,6 @@
-<section class="bg-[#fafafa] py-2 font-menu">
+<section class="py-2 font-menu ">
   <div class="layout">
-    <product-showcase class="bg-[#ffff] md:px-4 py-2">
+    <product-showcase class="bg-backgroundColor md:px-4 py-2 {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
       <div class="flex product flex-wrap">
         <div class="w-full md:w-[50%] overflow-hidden relative">
           {%- render 'product-image-slider', product: product, showthumb: section.settings.show_thumb -%}
@@ -315,6 +315,22 @@
       "id": "delivery_shipping_days",
       "label": "Delivery Days",
       "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
+      "info": "This option will override the default theme scheme"
+    },
+    {
+      "type": "color_scheme",
+      "id": "theme_color",
+      "label": "Color Scheme"
     }
   ],
   "blocks": [

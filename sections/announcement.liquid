@@ -1,6 +1,6 @@
 
   <section
-    class=" bg-secondaryColor text-primaryColor fill-primaryColor {{ section.settings.theme_color }}"
+    class=" bg-secondaryColor text-primaryColor fill-primaryColor {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}"
   >
     <div class="layout lg:p-0">
       <div class="flex items-center justify-between">
@@ -90,9 +90,17 @@
       "content": "Colors Settings"
     },
     {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
+      "info": "If checked, the color settings below will override the default theme colors."
+    },
+    {
       "type": "color_scheme",
       "id": "theme_color",
-      "label": "Theme Color"
+      "label": "Theme Color",
+      "info": "You can change theme color in [theme settings](/editor?context=theme&category=Color%20Schemes)"
     }
   ],
   "blocks": [

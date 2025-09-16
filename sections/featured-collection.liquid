@@ -1,7 +1,5 @@
-
-
-<section class="{{ section.id }} {{ section.settings.color_scheme }}">
-  <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor" >
+<section class="{{ section.id }} {%- if section.settings.theme_color!=settings.default_color_scheme -%}{{section.settings.theme_color}}{%- else -%}{{settings.default_color_scheme}}{%- endif -%}">
+  <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor">
     {% if section.settings.heading %}
       <div class="section-heading">{{ section.settings.heading }}</div>
     {% endif %}
@@ -11,37 +9,21 @@
     <div class="flex flex-wrap md:flex-nowrap mt-8 {% if section.settings.isgap %}gap-2{% endif %}">
       {%- for block in section.blocks -%}
         {%- assign collection = collections[block.settings.coll] -%}
-        <div class="w-full md:w-1/4 relative">
-        {% if collection.image.src %}
-          <img loading="lazy" src="{{ collection.image.src | image_url }}" width="" height="" alt="collection-image" class="w-full">
-          {% else %}
-          <img loading="lazy" src="https://placehold.co/500x500" width="" height="" alt="collection-image" class="w-full">
-        {% endif %}
-        <div class="p-2 bg-[#ffff]">
-          {% if collection.title!=empty %}
-            <div class="font-semibold section-title">{{ collection.title }}</div>
-            {% else %}
-            <div class="font-semibold section-title">Collection title</div>
-          {% endif %}
-          <a class="flex items-center gap-1 text-primaryColor uppercase text-sm link" href="{{ collection.url }}"><span>{{ section.settings.link_text }}</span> {%- render 'icon', iconName: 'right-arrow', class:'w-[22] h-[22]' -%}</a>
-        </div>
-        </div>
-    {%- endfor -%}
-      
+        {%- render 'collection-card', collection: collection, class: 'w-full md:w-1/4' -%}
+      {%- endfor -%}
     </div>
     {% if section.settings.enable_viewmore_btn %}
       <br>
-    <a
-      href="{{ routes.collections_url }}"
-      class="{{ settings.btn_style }} block sm:w-1/2 md:w-1/6 mx-auto text-center btn"
-      >{{ section.settings.button_text }}</a
-    >
+      <a
+        href="{{ routes.collections_url }}"
+        class="{{ settings.btn_style }} block sm:w-1/2 md:w-1/6 mx-auto text-center btn"
+      >
+        {{- section.settings.button_text -}}
+      </a>
       <br>
     {% endif %}
   </div>
 </section>
-
-
 
 {% schema %}
 {
@@ -51,7 +33,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default":"Featured Collections"
+      "default": "Featured Collections"
     },
     {
       "type": "textarea",
@@ -79,7 +61,7 @@
       "type": "checkbox",
       "id": "enable_viewmore_btn",
       "label": "Enable View More Button",
-      "default": true,
+      "default": true
     },
     {
       "type": "checkbox",
@@ -113,30 +95,30 @@
       ]
     }
   ],
-  
+
   "presets": [
     {
       "name": "Featured Colleciton",
       "settings": {},
       "blocks": [
         {
-        "type": "collection"
+          "type": "collection"
         },
         {
-        "type": "collection"
+          "type": "collection"
         },
         {
-        "type": "collection"
+          "type": "collection"
         },
         {
-        "type": "collection"
+          "type": "collection"
         }
       ]
     }
   ],
   "disabled_on": {
     "templates": ["password"],
-    "groups": ["footer","header"]
+    "groups": ["footer", "header"]
   }
 }
 {% endschema %}

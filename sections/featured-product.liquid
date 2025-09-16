@@ -1,16 +1,16 @@
 
 
 <section class="{{ section.id }}">
-  <div class="layout {{ section.settings.color_scheme }}{% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor">
+  <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor {%- if section.settings.theme_color!=settings.default_color_scheme -%}{{section.settings.theme_color}}{%- else -%}{{settings.default_color_scheme}}{%- endif -%}">
     {% if section.settings.heading %}
       <div class="section-heading">{{ section.settings.heading }}</div>
     {% endif %}
     {% if section.settings.tagline %}
       <div class="section-tagline">{{ section.settings.tagline }}</div>
     {% endif %}
-    <product-slider>
+    <slider-handler>
       <swiper-container
-        class=" product-slider py-3 w-full ml-0 mr-0"
+        class=" py-3 w-full ml-0 mr-0"
         space-between="5"
         slides-per-view="6"
         free-mode="false"
@@ -39,7 +39,7 @@
           {%- endfor -%}
         {% endif %}
       </swiper-container>
-    </product-slider>
+    </slider-handler>
   </div>
 </section>
 

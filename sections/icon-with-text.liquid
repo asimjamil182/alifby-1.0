@@ -1,6 +1,6 @@
 
 <section class="{{ section.id }}">
-  <div class="layout {{ section.settings.color_scheme }} {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor">
+  <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
     <div class="flex justify-between gap-3 text-center flex-wrap py-6">
       {%- for block in section.blocks -%}
           <div class="w-full md:flex-1 p-2 flex items-center justify-center flex-col gap-2">
@@ -40,6 +40,13 @@
       "label": "Full Width",
       "default": false,
       "info": "This option work on large screen only"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
+      "info": "This option will override the default theme scheme"
     },
     {
     "type": "color_scheme",

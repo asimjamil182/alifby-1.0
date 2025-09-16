@@ -1,23 +1,25 @@
 
-
 {% case section.settings.header_style %}
   {% when 'style1' %}
     <header
-      class="{{ section.id }} shadow-sm font-medium flex-grow-[1] z-10 md:relative {{ section.settings.theme_color }}"
+      class="{{ section.id }} shadow-sm font-medium flex-grow-[1] z-10 md:relative {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}"
       style="background:var(--theme-background-color);"
     >
-      <div id="overlay" class="overlay fixed left-0 right-0 bottom-0 top-0 bg-primaryColor z-[2] hidden  opacity-10"></div>
+      <div
+        id="overlay"
+        class="overlay fixed left-0 right-0 bottom-0 top-0 bg-primaryColor z-[2] hidden  opacity-10"
+      ></div>
       <div class="layout {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %} {% if section.settings.isdivider %}md:border-b border-separatorlineColor{% endif %}">
         <main-menu class="text-secondaryColor flex sm:gap-y-2 md:gap-y-0 items-center flex-wrap py-3 md:flex-nowrap md:m-auto justify-between ">
           <div class="md:hidden w-[65px]">
             {%- render 'icon',
               iconName: 'list',
-              fill:section.settings.icon_color,
+              fill: section.settings.icon_color,
               id: 'menu-navigator',
               class: 'fill-textColor inline-block w-[35] h-[35]'
             -%}
           </div>
-          
+
           <div class="flex-1 md:flex-none flex {% if section.settings.islogocentersmall %}justify-center{% else %}justify-left{% endif %} md:justify-start">
             {% render 'header-logo',
               logoType: settings.logo_type,
@@ -32,7 +34,7 @@
             {%- render 'searchbar', class: 'bg-[transparent] search_bar', type: section.settings.searchbar_style -%}
           </div>
           <div class="flex justify-end items-center">
-            {% render 'header-icon', fill:section.settings.icon_color %}
+            {% render 'header-icon', fill: section.settings.icon_color %}
           </div>
         </main-menu>
       </div>
@@ -46,9 +48,12 @@
     </header>
   {% when 'style2' %}
     <header
-      class="{{ section.id }} shadow-sm bg-backgroundColor font-medium flex-grow-[1] z-10 md:relative {{ section.settings.theme_color }}"
+      class="{{ section.id }} shadow-sm bg-backgroundColor font-medium flex-grow-[1] z-10 md:relative {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}"
     >
-      <div id="overlay" class="overlay fixed left-0 right-0 bottom-0 top-0 bg-primaryColor z-[2] hidden opacity-10"></div>
+      <div
+        id="overlay"
+        class="overlay fixed left-0 right-0 bottom-0 top-0 bg-primaryColor z-[2] hidden opacity-10"
+      ></div>
       <div class="layout {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %}">
         {% if section.settings.islogocenter %}
           <div class="hidden md:flex item-center justify-center p-2">
@@ -67,7 +72,7 @@
             {%- render 'icon',
               iconName: 'list',
               id: 'menu-navigator',
-              fill: section.settings.icon_color
+              fill: section.settings.icon_color,
               class: 'fill-textColor inline-block w-[35] h-[35]'
             -%}
           </div>
@@ -92,7 +97,7 @@
             {%- render 'searchbar', class: 'bg-[transparent] search_bar', type: section.settings.searchbar_style -%}
           </div>
           <div class="relative flex items-center justify-end gap-2">
-            {% render 'header-icon', searchIcon: false, fill:section.settings.icon_color %}
+            {% render 'header-icon', searchIcon: false, fill: section.settings.icon_color %}
           </div>
         </main-menu>
       </div>
@@ -111,12 +116,14 @@
       "type": "link_list",
       "id": "header_menu",
       "label": "Menu",
-      "default": "main-menu"
+      "default": "main-menu",
+      "info": "You can set the menu in [navigation](/admin/menus)"
     },
     {
       "type": "link_list",
       "id": "catagory_menu",
-      "label": "Catagory List"
+      "label": "Catagory List",
+      "info": "You can set the menu in [navigation](/admin/menus)"
     },
     {
       "type": "checkbox",
@@ -144,7 +151,7 @@
     {
       "type": "select",
       "id": "searchbar_style",
-      "label": "Search bar style",
+      "label": "Search bar styles",
       "options": [
         {
           "value": "style1",
@@ -158,7 +165,7 @@
       "default": "style1",
       "info": "Search bar different styles"
     },
-    
+
     {
       "type": "header",
       "content": "Logo Postion Center"
@@ -188,11 +195,18 @@
       "content": "Color Settings"
     },
     {
-    "type": "color_scheme",
-    "id": "theme_color",
-    "label": "Theme Color"
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
+      "info": "This will override the default theme color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "theme_color",
+      "label": "Theme Color",
+      "info": "You can change theme color in [theme settings](/editor?context=theme&category=Color%20Schemes)"
     }
-    
   ]
 }
 {% endschema %}

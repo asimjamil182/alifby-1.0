@@ -1332,9 +1332,12 @@ class CollectionGridAutoLoader extends HTMLElement {
 
 customElements.define('collection-grid-auto-loader', CollectionGridAutoLoader);
 
-class ProductSlider extends HTMLElement {
+class SilderHandler extends HTMLElement {
     constructor() {
         super();
+        this.sm=this.getAttribute('sm') || 2;
+        this.md=this.getAttribute('md') || 4;
+        this.lg=this.getAttribute('lg') || 6;
         this.slider = this.querySelector('swiper-container');
         this.mobileMedia = window.matchMedia("(max-width: 600px)");
         this.tabletMedia = window.matchMedia("(max-width: 1024px)");
@@ -1347,17 +1350,17 @@ class ProductSlider extends HTMLElement {
 
     checkDevice() {
         if (this.mobileMedia.matches) {
-            this.slider.setAttribute('slides-per-view', '2');
+            this.slider.setAttribute('slides-per-view', this.sm);
         } else if (this.tabletMedia.matches) {
-            this.slider.setAttribute('slides-per-view', '4');
+            this.slider.setAttribute('slides-per-view', this.md);
         } else if (this.laptopMedia.matches) {
-            this.slider.setAttribute('slides-per-view', '6');
+            this.slider.setAttribute('slides-per-view', this.lg);
         }
 
     }
 }
 
-customElements.define('product-slider', ProductSlider);
+customElements.define('slider-handler', SilderHandler);
 
 class CollectionShowUp extends HTMLElement {
     constructor() {

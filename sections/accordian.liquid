@@ -1,4 +1,4 @@
-<section class="{{ section.settings.color_scheme }}">
+<section class="{% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
   <div class="layout bg-backgroundColor">
     {% if section.settings.heading %}
       <div class="section-heading text-center">{{ section.settings.heading }}</div>
@@ -48,6 +48,13 @@
     {
       "type": "header",
       "content": "Section styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
+      "info": "This option will override the default theme scheme"
     },
     {
       "type": "color_scheme",

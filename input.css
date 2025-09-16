@@ -13,8 +13,7 @@
     --button-raduis: 0px;
     /* input */
     --input-raduis: 0px;
-    --swiper-pagination-color: var(--theme-primary-color);
-    --swiper-navigation-color: var(--theme-primary-color);
+    
 }
 
 @tailwind base;
@@ -85,46 +84,6 @@
 
     .ltr-direction {
         direction: ltr;
-    }
-
-    .scroll::-webkit-scrollbar {
-        width: auto;
-    }
-
-    .scroll::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    }
-
-    .scroll::-webkit-scrollbar-thumb {
-        -webkit-box-shadow: inset 0 0 6px var(--theme-primary-color);
-    }
-
-    .scroll-none::-webkit-scrollbar {
-        width: 0px;
-    }
-
-    .scroll-wa::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    .scroll-w3::-webkit-scrollbar {
-        width: 3px !important;
-    }
-
-    .scroll-w6::-webkit-scrollbar {
-        width: 6px !important;
-    }
-
-    .scroll-ha::-webkit-scrollbar {
-        height: 10px !important;
-    }
-
-    .scroll-h3::-webkit-scrollbar {
-        height: 3px !important;
-    }
-
-    .scroll-h6::-webkit-scrollbar {
-        height: 6px !important;
     }
 
     .layout {

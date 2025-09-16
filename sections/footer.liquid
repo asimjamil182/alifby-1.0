@@ -1,4 +1,4 @@
-<footer class="{{ section.id }} {{ section.settings.color_scheme }} mt-4 flex-grow-[1] bg-backgroundColor">
+<footer class="{{ section.id }} mt-4 flex-grow-[1] bg-backgroundColor {%- if section.settings.theme_color!=settings.default_color_scheme -%}{{section.settings.theme_color}}{%- else -%}{{settings.default_color_scheme}}{%- endif -%}">
   <div class="footer border-t border-separatorlineColor">
     <div class="border-b border-separatorlineColor">
       <div class="layout flex justify-center p-4 gap-4 flex-wrap md:flex-nowrap md:justify-between md:items-center">

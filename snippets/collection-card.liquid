@@ -1,0 +1,32 @@
+<div class="{{ class }} relative">
+  {% if collection.image.src %}
+    <img
+      loading="lazy"
+      src="{{ collection.image.src | image_url }}"
+      width=""
+      height=""
+      alt="collection-image"
+      class="w-full"
+    >
+  {% else %}
+    <img
+      loading="lazy"
+      src="https://placehold.co/500x500"
+      width=""
+      height=""
+      alt="collection-image"
+      class="w-full"
+    >
+  {% endif %}
+  <div class="p-2 bg-secondaryColor">
+    {% if collection.title != empty %}
+      <div class="font-semibold section-title">{{ collection.title }}</div>
+    {% else %}
+      <div class="font-semibold section-title">Collection title</div>
+    {% endif %}
+    <a class="flex items-center gap-1 text-primaryColor uppercase text-sm link" href="{{ collection.url }}"
+      ><span>{{ settings.collection_link_text }}</span>
+      {%- render 'icon', iconName: 'right-arrow', class: 'w-[22] h-[22]' -%}
+    </a>
+  </div>
+</div>

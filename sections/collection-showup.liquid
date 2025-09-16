@@ -2,7 +2,7 @@
 {%- assign collection = collections[section.settings.collection] -%}
 
 <section class="{{ section.id }}">
-  <div class="layout {{ section.settings.color_scheme }} p-0 {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor">
+  <div class="layout p-0 {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
     {%- if section.settings.switch_direction -%}
       {%- assign direction = 'flex-wrap-reverse flex-row-reverse' -%}
     {%- else -%}
@@ -54,7 +54,7 @@
               slides-per-view="4"
             >
               {% if collection.products != empty %}
-                {%- for product in collection.products limit: 15 -%}
+                {%- for product in collection.products -%}
                   <swiper-slide class="h-auto p-2">
                     <a href="{{ product.url }}" class="inline-block">
                       <img
@@ -213,6 +213,13 @@
       "id": "switch_direction",
       "label": "Switch Direction",
       "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
+      "info": "This option will override the default theme scheme"
     },
     {
     "type": "color_scheme",

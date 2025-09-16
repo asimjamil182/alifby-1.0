@@ -1,5 +1,5 @@
 <section>
-  <div class="layout {{ section.settings.color_scheme }} bg-backgroundColor">
+  <div class="layout bg-backgroundColor {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
     {% if section.settings.heading %}
       <div class="section-heading">{{ section.settings.heading }}</div>
     {% endif %}
@@ -61,13 +61,68 @@
     },
     {
       "type": "header",
-      "content": "Form Styling"
+      "content": "Section Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
+      "info": "This option will override the default theme scheme"
     },
     {
     "type": "color_scheme",
     "id": "color_scheme",
     "label": "Color Scheme",
-
+    "info": "You can change scheme color in [Theme Settings](/sections/theme-settings)"
+    },
+    {
+      "type": "select",
+      "id": "btn_style",
+      "label": "Button Style",
+      "default": "btn-primary",
+      "options": [
+        {
+          "value": "btn-primary",
+          "label": "Primary"
+        },
+        {
+          "value": "btn-secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "btn-accent",
+          "label": "Accent"
+        },
+        {
+          "value": "btn-ghost",
+          "label": "Ghost"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "input_style",
+      "label": "Input Style",
+      "default": "input-primary",
+      "options": [
+        {
+          "value": "input-primary",
+          "label": "Primary"
+        },
+        {
+          "value": "input-secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "input-accent",
+          "label": "Accent"
+        },
+        {
+          "value": "input-ghost",
+          "label": "Ghost"
+        }
+      ]
     }
   ],
   "presets": [

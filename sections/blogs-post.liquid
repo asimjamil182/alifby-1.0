@@ -1,6 +1,6 @@
 <section class="{{ section.id }}">
   <div
-    class="layout {{ section.settings.color_scheme }} {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %} {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor"
+    class="layout {% unless settings.layout_width=='100%' %}lg:p-0{% endunless %} {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}"
   >
     {% if section.settings.heading %}
       <div class="section-heading">{{ section.settings.heading }}</div>
@@ -128,6 +128,13 @@
       "label": "Full Width",
       "default": false,
       "info": "This option work on large screen only"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
+      "info": "This option will override the default theme scheme"
     },
     {
     "type": "color_scheme",

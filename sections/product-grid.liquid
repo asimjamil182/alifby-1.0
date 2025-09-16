@@ -1,4 +1,4 @@
-<section class="{{ section.id }} {{ section.settings.color_scheme }}">
+<section class="{{ section.id }} {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
   <div
     class="layout py-2 {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor"
   >
@@ -100,33 +100,7 @@
   </div>
 </section>
 
-{% if section.settings.isDefaultOverride %}
-  <style>
-    .{{ section.id }} .btn {
-      color: {{ section.settings.btn_color }};
-      background-color: {{ section.settings.btn_bg_color }};
-      border-color: {{ section.settings.btn_border_color }};
-    }
-      .{{ section.id }} .btn-revert:hover {
-        background-color: {{ section.settings.btn_bg_color }} !important;
-        color: {{ section.settings.btn_color }} !important;
-        border-color: {{ section.settings.btn_border_color }} !important;
-    }
 
-    .{{ section.id }} input[type='radio']:checked + .btn-revert {
-      background-color: {{ section.settings.btn_bg_color }};
-      color: {{ section.settings.btn_color }};
-      border-color: {{ section.settings.btn_border_color }};
-    }
-    .{{ section.id }} .underline_style {
-      color: {{ section.settings.underline_color }};
-    }
-    .{{ section.id }} input[type='radio']:checked + .underline_revert {
-      color: {{ section.settings.underline_color }};
-      border-color: {{ section.settings.underline_color }};
-    }
-  </style>
-{% endif %}
 
 {% schema %}
 {
@@ -201,6 +175,12 @@
       "id": "bg_color",
       "label": "Background Color",
       "default": "transparent"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
     },
     {
       "type": "color_scheme",

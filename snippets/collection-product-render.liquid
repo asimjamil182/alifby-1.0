@@ -22,7 +22,7 @@
           {%- render 'icon', iconName: 'left-arrow', class: 'fill-secondaryColor' -%}
         </button>
       {% endif %}
-      <div class="scroll scroll-h6 flex w-full md:flex-1 sm:overflow-x-auto md:overflow-[inherit] gap-1">
+      <div class="scroll scroll-md flex w-full md:flex-1 sm:overflow-x-auto md:overflow-[inherit] gap-1">
 
         {% for page in (1..paginate.pages) %}
           <a

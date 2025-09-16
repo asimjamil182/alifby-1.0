@@ -1,5 +1,5 @@
 <section>
-  <div class="layout p-0 bg-backgroundColor {{ section.settings.color_scheme }}">
+  <div class="layout p-0 bg-backgroundColor {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
     <div class="video-section flex items-center justify-center">
       {%- if section.settings.video_object -%}
         <video
@@ -66,6 +66,13 @@
     {
       "type": "header",
       "content": "Section Settings & Styling"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Theme",
+      "default": false,
+      "info": "This option will override the default theme scheme"
     },
     {
       "type": "color_scheme",
