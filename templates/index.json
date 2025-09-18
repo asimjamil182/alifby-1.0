@@ -24,7 +24,6 @@
             "btn_txt": "Shop Now",
             "btn_url": "",
             "isTextBox": true,
-            "theme_color": "",
             "background": "#ffffff",
             "background_opacity": 1,
             "container_positionX": "justify-start",
@@ -42,7 +41,6 @@
             "btn_txt": "Shop Now",
             "btn_url": "",
             "isTextBox": true,
-            "theme_color": "",
             "background": "#ffffff",
             "background_opacity": 1,
             "container_positionX": "justify-start",
@@ -60,7 +58,6 @@
             "btn_txt": "Shop Now",
             "btn_url": "",
             "isTextBox": true,
-            "theme_color": "",
             "background": "#ffffff",
             "background_opacity": 1,
             "container_positionX": "justify-start",
@@ -82,7 +79,9 @@
         "slide_loop": true,
         "slide_autoplay": false,
         "slide_autoplaytime": 3000,
-        "isFullWidth": false
+        "isFullWidth": false,
+        "isOverrideDefualt": false,
+        "theme_color": ""
       }
     },
     "catagory_group_9fdwKN": {
@@ -91,6 +90,7 @@
         "catagory_fcpCeC": {
           "type": "catagory",
           "settings": {
+            "cat_img": "shopify://shop_images/S8415c3fa37684d1ca765bda13ecaf827G_17605b4c-3024-40a4-b1de-d0b23878357b.webp",
             "cat_label": "Cloths",
             "cat_link": ""
           }
@@ -98,6 +98,7 @@
         "catagory_FLAPak": {
           "type": "catagory",
           "settings": {
+            "cat_img": "shopify://shop_images/S58ebbf578a064e09a4a36f84a057143bo.jpg",
             "cat_label": "Shoes",
             "cat_link": ""
           }
@@ -105,6 +106,7 @@
         "catagory_gJ9m3B": {
           "type": "catagory",
           "settings": {
+            "cat_img": "shopify://shop_images/f6d5a73b-3b87-4148-9f53-835436f05d42.__CR0_0_300_300_PT0_SX300_V1.png",
             "cat_label": "Watches",
             "cat_link": ""
           }
@@ -112,6 +114,7 @@
         "catagory_EQ3md4": {
           "type": "catagory",
           "settings": {
+            "cat_img": "shopify://shop_images/3a5ea7e9-a256-484e-9c2a-6fc309e24972.__CR0_0_650_350_PT0_SX650_V1.jpg",
             "cat_label": "Jewelry",
             "cat_link": ""
           }
@@ -119,6 +122,7 @@
         "catagory_RiFzWz": {
           "type": "catagory",
           "settings": {
+            "cat_img": "shopify://shop_images/Hc45f9a5160614a248ac7c3a16f5ff9b2e.webp",
             "cat_label": "Bags",
             "cat_link": ""
           }
@@ -126,6 +130,7 @@
         "catagory_GtH6Cz": {
           "type": "catagory",
           "settings": {
+            "cat_img": "shopify://shop_images/wrist-watch_2293481.webp",
             "cat_label": "Label",
             "cat_link": ""
           }
@@ -133,6 +138,7 @@
         "catagory_Q8Ukt3": {
           "type": "catagory",
           "settings": {
+            "cat_img": "shopify://shop_images/S438dc7573b814e16a772cf88dd5c575dO_1024x1024_large_11dcff1d-5388-4e57-bb53-7bbcc5172675.webp",
             "cat_label": "Label",
             "cat_link": ""
           }
@@ -140,6 +146,7 @@
         "catagory_pGrtFi": {
           "type": "catagory",
           "settings": {
+            "cat_img": "shopify://shop_images/S30e5cc6c4d9149f2a3ccb733532bbea2B_1024x1024_large_0bf0aa22-84de-438b-bb9b-8448b134f32d.webp",
             "cat_label": "Label",
             "cat_link": ""
           }
@@ -147,6 +154,7 @@
         "catagory_eKFPP6": {
           "type": "catagory",
           "settings": {
+            "cat_img": "shopify://shop_images/S3942a2fb8a5549b69fd585f888471701V.webp",
             "cat_label": "Label",
             "cat_link": ""
           }
@@ -166,12 +174,15 @@
       "name": "Catagory Group",
       "settings": {
         "isFullWidth": false,
+        "showarrows": true,
+        "slide_loop": true,
+        "slide_autoplay": true,
+        "slide_autoplaytime": 3000,
         "is_show_label": true,
         "isRoundedImage": true,
-        "image_size": "w-[50px] h-[50px] md:w-[75px] md:h-[75px]",
-        "theme_color": "ocean-breeze",
-        "bg_color": "#ffffff",
-        "bg_opacity": 1
+        "image_size": "w-[100px] h-[100px] md:w-[125px] md:h-[125px]",
+        "isOverrideDefualt": false,
+        "theme_color": "ocean_breeze"
       }
     },
     "product_grid_kP4TUk": {
@@ -209,6 +220,7 @@
         "btn_text": "View More",
         "isFullWidth": false,
         "bg_color": "rgba(0,0,0,0)",
+        "isOverrideDefualt": false,
         "color_scheme": "ocean-breeze"
       }
     },
@@ -267,6 +279,7 @@
         "tagline": "Latest articles and updates",
         "btn_text": "Read",
         "isFullWidth": false,
+        "isOverrideDefualt": false,
         "color_scheme": ""
       }
     },
@@ -298,6 +311,7 @@
         "slide_autoplaytime": 5000,
         "isFullWidth": false,
         "switch_direction": false,
+        "isOverrideDefualt": false,
         "color_scheme": ""
       }
     },
@@ -310,6 +324,7 @@
         "muted": false,
         "loop": true,
         "controls": true,
+        "isOverrideDefualt": false,
         "color_scheme": ""
       }
     },
@@ -323,6 +338,7 @@
         "tagline2": "<p>Tag line</p>",
         "enable_tags": true,
         "isFullWidth": false,
+        "isOverrideDefualt": false,
         "color_scheme": ""
       }
     },
@@ -333,6 +349,7 @@
         "video_url": "https://vimeo.com/235215203",
         "autoplay": false,
         "muted": false,
+        "isOverrideDefualt": false,
         "color_scheme": ""
       }
     },
@@ -378,6 +395,7 @@
       "settings": {
         "image_size": 50,
         "isFullWidth": false,
+        "isOverrideDefualt": false,
         "color_scheme": ""
       }
     },
@@ -387,7 +405,10 @@
       "settings": {
         "heading": "Contact Us",
         "tagline": "<p>Feel free to reach Us</p>",
-        "color_scheme": ""
+        "isOverrideDefualt": false,
+        "color_scheme": "",
+        "btn_style": "btn-primary",
+        "input_style": "input-primary"
       }
     },
     "accordian_d44qLM": {
@@ -397,21 +418,21 @@
           "type": "accordion_item",
           "settings": {
             "item_title": "Accordion Item",
-            "item_content": "Content for accordion item."
+            "item_content": "<p>Content for accordion item.</p>"
           }
         },
         "accordion_item_LTLhJW": {
           "type": "accordion_item",
           "settings": {
             "item_title": "Accordion Item",
-            "item_content": "Content for accordion item."
+            "item_content": "<p>Content for accordion item.</p>"
           }
         },
         "accordion_item_iGFWTj": {
           "type": "accordion_item",
           "settings": {
             "item_title": "Accordion Item",
-            "item_content": "Content for accordion item."
+            "item_content": "<p>Content for accordion item.</p>"
           }
         }
       },
@@ -421,7 +442,12 @@
         "accordion_item_iGFWTj"
       ],
       "name": "Accordion",
-      "settings": {}
+      "settings": {
+        "heading": "Accordion",
+        "tagline": "Tag line text here",
+        "isOverrideDefualt": false,
+        "color_scheme": ""
+      }
     }
   },
   "order": [

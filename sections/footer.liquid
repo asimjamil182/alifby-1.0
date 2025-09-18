@@ -1,4 +1,4 @@
-<footer class="{{ section.id }} mt-4 flex-grow-[1] bg-backgroundColor {%- if section.settings.theme_color!=settings.default_color_scheme -%}{{section.settings.theme_color}}{%- else -%}{{settings.default_color_scheme}}{%- endif -%}">
+<footer class="{{ section.id }} mt-4 flex-grow-[1] bg-backgroundColor {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
   <div class="footer border-t border-separatorlineColor">
     <div class="border-b border-separatorlineColor">
       <div class="layout flex justify-center p-4 gap-4 flex-wrap md:flex-nowrap md:justify-between md:items-center">
@@ -44,7 +44,7 @@
                 <div class="text-primaryColor font-semibold text-sm uppercase menuHeading">
                   {{ linklists[block.settings.footer_menu].title }}
                 </div>
-                <ul class=" uppercase text-xs child-hover:ml-1 child:cursor-pointer">
+                <ul class=" uppercase text-xs child-hover:ml-1 child:cursor-pointer text-textColor">
                   {% for link in linklists[block.settings.footer_menu].links %}
                     <li>
                       <a class="py-1 md:py-0.5 inline-block menuLinks" href="{{ link.url }}">{{ link.title }}</a>
@@ -56,7 +56,7 @@
           </div>
         </div>
         <div class="w-full md:w-auto">
-          <h1 class="text-linkColor text-xl pb-2">Subscribe for Newslater</h1>
+          <h1 class="text-textColor text-xl pb-2">Subscribe for Newslater</h1>
           {%- form 'customer' -%}
             <input type="hidden" name="contact[tags]" value="newsletter">
             <div class="{{settings.input_style }} overflow-hidden lg:w-full">
@@ -70,7 +70,7 @@
           {%- endform -%}
 
           {%- if section.settings.enable_payment_types -%}
-            <div class="mt-3 text-sm">
+            <div class="mt-3 text-sm text-textColor">
               <span>Accept Payment</span>
               {%- render 'payment-types' -%}
             </div>
@@ -118,9 +118,21 @@
       "default": true
     },
     {
-    "type": "color_scheme",
-    "id": "color_scheme",
-    "label": "Color Scheme",
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Color",
+      "default": false,
+      "info": "If checked, the color settings below will override the default theme colors."
+    },
+    {
+      "type": "color_scheme",
+      "id": "theme_color",
+      "label": "Theme Color",
+      "info": "You can change theme color in [theme settings](/editor?context=theme&category=Color%20Schemes)"
     }
   
   ],

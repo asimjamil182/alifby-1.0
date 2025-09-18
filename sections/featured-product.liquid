@@ -1,7 +1,7 @@
 
 
 <section class="{{ section.id }}">
-  <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor {%- if section.settings.theme_color!=settings.default_color_scheme -%}{{section.settings.theme_color}}{%- else -%}{{settings.default_color_scheme}}{%- endif -%}">
+  <div class="layout {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
     {% if section.settings.heading %}
       <div class="section-heading">{{ section.settings.heading }}</div>
     {% endif %}
@@ -10,6 +10,7 @@
     {% endif %}
     <slider-handler>
       <swiper-container
+        style="--swiper-navigation-color: var(--theme-primary-color); --swiper-pagination-color: var(--theme-primary-color);"
         class=" py-3 w-full ml-0 mr-0"
         space-between="5"
         slides-per-view="6"
@@ -90,7 +91,7 @@
     },
     {
       "type": "header",
-      "content": "Section Settings & Styling"
+      "content": "Section Settings"
     },
     {
       "type": "checkbox",
@@ -99,16 +100,22 @@
       "default": false,
       "info": "This option work on large screen only"
     },
+{
+      "type": "header",
+      "content": "Color Settings"
+    },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background Color",
-      "default": "transparent"
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Color",
+      "default": false,
+      "info": "If checked, the color settings below will override the default theme colors."
     },
     {
       "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color Scheme"
+      "id": "theme_color",
+      "label": "Theme Color",
+      "info": "You can change theme color in [theme settings](/editor?context=theme&category=Color%20Schemes)"
     }
   ],
   "presets": [

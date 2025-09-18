@@ -1,31 +1,88 @@
-<section>
+<section class="{{ section.id }}">
   <div class="layout bg-backgroundColor {% unless settings.layout_width=='100%' %}p-0{% endunless %} {% if section.settings.isFullWidth %}lg:w-full{% endif %} {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
-    <slider-handler sm="6" md="8" lg="10">
-<swiper-container
-    slides-per-view="8"
-    >
-      {%- for block in section.blocks -%}
-        <swiper-slide class="h-auto p-2">
-        <div class="flex gap-2 items-center flex-col md:flex-row justify-center">
-          <div class="{{ section.settings.image_size }}">
-            {%- if block.settings.cat_img -%}
-              <img src="{{ block.settings.cat_img | image_url }}" class="{{ section.settings.image_size }} {% if section.settings.isRoundedImage %} rounded-full {% endif %}" width="" height="" alt="Catagory Image">
-            {%- else -%}
-              <img src="https://placehold.co/100" class="{{ section.settings.image_size }} shadow-sm md:shadow-none {% if section.settings.isRoundedImage %} rounded-full {% endif %}" width="" height="" alt="Img placeholder">
-            {%- endif -%}
-          </div>
-          {%- if section.settings.is_show_label -%}
-            <div class="flex-1">
-            <a href="{{ block.settings.cat_link }}" class=" md:font-semibold text-primaryColor capitalize text-xs text-center md:text-left md:text-base" style="{% if section.settings.isDefaultOverride %}color:{{ section.settings.label_color }} !important;{% endif %}">{{ block.settings.cat_label }}</a>
-          </div>
-          {%- endif -%}
+    <slider-handler sm="6" md="8" lg="10" class="relative">
+      {%- if section.settings.showarrows -%}
+        <div class="button-next hidden md:flex cursor-pointer absolute top-0 bottom-0 bg-secondaryColor opacity-50 p-2 right-0 z-10 fill-primaryColor text-primaryColor items-center justify-center">
+          {%- render 'icon', iconName: 'chevron-right', size: '20px' -%}
         </div>
-      </swiper-slide>
-      {%- endfor -%}
-    </swiper-container>
+        <div class="button-prev hidden md:flex cursor-pointer absolute top-0 bottom-0 bg-secondaryColor opacity-50 p-2 left-0 z-10 fill-primaryColor text-primaryColor  items-center justify-center">
+          {%- render 'icon', iconName: 'chevron-left', size: '20px' -%}
+        </div>
+      {%- endif -%}
+      <swiper-container
+        class="catagory-swiper relative md:mx-8"
+        style="--swiper-navigation-color: var(--theme-primary-color); --swiper-pagination-color: var(--theme-primary-color);"
+        slides-per-view="8"
+        loop="{{ section.settings.slide_loop }}"
+        {% comment %}
+          {%- if section.settings.slide_autoplay -%}
+            autoplay-delay="{{section.settings.slide_autoplaytime}}"
+            autoplay-disable-on-interaction="true"
+          {%- endif -%}
+        {% endcomment %}
+      >
+        {%- for block in section.blocks -%}
+          <swiper-slide class="h-auto p-2 min-w-min w-full">
+            <div class="flex gap-2 items-center flex-col md:flex-row justify-center">
+              <div class="flex-shrink-0">
+                {%- if block.settings.cat_img -%}
+                  <div class="flex items-center justify-center {{ section.settings.image_size }} {% if section.settings.isRoundedImage %} rounded-full {% endif %} overflow-hidden">
+                    <a href="{{ block.settings.cat_link }}">
+                      <img
+                        src="{{ block.settings.cat_img | image_url }}"
+                        class=""
+                        width=""
+                        height=""
+                        alt="Catagory Image"
+                      >
+                    </a>
+                  </div>
+                {%- else -%}
+                  <div class="flex items-center justify-center {{ section.settings.image_size }} {% if section.settings.isRoundedImage %} rounded-full {% endif %} overflow-hidden">
+                    <a href="">
+                      <img
+                        src="https://placehold.co/100"
+                        class=""
+                        width=""
+                        height=""
+                        alt="Img placeholder"
+                      >
+                    </a>
+                  </div>
+                {%- endif -%}
+              </div>
+              {%- if section.settings.is_show_label -%}
+                <div class="">
+                  <a
+                    href="{{ block.settings.cat_link }}"
+                    class=" md:font-semibold text-textColor capitalize text-xs text-center md:text-base"
+                    style="{% if section.settings.isDefaultOverride %}color:{{ section.settings.label_color }} !important;{% endif %}"
+                  >
+                    {{- block.settings.cat_label -}}
+                  </a>
+                </div>
+              {%- endif -%}
+            </div>
+          </swiper-slide>
+        {%- endfor -%}
+      </swiper-container>
     </slider-handler>
   </div>
 </section>
+
+{%- if section.settings.showarrows -%}
+  <script>
+    const swiperEl = document.querySelector('.catagory-swiper');
+    const nextButton = document.querySelector('.button-next');
+    const prevButton = document.querySelector('.button-prev');
+    nextButton.addEventListener('click', () => {
+      swiperEl.swiper.slideNext();
+    });
+    prevButton.addEventListener('click', () => {
+      swiperEl.swiper.slidePrev();
+    });
+  </script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -42,6 +99,38 @@
       "label": "Full Width",
       "default": false,
       "info": "This option work on large screen only"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "showarrows",
+      "label": "Show Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_loop",
+      "label": "Loop Slide",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_autoplay",
+      "label": "Auto Move Slide",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slide_autoplaytime",
+      "min": 2000,
+      "max": 9000,
+      "step": 1000,
+      "unit": "ms",
+      "label": "Auto Move Time",
+      "default": 3000
     },
     {
       "type": "header",
@@ -80,27 +169,26 @@
           "value": "w-[100px] h-[100px] md:w-[125px] md:h-[125px]",
           "label": "Large"
         }
-        
       ],
       "default": "w-[50px] h-[50px] md:w-[75px] md:h-[75px]"
     },
     {
-          "type": "header",
-          "content": "Color Settings"
-        },
-        {
-          "type": "checkbox",
-          "id": "isOverrideDefualt",
-          "label": "Override Default Color",
-          "default": false,
-          "info": "If checked, the color settings below will override the default theme colors."
-        },
-        {
-          "type": "color_scheme",
-          "id": "theme_color",
-          "label": "Theme Color",
-          "info": "You can change theme color in [theme settings](/editor?context=theme&category=Color%20Schemes)"
-        }
+      "type": "header",
+      "content": "Color Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Color",
+      "default": false,
+      "info": "If checked, the color settings below will override the default theme colors."
+    },
+    {
+      "type": "color_scheme",
+      "id": "theme_color",
+      "label": "Theme Color",
+      "info": "You can change theme color in [theme settings](/editor?context=theme&category=Color%20Schemes)"
+    }
   ],
   "blocks": [
     {
@@ -165,7 +253,7 @@
   ],
   "disabled_on": {
     "templates": ["password"],
-    "groups": ["footer","header"]
+    "groups": ["footer", "header"]
   }
 }
 {% endschema %}

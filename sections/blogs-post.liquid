@@ -120,7 +120,7 @@
     },
     {
       "type": "header",
-      "content": "Section Settings & Styling"
+      "content": "Section Settings"
     },
     {
       "type": "checkbox",
@@ -130,17 +130,23 @@
       "info": "This option work on large screen only"
     },
     {
-      "type": "checkbox",
-      "id": "isOverrideDefualt",
-      "label": "Override Default Theme",
-      "default": false,
-      "info": "This option will override the default theme scheme"
+      "type": "header",
+      "content": "Color Settings"
     },
     {
-    "type": "color_scheme",
-    "id": "color_scheme",
-    "label": "Color scheme",
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Color",
+      "default": false,
+      "info": "If checked, the color settings below will override the default theme colors."
+    },
+    {
+      "type": "color_scheme",
+      "id": "theme_color",
+      "label": "Theme Color",
+      "info": "You can change theme color in [theme settings](/editor?context=theme&category=Color%20Schemes)"
     }
+    
   ],
   "presets": [
     {

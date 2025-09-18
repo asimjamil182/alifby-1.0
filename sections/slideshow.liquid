@@ -5,10 +5,10 @@
     {%- else -%}
       <div class="mx-auto">
     {%- endif -%}
-    {%- if section.settings.slide_arrow -%}
+    {% comment %} {%- if section.settings.slide_arrow -%}
       <div class="swiper-button-prev swiper-button-white"></div>
       <div class="swiper-button-next swiper-button-white"></div>
-    {%- endif -%}
+    {%- endif -%} {% endcomment %}
     <swiper-container
       style=" --swiper-navigation-size: {{section.settings.slide_arrow_size}}px; --swiper-pagination-color: var(--theme-primary-color); --swiper-navigation-color: var(--theme-primary-color);"
       class="image-swiper h-auto w-full"

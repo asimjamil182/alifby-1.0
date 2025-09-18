@@ -34,9 +34,9 @@
       <div class="sm:w-full md:w-2/3 p-2">
         <div class="flex flex-col h-full">
           {%- if collection.title != blank -%}
-            <div class="text-textColor text-xl p-2 capitalize font-semibold section-title">{{ collection.title }}</div>
+            <div class="text-primaryColor text-xl p-2 capitalize font-semibold section-title">{{ collection.title }}</div>
           {%- else -%}
-            <div class="text-textColor text-xl p-2 capitalize font-semibold section-title">Collection Title</div>
+            <div class="text-primaryColor text-xl p-2 capitalize font-semibold section-title">Collection Title</div>
           {%- endif -%}
 
           <collection-showup class="mb-auto">
@@ -199,14 +199,14 @@
     },
     {
       "type": "header",
-      "content": "Section Settings & Styling"
+      "content": "Section Settings"
     },
     {
       "type": "checkbox",
       "id": "isFullWidth",
       "label": "Full Width",
       "default": false,
-      "info": "This option work on large screen only"
+      "info": "This option work on large screen only."
     },
     {
       "type": "checkbox",
@@ -215,16 +215,21 @@
       "default": false
     },
     {
-      "type": "checkbox",
-      "id": "isOverrideDefualt",
-      "label": "Override Default Theme",
-      "default": false,
-      "info": "This option will override the default theme scheme"
+      "type": "header",
+      "content": "Color Settings"
     },
     {
-    "type": "color_scheme",
-    "id": "color_scheme",
-    "label": "Color Scheme"
+      "type": "checkbox",
+      "id": "isOverrideDefualt",
+      "label": "Override Default Color",
+      "default": false,
+      "info": "If checked, the color settings below will override the default theme colors."
+    },
+    {
+      "type": "color_scheme",
+      "id": "theme_color",
+      "label": "Theme Color",
+      "info": "You can change theme color in [theme settings](/editor?context=theme&category=Color%20Schemes)"
     }
   ],
   "presets": [

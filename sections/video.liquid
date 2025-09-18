@@ -1,5 +1,5 @@
 <section>
-  <div class="layout p-0 bg-backgroundColor {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
+  <div class="layout p-0 {% if section.settings.isFullWidth %}lg:w-full{% endif %} bg-backgroundColor {% if section.settings.isOverrideDefualt %}{{section.settings.theme_color}}{% else %}{{settings.default_color_scheme}}{% endif -%}">
     <div class="video-section flex items-center justify-center">
       {%- if section.settings.video_object -%}
         <video
@@ -65,19 +65,31 @@
     },
     {
       "type": "header",
-      "content": "Section Settings & Styling"
+      "content": "Section Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "isfullwidth",
+      "label": "Full Width",
+      "default": true,
+      "info": "This option work only in large screen only."
+    },
+    {
+      "type": "header",
+      "content": "Color Settings"
     },
     {
       "type": "checkbox",
       "id": "isOverrideDefualt",
-      "label": "Override Default Theme",
+      "label": "Override Default Color",
       "default": false,
-      "info": "This option will override the default theme scheme"
+      "info": "If checked, the color settings below will override the default theme colors."
     },
     {
       "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "Color Scheme"
+      "id": "theme_color",
+      "label": "Theme Color",
+      "info": "You can change theme color in [theme settings](/editor?context=theme&category=Color%20Schemes)"
     }
   ],
   "presets": [
