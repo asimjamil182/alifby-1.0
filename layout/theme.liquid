@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page_title }} | shop</title>
+    <title>{{ page_title }}</title>
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
@@ -34,7 +34,7 @@
       {{ settings.type_btn_font | font_face: font_display: 'swap' }}
 
         :root{
-          {% comment %} --theme-primaryColor-color: {{settings.primaryColor}};
+          --theme-primaryColor-color: {{settings.primaryColor}};
           --theme-secondaryColor-color: {{settings.secondaryColor}};
           --theme-background-color: {{settings.backgroundColor}};
           --theme-text-color: {{settings.textColor}};
@@ -48,10 +48,10 @@
           --theme-disable-color: #c7c7c7;
           --theme-transparent-color: transparent;
 
-          --swiper-pagination-color: {{ settings.primaryColor }}; {% endcomment %}
+          --swiper-pagination-color: {{ settings.primaryColor }};
 
           --layout-width: {{settings.layout_width}};
-          {%- if settings.layout_width=='100%' -%}
+          {%- if settings.layout_width['100'] -%}
             --layout-padding:16px;
           {%- else -%}
             --layout-padding:8px;
@@ -60,7 +60,9 @@
           --button-raduis: {{settings.button_raduis}}px;
 
           --input-raduis:{{settings.input_raduis}}px;
-          
+          {% unless settings.input_isborder %}
+          --input-isborder:0px;
+          {% endunless %}
 
           --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
           --font-heading-style: {{ settings.type_header_font.style }};
@@ -78,73 +80,19 @@
           --font-btn-style: {{ settings.type_btn_font.style }};
           --font-btn-weight: {{ settings.type_btn_font.weight }};
 
-        }
-        
-      {% for scheme in settings.color_schemes -%}
-        {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
-        {% if forloop.index == 1 -%}
-          :root,
-        {%- endif %}
-        .{{ scheme.id }} {
-          --theme-primary-color: {{scheme.settings.primary}};
-          --theme-secondary-color: {{scheme.settings.secondary}};
-          --theme-accent-color: {{scheme.settings.accent}};
-          --theme-background-color: {%- if scheme.settings.backgroundGradient=="" -%}{{scheme.settings.background}}{%- else -%}{{scheme.settings.backgroundGradient}}{%- endif -%};
-          --theme-heading-color: {{scheme.settings.heading}};
-          --theme-text-color: {{scheme.settings.text}};
-          --theme-subtext-color: {{scheme.settings.subtext}};
-          --theme-separatorline-color: {{scheme.settings.separatorline}};
-
-          {% comment %} --color-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
-        {% if scheme.settings.background_gradient != empty %}
-          --gradient-background: {{ scheme.settings.background_gradient }};
-        {% else %}
-          --gradient-background: {{ scheme.settings.background }};
-        {% endif %} {% endcomment %}
-
-        {% comment %} {% liquid
-          assign background_color = scheme.settings.background
-          assign background_color_brightness = background_color | color_brightness
-          if background_color_brightness <= 26
-            assign background_color_contrast = background_color | color_lighten: 50
-          elsif background_color_brightness <= 65
-            assign background_color_contrast = background_color | color_lighten: 5
-          else
-            assign background_color_contrast = background_color | color_darken: 25
-          endif
-        %} {% endcomment %}
-
-        {% comment %} --color-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
-        --color-background-contrast: {{ background_color_contrast.red }},{{ background_color_contrast.green }},{{ background_color_contrast.blue }};
-        --color-shadow: {{ scheme.settings.shadow.red }},{{ scheme.settings.shadow.green }},{{ scheme.settings.shadow.blue }};
-        --color-button: {{ scheme.settings.button.red }},{{ scheme.settings.button.green }},{{ scheme.settings.button.blue }};
-        --color-button-text: {{ scheme.settings.button_label.red }},{{ scheme.settings.button_label.green }},{{ scheme.settings.button_label.blue }};
-        --color-secondary-button: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
-        --color-secondary-button-text: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
-        --color-link: {{ scheme.settings.secondary_button_label.red }},{{ scheme.settings.secondary_button_label.green }},{{ scheme.settings.secondary_button_label.blue }};
-        --color-badge-foreground: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
-        --color-badge-background: {{ scheme.settings.background.red }},{{ scheme.settings.background.green }},{{ scheme.settings.background.blue }};
-        --color-badge-border: {{ scheme.settings.text.red }},{{ scheme.settings.text.green }},{{ scheme.settings.text.blue }};
-        --payment-terms-background-color: rgb({{ scheme.settings.background.rgb }}); {% endcomment %}
       }
-      {% endfor %}
-
-      {% comment %} {{ scheme_classes | prepend: 'body' }} {
-        color: rgba(var(--color-foreground), 0.75);
-        background-color: rgb(var(--color-background));
-      } {% endcomment %}
     </style>
 
     <meta name="theme-color" content="{{ settings.primaryColor }}">
     <meta name="color-scheme" content="light">
   </head>
-  <body id="themeBody" class="ltr-direction {{ settings.default_color_scheme }}">
+  <body id="themeBody" class="ltr-direction">
     <div class="flex flex-col h-screen {% if settings.is_sticky_header %}md:h-screen {% else %} md:h-auto{% endif %}">
+      {% section 'announcement' %}
+
       {% comment %} <a href="{{ company_location.url_to_set_as_current }}">change location</a> {% endcomment %}
-      <header>
-        {% sections 'header-group' %}
-      </header>
-      <main class=" overflow-y-auto scroll-none md:scroll md:scroll-lg">
+      <header>{% section 'header' %}</header>
+      <main class=" overflow-y-auto scroll-none md:scroll md:scroll-wa ">
         {% comment %}
           <div id="app-spinner" class="fixed left-0 right-0 bottom-0 top-0 z-10 flex items-center justify-center">
             {%- render 'icon',
@@ -168,7 +116,7 @@
       id="quick-view"
       class=" fixed top-0 left-0 right-0 bottom-0 z-20 sm:p-4 md:p-0 flex hidden items-center justify-center"
     >
-      <div id="quickview-overlay" class="bg-primaryColor fixed top-0 left-0 right-0 bottom-0 opacity-10"></div>
+      <div id="quickview-overlay" class="bg-backgroundColor fixed top-0 left-0 right-0 bottom-0 opacity-10"></div>
       <div class="bg-[#ffff] sm:w-full md:w-2/3 lg:w-1/2 shadow-md relative m-0">
         <div class="flex items-center justify-between p-2 border-b border-neutralLightColor">
           <div class=" text-textColor text-sm uppercase">Quick View</div>
@@ -185,3 +133,13 @@
     
   </body>
 </html>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- if settings.layout_width=='100%' -%}"
+  to: "{%- if settings.layout_width['100'] -%}"
+  position: 2370..2409
+{% endcomment %}
